@@ -24,6 +24,8 @@
 		00E86D7417415AA000F0FA0A /* SVGKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E86D7317415AA000F0FA0A /* SVGKit.m */; };
 		036A524C16E87693008C1140 /* NSCharacterSet+SVGKExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 036A524A16E87693008C1140 /* NSCharacterSet+SVGKExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		036A524D16E87693008C1140 /* NSCharacterSet+SVGKExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 036A524B16E87693008C1140 /* NSCharacterSet+SVGKExtensions.m */; };
+		5534A7A7176A8DDE003FBEE2 /* SVGPatternElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5534A7A5176A8DDD003FBEE2 /* SVGPatternElement.h */; };
+		5534A7A8176A8DDE003FBEE2 /* SVGPatternElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5534A7A6176A8DDD003FBEE2 /* SVGPatternElement.m */; };
 		661ADBF216CC2FBE006F4BC3 /* SVGTextPositioningElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 661ADBF016CC2FBE006F4BC3 /* SVGTextPositioningElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		661ADBF316CC2FBE006F4BC3 /* SVGTextPositioningElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 661ADBF116CC2FBE006F4BC3 /* SVGTextPositioningElement.m */; };
 		661ADBF716CC2FCA006F4BC3 /* SVGTextContentElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 661ADBF516CC2FCA006F4BC3 /* SVGTextContentElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -256,6 +258,8 @@
 		00E86D7317415AA000F0FA0A /* SVGKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKit.m; sourceTree = "<group>"; };
 		036A524A16E87693008C1140 /* NSCharacterSet+SVGKExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+SVGKExtensions.h"; sourceTree = "<group>"; };
 		036A524B16E87693008C1140 /* NSCharacterSet+SVGKExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+SVGKExtensions.m"; sourceTree = "<group>"; };
+		5534A7A5176A8DDD003FBEE2 /* SVGPatternElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPatternElement.h; sourceTree = "<group>"; };
+		5534A7A6176A8DDD003FBEE2 /* SVGPatternElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPatternElement.m; sourceTree = "<group>"; };
 		661ADBF016CC2FBE006F4BC3 /* SVGTextPositioningElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGTextPositioningElement.h; sourceTree = "<group>"; };
 		661ADBF116CC2FBE006F4BC3 /* SVGTextPositioningElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGTextPositioningElement.m; sourceTree = "<group>"; };
 		661ADBF516CC2FCA006F4BC3 /* SVGTextContentElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGTextContentElement.h; sourceTree = "<group>"; };
@@ -766,6 +770,8 @@
 				66E8636C1688C2770059C9C4 /* SVGTextElement.m */,
 				66E8636D1688C2770059C9C4 /* SVGTitleElement.h */,
 				66E8636E1688C2770059C9C4 /* SVGTitleElement.m */,
+				5534A7A5176A8DDD003FBEE2 /* SVGPatternElement.h */,
+				5534A7A6176A8DDD003FBEE2 /* SVGPatternElement.m */,
 			);
 			path = "Unported or Partial DOM";
 			sourceTree = "<group>";
@@ -981,6 +987,7 @@
 				6636CD80175F542A0072AAEF /* SVGKSourceString.h in Headers */,
 				6636CD82175F542A0072AAEF /* SVGKSourceURL.h in Headers */,
 				6636CD8A175F54680072AAEF /* CALayer+RecursiveClone.h in Headers */,
+				5534A7A7176A8DDE003FBEE2 /* SVGPatternElement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1148,6 +1155,7 @@
 				6636CD81175F542A0072AAEF /* SVGKSourceString.m in Sources */,
 				6636CD83175F542A0072AAEF /* SVGKSourceURL.m in Sources */,
 				6636CD8B175F54680072AAEF /* CALayer+RecursiveClone.m in Sources */,
+				5534A7A8176A8DDE003FBEE2 /* SVGPatternElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
