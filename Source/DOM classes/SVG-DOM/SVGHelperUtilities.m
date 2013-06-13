@@ -296,6 +296,7 @@
 	}
 	else if ( [actualFill hasPrefix:@"url"] )
 	{
+		//TODO: It seems that patterns also use the URL namespace.
 		NSRange idKeyRange = NSMakeRange(5, actualFill.length - 6);
 		NSString* _fillId = [actualFill substringWithRange:idKeyRange];
 		
@@ -317,6 +318,31 @@
 			return gradientLayer;
 		}
 	}
+#if 0
+	else if ( [actualFill hasPrefix:@"url"] )
+	{
+		NSRange idKeyRange = NSMakeRange(5, actualFill.length - 6);
+		NSString* _fillId = [actualFill substringWithRange:idKeyRange];
+		
+		/** Replace the return layer with a special layer using the URL fill */
+		/** fetch the fill layer by URL using the DOM */
+		NSAssert( svgElement.rootOfCurrentDocumentFragment != nil, @"This SVG shape has a URL fill type; it needs to search for that URL (%@) inside its nearest-ancestor <SVG> node, but the rootOfCurrentDocumentFragment reference was nil (suggests the parser failed, or the SVG file is corrupt)", _fillId );
+		
+		SVGGradientElement* svgGradient = (SVGGradientElement*) [svgElement.rootOfCurrentDocumentFragment getElementById:_fillId];
+		NSAssert( svgGradient != nil, @"This SVG shape has a URL fill (%@), but could not find an XML Node with that ID inside the DOM tree (suggests the parser failed, or the SVG file is corrupt)", _fillId );
+		
+		//if( _shapeLayer != nil && svgGradient != nil ) //this nil check here is distrubing but blocking
+		{
+			CAShapeLayer *patternLayer = [svgGradient newGradientLayerForObjectRect:_shapeLayer.frame viewportRect:svgElement.rootOfCurrentDocumentFragment.viewBox];
+			
+			DDLogCWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(gradientLayer.frame), NSStringFromCGRect(_shapeLayer.frame));
+			gradientLayer.mask =_shapeLayer;
+			[_shapeLayer release]; // because it was created with a +1 retain count
+			
+			return gradientLayer;
+		}
+	}
+#endif
 	else if( actualFill.length > 0 )
 	{
 		SVGColor fillColorAsSVGColor = SVGColorFromString([actualFill UTF8String]); // have to use the intermediate of an SVGColor so that we can over-ride the ALPHA component in next line

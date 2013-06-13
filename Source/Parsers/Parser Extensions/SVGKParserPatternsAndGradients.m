@@ -21,6 +21,7 @@
 #import "SVGPolylineElement.h"
 #import "SVGRectElement.h"
 #import "SVGTitleElement.h"
+#import "SVGKPattern.h"
 
 @implementation SVGKParserPatternsAndGradients
 
