@@ -17,14 +17,14 @@
 
 @interface SVGPatternElement ()
 @property (readwrite, retain, nonatomic) DWPImage *patternImage;
-@property (readwrite, nonatomic) CGFloat width;
-@property (readwrite, nonatomic) CGFloat height;
+@property (nonatomic, retain, readwrite) SVGLength* width;
+@property (nonatomic, retain, readwrite) SVGLength* height;
 
 @end
 
 @implementation SVGPatternElement
 
-@synthesize transform = _transform;
+@synthesize transform;
 
 - (SVGKPattern *)pattern
 {

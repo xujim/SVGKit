@@ -22,6 +22,7 @@
 #import "SVGRectElement.h"
 #import "SVGTitleElement.h"
 #import "SVGKPattern.h"
+#import "SVGPatternElement.h"
 
 @implementation SVGKParserPatternsAndGradients
 

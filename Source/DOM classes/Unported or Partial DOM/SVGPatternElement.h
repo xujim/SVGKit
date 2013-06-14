@@ -24,8 +24,8 @@
 
 @property (readonly, retain, nonatomic) DWPImage *patternImage;
 @property (readonly, nonatomic) SVGKPattern *pattern;
-@property (readonly, nonatomic) CGFloat width;
-@property (readonly, nonatomic) CGFloat height;
+@property (nonatomic, retain, readonly) SVGLength* width;
+@property (nonatomic, retain, readonly) SVGLength* height;
 
 - (CGColorRef)colorPattern;
 
