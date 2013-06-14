@@ -26,6 +26,8 @@
 @property (readonly, nonatomic) SVGKPattern *pattern;
 @property (nonatomic, retain, readonly) SVGLength* width;
 @property (nonatomic, retain, readonly) SVGLength* height;
+@property (nonatomic, retain, readonly) SVGLength* x;
+@property (nonatomic, retain, readonly) SVGLength* y;
 
 - (CGColorRef)colorPattern;
 

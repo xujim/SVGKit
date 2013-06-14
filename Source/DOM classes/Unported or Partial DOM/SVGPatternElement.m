@@ -19,12 +19,19 @@
 @property (readwrite, retain, nonatomic) DWPImage *patternImage;
 @property (nonatomic, retain, readwrite) SVGLength* width;
 @property (nonatomic, retain, readwrite) SVGLength* height;
+@property (nonatomic, retain, readwrite) SVGLength* x;
+@property (nonatomic, retain, readwrite) SVGLength* y;
+
 
 @end
 
 @implementation SVGPatternElement
 
 @synthesize transform;
+@synthesize width = _width;
+@synthesize height = _height;
+@synthesize x = _x;
+@synthesize y = _y;
 
 - (SVGKPattern *)pattern
 {
