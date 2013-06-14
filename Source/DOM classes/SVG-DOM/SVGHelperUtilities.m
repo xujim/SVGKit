@@ -322,9 +322,8 @@
 
 		} else if ([unknownElement isKindOfClass:[SVGPatternElement class]]) {
 			SVGPatternElement *svgPattern = unknownElement;
-			SVGKPattern *tmpPattern = [svgPattern imagePattern];
-			_shapeLayer.fillColor = [tmpPattern CGColor];
-			
+			CGColorRef tmpColor = [svgPattern colorPattern];
+			_shapeLayer.fillColor = tmpColor;
 		} else {
 			DDLogWarn(@"The URL %@ is an unknown class \"%@\"", _fillId, NSStringFromClass([unknownElement class]));
 		}

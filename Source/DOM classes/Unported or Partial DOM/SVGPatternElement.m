@@ -17,15 +17,23 @@
 
 @interface SVGPatternElement ()
 @property (readwrite, retain, nonatomic) DWPImage *patternImage;
+@property (readwrite, nonatomic) CGFloat width;
+@property (readwrite, nonatomic) CGFloat height;
+
 @end
 
 @implementation SVGPatternElement
 
 @synthesize transform = _transform;
 
-- (SVGKPattern *)imagePattern
+- (SVGKPattern *)pattern
 {
 	return [SVGKPattern patternWithImage:self.patternImage];
+}
+
+- (CGColorRef)colorPattern
+{
+	return self.pattern.CGColor;
 }
 
 - (void)dealloc
