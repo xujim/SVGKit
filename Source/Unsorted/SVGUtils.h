@@ -23,11 +23,18 @@
 #define RGB_N(v) (v) / 255.0f
 #endif
 
+typedef enum _SVGColorFlags {
+	SVGColorNoFlags = 0,
+	SVGColorURL = 1 << 0,
+	SVGColorInvalid = 1 << 1
+} SVGColorFlags;
+
 typedef struct {
 	uint8_t r;
 	uint8_t g;
 	uint8_t b;
 	uint8_t a;
+	SVGColorFlags flags;
 } SVGColor;
 
 SVGColor SVGColorMake (uint8_t r, uint8_t g, uint8_t b, uint8_t a);

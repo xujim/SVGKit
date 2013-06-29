@@ -164,81 +164,83 @@ static const char *gColorNames[NUM_COLORS] = {
 };
 
 static const SVGColor gColorValues[NUM_COLORS] = {
-	(SVGColor) { 240,248,255,255 }, (SVGColor) { 250,235,215,255 },
-	(SVGColor) { 0,255,255,255 }, (SVGColor) { 127,255,212,255 },
-	(SVGColor) { 240,255,255,255 }, (SVGColor) { 245,245,220,255 },
-	(SVGColor) { 255,228,196,255 }, (SVGColor) { 0,0,0,255 },
-	(SVGColor) { 255,235,205,255 }, (SVGColor) { 0,0,255,255 },
-	(SVGColor) { 138,43,226,255 }, (SVGColor) { 165,42,42,255 },
-	(SVGColor) { 222,184,135,255 }, (SVGColor) { 95,158,160,255 },
-	(SVGColor) { 127,255,0,255 }, (SVGColor) { 210,105,30,255 },
-	(SVGColor) { 255,127,80,255 }, (SVGColor) { 100,149,237,255 },
-	(SVGColor) { 255,248,220,255 }, (SVGColor) { 220,20,60,255 },
-	(SVGColor) { 0,255,255,255 }, (SVGColor) { 0,0,139,255 },
-	(SVGColor) { 0,139,139,255 }, (SVGColor) { 184,134,11,255 },
-	(SVGColor) { 169,169,169,255 }, (SVGColor) { 0,100,0,255 },
-	(SVGColor) { 169,169,169,255 }, (SVGColor) { 189,183,107,255 },
-	(SVGColor) { 139,0,139,255 }, (SVGColor) { 85,107,47,255 },
-	(SVGColor) { 255,140,0,255 }, (SVGColor) { 153,50,204,255 },
-	(SVGColor) { 139,0,0,255 }, (SVGColor) { 233,150,122,255 },
-	(SVGColor) { 143,188,143,255 }, (SVGColor) { 72,61,139,255 },
-	(SVGColor) { 47,79,79,255 }, (SVGColor) { 47,79,79,255 },
-	(SVGColor) { 0,206,209,255 }, (SVGColor) { 148,0,211,255 },
-	(SVGColor) { 255,20,147,255 }, (SVGColor) { 0,191,255,255 },
-	(SVGColor) { 105,105,105,255 }, (SVGColor) { 105,105,105,255 },
-	(SVGColor) { 30,144,255,255 }, (SVGColor) { 178,34,34,255 },
-	(SVGColor) { 255,250,240,255 }, (SVGColor) { 34,139,34,255 },
-	(SVGColor) { 255,0,255,255 }, (SVGColor) { 220,220,220,255 },
-	(SVGColor) { 248,248,255,255 }, (SVGColor) { 255,215,0,255 },
-	(SVGColor) { 218,165,32,255 }, (SVGColor) { 128,128,128,255 },
-	(SVGColor) { 0,128,0,255 }, (SVGColor) { 173,255,47,255 },
-	(SVGColor) { 128,128,128,255 }, (SVGColor) { 240,255,240,255 },
-	(SVGColor) { 255,105,180,255 }, (SVGColor) { 205,92,92,255 },
-	(SVGColor) { 75,0,130,255 }, (SVGColor) { 255,255,240,255 },
-	(SVGColor) { 240,230,140,255 }, (SVGColor) { 230,230,250,255 },
-	(SVGColor) { 255,240,245,255 }, (SVGColor) { 124,252,0,255 },
-	(SVGColor) { 255,250,205,255 }, (SVGColor) { 173,216,230,255 },
-	(SVGColor) { 240,128,128,255 }, (SVGColor) { 224,255,255,255 },
-	(SVGColor) { 250,250,210,255 }, (SVGColor) { 211,211,211,255 },
-	(SVGColor) { 144,238,144,255 }, (SVGColor) { 211,211,211,255 },
-	(SVGColor) { 255,182,193,255 }, (SVGColor) { 255,160,122,255 },
-	(SVGColor) { 32,178,170,255 }, (SVGColor) { 135,206,250,255 },
-	(SVGColor) { 119,136,153,255 }, (SVGColor) { 119,136,153,255 },
-	(SVGColor) { 176,196,222,255 }, (SVGColor) { 255,255,224,255 },
-	(SVGColor) { 0,255,0,255 }, (SVGColor) { 50,205,50,255 },
-	(SVGColor) { 250,240,230,255 }, (SVGColor) { 255,0,255,255 },
-	(SVGColor) { 128,0,0,255 }, (SVGColor) { 102,205,170,255 },
-	(SVGColor) { 0,0,205,255 }, (SVGColor) { 186,85,211,255 },
-	(SVGColor) { 147,112,219,255 }, (SVGColor) { 60,179,113,255 },
-	(SVGColor) { 123,104,238,255 }, (SVGColor) { 0,250,154,255 },
-	(SVGColor) { 72,209,204,255 }, (SVGColor) { 199,21,133,255 },
-	(SVGColor) { 25,25,112,255 }, (SVGColor) { 245,255,250,255 },
-	(SVGColor) { 255,228,225,255 }, (SVGColor) { 255,228,181,255 },
-	(SVGColor) { 255,222,173,255 }, (SVGColor) { 0,0,128,255 },
-	(SVGColor) { 253,245,230,255 }, (SVGColor) { 128,128,0,255 },
-	(SVGColor) { 107,142,35,255 }, (SVGColor) { 255,165,0,255 },
-	(SVGColor) { 255,69,0,255 }, (SVGColor) { 218,112,214,255 },
-	(SVGColor) { 238,232,170,255 }, (SVGColor) { 152,251,152,255 },
-	(SVGColor) { 175,238,238,255 }, (SVGColor) { 219,112,147,255 },
-	(SVGColor) { 255,239,213,255 }, (SVGColor) { 255,218,185,255 },
-	(SVGColor) { 205,133,63,255 }, (SVGColor) { 255,192,203,255 },
-	(SVGColor) { 221,160,221,255 }, (SVGColor) { 176,224,230,255 },
-	(SVGColor) { 128,0,128,255 }, (SVGColor) { 255,0,0,255 },
-	(SVGColor) { 188,143,143,255 }, (SVGColor) { 65,105,225,255 },
-	(SVGColor) { 139,69,19,255 }, (SVGColor) { 250,128,114,255 },
-	(SVGColor) { 244,164,96,255 }, (SVGColor) { 46,139,87,255 },
-	(SVGColor) { 255,245,238,255 }, (SVGColor) { 160,82,45,255 },
-	(SVGColor) { 192,192,192,255 }, (SVGColor) { 135,206,235,255 },
-	(SVGColor) { 106,90,205,255 }, (SVGColor) { 112,128,144,255 },
-	(SVGColor) { 112,128,144,255 }, (SVGColor) { 255,250,250,255 },
-	(SVGColor) { 0,255,127,255 }, (SVGColor) { 70,130,180,255 },
-	(SVGColor) { 210,180,140,255 }, (SVGColor) { 0,128,128,255 },
-	(SVGColor) { 216,191,216,255 }, (SVGColor) { 255,99,71,255 },
-	(SVGColor) { 64,224,208,255 }, (SVGColor) { 238,130,238,255 },
-	(SVGColor) { 245,222,179,255 }, (SVGColor) { 255,255,255,255 },
-	(SVGColor) { 245,245,245,255 }, (SVGColor) { 255,255,0,255 },
-	(SVGColor) { 154,205,50,255 }
+	(SVGColor) { 240,248,255,255,0 }, (SVGColor) { 250,235,215,255,0 },
+	(SVGColor) { 0,255,255,255,0 }, (SVGColor) { 127,255,212,255,0 },
+	(SVGColor) { 240,255,255,255,0 }, (SVGColor) { 245,245,220,255,0 },
+	(SVGColor) { 255,228,196,255,0 }, (SVGColor) { 0,0,0,255,0 },
+	(SVGColor) { 255,235,205,255,0 }, (SVGColor) { 0,0,255,255,0 },
+	(SVGColor) { 138,43,226,255,0 }, (SVGColor) { 165,42,42,255,0 },
+	(SVGColor) { 222,184,135,255,0 }, (SVGColor) { 95,158,160,255,0 },
+	(SVGColor) { 127,255,0,255,0 }, (SVGColor) { 210,105,30,255,0 },
+	(SVGColor) { 255,127,80,255,0 }, (SVGColor) { 100,149,237,255,0 },
+	(SVGColor) { 255,248,220,255,0 }, (SVGColor) { 220,20,60,255,0 },
+	(SVGColor) { 0,255,255,255,0 }, (SVGColor) { 0,0,139,255,0 },
+	(SVGColor) { 0,139,139,255,0 }, (SVGColor) { 184,134,11,255,0 },
+	(SVGColor) { 169,169,169,255,0 }, (SVGColor) { 0,100,0,255,0 },
+	(SVGColor) { 169,169,169,255,0 }, (SVGColor) { 189,183,107,255,0 },
+	(SVGColor) { 139,0,139,255,0 }, (SVGColor) { 85,107,47,255,0 },
+	(SVGColor) { 255,140,0,255,0 }, (SVGColor) { 153,50,204,255,0 },
+	(SVGColor) { 139,0,0,255,0 }, (SVGColor) { 233,150,122,255,0 },
+	(SVGColor) { 143,188,143,255,0 }, (SVGColor) { 72,61,139,255,0 },
+	(SVGColor) { 47,79,79,255,0 }, (SVGColor) { 47,79,79,255,0 },
+	(SVGColor) { 0,206,209,255,0 }, (SVGColor) { 148,0,211,255,0 },
+	(SVGColor) { 255,20,147,255,0 }, (SVGColor) { 0,191,255,255,0 },
+	(SVGColor) { 105,105,105,255,0 }, (SVGColor) { 105,105,105,255,0 },
+	(SVGColor) { 30,144,255,255,0 }, (SVGColor) { 178,34,34,255,0 },
+	(SVGColor) { 255,250,240,255,0 }, (SVGColor) { 34,139,34,255,0 },
+	(SVGColor) { 255,0,255,255,0 }, (SVGColor) { 220,220,220,255,0 },
+	(SVGColor) { 248,248,255,255,0 }, (SVGColor) { 255,215,0,255,0 },
+	(SVGColor) { 218,165,32,255,0 }, (SVGColor) { 128,128,128,255,0 },
+	(SVGColor) { 0,128,0,255,0 }, (SVGColor) { 173,255,47,255,0 },
+	(SVGColor) { 128,128,128,255,0 }, (SVGColor) { 240,255,240,255,0 },
+	(SVGColor) { 255,105,180,255,0 }, (SVGColor) { 205,92,92,255,0 },
+	(SVGColor) { 75,0,130,255,0 }, (SVGColor) { 255,255,240,255,0 },
+	(SVGColor) { 240,230,140,255,0 }, (SVGColor) { 230,230,250,255,0 },
+	(SVGColor) { 255,240,245,255,0 }, (SVGColor) { 124,252,0,255,0 },
+	(SVGColor) { 255,250,205,255,0 }, (SVGColor) { 173,216,230,255,0 },
+	(SVGColor) { 240,128,128,255,0 }, (SVGColor) { 224,255,255,255,0 },
+	(SVGColor) { 250,250,210,255,0 }, (SVGColor) { 211,211,211,255,0 },
+	(SVGColor) { 144,238,144,255,0 }, (SVGColor) { 211,211,211,255,0 },
+	(SVGColor) { 255,182,193,255,0 }, (SVGColor) { 255,160,122,255,0 },
+	(SVGColor) { 32,178,170,255,0 }, (SVGColor) { 135,206,250,255,0 },
+	(SVGColor) { 119,136,153,255,0 }, (SVGColor) { 119,136,153,255,0 },
+	(SVGColor) { 176,196,222,255,0 }, (SVGColor) { 255,255,224,255,0 },
+	(SVGColor) { 0,255,0,255,0 }, (SVGColor) { 50,205,50,255,0 },
+	(SVGColor) { 250,240,230,255,0 }, (SVGColor) { 255,0,255,255,0 },
+	(SVGColor) { 128,0,0,255,0 }, (SVGColor) { 102,205,170,255,0 },
+	(SVGColor) { 0,0,205,255,0 }, (SVGColor) { 186,85,211,255,0 },
+	(SVGColor) { 147,112,219,255,0 }, (SVGColor) { 60,179,113,255,0 },
+	(SVGColor) { 123,104,238,255,0 }, (SVGColor) { 0,250,154,255,0 },
+	(SVGColor) { 72,209,204,255,0 }, (SVGColor) { 199,21,133,255,0 },
+	(SVGColor) { 25,25,112,255,0 }, (SVGColor) { 245,255,250,255,0 },
+	(SVGColor) { 255,228,225,255,0 }, (SVGColor) { 255,228,181,255,0 },
+	(SVGColor) { 255,222,173,255,0 }, (SVGColor) { 0,0,128,255,0 },
+	(SVGColor) { 253,245,230,255,0 }, (SVGColor) { 128,128,0,255,0 },
+	(SVGColor) { 107,142,35,255,0 }, (SVGColor) { 255,165,0,255,0 },
+	(SVGColor) { 255,69,0,255,0 }, (SVGColor) { 218,112,214,255,0 },
+	(SVGColor) { 238,232,170,255,0 }, (SVGColor) { 152,251,152,255,0 },
+	(SVGColor) { 175,238,238,255,0 }, (SVGColor) { 219,112,147,255,0 },
+	(SVGColor) { 255,239,213,255,0 }, (SVGColor) { 255,218,185,255,0 },
+	(SVGColor) { 205,133,63,255,0 }, (SVGColor) { 255,192,203,255,0 },
+	(SVGColor) { 221,160,221,255,0 }, (SVGColor) { 176,224,230,255,0 },
+	(SVGColor) { 128,0,128,255,0 }, (SVGColor) { 255,0,0,255,0 },
+	(SVGColor) { 188,143,143,255,0 }, (SVGColor) { 65,105,225,255,0 },
+	(SVGColor) { 139,69,19,255,0 }, (SVGColor) { 250,128,114,255,0 },
+	(SVGColor) { 244,164,96,255,0 }, (SVGColor) { 46,139,87,255,0 },
+	(SVGColor) { 255,245,238,255,0 }, (SVGColor) { 160,82,45,255,0 },
+	(SVGColor) { 192,192,192,255,0 }, (SVGColor) { 135,206,235,255,0 },
+	(SVGColor) { 106,90,205,255,0 }, (SVGColor) { 112,128,144,255,0 },
+	(SVGColor) { 112,128,144,255,0 }, (SVGColor) { 255,250,250,255,0 },
+	(SVGColor) { 0,255,127,255,0 }, (SVGColor) { 70,130,180,255,0 },
+	(SVGColor) { 210,180,140,255,0 }, (SVGColor) { 0,128,128,255,0 },
+	(SVGColor) { 216,191,216,255,0 }, (SVGColor) { 255,99,71,255,0 },
+	(SVGColor) { 64,224,208,255,0 }, (SVGColor) { 238,130,238,255,0 },
+	(SVGColor) { 245,222,179,255,0 }, (SVGColor) { 255,255,255,255,0 },
+	(SVGColor) { 245,245,245,255,0 }, (SVGColor) { 255,255,0,255,0 },
+	(SVGColor) { 154,205,50,255,0 }
 };
+
+static SVGColor SVGColorMakeFlags (uint8_t r, uint8_t g, uint8_t b, uint8_t a, SVGColorFlags theflags);
 
 SVGColor ColorValueWithName (const char *name) {
 	int idx = -1;
@@ -251,14 +253,19 @@ SVGColor ColorValueWithName (const char *name) {
 	}
 	
 	if (idx == -1) {
-		return SVGColorMake(0, 0, 0, 255); // black
+		return SVGColorMakeFlags(0, 0, 0, 255, SVGColorInvalid); // black
 	}
 	
 	return gColorValues[idx];
 }
 
 SVGColor SVGColorMake (uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
-	SVGColor color = { .r = r, .g = g, .b = b, .a = a };
+	return SVGColorMakeFlags(r, g, b, a, SVGColorNoFlags);
+}
+
+static SVGColor SVGColorMakeFlags (uint8_t r, uint8_t g, uint8_t b, uint8_t a, SVGColorFlags theflags)
+{
+	SVGColor color = { .r = r, .g = g, .b = b, .a = a , .flags = theflags};
 	return color;
 }
 
@@ -276,7 +283,7 @@ SVGColor SVGColorFromString (const char *string) {
 	if (!strncmp(string, "url", 4)) {
 		DDLogCWarn(@"%s: WARNING: Unable to get an SVG color from a url (most likely a pattern)", __FUNCTION__);
 		DDLogCInfo(@"%s: INFO: returning a black SVG color", __FUNCTION__);
-		color = SVGColorMake(0, 0, 0, 255);
+		color = SVGColorMakeFlags(0, 0, 0, 255, SVGColorURL);
 	} else if (!strncmp(string, "rgb(", 4)) {
 		size_t len = strlen(string);
 		
@@ -364,7 +371,7 @@ SVGColor SVGColorFromString (const char *string) {
 		}
 		else
 		{
-			color = SVGColorMake(0, 0, 0, 255);
+			color = SVGColorMakeFlags(0, 0, 0, 255, SVGColorInvalid);
 		}
 		
 	}
@@ -439,6 +446,10 @@ CGMutablePathRef createPathFromPointsInString (const char *string, boolean_t clo
 
 CGColorRef CGColorWithSVGColor (SVGColor color) {
 	CGColorRef outColor = NULL;
+	
+	if (color.flags) {
+		DDLogCInfo(@"%s: The SVG color with red: %i green: %i blue: %i alpha: %i has flags: %@ %@ %@", __FUNCTION__, color.r, color.g, color.b, color.a, (color.flags & SVGColorURL) == SVGColorURL ? @"SVG URL" : @"", (color.flags & SVGColorInvalid) == SVGColorInvalid ? @"Invalid" : @"", (color.flags & ~(SVGColorInvalid |SVGColorURL)) != 0 ? @"Unknown/invalid flags" : @"");
+	}
 	
 #if TARGET_OS_IPHONE
 	outColor = [UIColor colorWithRed:RGB_N(color.r)
