@@ -14,9 +14,9 @@
 
 - (id)init
 {
-	NSAssert(false, @"init not supported, use initWithSVGKImage:");
-    
-    return nil;
+	DDLogError(@"[%@] ERROR: -init not supported, use initWithSVGKImage:", [self class]);
+	
+	return nil;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -25,8 +25,8 @@
 }
 
 #define SetupLayer() \
-	self.layer = [SVGKLayer layer]; \
-	self.wantsLayer = YES
+self.layer = [SVGKLayer layer]; \
+self.wantsLayer = YES
 
 -(id)initWithFrame:(NSRect)frame
 {

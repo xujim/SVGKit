@@ -9,9 +9,9 @@
 - (id)initWithSVGKImage:(SVGKImage*)im frame:(NSRect)theFrame
 {
 	if ([self isMemberOfClass:[SVGKImageView class]]) {
-		NSAssert(NO, @"[%@] The function %s is meant to be implemented from a subclass, but you called the %@ class directly. This is not a good thing.", [self class], sel_getName(_cmd), [SVGKImageView class]);
+		DDLogError(@"[%@] ERROR: The function %s is meant to be implemented from a subclass, but you called the %@ class directly. This is not a good thing.", [self class], sel_getName(_cmd), [SVGKImageView class]);
 	} else {
-		NSAssert(NO, @"[%@] The function %s should be implemented by the subclass %@. You are currently using the function from %@, which is not good.", [self class], sel_getName(_cmd), [self class], [SVGKImageView class]);
+		DDLogError(@"[%@] ERROR: The function %s should be implemented by the subclass %@. You are currently using the function from %@, which is not good.", [self class], sel_getName(_cmd), [self class], [SVGKImageView class]);
 	}
 	return nil;
 }
@@ -20,7 +20,7 @@
 {
 	if( [self isMemberOfClass:[SVGKImageView class]])
 	{
-		NSAssert(false, @"You cannot init this class directly. Instead, use a subclass e.g. SVGKFastImageView");
+		DDLogError(@"[%@] ERROR: You cannot init this class directly. Instead, use a subclass e.g. SVGKLayeredImageView.", [self class]);
 		
 		return nil;
 	}
@@ -43,7 +43,7 @@
 {
 	if( [self isMemberOfClass:[SVGKImageView class]])
 	{
-		NSAssert(false, @"You cannot init this class directly. Instead, use a subclass e.g. SVGKFastImageView");
+		DDLogError(@"[%@] ERROR: You cannot init this class directly. Instead, use a subclass e.g. SVGKLayeredImageView.", [self class]);
 		
 		return nil;
 	}
@@ -55,7 +55,7 @@
 {
 	if( [self isMemberOfClass:[SVGKImageView class]])
 	{
-		NSAssert(false, @"Xcode is trying to load this class from a StoryBoard or from a NIB/XIB files. You cannot init this class directly - in your Storyboard/NIB file, set the Class type to one of the subclasses, e.g. SVGKFastImageView");
+		DDLogError(@"[%@] ERROR: Xcode is trying to load this class from a NIB file. You cannot init this class directly - in your NIB file, set the Class type to one of the subclasses, e.g. SVGKLayeredImageView", [self class]);
 		
 		return nil;
 	}
@@ -65,8 +65,15 @@
 
 - (id)initWithSVGKImage:(SVGKImage*) im
 {
-	NSAssert(false, @"Your subclass implementation is broken, it should be calling [super init] not [super initWithSVGKImage:]. Instead, use a subclass e.g. SVGKFastImageView");
-    
+	if( [self isMemberOfClass:[SVGKImageView class]])
+	{
+		DDLogError(@"[%@] ERROR: You cannot init this class directly: use a subclass like SVGKLayeredImageView.", [self class]);
+		
+		return nil;
+	} else {
+		DDLogError(@"[%@] ERROR: Your subclass implementation is broken, as it is calling %s from %@. This may be due to the subclass calling -[super initWithSVGKImage] or the subclass does not implementing the function. If you are calling -[super initWithSVGKImage:], call -[super init] instead.", [self class], sel_getName(_cmd), [SVGKImageView class]);
+	}
+	
     return nil;
 }
 

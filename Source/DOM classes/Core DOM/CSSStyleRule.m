@@ -14,7 +14,7 @@
 
 - (id)init
 {
-	NSAssert(FALSE, @"Can't be init'd, use the right method, idiot");
+	DDLogError(@"[%@] ERROR: Can't be init'd, use the right method, idiot",[self class]);
 	return nil;
 }
 

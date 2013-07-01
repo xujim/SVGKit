@@ -43,7 +43,10 @@
 
 - (CALayer *) newLayer
 {
-	NSAssert(self.pathForShapeInRelativeCoords != NULL, @"Requested a CALayer for SVG shape that never initialized its own .pathForShapeInRelativeCoords property. Shape class = %@. Shape instance = %@", [self class], self );
+	if(self.pathForShapeInRelativeCoords == NULL)
+	{
+		DDLogError(@"Requested a CALayer for SVG shape that never initialized its own .pathForShapeInRelativeCoords property. Shape class = %@. Shape instance = %@", [self class], self );
+	}
 	
 	return [SVGHelperUtilities newCALayerForPathBasedSVGElement:self withPath:self.pathForShapeInRelativeCoords];
 }
