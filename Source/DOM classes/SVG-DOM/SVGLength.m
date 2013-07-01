@@ -28,7 +28,7 @@
 
 - (id)init
 {
-    NSAssert(FALSE, @"This class must not be init'd. Use the static hepler methods to instantiate it instead");
+    DDLogError(@"[%@] ERROR: This class must not be init'd. Use the static hepler methods to instantiate it instead", [self class]);
     return nil;
 }
 
@@ -118,15 +118,19 @@ break
 	}
 }
 
+#define CallNotSupported() DDLogError(@"[%@] ERROR: %s is not supported yet.", [self class], sel_getName(_cmd))
+
 -(void) newValueSpecifiedUnits:(SVG_LENGTH_TYPE) unitType valueInSpecifiedUnits:(CGFloat) valueInSpecifiedUnits
 {
-	NSAssert(FALSE, @"Not supported yet");
+	CallNotSupported();
 }
 
 -(void) convertToSpecifiedUnits:(SVG_LENGTH_TYPE) unitType
 {
-	NSAssert(FALSE, @"Not supported yet");
+	CallNotSupported();
 }
+
+#undef CallNotSupported
 
 /** Apple calls this method when the class is loaded; that's as good a time as any to calculate the device / screen's PPI */
 +(void)initialize
@@ -192,7 +196,7 @@ static CGFloat cachedDevicePixelsPerInch;
 	
 	if( [platform hasPrefix:@"iPhone"]) // catch-all for higher-end devices not yet existing
 	{
-		NSAssert(FALSE, @"Not supported yet: you are using an iPhone that didn't exist when this code was written, we have no idea what the pixel count per inch is!");
+		DDLogError(@"[%@] ERROR: Not supported yet: you are using an iPhone that didn't exist when this code was written, we have no idea what the pixel count per inch is!", self);
 		return 326.0f;
 	}
 	
@@ -207,7 +211,7 @@ static CGFloat cachedDevicePixelsPerInch;
 	
 	if( [platform hasPrefix:@"iPod"]) // catch-all for higher-end devices not yet existing
 	{
-		NSAssert(FALSE, @"Not supported yet: you are using an iPod that didn't exist when this code was written, we have no idea what the pixel count per inch is!");
+		DDLogError(@"[%@] ERROR: Not supported yet: you are using an iPod that didn't exist when this code was written, we have no idea what the pixel count per inch is!", self);
 		return 326.0f;
 	}
 	
@@ -219,7 +223,7 @@ static CGFloat cachedDevicePixelsPerInch;
 		return 264.0f;
 	if( [platform hasPrefix:@"iPad"]) // catch-all for higher-end devices not yet existing
 	{
-		NSAssert(FALSE, @"Not supported yet: you are using an iPad that didn't exist when this code was written, we have no idea what the pixel count per inch is!");
+		DDLogError(@"[%@] ERROR: Not supported yet: you are using an iPad that didn't exist when this code was written, we have no idea what the pixel count per inch is!", self);
 		return 264.0f;
 	}
 	
@@ -229,7 +233,7 @@ static CGFloat cachedDevicePixelsPerInch;
 		return 132.0f; // Simulator, running on desktop machine
 	}
 	
-	NSAssert(FALSE, @"Cannot determine the PPI values for current device; returning 0.0f - hopefully this will crash your code (you CANNOT run SVG's that use CM/IN/MM etc until you fix this)" );
+	DDLogError(@"[%@] ERROR: Cannot determine the PPI values for current device; returning 0.0f - hopefully this will crash your code (you CANNOT run SVG's that use CM/IN/MM etc until you fix this)", class );
 	return 0.0f; // Bet you'll get a divide by zero here...
 #else
 	//TODO: port to OS X.

@@ -151,7 +151,13 @@ static NSDictionary *elementMap = nil;
 			}
 			if( generateAnSVGDocument )
 			{
-				NSAssert( [element isKindOfClass:[SVGSVGElement class]], @"Trying to create a new internal SVGDocument from a Node that is NOT of type SVGSVGElement (tag: svg). Node was of type: %@", NSStringFromClass([element class]));
+				if( ![element isKindOfClass:[SVGSVGElement class]])
+				{
+					DDLogError(@"[%@] ERROR: Trying to create a new internal SVGDocument from a Node that is NOT of type SVGSVGElement (tag: svg). Node was of type: %@", [self class], NSStringFromClass([element class]));
+					
+					[element release];
+					return nil;
+				}
 				
 				SVGDocument* newDocument = [[SVGDocument alloc] init];
 				newDocument.rootElement = (SVGSVGElement*) element;
@@ -162,7 +168,7 @@ static NSDictionary *elementMap = nil;
 				}
 				else
 				{
-					NSAssert( FALSE, @"Currently not supported: multiple SVG Document nodes in a single SVG file" );
+					DDLogError(@"[%@] ERROR: Currently not supported: multiple SVG Document nodes in a single SVG file", [self class] );
 				}
 				[newDocument release];
 			}

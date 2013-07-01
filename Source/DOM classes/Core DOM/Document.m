@@ -59,7 +59,7 @@
 
 -(EntityReference*) createEntityReference:(NSString*) data
 {
-	NSAssert( FALSE, @"Not implemented. According to spec: Creates an EntityReference object. In addition, if the referenced entity is known, the child list of the EntityReference  node is made the same as that of the corresponding Entity  node. Note: If any descendant of the Entity node has an unbound namespace prefix, the corresponding descendant of the created EntityReference node is also unbound; (its namespaceURI is null). The DOM Level 2 does not support any mechanism to resolve namespace prefixes." );
+	DDLogError(@"[%@] ERROR: Not implemented. According to spec: Creates an EntityReference object. In addition, if the referenced entity is known, the child list of the EntityReference  node is made the same as that of the corresponding Entity  node. Note: If any descendant of the Entity node has an unbound namespace prefix, the corresponding descendant of the created EntityReference node is also unbound; (its namespaceURI is null). The DOM Level 2 does not support any mechanism to resolve namespace prefixes.", [self class] );
 	return nil;
 }
 
@@ -74,7 +74,7 @@
 // Introduced in DOM Level 2:
 -(Node*) importNode:(Node*) importedNode deep:(BOOL) deep
 {
-	NSAssert( FALSE, @"Not implemented." );
+	DDLogError(@"[%@] ERROR: Not implemented.", [self class]);
 	return nil;
 }
 
@@ -91,7 +91,7 @@
 // Introduced in DOM Level 2:
 -(Attr*) createAttributeNS:(NSString*) namespaceURI qualifiedName:(NSString*) qualifiedName
 {
-	NSAssert( FALSE, @"This should be re-implemented to share code with createElementNS: method above" );
+	DDLogError(@"[%@] ERROR: This should be re-implemented to share code with createElementNS: method above", [self class]);
 	Attr* newAttr = [[[Attr alloc] initWithNamespace:namespaceURI qualifiedName:qualifiedName value:@""] autorelease];
 	return newAttr;
 }
