@@ -10,6 +10,6 @@
 
 #import "SVGKParser.h"
 
-@interface SVGKParserPatternsAndGradients : NSObject <SVGKParserExtension>
+@interface SVGKParserPatterns : NSObject <SVGKParserExtension>
 
 @end

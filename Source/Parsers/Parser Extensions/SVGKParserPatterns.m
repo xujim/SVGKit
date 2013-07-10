@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SVGKParserPatternsAndGradients.h"
+#import "SVGKParserPatterns.h"
 
 #import "SVGSVGElement.h"
 #import "SVGCircleElement.h"
@@ -24,7 +24,7 @@
 #import "SVGKPattern.h"
 #import "SVGPatternElement.h"
 
-@implementation SVGKParserPatternsAndGradients
+@implementation SVGKParserPatterns
 
 - (void)dealloc {
 	

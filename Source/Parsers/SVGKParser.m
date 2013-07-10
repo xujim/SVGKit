@@ -12,8 +12,8 @@
 
 @class SVGKParserGradient;
 #import "SVGKParserGradient.h"
-@class SVGKParserPatternsAndGradients;
-#import "SVGKParserPatternsAndGradients.h"
+@class SVGKParserPatterns;
+#import "SVGKParserPatterns.h"
 @class SVGKParserStyles;
 #import "SVGKParserStyles.h"
 @class SVGKParserDefsAndUse;
@@ -95,7 +95,7 @@ static SVGKParser *parserThatWasMostRecentlyStarted;
 {
 	SVGKParserSVG *subParserSVG = [[[SVGKParserSVG alloc] init] autorelease];
 	SVGKParserGradient* subParserGradients = [[[SVGKParserGradient alloc] init] autorelease];
-	SVGKParserPatternsAndGradients *subParserPatternsAndGradients = [[[SVGKParserPatternsAndGradients alloc] init] autorelease];
+	SVGKParserPatterns *subParserPatternsAndGradients = [[[SVGKParserPatterns alloc] init] autorelease];
 	SVGKParserStyles* subParserStyles = [[[SVGKParserStyles alloc] init] autorelease];
 	SVGKParserDefsAndUse *subParserDefsAndUse = [[[SVGKParserDefsAndUse alloc] init] autorelease];
 	SVGKParserDOM *subParserXMLDOM = [[[SVGKParserDOM alloc] init] autorelease];
