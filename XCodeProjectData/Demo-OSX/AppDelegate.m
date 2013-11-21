@@ -37,10 +37,26 @@
 @end
 
 @implementation AppDelegate
+@synthesize cacheEnabled = _cacheEnabled;
+- (void)setCacheEnabled:(BOOL)cacheEnabled
+{
+	_cacheEnabled = cacheEnabled;
+#if 0
+	if (_cacheEnabled) {
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			NSRunInformationalAlertPanel(@"Image Caching", @"Image caching has been enabled. Note that there might be issues if you load the image to the fast image view, then load it to the layered image view.\n\nThis warning will only show once.", nil, nil, nil);
+		});
+		[SVGKImage enableCache];
+	} else {
+		[SVGKImage disableCache];
+	}
+#endif
+}
 
 - (void)dealloc
 {
-    self.svgArray = nil;
+	self.svgArray = nil;
 	
 	[super dealloc];
 }
@@ -143,7 +159,7 @@ static inline NSString *exceptionInfo(NSException *e)
 #if 0
 	debugStr = [NSString stringWithFormat:@", call stack: { %@ }", [NSDictionary dictionaryWithObjects:e.callStackReturnAddresses forKeys:e.callStackSymbols]];
 #else
-	debugStr = [NSString stringWithFormat:@", call stack symbols: {%@}",e.callStackSymbols];
+	debugStr = [NSString stringWithFormat:@", call stack symbols: {%@}", e.callStackSymbols];
 #endif
 	
 	return [NSString stringWithFormat:@"Exception name: \"%@\" reason: %@%@", e.name, e.reason, DEBUG ? debugStr : @""];
@@ -206,23 +222,6 @@ static inline NSString *exceptionInfo(NSException *e)
 		[SVGKImage clearSVGImageCache];
 	} else {
 		NSRunAlertPanel(@"Cached Images", @"Cached images are not enabled at the moment.", nil, nil, nil);
-	}
-#endif
-}
-
-@synthesize cacheEnabled = _cacheEnabled;
-- (void)setCacheEnabled:(BOOL)cacheEnabled
-{
-	_cacheEnabled = cacheEnabled;
-#if 0
-	if (_cacheEnabled) {
-		static dispatch_once_t onceToken;
-		dispatch_once(&onceToken, ^{
-			NSRunInformationalAlertPanel(@"Image Caching", @"Image caching has been enabled. Note that there might be issues if you load the image to the fast image view, then load it to the layered image view.\n\nThis warning will only show once.", nil, nil, nil);
-		});
-		[SVGKImage enableCache];
-	} else {
-		[SVGKImage disableCache];
 	}
 #endif
 }

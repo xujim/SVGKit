@@ -11,7 +11,7 @@
 @implementation SKSVGObject
 
 #define NotImplemented() \
-if ([self isMemberOfClass:[SKSVGObject class]]) { \
+if ([self class] == [SKSVGObject class]) { \
 NSLog(@"The class %@ is meant to be subclassed, and not accessed directly.", [self class]); \
 } else { \
 NSLog(@"The subclass %@ of class %@ should implement %s.", [self class], [SKSVGObject class], sel_getName(_cmd)); \
@@ -88,7 +88,7 @@ return nil
 {
 	NSParameterAssert(filNam != nil);
 	NSParameterAssert(ext != nil);
-
+	
 	*filNam = [self.fullFileName stringByDeletingPathExtension];
 	NSString *extension = [self.fullFileName pathExtension];
 	*ext = extension ? extension : @"svg";
