@@ -7,9 +7,24 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SVGKit.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSTableViewDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (readonly, retain) NSArray *svgArray;
+
+@property (assign) IBOutlet NSWindow *layeredWindow;
+@property (assign) IBOutlet SVGKLayeredImageView *layeredView;
+@property (assign) IBOutlet NSTableView *layeredTable;
+
+@property (assign) IBOutlet NSWindow *quickWindow;
+@property (assign) IBOutlet SVGKFastImageView *fastView;
+@property (assign) IBOutlet NSTableView *fastTable;
+@property (nonatomic, getter = isCacheEnabled) BOOL cacheEnabled;
+
+- (IBAction)clearSVGCache:(id)sender;
+- (IBAction)showLayeredWindow:(id)sender;
+- (IBAction)showFastWindow:(id)sender;
+
 
 @end

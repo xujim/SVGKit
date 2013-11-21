@@ -574,7 +574,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/Demo-iOS/Demo-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"Source/**",
+					Source,
+					"Source/Sources/**",
+					"Source/DOM\\ classes/**",
+					"Source/UIKit\\ additions",
+					"Source/Exporters/**",
+					Source/Unsorted,
+					"Source/Parsers/**",
+					"Source/Vendor/**",
+					"Source/QuartzCore\\ additions",
+					"Source/Shared\\ additions",
 					"calayer-exporter",
 				);
 				INFOPLIST_FILE = "XCodeProjectData/Demo-iOS/Demo-iOS-Info.plist";
@@ -592,7 +601,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/Demo-iOS/Demo-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"Source/**",
+					Source,
+					"Source/Sources/**",
+					"Source/DOM\\ classes/**",
+					"Source/UIKit\\ additions",
+					"Source/Exporters/**",
+					Source/Unsorted,
+					"Source/Parsers/**",
+					"Source/Vendor/**",
+					"Source/QuartzCore\\ additions",
+					"Source/Shared\\ additions",
 					"calayer-exporter",
 				);
 				INFOPLIST_FILE = "XCodeProjectData/Demo-iOS/Demo-iOS-Info.plist";
