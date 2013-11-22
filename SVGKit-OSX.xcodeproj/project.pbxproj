@@ -11,6 +11,8 @@
 		554703D11833F6E4008E5B9B /* SVGAnimatedPreserveAspectRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = 554703CF1833F6E4008E5B9B /* SVGAnimatedPreserveAspectRatio.m */; };
 		554703D41833F700008E5B9B /* SVGPreserveAspectRatio.h in Headers */ = {isa = PBXBuildFile; fileRef = 554703D21833F700008E5B9B /* SVGPreserveAspectRatio.h */; };
 		554703D51833F700008E5B9B /* SVGPreserveAspectRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = 554703D31833F700008E5B9B /* SVGPreserveAspectRatio.m */; };
+		5567D759183F2D44003FBBA8 /* SVGKImageRep.h in Headers */ = {isa = PBXBuildFile; fileRef = 5567D757183F2D44003FBBA8 /* SVGKImageRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5567D75A183F2D44003FBBA8 /* SVGKImageRep.m in Sources */ = {isa = PBXBuildFile; fileRef = 5567D758183F2D44003FBBA8 /* SVGKImageRep.m */; };
 		557C871C182EB02200D536F0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557C871B182EB02200D536F0 /* Cocoa.framework */; };
 		557C8726182EB02200D536F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 557C8724182EB02200D536F0 /* InfoPlist.strings */; };
 		557C8830182EB14300D536F0 /* AppleSucksDOMImplementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 557C8749182EB14300D536F0 /* AppleSucksDOMImplementation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -239,6 +241,8 @@
 		554703CF1833F6E4008E5B9B /* SVGAnimatedPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGAnimatedPreserveAspectRatio.m; sourceTree = "<group>"; };
 		554703D21833F700008E5B9B /* SVGPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPreserveAspectRatio.h; sourceTree = "<group>"; };
 		554703D31833F700008E5B9B /* SVGPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPreserveAspectRatio.m; sourceTree = "<group>"; };
+		5567D757183F2D44003FBBA8 /* SVGKImageRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKImageRep.h; sourceTree = "<group>"; };
+		5567D758183F2D44003FBBA8 /* SVGKImageRep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKImageRep.m; sourceTree = "<group>"; };
 		557C8718182EB02200D536F0 /* SVGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		557C871B182EB02200D536F0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		557C871E182EB02200D536F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -888,6 +892,8 @@
 				557C8925182EC23200D536F0 /* SVGKImageView.m */,
 				557C8926182EC23200D536F0 /* SVGKLayeredImageView.h */,
 				557C8927182EC23200D536F0 /* SVGKLayeredImageView.m */,
+				5567D757183F2D44003FBBA8 /* SVGKImageRep.h */,
+				5567D758183F2D44003FBBA8 /* SVGKImageRep.m */,
 			);
 			path = "AppKit additions";
 			sourceTree = "<group>";
@@ -952,6 +958,7 @@
 				557C8846182EB14300D536F0 /* CSSStyleSheet.h in Headers */,
 				557C884B182EB14300D536F0 /* CSSValueList.h in Headers */,
 				557C88CB182EB14300D536F0 /* SVGKParserStyles.h in Headers */,
+				5567D759183F2D44003FBBA8 /* SVGKImageRep.h in Headers */,
 				557C88EC182EB14300D536F0 /* SVGKSource.h in Headers */,
 				557C8856182EB14300D536F0 /* DOMGlobalSettings.h in Headers */,
 				557C8877182EB14300D536F0 /* SVGElementInstance.h in Headers */,
@@ -1103,6 +1110,7 @@
 				557C88E9182EB14300D536F0 /* SVGKImage.m in Sources */,
 				557C88B7182EB14300D536F0 /* SVGRectElement.m in Sources */,
 				557C88C8182EB14300D536F0 /* SVGKParserGradient.m in Sources */,
+				5567D75A183F2D44003FBBA8 /* SVGKImageRep.m in Sources */,
 				557C88B5182EB14300D536F0 /* SVGPolylineElement.m in Sources */,
 				557C8868182EB14300D536F0 /* ProcessingInstruction.m in Sources */,
 				557C892D182EC23200D536F0 /* SVGKLayeredImageView.m in Sources */,
