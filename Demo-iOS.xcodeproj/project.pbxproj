@@ -512,19 +512,19 @@
 			children = (
 				66E862571688BA0B0059C9C4 /* AppDelegate.h */,
 				66E862581688BA0B0059C9C4 /* AppDelegate.m */,
-				66E862591688BA0B0059C9C4 /* Default-568h@2x.png */,
-				66E8625A1688BA0B0059C9C4 /* Demo-iOS-Info.plist */,
 				66E8625B1688BA0B0059C9C4 /* Demo-iOS-Prefix.pch */,
 				66E8625C1688BA0B0059C9C4 /* DetailViewController.h */,
 				66E8625D1688BA0B0059C9C4 /* DetailViewController.m */,
+				66E862681688BA0B0059C9C4 /* main.m */,
+				66E862691688BA0B0059C9C4 /* MasterViewController.h */,
+				66E8626A1688BA0B0059C9C4 /* MasterViewController.m */,
+				66E862591688BA0B0059C9C4 /* Default-568h@2x.png */,
+				66E8625A1688BA0B0059C9C4 /* Demo-iOS-Info.plist */,
 				66E8625E1688BA0B0059C9C4 /* InfoPlist.strings */,
 				66E862601688BA0B0059C9C4 /* iPadDetailViewController.xib */,
 				66E862621688BA0B0059C9C4 /* iPhoneDetailViewController.xib */,
 				66E862641688BA0B0059C9C4 /* MasterViewController_iPad.xib */,
 				66E862661688BA0B0059C9C4 /* MasterViewController_iPhone.xib */,
-				66E862681688BA0B0059C9C4 /* main.m */,
-				66E862691688BA0B0059C9C4 /* MasterViewController.h */,
-				66E8626A1688BA0B0059C9C4 /* MasterViewController.m */,
 			);
 			name = "Demo-iOS";
 			path = "XCodeProjectData/Demo-iOS";

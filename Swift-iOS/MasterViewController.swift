@@ -13,7 +13,7 @@ class SwiftMasterViewController: UITableViewController, UIAlertViewDelegate {
 
     var sampleNames = ["map-alaska-onlysimple", "g-element-applies-rotation", "groups-and-layers-test", "http://upload.wikimedia.org/wikipedia/commons/f/f9/BlankMap-Africa.svg", "shapes", "strokes", "transformations", "rounded-rects", "gradients","radialGradientTest", "PreserveAspectRatio", "australia_states_blank", "Reinel_compass_rose", "Monkey", "Blank_Map-Africa", "opacity01", "Note", "Note@2x", "imageWithASinglePointPath", "Lion", "lingrad01", "Map", "CurvedDiamond", "Text", "text01", "tspan01", "Location_European_nation_states", "uk-only", "Europe_states_reduced", "Compass_rose_pale", "quad01", "cubic01", "rotated-and-skewed-text", "RainbowWing", "sakamura-default-fill-opacity-test", "StyleAttribute", "voies", "nil-demo-layered-imageview", "svg-with-explicit-width", "svg-with-explicit-width-large", "svg-with-explicit-width-large@160x240", "BlankMap-World6-Equirectangular", "Coins", "imagetag-layered", "ImageAspectRatio", "test-stroke-dash-array"]
 	var detailViewController: SwiftDetailViewController? = nil
-    var nameOfBrokenSVGToLoad = ""
+    var nameOfBrokenSVGToLoad: String? = nil
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -66,11 +66,19 @@ class SwiftMasterViewController: UITableViewController, UIAlertViewDelegate {
 	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cellIdentifier = "Cell"
+		var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell?
 
-		let object = sampleNames[indexPath.row]
-		cell.textLabel?.text = object
-		return cell
+        if cell == nil {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+        }
+        
+        if let ourCell = cell {
+            let object = sampleNames[indexPath.row]
+            ourCell.textLabel?.text = object
+            return ourCell
+        }
+        return UITableViewCell()
 	}
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -78,12 +86,12 @@ class SwiftMasterViewController: UITableViewController, UIAlertViewDelegate {
             println("*****************\n*   WARNING\n*\n* The sample 'Reinel_compass_rose' is currently unsupported;\n* it is included in this build so that people working on it can test it and see if it works yet\n*\n*\n*****************");
             UIAlertView(title: "WARNING", message: "Reinel_compass_rose breaks SVGKit, it uses unsupported SVG commands; until we have added support for those commands, it's here as a test - but it WILL CRASH if you try to view it", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "OK, crash").show()
             
-            self.nameOfBrokenSVGToLoad = sampleNames[indexPath.row];
+            nameOfBrokenSVGToLoad = sampleNames[indexPath.row];
             
             return;
         }
         
-        //self.detailViewController.detailItem = sampleNames[indexPath.row];
+        detailViewController?.detailItem = sampleNames[indexPath.row];
     }
     
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -91,5 +99,14 @@ class SwiftMasterViewController: UITableViewController, UIAlertViewDelegate {
 		return false
 	}
 
+    // MARK: - alertview delegate
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == alertView.cancelButtonIndex {
+            return
+        }
+        
+        detailViewController?.detailItem = nameOfBrokenSVGToLoad
+        nameOfBrokenSVGToLoad = nil
+    }
 }
 
