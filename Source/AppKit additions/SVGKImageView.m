@@ -2,9 +2,7 @@
 
 @implementation SVGKImageView
 @dynamic image;
-
 @synthesize showBorder = _showBorder;
-
 
 - (id)initWithSVGKImage:(SVGKImage*)im frame:(NSRect)theFrame
 {
@@ -26,17 +24,6 @@
 	}
 	else
 		return self = [super init];
-}
-
-- (void)setImage:(SVGKImage*)image
-{
-	NSAssert(NO, @"[%@] The function %s should be implemented by the subclass %@. You are currently using the function from %@, which is not good.", [self class], sel_getName(_cmd), [self class], [SVGKImageView class]);
-}
-
-- (SVGKImage *)image
-{
-	NSAssert(NO, @"[%@] The function %s should be implemented by the subclass %@. You are currently using the function from %@, which is not good.", [self class], sel_getName(_cmd), [self class], [SVGKImageView class]);
-	return nil;
 }
 
 -(id)initWithFrame:(NSRect)frame
