@@ -50,44 +50,44 @@
 
 - (IBAction)exportAsTIFF:(id)sender
 {
-	NSImage *theImage = [svgSelected image];
-	if (!theImage) {
-		NSBeep();
-		return;
-	} else {
-		NSSavePanel *savePanel = [NSSavePanel savePanel];
-		[savePanel setTitle:@"Save TIFF data"];
-		[savePanel setAllowedFileTypes:@[(NSString*)kUTTypeTIFF]];
-		[savePanel setCanCreateDirectories:YES];
-		[savePanel setCanSelectHiddenExtension:YES];
-		if ([savePanel runModal] == NSOKButton) {
-			NSData *tiffData;
-			if (!self.useRepDirectly)
-				tiffData = [theImage TIFFRepresentationUsingCompression:NSTIFFCompressionLZW factor:1];
-			else {
-				NSArray *imageRepArrays = [theImage representations];
-				SVGKImageRep *promising;
-				NSSize oldSize = NSZeroSize;
-				for (id anObject in imageRepArrays) {
-					if ([anObject isKindOfClass:[SVGKImageRep class]]) {
-						SVGKImageRep *tmpRef = anObject;
-						if (oldSize.height < tmpRef.size.height && oldSize.width < tmpRef.size.width) {
-							promising = tmpRef;
-							oldSize = tmpRef.size;
-						}
-					}
-				}
-				if (promising) {
-					tiffData = [promising TIFFRepresentationUsingCompression:NSTIFFCompressionLZW factor:1];
-				}
-			}
-			if (tiffData) {
-				[tiffData writeToURL:[savePanel URL] atomically:YES];
-			} else {
-				
-			}
-		}
-	}
+    NSImage *theImage = [svgSelected image];
+    if (!theImage) {
+        NSBeep();
+        return;
+    } else {
+        NSSavePanel *savePanel = [NSSavePanel savePanel];
+        [savePanel setTitle:@"Save TIFF data"];
+        [savePanel setAllowedFileTypes:@[(NSString*)kUTTypeTIFF]];
+        [savePanel setCanCreateDirectories:YES];
+        [savePanel setCanSelectHiddenExtension:YES];
+        [savePanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+            if (result == NSOKButton) {
+                NSData *tiffData;
+                if (!self.useRepDirectly)
+                    tiffData = [theImage TIFFRepresentationUsingCompression:NSTIFFCompressionLZW factor:1];
+                else {
+                    NSArray *imageRepArrays = [theImage representations];
+                    SVGKImageRep *promising;
+                    NSSize oldSize = NSZeroSize;
+                    for (id anObject in imageRepArrays) {
+                        if ([anObject isKindOfClass:[SVGKImageRep class]]) {
+                            SVGKImageRep *tmpRef = anObject;
+                            if (oldSize.height < tmpRef.size.height && oldSize.width < tmpRef.size.width) {
+                                promising = tmpRef;
+                                oldSize = tmpRef.size;
+                            }
+                        }
+                    }
+                    if (promising) {
+                        tiffData = [promising TIFFRepresentationUsingCompression:NSTIFFCompressionLZW factor:1];
+                    }
+                }
+                if (tiffData) {
+                    [tiffData writeToURL:[savePanel URL] atomically:YES];
+                }
+            }
+        }];
+    }
 }
 
 @end
