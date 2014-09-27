@@ -1,4 +1,4 @@
-#import <SVGKit/SVGKSourceURL.h>
+#import "SVGKSourceURL.h"
 #import "SVGKSource-private.h"
 
 @interface SVGKSourceURL ()

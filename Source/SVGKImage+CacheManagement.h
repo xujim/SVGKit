@@ -1,4 +1,4 @@
-#import <SVGKit/SVGKImage.h>
+#import "SVGKImage.h"
 
 @interface SVGKImage (CacheManagementPrivate)
 + (void)storeImageCache:(SVGKImage*)theImage forName:(NSString*)theName;

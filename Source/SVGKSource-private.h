@@ -9,7 +9,7 @@
 #ifndef SVGKit_OSX_SVGKSource_private_h
 #define SVGKit_OSX_SVGKSource_private_h
 
-#import <SVGKit/SVGKSource.h>
+#import "SVGKSource.h"
 
 @interface SVGKSource ()
 

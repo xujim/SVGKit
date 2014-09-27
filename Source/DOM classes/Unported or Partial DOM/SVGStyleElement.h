@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SVGKit/SVGElement.h>
+#import "SVGElement.h"
 
 @interface SVGStyleElement : SVGElement
 

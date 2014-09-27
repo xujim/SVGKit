@@ -1,7 +1,7 @@
 /**
  
  */
-#import <SVGKit/SVGKSource.h>
+#import "SVGKSource.h"
 
 @interface SVGKSourceURL : SVGKSource <NSCopying>
 

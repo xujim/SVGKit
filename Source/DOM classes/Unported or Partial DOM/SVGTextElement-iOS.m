@@ -1,4 +1,4 @@
-#import <SVGKit/SVGTextElement.h>
+#import "SVGTextElement.h"
 
 @import CoreText;
 @import UIKit;
@@ -11,7 +11,6 @@
 
 #import "SVGKCGFloatAdditions.h"
 #import "SVGHelperUtilities.h"
-#import "SVGUtils.h"
 
 @implementation SVGTextElement
 

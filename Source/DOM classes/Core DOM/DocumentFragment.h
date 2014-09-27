@@ -13,5 +13,6 @@
 #import "Node.h"
 
 @interface DocumentFragment : Node
+- (instancetype)init;
 
 @end

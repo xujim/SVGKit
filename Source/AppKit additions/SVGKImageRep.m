@@ -6,18 +6,18 @@
 //
 //
 
-#import <SVGKit/SVGKit.h>
-#import <SVGKit/SVGKSourceNSData.h>
-#import <SVGKit/SVGKSourceLocalFile.h>
-#import <SVGKit/SVGKSourceURL.h>
-#include <tgmath.h>
+#import "SVGKit.h"
+#import "SVGKSourceNSData.h"
+#import "SVGKSourceLocalFile.h"
+#import "SVGKSourceURL.h"
 
-#import <SVGKit/SVGKImageRep.h>
+#import "SVGKImageRep.h"
 #import "SVGKImageRep-private.h"
 #import "SVGKImage-private.h"
 #import <Lumberjack/Lumberjack.h>
 #import "SVGKImage+CGContext.h"
 #import "BlankSVG.h"
+#include <tgmath.h>
 
 @interface SVGKImageRep ()
 @property (nonatomic, strong, readwrite, setter = setTheSVG:) SVGKImage *image;

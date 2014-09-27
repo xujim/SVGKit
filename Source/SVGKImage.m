@@ -23,7 +23,7 @@
 #endif
 #import "SVGKImage+CGContext.h"
 
-#import <SVGKit/SVGClipPathElement.h>
+#import "SVGClipPathElement.h"
 
 #import "SVGKImage-private.h"
 #import "BlankSVG.h"

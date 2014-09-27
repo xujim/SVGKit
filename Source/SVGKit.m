@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 na. All rights reserved.
 //
 
-#import <SVGKit/SVGKit.h>
+#import "SVGKit.h"
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 

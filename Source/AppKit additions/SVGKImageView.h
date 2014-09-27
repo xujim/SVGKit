@@ -5,7 +5,7 @@
 #else
 #import <UIKit/UIKit.h>
 #endif
-#import <SVGKit/SVGKImage.h> 
+#import "SVGKImage.h"
 
 /**
  * SVGKit's version of NSImageView - with some improvements over Apple's design. There are multiple versions of this class, for different use cases.

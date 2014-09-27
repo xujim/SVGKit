@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SVGKit/SVGKParser.h>
+#import "SVGKParser.h"
 
 @interface SVGKParserStyles : NSObject <SVGKParserExtension> {
     @private

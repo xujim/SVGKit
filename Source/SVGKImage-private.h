@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 C.W. Betts. All rights reserved.
 //
 
-#import <SVGKit/SVGKImage.h>
+#import "SVGKImage.h"
 @interface SVGKImage ()
 /**
  Lowest-level code used by all the "export" methods and by the ".UIImage", ".CIImage", and ".NSImage" property

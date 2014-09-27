@@ -1,9 +1,9 @@
-#import <SVGKit/SVGKLayeredImageView.h>
+#import "SVGKLayeredImageView.h"
 
 #import <QuartzCore/QuartzCore.h>
 
-#import <SVGKit/SVGKLayer.h>
-#import <SVGKit/SVGKSourceString.h>
+#import "SVGKLayer.h"
+#import "SVGKSourceString.h"
 
 #import "BlankSVG.h"
 

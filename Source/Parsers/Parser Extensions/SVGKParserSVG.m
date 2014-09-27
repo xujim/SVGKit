@@ -1,23 +1,24 @@
-#import <SVGKit/SVGKParserSVG.h>
+#import "SVGKParserSVG.h"
 
-#import <SVGKit/SVGSVGElement.h>
-#import <SVGKit/SVGCircleElement.h>
-#import <SVGKit/SVGDefsElement.h>
-#import <SVGKit/SVGDescriptionElement.h>
-//#import <SVGKit/SVGKSource.h>
-#import <SVGKit/SVGEllipseElement.h>
-#import <SVGKit/SVGGElement.h>
-#import <SVGKit/SVGImageElement.h>
-#import <SVGKit/SVGLineElement.h>
-#import <SVGKit/SVGPathElement.h>
-#import <SVGKit/SVGPolygonElement.h>
-#import <SVGKit/SVGPolylineElement.h>
-#import <SVGKit/SVGRectElement.h>
-#import <SVGKit/SVGTitleElement.h>
-#import <SVGKit/SVGTextElement.h>
+#import "SVGSVGElement.h"
+#import "SVGCircleElement.h"
+#import "SVGClipPathElement.h"
+#import "SVGDefsElement.h"
+#import "SVGDescriptionElement.h"
+//#import "SVGKSource.h"
+#import "SVGEllipseElement.h"
+#import "SVGGElement.h"
+#import "SVGImageElement.h"
+#import "SVGLineElement.h"
+#import "SVGPathElement.h"
+#import "SVGPolygonElement.h"
+#import "SVGPolylineElement.h"
+#import "SVGRectElement.h"
+#import "SVGTitleElement.h"
+#import "SVGTextElement.h"
 #import "TinySVGTextAreaElement.h"
 
-#import <SVGKit/SVGDocument_Mutable.h>
+#import "SVGDocument_Mutable.h"
 
 @implementation SVGKParserSVG
 

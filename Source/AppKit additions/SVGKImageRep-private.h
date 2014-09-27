@@ -1,5 +1,5 @@
 
-#import <SVGKit/SVGKImageRep.h>
+#import "SVGKImageRep.h"
 
 @interface SVGKImageRep ()
 

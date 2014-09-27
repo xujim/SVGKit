@@ -1,8 +1,8 @@
-#import <SVGKit/SVGKSource.h>
-#import <SVGKit/SVGKSourceLocalFile.h>
-#import <SVGKit/SVGKSourceURL.h>
-#import <SVGKit/SVGKSourceNSData.h>
-#import <SVGKit/SVGKSourceString.h>
+#import "SVGKSource.h"
+#import "SVGKSourceLocalFile.h"
+#import "SVGKSourceURL.h"
+#import "SVGKSourceNSData.h"
+#import "SVGKSourceString.h"
 #import "SVGKSource-private.h"
 
 @interface SVGKSource ()
