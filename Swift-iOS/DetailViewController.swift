@@ -14,7 +14,7 @@ import QuartzCore
 private struct ImageLoadingOptions {
     var requiresLayeredImageView = false
     var overrideImageSize = CGSizeZero
-    var overrideImageRenderScale: CGFloat = 0
+    var overrideImageRenderScale: CGFloat = 1.0
     var diskFilenameToLoad: String
     
     init(name: String) {
@@ -22,9 +22,9 @@ private struct ImageLoadingOptions {
     }
 }
 
-let LOAD_SYNCHRONOUSLY = false // Synchronous load is less code, easier to write - but poor for large images
+let LOAD_SYNCHRONOUSLY = true // Synchronous load is less code, easier to write - but poor for large images
 
-let ALLOW_2X_STYLE_SCALING_OF_SVGS_AS_AN_EXAMPLE = true // demonstrates using the "SVGKImage.scale" property to scale an SVG *before it generates output image data*
+let ALLOW_2X_STYLE_SCALING_OF_SVGS_AS_AN_EXAMPLE = false // demonstrates using the "SVGKImage.scale" property to scale an SVG *before it generates output image data*
 
 let ALLOW_SVGKFASTIMAGEVIEW_TO_DO_HIT_TESTING = true // only exists because people ignore the docs and try to do this when they clearly shouldn't. If you're foolish enough to do this, this code will show you how to do it CORRECTLY. Look how much code this requires! It's insane! Use SVGKLayeredImageView instead if you need hit-testing!
 
@@ -48,14 +48,14 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
     var exportText: UITextView? = nil
     var popoverController: UIPopoverController? = nil
     var name = ""
-    var tapGestureRecognizer: UITapGestureRecognizer!
+    var tapGestureRecognizer: UITapGestureRecognizer?
     private var tickerLoadingApplesNSTimerSucks: NSTimer!
     
-    @IBOutlet var scrollViewForSVG: UIScrollView!
-    @IBOutlet var contentView: SVGKImageView!
-    @IBOutlet var viewActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet var progressLoading: UIProgressView!
-    @IBOutlet var subViewLoadingPopup: UIView!
+    @IBOutlet var scrollViewForSVG: UIScrollView?
+    @IBOutlet var contentView: SVGKImageView?
+    @IBOutlet var viewActivityIndicator: UIActivityIndicatorView?
+    @IBOutlet var progressLoading: UIProgressView?
+    @IBOutlet var subViewLoadingPopup: UIView?
     
     var labelParseTime: UILabel?
 
@@ -73,15 +73,15 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
     
     func handleTapGesture(recognizer: UITapGestureRecognizer) {
         var p = recognizer.locationInView(contentView)
-        var layerForHitTesting = self.contentView.layer;
-        var hitLayer = layerForHitTesting.hitTest(p)
+        var layerForHitTesting = contentView?.layer;
+        var hitLayer = layerForHitTesting?.hitTest(p)
         
         if( hitLayer == lastTappedLayer ) {
             deselectTappedLayer() // do this both ways, but have to do it AFTER the if-test because it nil's one of the if-phrases!
         } else {
             deselectTappedLayer() // do this both ways, but have to do it AFTER the if-test because it nil's one of the if-phrases!
             
-            lastTappedLayer = hitLayer;
+            lastTappedLayer = hitLayer
             
             if( lastTappedLayer != nil ) {
                 lastTappedLayerOriginalBorderColor = (lastTappedLayer as SVGKLayer).borderColor;
@@ -93,7 +93,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
                 if SHOW_DEBUG_INFO_ON_EACH_TAPPED_LAYER {
                     /** mtrubnikov's code for adding a text overlay showing exactly what you tapped
                     */
-                    var textToDraw: String = NSString(format: "%@ (%@): {%.1f, %.1f} {%.1f, %.1f}", hitLayer.name, NSStringFromClass(hitLayer!.dynamicType), lastTappedLayer!.frame.origin.x, lastTappedLayer!.frame.origin.y, lastTappedLayer!.frame.size.width, lastTappedLayer!.frame.size.height);
+                    var textToDraw: String = NSString(format: "%@ (%@): {%.1f, %.1f} {%.1f, %.1f}", (hitLayer?.name ?? ""), NSStringFromClass(hitLayer!.dynamicType), lastTappedLayer!.frame.origin.x, lastTappedLayer!.frame.origin.y, lastTappedLayer!.frame.size.width, lastTappedLayer!.frame.size.height);
                     
                     var fontToDraw = UIFont(name: "Helvetica", size: 14)!
                     let sizeOfTextRect = textToDraw.sizeWithAttributes([NSFontAttributeName: fontToDraw])
@@ -108,7 +108,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
                     tmpLayer.contentsScale = UIScreen.mainScreen().scale
                     tmpLayer.shouldRasterize = false
                     textLayerForLastTappedLayer = tmpLayer
-                    contentView.layer.addSublayer(textLayerForLastTappedLayer!)
+                    contentView?.layer.addSublayer(textLayerForLastTappedLayer!)
                     /*
                     * mtrubnikov's code for adding a text overlay showing exactly what you tapped*/
                 }
@@ -150,8 +150,8 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
         ... because they "forgot" to store it anywhere (they read your view.transform as if it were a private
         variable inside UIScrollView! This causes MANY bugs in applications :( )
         */
-        self.scrollViewForSVG.minimumZoomScale /= finalScale;
-        self.scrollViewForSVG.maximumZoomScale /= finalScale;
+        scrollViewForSVG?.minimumZoomScale /= finalScale;
+        scrollViewForSVG?.maximumZoomScale /= finalScale;
     }
     
 	var detailItem: AnyObject? {
@@ -197,17 +197,17 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
 
     func willLoadNewResource() {
         // update the view
-        self.subViewLoadingPopup.hidden = false;
-        self.progressLoading.progress = 0;
-        self.viewActivityIndicator.startAnimating()
+        subViewLoadingPopup?.hidden = false;
+        progressLoading?.progress = 0;
+        viewActivityIndicator?.startAnimating()
         /** Move the gesture recognizer off the old view */
         if( contentView != nil
             && tapGestureRecognizer != nil ) {
-                contentView.removeGestureRecognizer(tapGestureRecognizer)
+                contentView?.removeGestureRecognizer(tapGestureRecognizer!)
         }
         
         labelParseTime?.removeFromSuperview() // we'll re-add to the new one
-        contentView.removeFromSuperview()
+        contentView?.removeFromSuperview()
     }
     
     /**
@@ -381,32 +381,32 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
                 labelParseTime = tmpLabel
             }
             /** Workaround for Apple 10 years old bug in OS X that they ported to iOS :( */
-            labelParseTime!.frame = CGRectMake( 0, 0, self.contentView.bounds.size.width, 20.0 );
+            labelParseTime!.frame = CGRectMake( 0, 0, contentView!.bounds.size.width, 20.0 );
             
-            contentView.addSubview(labelParseTime!)
+            contentView?.addSubview(labelParseTime!)
             
             /** set the border for new item */
-            self.contentView.showBorder = false;
+            contentView?.showBorder = false;
             
             /** Move the gesture recognizer onto the new one */
-            if( tapGestureRecognizer == nil ) {
-                self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:") ;
+            if tapGestureRecognizer == nil {
+                tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
             }
-            contentView.addGestureRecognizer(tapGestureRecognizer)
+            contentView?.addGestureRecognizer(tapGestureRecognizer!)
             
-            scrollViewForSVG.addSubview(contentView)
-            scrollViewForSVG.contentSize = contentView.frame.size
+            scrollViewForSVG?.addSubview(contentView!)
+            scrollViewForSVG?.contentSize = contentView?.frame.size ?? CGSize(width: 32, height: 32)
             
-            var screenToDocumentSizeRatio = self.scrollViewForSVG.frame.size.width / self.contentView.frame.size.width;
+            var screenToDocumentSizeRatio = (scrollViewForSVG?.frame.size.width ?? 32) / (contentView?.frame.size.width ?? 32)
             
-            self.scrollViewForSVG.minimumZoomScale = min( 1, screenToDocumentSizeRatio );
-            self.scrollViewForSVG.maximumZoomScale = max( 1, screenToDocumentSizeRatio );
+            scrollViewForSVG?.minimumZoomScale = min( 1, screenToDocumentSizeRatio );
+            scrollViewForSVG?.maximumZoomScale = max( 1, screenToDocumentSizeRatio );
             
             title = self.name;
-            labelParseTime!.text = NSString(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name, endParseTime.timeIntervalSinceDate(startParseTime), self.contentView.timeIntervalForLastReRenderOfSVGFromMemory)
+            labelParseTime!.text = NSString(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name, endParseTime.timeIntervalSinceDate(startParseTime), (contentView?.timeIntervalForLastReRenderOfSVGFromMemory ?? 0))
             
             /** Fast image view renders asynchronously, so we have to wait for a callback that its finished a render... */
-            contentView.addObserver(self, forKeyPath: "timeIntervalForLastReRenderOfSVGFromMemory", options: NSKeyValueObservingOptions(0), context: nil)
+            contentView?.addObserver(self, forKeyPath: "timeIntervalForLastReRenderOfSVGFromMemory", options: NSKeyValueObservingOptions(0), context: nil)
             
             /**
             EXAMPLE:
@@ -419,15 +419,14 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
             */
         }
         
-        self.viewActivityIndicator.stopAnimating()
-        self.subViewLoadingPopup.hidden = true;
+        viewActivityIndicator?.stopAnimating()
+        subViewLoadingPopup?.hidden = true;
     }
 
     
     override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
         if keyPath == "timeIntervalForLastReRenderOfSVGFromMemory" {
-            labelParseTime!.text = NSString(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name as NSString, endParseTime.timeIntervalSinceDate(startParseTime), contentView.timeIntervalForLastReRenderOfSVGFromMemory );
-
+            labelParseTime!.text = NSString(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name as NSString, endParseTime.timeIntervalSinceDate(startParseTime), (contentView?.timeIntervalForLastReRenderOfSVGFromMemory ?? 0))
         }
     }
     
@@ -438,9 +437,9 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
     }
     
     func shakeHead() {
-        var layer = contentView.image.layerWithIdentifier("head")
+        if let layer = contentView?.image.layerWithIdentifier("head") {
         
-        var animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.duration = 0.25
         animation.autoreverses = true
         animation.repeatCount = 100000;
@@ -448,24 +447,25 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
         animation.toValue = -0.1
         
         layer.addAnimation(animation, forKey: "shakingHead")
-
+        }
     }
     
     @IBAction func showHideBorder(sender: AnyObject!) {
-        contentView.showBorder = !contentView.showBorder;
-        
-        /**
-        NB: normally, the following would NOT be needed - the SVGKImageView would automatically
-        detect it needs to be re-drawn.
-        
-        But ... because we're doing zooming in this class, and Apple's zooming causes huge performance problems,
-        we disabled the auto-redraw in the loadResource: method above.
-        
-        So, now, we have to manually tell the SVGKImageView to redraw
-        */
-        contentView.setNeedsDisplay()
+        if let ourContView = contentView {
+            ourContView.showBorder = !ourContView.showBorder
+            
+            /**
+            NB: normally, the following would NOT be needed - the SVGKImageView would automatically
+            detect it needs to be re-drawn.
+            
+            But ... because we're doing zooming in this class, and Apple's zooming causes huge performance problems,
+            we disabled the auto-redraw in the loadResource: method above.
+            
+            So, now, we have to manually tell the SVGKImageView to redraw
+            */
+            ourContView.setNeedsDisplay()
+        }
     }
-
     
     // MARK: - Split View
     
