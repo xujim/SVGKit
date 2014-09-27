@@ -20,8 +20,8 @@
  */
 #import <Foundation/Foundation.h>
 
-#import <SVGKit/CSSValue.h>
-#import <SVGKit/CSSRule.h>
+#import "CSSValue.h"
+#import "CSSRule.h"
 
 @interface CSSStyleDeclaration : NSObject
 

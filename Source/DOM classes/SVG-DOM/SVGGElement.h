@@ -15,11 +15,11 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-#import <SVGKit/SVGElement.h>
-#import <SVGKit/SVGElement_ForParser.h>
+#import "SVGElement.h"
+#import "SVGElement_ForParser.h"
 
-#import <SVGKit/ConverterSVGToCALayer.h>
-#import <SVGKit/SVGTransformable.h>
+#import "ConverterSVGToCALayer.h"
+#import "SVGTransformable.h"
 
 
 @interface SVGGElement : SVGElement <SVGTransformable, SVGStylable, ConverterSVGToCALayer >

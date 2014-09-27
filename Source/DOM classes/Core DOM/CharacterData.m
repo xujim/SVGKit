@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SVGKit/CharacterData.h>
+#import "CharacterData.h"
 
 @implementation CharacterData
 

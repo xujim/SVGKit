@@ -1,6 +1,6 @@
 #import <QuartzCore/QuartzCore.h>
 
-#import <SVGKit/SVGKImage.h>
+#import "SVGKit.h"
 
 /**
  * SVGKLayer: this is the "low level" equivalent of SVGKImageView, and allows you to perform e.g. CoreAnimation on the individual elemetns / layers

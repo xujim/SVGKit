@@ -1,8 +1,6 @@
-#import <SVGKit/CSSStyleSheet.h>
-
-#import <SVGKit/CSSRuleList+Mutable.h>
-
-#import <SVGKit/CSSStyleRule.h>
+#import "CSSStyleSheet.h"
+#import "CSSRuleList+Mutable.h"
+#import "CSSStyleRule.h"
 
 @implementation CSSStyleSheet
 

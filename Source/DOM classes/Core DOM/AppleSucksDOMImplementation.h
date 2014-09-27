@@ -27,7 +27,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <SVGKit/DocumentType.h>
+#import "DocumentType.h"
 
 @interface AppleSucksDOMImplementation : NSObject
 

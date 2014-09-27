@@ -25,9 +25,9 @@
  long getCharNumAtPosition(in SVGPoint point);
  void selectSubString(in unsigned long charnum, in unsigned long nchars) raises(DOMException);
  */
-#import <SVGKit/SVGElement.h>
-#import <SVGKit/SVGStylable.h>
-#import <SVGKit/SVGLength.h>
+#import "SVGElement.h"
+#import "SVGStylable.h"
+#import "SVGLength.h"
 
 typedef enum SVGLengthAdjust
 {

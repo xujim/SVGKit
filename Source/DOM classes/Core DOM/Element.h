@@ -48,10 +48,9 @@
 
 #import <Foundation/Foundation.h>
 
-/** objc won't allow this: @class Node;*/
-#import <SVGKit/Node.h>
-#import <SVGKit/Attr.h>
-#import <SVGKit/NodeList.h>
+#import "Node.h"
+#import "Attr.h"
+#import "NodeList.h"
 
 @interface Element : Node
 

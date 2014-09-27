@@ -4,12 +4,12 @@
 #import <Cocoa/Cocoa.h>
 #include <tgmath.h>
 
-#import <SVGKit/SVGElement_ForParser.h> // to resolve Xcode circular dependencies; in long term, parsing SHOULD NOT HAPPEN inside any class whose name starts "SVG" (because those are reserved classes for the SVG Spec)
+#import "SVGElement_ForParser.h" // to resolve Xcode circular dependencies; in long term, parsing SHOULD NOT HAPPEN inside any class whose name starts "SVG" (because those are reserved classes for the SVG Spec)
 
-#import <SVGKit/SVGHelperUtilities.h>
+#import "SVGHelperUtilities.h"
 
 #import "SVGKCGFloatAdditions.h"
-#import <SVGKit/SVGUtils.h>
+#import "SVGUtils.h"
 
 @implementation SVGTextElement
 

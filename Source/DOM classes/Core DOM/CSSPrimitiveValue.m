@@ -1,8 +1,8 @@
-#import <SVGKit/CSSPrimitiveValue.h>
-#import <SVGKit/CSSValue_ForSubclasses.h>
+#import "CSSPrimitiveValue.h"
+#import "CSSValue_ForSubclasses.h"
 #import "CSSPrimitiveValue_ConfigurablePixelsPerInch.h"
 
-#import <SVGKit/DOMGlobalSettings.h>
+#import "DOMGlobalSettings.h"
 #import "SVGKCGFloatAdditions.h"
 
 #define INCHES_PER_CENTIMETRE ( 0.393700787)

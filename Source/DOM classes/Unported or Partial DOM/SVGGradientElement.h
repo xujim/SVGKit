@@ -21,12 +21,12 @@
  
  */
 
-#import <SVGKit/SVGElement.h>
+#import "SVGElement.h"
 
-#import <SVGKit/SVGRect.h>
-#import <SVGKit/SVGGradientStop.h>
-#import <SVGKit/SVGTransformable.h>
-#import <SVGKit/SVGGradientLayer.h>
+#import "SVGRect.h"
+#import "SVGGradientStop.h"
+#import "SVGTransformable.h"
+#import "SVGGradientLayer.h"
 
 @interface SVGGradientElement : SVGElement <SVGTransformable> /* NB: does NOT implemente "SVGLayeredElement" because spec says that these specifically NEVER appear in the output */
 {

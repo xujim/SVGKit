@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SVGKit/ProcessingInstruction.h>
+#import "ProcessingInstruction.h"
 
 @interface ProcessingInstruction()
 @property(nonatomic,strong,readwrite) NSString* target;

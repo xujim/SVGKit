@@ -1,4 +1,4 @@
-#import <SVGKit/SVGElementInstance.h>
+#import "SVGElementInstance.h"
 
 @interface SVGElementInstance ()
 @property(nonatomic,strong, readwrite) SVGElement* correspondingElement;

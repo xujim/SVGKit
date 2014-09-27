@@ -14,8 +14,8 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-#import <SVGKit/SVGTextContentElement.h>
-#import <SVGKit/SVGLength.h>
+#import "SVGTextContentElement.h"
+#import "SVGLength.h"
 
 @interface SVGTextPositioningElement : SVGTextContentElement
 

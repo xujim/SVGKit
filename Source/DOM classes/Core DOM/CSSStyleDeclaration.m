@@ -1,8 +1,8 @@
-#import <SVGKit/CSSStyleDeclaration.h>
+#import "CSSStyleDeclaration.h"
 
-#import <SVGKit/CSSValue.h>
-#import <SVGKit/CSSValueList.h>
-#import <SVGKit/CSSPrimitiveValue.h>
+#import "CSSValue.h"
+#import "CSSValueList.h"
+#import "CSSPrimitiveValue.h"
 
 @interface CSSStyleDeclaration()
 

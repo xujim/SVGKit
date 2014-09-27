@@ -5,7 +5,7 @@
 //  Copyright Matt Rajca 2010-2011. All rights reserved.
 //
 
-#import <SVGKit/SVGEllipseElement.h>
+#import "SVGEllipseElement.h"
 
 @interface SVGCircleElement : SVGEllipseElement { }
 

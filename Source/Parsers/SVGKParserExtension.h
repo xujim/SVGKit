@@ -14,12 +14,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import <SVGKit/SVGKSource.h>
-
+#import "SVGKSource.h"
 @class SVGKParseResult;
-#import <SVGKit/SVGKParseResult.h>
-
-#import <SVGKit/Node.h>
+#import "SVGKParseResult.h"
+#import "Node.h"
 
 /*! Experimental: allow SVGKit parser-extensions to insert custom data into an SVGKParseResult */
 #define ENABLE_PARSER_EXTENSIONS_CUSTOM_DATA 0

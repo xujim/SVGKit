@@ -1,5 +1,5 @@
-#import <SVGKit/CSSRuleList.h>
-#import <SVGKit/CSSRuleList+Mutable.h>
+#import "CSSRuleList.h"
+#import "CSSRuleList+Mutable.h"
 
 @implementation CSSRuleList
 

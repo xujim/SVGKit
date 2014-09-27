@@ -2,8 +2,8 @@
  http://www.w3.org/TR/SVG/struct.html#InterfaceSVGDefsElement
  
  */
-#import <SVGKit/SVGElement.h>
+#import "SVGElement.h"
 
-@interface SVGDefsElement : SVGElement { }
+@interface SVGDefsElement : SVGElement
 
 @end

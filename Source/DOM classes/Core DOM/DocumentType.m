@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SVGKit/DocumentType.h>
+#import "DocumentType.h"
 
 /*
  in case we need to redeclare them readwrite:

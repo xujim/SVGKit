@@ -17,8 +17,6 @@
  *
  * TODO: should this layer be used in SVGEllipseElement, SVGPolygonElement, etc?
  */
-@interface CAShapeLayerWithHitTest : CAShapeLayerWithClipRender {
-    
-}
+@interface CAShapeLayerWithHitTest : CAShapeLayerWithClipRender
 
 @end

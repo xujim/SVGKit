@@ -77,11 +77,8 @@
 #import <Foundation/Foundation.h>
 
 @class Document;
-/** objc won't allow this: #import "Document.h"*/
 @class NodeList;
-/** objc won't allow this: #import "NodeList.h"*/
 @class NamedNodeMap;
-/** objc won't allow this: #import "NamedNodeMap.h"*/
 
 typedef enum DOMNodeType
 {

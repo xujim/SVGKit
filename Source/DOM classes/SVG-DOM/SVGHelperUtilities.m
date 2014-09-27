@@ -1,13 +1,13 @@
-#import <SVGKit/SVGHelperUtilities.h>
+#import "SVGHelperUtilities.h"
 
-#import <SVGKit/CAShapeLayerWithHitTest.h>
-#import <SVGKit/SVGUtils.h>
-#import <SVGKit/SVGGradientElement.h>
+#import "CAShapeLayerWithHitTest.h"
+#import "SVGUtils.h"
+#import "SVGGradientElement.h"
 #import "CGPathAdditions.h"
 
-#import <SVGKit/SVGTransformable.h>
-#import <SVGKit/SVGSVGElement.h>
-#import <SVGKit/SVGGradientLayer.h>
+#import "SVGTransformable.h"
+#import "SVGSVGElement.h"
+#import "SVGGradientLayer.h"
 
 #import "SVGKCGFloatAdditions.h"
 

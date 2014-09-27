@@ -602,6 +602,8 @@
 		5568CD5C177B701900047B7A /* Lumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 5568CD5B177B701900047B7A /* Lumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACC919D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACCA19D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		556CACF719D644FA00DAEFCA /* SVGClipPathElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685819B66C6500F6410E /* SVGClipPathElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		556CACF819D6451700DAEFCA /* SVGUnitTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685A19B66C6500F6410E /* SVGUnitTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5574ADAA17889CA000EA4281 /* SVGKSource-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5574ADA917889CA000EA4281 /* SVGKSource-private.h */; };
 		55788779178892D30021D775 /* SVGKImage-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 55788778178892D30021D775 /* SVGKImage-private.h */; };
 		557E69D3174014E4006B0029 /* SVGKCGFloatAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 557E69D1174014E4006B0029 /* SVGKCGFloatAdditions.h */; };
@@ -1666,6 +1668,7 @@
 				5511655E1970EFD200C8A63D /* SVGLineElement.h in Headers */,
 				551165521970EFD200C8A63D /* SVGElement_ForParser.h in Headers */,
 				5511654C1970EFD200C8A63D /* SVGCircleElement.h in Headers */,
+				556CACF719D644FA00DAEFCA /* SVGClipPathElement.h in Headers */,
 				551165361970EFCB00C8A63D /* SVGNumber.h in Headers */,
 				55B00FEE19B67D690058B2FD /* SVGKSourceNSData.h in Headers */,
 				5511658F1970EFFB00C8A63D /* CALayerWithChildHitTest.h in Headers */,
@@ -1691,6 +1694,7 @@
 				551165821970EFEB00C8A63D /* SVGKParserStyles.h in Headers */,
 				5511651E1970EFCB00C8A63D /* SVGPreserveAspectRatio.h in Headers */,
 				5511650A1970EFC100C8A63D /* NamedNodeMap.h in Headers */,
+				556CACF819D6451700DAEFCA /* SVGUnitTypes.h in Headers */,
 				5511658B1970EFF200C8A63D /* SVGKPointsAndPathsParser.h in Headers */,
 				5511652E1970EFCB00C8A63D /* SVGGElement.h in Headers */,
 				5511653F1970EFCB00C8A63D /* SVGTextPositioningElement.h in Headers */,

@@ -3,12 +3,9 @@
  */
 #import <Foundation/Foundation.h>
 
-@class SVGSVGElement, SVGDocument;
-#import <SVGKit/SVGSVGElement.h>
-#import <SVGKit/SVGDocument.h>
-
-@protocol SVGKParserExtension;
-#import <SVGKit/SVGKParserExtension.h>
+#import "SVGSVGElement.h"
+#import "SVGDocument.h"
+#import "SVGKParserExtension.h"
 
 @interface SVGKParseResult : NSObject
 

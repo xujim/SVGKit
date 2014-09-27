@@ -1,4 +1,4 @@
-#import <SVGKit/StyleSheet.h>
+#import "StyleSheet.h"
 
 @implementation StyleSheet
 

@@ -6,9 +6,9 @@
  in DOMString pseudoElt);
  */
 #import <Foundation/Foundation.h>
-#import <SVGKit/DocumentStyle.h>
+#import "DocumentStyle.h"
 
-#import <SVGKit/CSSStyleDeclaration.h>
+#import "CSSStyleDeclaration.h"
 
 @class Element;
 

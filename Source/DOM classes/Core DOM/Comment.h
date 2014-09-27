@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <SVGKit/CharacterData.h>
+#import "CharacterData.h"
 
 @interface Comment : CharacterData
 

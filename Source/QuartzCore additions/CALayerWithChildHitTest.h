@@ -14,8 +14,6 @@
  * problems in other code (not that I'm aware of any - this override appears to be a common
  * implementation, c.f. http://stackoverflow.com/questions/2944064/hit-testing-with-calayer-using-the-alpha-properties-of-the-calayer-contents
  */
-@interface CALayerWithChildHitTest : CALayerWithClipRender {
-    
-}
+@interface CALayerWithChildHitTest : CALayerWithClipRender
 
 @end

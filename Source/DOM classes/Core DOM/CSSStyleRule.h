@@ -9,8 +9,8 @@
  */
 #import <Foundation/Foundation.h>
 
-#import <SVGKit/CSSRule.h>
-#import <SVGKit/CSSStyleDeclaration.h>
+#import "CSSRule.h"
+#import "CSSStyleDeclaration.h"
 
 @interface CSSStyleRule : CSSRule
 

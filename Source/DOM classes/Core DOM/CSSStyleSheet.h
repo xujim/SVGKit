@@ -12,10 +12,11 @@
  */
 #import <Foundation/Foundation.h>
 
-#import <SVGKit/CSSRule.h>
-#import <SVGKit/CSSRuleList.h>
+#import "CSSRule.h"
+#import "CSSRuleList.h"
 
 @interface CSSStyleSheet : NSObject
+
 
 @property(nonatomic,strong) CSSRule* ownerRule;
 @property(nonatomic,strong) CSSRuleList* cssRules;

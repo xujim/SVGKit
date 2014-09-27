@@ -1,4 +1,4 @@
-#import <SVGKit/StyleSheetList.h>
+#import "StyleSheetList.h"
 
 @interface StyleSheetList()
 @property(nonatomic,strong) NSMutableArray* internalArray;

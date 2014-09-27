@@ -10,7 +10,6 @@ http://www.w3.org/TR/SVG/masking.html#InterfaceSVGClipPathElement
  SVGUnitTypes {
  */
 
-//#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
 #import "SVGElement.h"

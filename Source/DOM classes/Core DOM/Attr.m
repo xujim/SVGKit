@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SVGKit/Attr.h>
+#import "Attr.h"
 
-#import <SVGKit/Node+Mutable.h>
+#import "Node+Mutable.h"
 
 @interface Attr()
 @property(nonatomic,strong,readwrite) NSString* name;

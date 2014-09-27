@@ -8,7 +8,7 @@
  SVGElementInstance item(in unsigned long index);
 */
 
-#import <SVGKit/SVGElement.h>
+#import "SVGElement.h"
 
 @class SVGElementInstance;
 

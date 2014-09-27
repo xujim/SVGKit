@@ -1,4 +1,4 @@
-#import <SVGKit/SVGUseElement.h>
+#import "SVGUseElement.h"
 
 @interface SVGUseElement ()
 @property(nonatomic, strong, readwrite) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* x;

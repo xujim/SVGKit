@@ -49,7 +49,7 @@
  RGBColor           getRGBColorValue()
  raises(DOMException);
  */
-#import <SVGKit/CSSValue.h>
+#import "CSSValue.h"
 
 typedef enum CSSPrimitiveType
 {

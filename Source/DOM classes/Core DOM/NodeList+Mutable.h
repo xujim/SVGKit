@@ -2,7 +2,7 @@
  Makes the writable properties all package-private, effectively
  */
 
-#import <SVGKit/NodeList.h>
+#import "NodeList.h"
 
 @interface NodeList()
 

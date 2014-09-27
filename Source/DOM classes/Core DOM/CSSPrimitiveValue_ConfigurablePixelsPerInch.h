@@ -1,4 +1,4 @@
-#import <SVGKit/CSSPrimitiveValue.h>
+#import "CSSPrimitiveValue.h"
 
 @interface CSSPrimitiveValue ()
 

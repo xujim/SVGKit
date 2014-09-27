@@ -55,16 +55,16 @@
 #import <Foundation/Foundation.h>
 
 /** ObjectiveC won't allow this: @class Node; */
-#import <SVGKit/Node.h>
-#import <SVGKit/Element.h>
-#import <SVGKit/Comment.h>
-#import <SVGKit/CDATASection.h>
-#import <SVGKit/DocumentFragment.h>
-#import <SVGKit/EntityReference.h>
-#import <SVGKit/NodeList.h>
-#import <SVGKit/ProcessingInstruction.h>
-#import <SVGKit/DocumentType.h>
-#import <SVGKit/AppleSucksDOMImplementation.h>
+#import "Node.h"
+#import "Element.h"
+#import "Comment.h"
+#import "CDATASection.h"
+#import "DocumentFragment.h"
+#import "EntityReference.h"
+#import "NodeList.h"
+#import "ProcessingInstruction.h"
+#import "DocumentType.h"
+#import "AppleSucksDOMImplementation.h"
 
 @interface Document : Node
 

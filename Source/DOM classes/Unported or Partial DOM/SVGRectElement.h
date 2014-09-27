@@ -14,13 +14,12 @@
  readonly attribute SVGAnimatedLength rx;
  readonly attribute SVGAnimatedLength ry;
  */
-#import <SVGKit/BaseClassForAllSVGBasicShapes.h>
-#import <SVGKit/BaseClassForAllSVGBasicShapes_ForSubclasses.h>
-#import <SVGKit/SVGLength.h>
-#import <SVGKit/SVGTransformable.h>
+#import "BaseClassForAllSVGBasicShapes.h"
+#import "BaseClassForAllSVGBasicShapes_ForSubclasses.h"
+#import "SVGLength.h"
+#import "SVGTransformable.h"
 
 @interface SVGRectElement : BaseClassForAllSVGBasicShapes <SVGStylable, SVGTransformable>
-{ }
 
 @property (nonatomic, strong, readonly) SVGLength* x;
 @property (nonatomic, strong, readonly) SVGLength* y;

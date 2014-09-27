@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SVGKit/Node.h>
-#import <SVGKit/Node+Mutable.h>
+#import "Node.h"
+#import "Node+Mutable.h"
 
-#import <SVGKit/NodeList+Mutable.h>
-#import <SVGKit/NamedNodeMap.h>
+#import "NodeList+Mutable.h"
+#import "NamedNodeMap.h"
 
 #import "NamedNodeMap_Iterable.h" // Needed for the optional (non-SVG spec) "recursive toXML" method
 

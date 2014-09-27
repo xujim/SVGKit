@@ -1,5 +1,5 @@
 
-#import <SVGKit/CSSStyleRule.h>
+#import "CSSStyleRule.h"
 
 @implementation CSSStyleRule
 

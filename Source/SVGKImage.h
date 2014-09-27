@@ -53,9 +53,9 @@
 @class SVGKSource;
 @class SVGKParseResult;
 
-#import <SVGKit/SVGKParser.h>
-#import <SVGKit/SVGKSource.h>
-#import <SVGKit/SVGKParseResult.h>
+#import "SVGKParser.h"
+#import "SVGKSource.h"
+#import "SVGKParseResult.h"
 
 @class SVGDefsElement;
 
@@ -71,7 +71,6 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  
  NB you can get MUCH BETTER performance using the methods such as exportUIImageAntiAliased and exportNSDataAntiAliased
  */
-
 @property (unsafe_unretained, nonatomic, readonly) CIImage *CIImage;
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 @property (unsafe_unretained, nonatomic, readonly) UIImage* UIImage;

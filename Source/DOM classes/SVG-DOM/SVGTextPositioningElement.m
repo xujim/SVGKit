@@ -1,7 +1,7 @@
-#import <SVGKit/SVGTextPositioningElement.h>
-#import <SVGKit/SVGTextPositioningElement_Mutable.h>
+#import "SVGTextPositioningElement.h"
+#import "SVGTextPositioningElement_Mutable.h"
 
-#import <SVGKit/SVGElement_ForParser.h> // because we do post-processing of the SVG x,y,dx,dy,rotate attributes
+#import "SVGElement_ForParser.h" // because we do post-processing of the SVG x,y,dx,dy,rotate attributes
 
 @implementation SVGTextPositioningElement
 

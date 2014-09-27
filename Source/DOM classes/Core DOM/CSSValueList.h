@@ -6,7 +6,7 @@
  CSSValue           item(in unsigned long index);
  */
 
-#import <SVGKit/CSSValue.h>
+#import "CSSValue.h"
 
 @interface CSSValueList : CSSValue
 

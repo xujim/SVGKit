@@ -17,8 +17,8 @@
 */
 #import <Foundation/Foundation.h>
 
-#import <SVGKit/Node.h>
-#import <SVGKit/NamedNodeMap.h>
+#import "Node.h"
+#import "NamedNodeMap.h"
 
 @interface DocumentType : Node
 

@@ -1,12 +1,12 @@
-#import <SVGKit/SVGSVGElement.h>
+#import "SVGSVGElement.h"
 
-#import <SVGKit/SVGSVGElement_Mutable.h>
+#import "SVGSVGElement_Mutable.h"
 #import "CALayerWithChildHitTest.h"
-#import <SVGKit/DOMHelperUtilities.h>
-#import <SVGKit/SVGHelperUtilities.h>
+#import "DOMHelperUtilities.h"
+#import "SVGHelperUtilities.h"
 #import "StyleSheetList.h"
 
-#import <SVGKit/SVGElement_ForParser.h> // to resolve Xcode circular dependencies; in long term, parsing SHOULD NOT HAPPEN inside any class whose name starts "SVG" (because those are reserved classes for the SVG Spec)
+#import "SVGElement_ForParser.h" // to resolve Xcode circular dependencies; in long term, parsing SHOULD NOT HAPPEN inside any class whose name starts "SVG" (because those are reserved classes for the SVG Spec)
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>

@@ -10,8 +10,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import <SVGKit/SVGRect.h>
-#import <SVGKit/SVGAnimatedPreserveAspectRatio.h>
+#import "SVGRect.h"
+#import "SVGAnimatedPreserveAspectRatio.h"
 
 @protocol SVGFitToViewBox <NSObject>
 

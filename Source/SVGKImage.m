@@ -1,23 +1,24 @@
-#import <SVGKit/SVGKImage.h>
+#import "SVGKImage.h"
 #import "SVGKImage+CacheManagement.h"
 #include <tgmath.h>
 
-#import <SVGKit/SVGDefsElement.h>
-#import <SVGKit/SVGDescriptionElement.h>
-#import <SVGKit/SVGKParser.h>
-#import <SVGKit/SVGTitleElement.h>
-#import <SVGKit/SVGPathElement.h>
-#import <SVGKit/SVGUseElement.h>
+#import "SVGDefsElement.h"
+#import "SVGDescriptionElement.h"
+#import "SVGKParser.h"
+#import "SVGTitleElement.h"
+#import "SVGPathElement.h"
+#import "SVGUseElement.h"
 
-#import <SVGKit/SVGSVGElement_Mutable.h> // so that changing .size can change the SVG's .viewport
+#import "SVGSVGElement_Mutable.h" // so that changing .size can change the SVG's .viewport
 
-#import <SVGKit/SVGKParserSVG.h>
+#import "SVGKParserSVG.h"
 
-#import <SVGKit/SVGKSourceLocalFile.h>
-#import <SVGKit/SVGKSourceURL.h>
-#import <SVGKit/SVGKSourceNSData.h>
+#import "SVGKSourceLocalFile.h"
+#import "SVGKSourceURL.h"
+
+#import "SVGKSourceNSData.h"
 #if !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
-#import <SVGKit/SVGKImageRep.h>
+#import "SVGKImageRep.h"
 #import "SVGKImageRep-private.h"
 #endif
 #import "SVGKImage+CGContext.h"
@@ -304,7 +305,7 @@
 		}
 		
 	}
-	return self;
+    return self;
 }
 
 - (instancetype)initWithSource:(SVGKSource *)newSource {
@@ -313,7 +314,7 @@
 	@autoreleasepool {
 		self = [self initWithParsedSVG:[SVGKParser parseSourceUsingDefaultSVGKParser:newSource] fromSource:newSource];
 	}
-
+    
 	return self;
 }
 
@@ -423,10 +424,6 @@
 
 -(void)setSize:(CGSize)newSize
 {
-	if (CGSizeEqualToSize(self.internalSizeThatWasSetExplicitlyByUser, newSize)) {
-		return;
-	}
-	
 	self.internalSizeThatWasSetExplicitlyByUser = newSize;
 	
 	if( ! SVGRectIsInitialized(self.DOMTree.viewBox) && !SVGRectIsInitialized( self.DOMTree.viewport ) )
@@ -668,44 +665,7 @@
 	{
 		SVGUseElement* useElement = (SVGUseElement*) element;
 		childNodes = useElement.instanceRoot.correspondingElement.childNodes;
-    }
-    
-    /**
-     Special handling for clip-path; need to create their children
-     */
-    NSString* clipPath = [element cascadedValueForStylableProperty:@"clip-path"];
-    if ( [clipPath hasPrefix:@"url"] )
-    {
-        NSRange idKeyRange = NSMakeRange(5, clipPath.length - 6);
-        NSString* _pathId = [clipPath substringWithRange:idKeyRange];
-        
-        /** Replace the return layer with a special layer using the URL fill */
-        /** fetch the fill layer by URL using the DOM */
-        NSAssert( element.rootOfCurrentDocumentFragment != nil, @"This SVG shape has a URL clip-path type; it needs to search for that URL (%@) inside its nearest-ancestor <SVG> node, but the rootOfCurrentDocumentFragment reference was nil (suggests the parser failed, or the SVG file is corrupt)", _pathId );
-        
-        SVGClipPathElement* clipPathElement = (SVGClipPathElement*) [element.rootOfCurrentDocumentFragment getElementById:_pathId];
-        NSAssert( clipPathElement != nil, @"This SVG shape has a URL clip-path (%@), but could not find an XML Node with that ID inside the DOM tree (suggests the parser failed, or the SVG file is corrupt)", _pathId );
-        
-        CALayer *clipLayer = [clipPathElement newLayer];
-        for (SVGElement *child in clipPathElement.childNodes )
-        {
-            if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
-                
-                CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
-                
-                if (!sublayer) {
-                    continue;
-                }
-                
-                [clipLayer addSublayer:sublayer];
-            }
-        }
-        
-        [clipPathElement layoutLayer:clipLayer toMaskLayer:layer];
-        
-        DDLogCWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(layer.frame), NSStringFromCGRect(clipLayer.frame));
-        layer.mask = clipLayer;
-    }
+	}
 	
 	if ( childNodes.length < 1 ) {
 		return layer;
