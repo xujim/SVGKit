@@ -54,7 +54,6 @@
 
 #import <Foundation/Foundation.h>
 
-/** ObjectiveC won't allow this: @class Node; */
 #import "Node.h"
 #import "Element.h"
 #import "Comment.h"
