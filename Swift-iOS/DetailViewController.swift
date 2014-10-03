@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import SVGKit
-import SVGKit.CALayerExporter
 import QuartzCore
+import SVGKit.SVGKit
+import SVGKit.CALayerExporter
 
 private struct ImageLoadingOptions {
     var requiresLayeredImageView = false
@@ -424,7 +424,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
     }
 
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if keyPath == "timeIntervalForLastReRenderOfSVGFromMemory" {
             labelParseTime!.text = NSString(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name as NSString, endParseTime.timeIntervalSinceDate(startParseTime), (contentView?.timeIntervalForLastReRenderOfSVGFromMemory ?? 0))
         }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVGKit
+import SVGKit.SVGKit
 
 @UIApplicationMain
 class SwiftAppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
