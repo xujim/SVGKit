@@ -34,6 +34,20 @@
                ReferencedContainer = "container:Demo-iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "55E410AC19B686FD009A2E63"
+               BuildableName = "Swift-iOS.app"
+               BlueprintName = "Swift-iOS"
+               ReferencedContainer = "container:Demo-iOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
