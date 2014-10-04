@@ -86,7 +86,7 @@
             CGFloat g = colors2[1];
             CGFloat b = colors2[2];
             arr[i] = (id)[UIColor colorWithRed:r green:g blue:b alpha:a].CGColor;
-            [self setColors:[NSArray arrayWithArray:arr]];
+            self.colors = arr;
             return;
         }
         i++;
@@ -114,7 +114,7 @@
 			}
 			CGColorRef newColor = CGColorCreateGenericRGB(r, g, b, a);
             arr[i] = CFBridgingRelease(newColor);
-            [self setColors:[NSArray arrayWithArray:arr]];
+            self.colors = arr;
             return;
         }
         i++;

@@ -39,6 +39,7 @@
 #import "SVGHelperUtilities.h"
 #import "SVGStyleCatcher.h"
 #import "SVGStyleElement.h"
+#import "SVGKImage+CGContext.h"
 
 // Parser headers
 #import "SVGKPointsAndPathsParser.h"

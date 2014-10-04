@@ -186,7 +186,7 @@
 		551165751970EFE300C8A63D /* SVGKExporterNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D871940B9CC00649455 /* SVGKExporterNSData.m */; };
 		551165761970EFE300C8A63D /* SVGKExporterUIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D881940B9CC00649455 /* SVGKExporterUIImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165771970EFE300C8A63D /* SVGKExporterUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D891940B9CC00649455 /* SVGKExporterUIImage.m */; };
-		551165781970EFE300C8A63D /* SVGKImage+CGContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D8A1940B9CC00649455 /* SVGKImage+CGContext.h */; };
+		551165781970EFE300C8A63D /* SVGKImage+CGContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D8A1940B9CC00649455 /* SVGKImage+CGContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165791970EFE300C8A63D /* SVGKImage+CGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D8B1940B9CC00649455 /* SVGKImage+CGContext.m */; };
 		5511657A1970EFEB00C8A63D /* SVGKParserDefsAndUse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E71F17387F2B004029EF /* SVGKParserDefsAndUse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5511657B1970EFEB00C8A63D /* SVGKParserDefsAndUse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E72017387F2B004029EF /* SVGKParserDefsAndUse.m */; };
@@ -726,7 +726,7 @@
 		55C53D8D1940B9CC00649455 /* SVGKExporterNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D871940B9CC00649455 /* SVGKExporterNSData.m */; };
 		55C53D8E1940B9CC00649455 /* SVGKExporterNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D871940B9CC00649455 /* SVGKExporterNSData.m */; };
 		55C53D911940B9CD00649455 /* SVGKExporterUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D891940B9CC00649455 /* SVGKExporterUIImage.m */; };
-		55C53D921940B9CD00649455 /* SVGKImage+CGContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D8A1940B9CC00649455 /* SVGKImage+CGContext.h */; };
+		55C53D921940B9CD00649455 /* SVGKImage+CGContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D8A1940B9CC00649455 /* SVGKImage+CGContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55C53D931940B9CD00649455 /* SVGKImage+CGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D8B1940B9CC00649455 /* SVGKImage+CGContext.m */; };
 		55C53D941940B9CD00649455 /* SVGKImage+CGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D8B1940B9CC00649455 /* SVGKImage+CGContext.m */; };
 		55CCBF2319BA739600957A39 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107F19B682C7009A2E63 /* CoreImage.framework */; };
