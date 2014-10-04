@@ -23,7 +23,13 @@
 
 /* Begin PBXBuildFile section */
 		554A1DDE193C036200AFD0D8 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; };
-		554A1DE1193C036E00AFD0D8 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; };
+		555DC0FF19DF8793002B424E /* SVGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		555DC10219DF87A6002B424E /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; };
+		555DC10319DF87A6002B424E /* SVGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		555DC10619DF87B0002B424E /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; };
+		555DC10719DF87B0002B424E /* SVGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		555DC10A19DF87C8002B424E /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; };
+		555DC10B19DF87C8002B424E /* SVGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5586008217851FA700CB3D85 /* Sample Licenses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5586008117851FA700CB3D85 /* Sample Licenses.txt */; };
 		55CB7856176BE32C00BD97F1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D8EE2717628A71009C25F1 /* Cocoa.framework */; };
 		55CB7878176BE36F00BD97F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB786E176BE36F00BD97F1 /* AppDelegate.m */; };
@@ -34,7 +40,6 @@
 		55CCBF6D19BA902300957A39 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB786E176BE36F00BD97F1 /* AppDelegate.m */; };
 		55CCBF6E19BA902300957A39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB7875176BE36F00BD97F1 /* main.m */; };
 		55CCBF7019BA902300957A39 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D8EE2717628A71009C25F1 /* Cocoa.framework */; };
-		55CCBF7119BA902300957A39 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; };
 		55CCBF7319BA902300957A39 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55CB786F176BE36F00BD97F1 /* Credits.rtf */; };
 		55CCBF7419BA902300957A39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55CB7871176BE36F00BD97F1 /* InfoPlist.strings */; };
 		55CCBF7519BA902300957A39 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55CB7873176BE36F00BD97F1 /* MainMenu.xib */; };
@@ -82,7 +87,6 @@
 		55E4104519B680DF009A2E63 /* SKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D8EE3A17628A71009C25F1 /* SKAppDelegate.m */; };
 		55E4104619B680DF009A2E63 /* SKSVGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D8EE4E17628FBC009C25F1 /* SKSVGObject.m */; };
 		55E4104819B680DF009A2E63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D8EE2717628A71009C25F1 /* Cocoa.framework */; };
-		55E4104919B680DF009A2E63 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A1DAA193BCD4400AFD0D8 /* SVGKit.framework */; };
 		55E4104B19B680DF009A2E63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55D8EE3017628A71009C25F1 /* InfoPlist.strings */; };
 		55E4104C19B680DF009A2E63 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55D8EE3617628A71009C25F1 /* Credits.rtf */; };
 		55E4104D19B680DF009A2E63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D8EE3C17628A71009C25F1 /* MainMenu.xib */; };
@@ -158,6 +162,34 @@
 			remoteGlobalIDString = 5540E66B17387C9F004029EF;
 			remoteInfo = SVGKit;
 		};
+		555DC10019DF8794002B424E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55D8EE4417628B56009C25F1 /* SVGKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5540E66B17387C9F004029EF;
+			remoteInfo = SVGKit;
+		};
+		555DC10419DF87A6002B424E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55D8EE4417628B56009C25F1 /* SVGKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5540E66B17387C9F004029EF;
+			remoteInfo = SVGKit;
+		};
+		555DC10819DF87B0002B424E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55D8EE4417628B56009C25F1 /* SVGKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5540E66B17387C9F004029EF;
+			remoteInfo = SVGKit;
+		};
+		555DC10C19DF87C8002B424E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55D8EE4417628B56009C25F1 /* SVGKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5540E66B17387C9F004029EF;
+			remoteInfo = SVGKit;
+		};
 		55CB78A9176BF56D00BD97F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55D8EE1C17628A71009C25F1 /* Project object */;
@@ -202,6 +234,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				555DC10319DF87A6002B424E /* SVGKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +245,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				555DC10719DF87B0002B424E /* SVGKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +256,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				555DC0FF19DF8793002B424E /* SVGKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +267,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				555DC10B19DF87C8002B424E /* SVGKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,7 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55CB7856176BE32C00BD97F1 /* Cocoa.framework in Frameworks */,
-				554A1DE1193C036E00AFD0D8 /* SVGKit.framework in Frameworks */,
+				555DC10219DF87A6002B424E /* SVGKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,8 +357,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555DC10619DF87B0002B424E /* SVGKit.framework in Frameworks */,
 				55CCBF7019BA902300957A39 /* Cocoa.framework in Frameworks */,
-				55CCBF7119BA902300957A39 /* SVGKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,8 +375,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555DC10A19DF87C8002B424E /* SVGKit.framework in Frameworks */,
 				55E4104819B680DF009A2E63 /* Cocoa.framework in Frameworks */,
-				55E4104919B680DF009A2E63 /* SVGKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +566,7 @@
 			);
 			dependencies = (
 				554A1DE0193C036A00AFD0D8 /* PBXTargetDependency */,
+				555DC10519DF87A6002B424E /* PBXTargetDependency */,
 			);
 			name = ImageRepTest;
 			productName = ImageRepTest;
@@ -549,6 +586,7 @@
 			);
 			dependencies = (
 				55CCBF6A19BA902300957A39 /* PBXTargetDependency */,
+				555DC10919DF87B0002B424E /* PBXTargetDependency */,
 			);
 			name = "ImageRepTest-Modules";
 			productName = ImageRepTest;
@@ -568,6 +606,7 @@
 			);
 			dependencies = (
 				554A1DDD193C034800AFD0D8 /* PBXTargetDependency */,
+				555DC10119DF8794002B424E /* PBXTargetDependency */,
 			);
 			name = "Demo-OSX";
 			productName = "Demo-OSX";
@@ -587,6 +626,7 @@
 			);
 			dependencies = (
 				55E4104119B680DF009A2E63 /* PBXTargetDependency */,
+				555DC10D19DF87C8002B424E /* PBXTargetDependency */,
 			);
 			name = "Demo-OSX-Modules";
 			productName = "Demo-OSX";
@@ -824,6 +864,26 @@
 			name = SVGKit;
 			targetProxy = 554A1DDF193C036A00AFD0D8 /* PBXContainerItemProxy */;
 		};
+		555DC10119DF8794002B424E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVGKit;
+			targetProxy = 555DC10019DF8794002B424E /* PBXContainerItemProxy */;
+		};
+		555DC10519DF87A6002B424E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVGKit;
+			targetProxy = 555DC10419DF87A6002B424E /* PBXContainerItemProxy */;
+		};
+		555DC10919DF87B0002B424E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVGKit;
+			targetProxy = 555DC10819DF87B0002B424E /* PBXContainerItemProxy */;
+		};
+		555DC10D19DF87C8002B424E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVGKit;
+			targetProxy = 555DC10C19DF87C8002B424E /* PBXContainerItemProxy */;
+		};
 		55CB78AA176BF56D00BD97F1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55D8EE2317628A71009C25F1 /* Demo-OSX */;
@@ -905,7 +965,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -918,7 +978,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -946,7 +1006,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -960,7 +1020,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1030,7 +1090,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/Demo-OSX/Demo-OSX-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/Demo-OSX/Demo-OSX-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1043,7 +1103,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/Demo-OSX/Demo-OSX-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/Demo-OSX/Demo-OSX-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1057,7 +1117,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/Demo-OSX/Demo-OSX-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/Demo-OSX/Demo-OSX-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1071,7 +1131,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCodeProjectData/Demo-OSX/Demo-OSX-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/Demo-OSX/Demo-OSX-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -76,7 +76,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
         var layerForHitTesting = contentView?.layer;
         var hitLayer = layerForHitTesting?.hitTest(p)
         
-        if( hitLayer == lastTappedLayer ) {
+        if( hitLayer === lastTappedLayer ) {
             deselectTappedLayer() // do this both ways, but have to do it AFTER the if-test because it nil's one of the if-phrases!
         } else {
             deselectTappedLayer() // do this both ways, but have to do it AFTER the if-test because it nil's one of the if-phrases!
@@ -166,7 +166,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
                 popoverController?.dismissPopoverAnimated(true)
             }
 			
-            loadResource(detailItem as String)
+            loadResource(detailItem! as String)
 		}
 	}
 

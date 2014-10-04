@@ -52,6 +52,8 @@
 #import "TinySVGTextAreaElement.h"
 #if !TARGET_OS_IPHONE
 #import "SVGKImageRep.h"
+#else
+#import "SVGKExporterUIImage.h"
 #endif
 
 typedef NS_ENUM(int, SVGKLoggingLevel)
