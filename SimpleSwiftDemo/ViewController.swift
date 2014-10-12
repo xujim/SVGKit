@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVGKit.SVGKit
+import SVGKit
 
 class ViewController: UIViewController {
     @IBOutlet var svgkView: SVGKFastImageView?
@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+        svgkView?.image = SVGKImage(named: "Coins")
 	}
 
 	override func didReceiveMemoryWarning() {

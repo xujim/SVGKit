@@ -75,6 +75,7 @@
 	if( self )
 	{
 		self.backgroundColor = [UIColor clearColor];
+        [self populateFromImage:nil];
 	}
 	return self;
 }

@@ -241,6 +241,8 @@
 		55247B23173DB63B00531BBC /* SVGKSourceLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 55247B1D173DB63B00531BBC /* SVGKSourceLocalFile.m */; };
 		55247B26173DB63C00531BBC /* SVGKSourceURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 55247B20173DB63B00531BBC /* SVGKSourceURL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55247B27173DB63C00531BBC /* SVGKSourceURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 55247B21173DB63B00531BBC /* SVGKSourceURL.m */; };
+		5531283419EA4C47001CA2ED /* NSData+NSInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2685419B66BCD00F6410E /* NSData+NSInputStream.m */; };
+		5531283519EA4C55001CA2ED /* NSData+NSInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685319B66BCD00F6410E /* NSData+NSInputStream.h */; };
 		553F327517F2A8ED00221391 /* SVGKSourceString.h in Headers */ = {isa = PBXBuildFile; fileRef = 553F327317F2A8ED00221391 /* SVGKSourceString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553F327717F2A8ED00221391 /* SVGKSourceString.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F327417F2A8ED00221391 /* SVGKSourceString.m */; };
 		5540E75017387F2B004029EF /* AppleSucksDOMImplementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E68717387F2A004029EF /* AppleSucksDOMImplementation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1850,6 +1852,7 @@
 				551165601970EFD200C8A63D /* SVGPathElement.h in Headers */,
 				551165141970EFC100C8A63D /* StyleSheet.h in Headers */,
 				5511651B1970EFCB00C8A63D /* NamedNodeMap_Iterable.h in Headers */,
+				5531283519EA4C55001CA2ED /* NSData+NSInputStream.h in Headers */,
 				5511655B1970EFD200C8A63D /* SVGImageElement.h in Headers */,
 				551165061970EFC100C8A63D /* EntityReference.h in Headers */,
 				551164FC1970EFC100C8A63D /* DocumentFragment.h in Headers */,
@@ -2306,6 +2309,7 @@
 				551165281970EFCB00C8A63D /* SVGElementInstance.m in Sources */,
 				5511651D1970EFCB00C8A63D /* SVGAnimatedPreserveAspectRatio.m in Sources */,
 				551165311970EFCB00C8A63D /* SVGHelperUtilities.m in Sources */,
+				5531283419EA4C47001CA2ED /* NSData+NSInputStream.m in Sources */,
 				551165111970EFC100C8A63D /* NodeList.m in Sources */,
 				5511659A1970F00400C8A63D /* NSCharacterSet+SVGKExtensions.m in Sources */,
 				551165401970EFCB00C8A63D /* SVGTextPositioningElement.m in Sources */,

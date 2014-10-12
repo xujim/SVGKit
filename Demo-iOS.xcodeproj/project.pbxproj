@@ -74,6 +74,8 @@
 		5531281819EA407B001CA2ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5531281619EA407B001CA2ED /* LaunchScreen.xib */; };
 		5531282D19EA4098001CA2ED /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551165FA1970F14200C8A63D /* SVGKit.framework */; };
 		5531282E19EA4098001CA2ED /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551165FA1970F14200C8A63D /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5531283219EA4B39001CA2ED /* Coins.svg in Resources */ = {isa = PBXBuildFile; fileRef = BD15857B199909B800461AA5 /* Coins.svg */; };
+		5531283319EA4B40001CA2ED /* Coin.png in Resources */ = {isa = PBXBuildFile; fileRef = BD15857D199909C400461AA5 /* Coin.png */; };
 		5542C8BE193BCD090046BB14 /* libSVGKit-iOS.1.2.0pre.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5542C8BB193BCCE60046BB14 /* libSVGKit-iOS.1.2.0pre.a */; };
 		557238911970F3D500748CF6 /* SVGKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 551165FA1970F14200C8A63D /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55CCBF2A19BA751B00957A39 /* test-stroke-dash-array.svg in Resources */ = {isa = PBXBuildFile; fileRef = 556C405019A5122800733CBB /* test-stroke-dash-array.svg */; };
@@ -881,7 +883,9 @@
 			files = (
 				5531281319EA407B001CA2ED /* Main.storyboard in Resources */,
 				5531281819EA407B001CA2ED /* LaunchScreen.xib in Resources */,
+				5531283319EA4B40001CA2ED /* Coin.png in Resources */,
 				5531281519EA407B001CA2ED /* Images.xcassets in Resources */,
+				5531283219EA4B39001CA2ED /* Coins.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

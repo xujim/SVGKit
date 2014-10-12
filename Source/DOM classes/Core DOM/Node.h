@@ -80,7 +80,7 @@
 @class NodeList;
 @class NamedNodeMap;
 
-typedef enum DOMNodeType
+typedef NS_ENUM(int, DOMNodeType)
 {
 	DOMNodeType_ELEMENT_NODE                   = 1,
 	DOMNodeType_ATTRIBUTE_NODE                 = 2,
@@ -94,7 +94,7 @@ typedef enum DOMNodeType
 	DOMNodeType_DOCUMENT_TYPE_NODE             = 10,
 	DOMNodeType_DOCUMENT_FRAGMENT_NODE         = 11,
 	DOMNodeType_NOTATION_NODE                  = 12
-} DOMNodeType;
+};
 
 @interface Node : NSObject
 
