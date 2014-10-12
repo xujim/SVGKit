@@ -27,7 +27,7 @@
  */
 #import <Foundation/Foundation.h>
 
-typedef enum SVG_LENGTH_TYPE
+typedef NS_ENUM(int, SVG_LENGTH_TYPE)
 {
 	SVG_LENGTHTYPE_UNKNOWN = 0,
 	SVG_LENGTHTYPE_NUMBER = 1,
@@ -40,7 +40,7 @@ typedef enum SVG_LENGTH_TYPE
 	 SVG_LENGTHTYPE_IN = 8,
 	 SVG_LENGTHTYPE_PT = 9,
 	 SVG_LENGTHTYPE_PC = 10
-} SVG_LENGTH_TYPE;
+};
 
 
 @interface SVGLength : NSObject

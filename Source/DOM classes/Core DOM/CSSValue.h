@@ -16,13 +16,13 @@
  */
 #import <Foundation/Foundation.h>
 
-typedef enum CSSUnitType
+typedef NS_ENUM(int, CSSUnitType)
 {
 	CSS_INHERIT                    = 0,
 	CSS_PRIMITIVE_VALUE            = 1,
 	CSS_VALUE_LIST                 = 2,
 	CSS_CUSTOM                     = 3
-} CSSUnitType;
+};
 
 @interface CSSValue : NSObject
 {

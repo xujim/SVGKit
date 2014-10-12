@@ -51,7 +51,7 @@
  */
 #import "CSSValue.h"
 
-typedef enum CSSPrimitiveType
+typedef NS_ENUM(int, CSSPrimitiveType)
 {
 	CSS_UNKNOWN                    = 0,
 	CSS_NUMBER                     = 1,
@@ -79,7 +79,7 @@ typedef enum CSSPrimitiveType
 	CSS_COUNTER                    = 23,
 	CSS_RECT                       = 24,
 	CSS_RGBCOLOR                   = 25
-} CSSPrimitiveType;
+};
 
 @interface CSSPrimitiveValue : CSSValue
 

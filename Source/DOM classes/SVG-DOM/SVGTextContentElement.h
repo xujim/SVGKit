@@ -29,13 +29,13 @@
 #import "SVGStylable.h"
 #import "SVGLength.h"
 
-typedef enum SVGLengthAdjust
+typedef NS_ENUM(int, SVGLengthAdjust)
 {
 	// lengthAdjust Types
 	SVGLengthAdjustUnknown = 0,
 	SVGLengthAdjustSpacing = 1,
 	SVGLengthAdjustSpacingAndGlyphs = 2
-} SVGLengthAdjust;
+};
 
 @interface SVGTextContentElement : SVGElement <SVGStylable>
 	

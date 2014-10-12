@@ -29,7 +29,7 @@
 @interface SVGTransform : NSObject
 
 /*! Transform Types */
-typedef enum SVGKTransformType
+typedef NS_ENUM(int, SVGKTransformType)
 {
 	SVG_TRANSFORM_UNKNOWN = 0,
 	SVG_TRANSFORM_MATRIX = 1,
@@ -38,7 +38,7 @@ typedef enum SVGKTransformType
 	SVG_TRANSFORM_ROTATE = 4,
 	SVG_TRANSFORM_SKEWX = 5,
 	SVG_TRANSFORM_SKEWY = 6
-} SVGKTransformType;
+};
 
 @property(nonatomic) SVGKTransformType type;
 @property(nonatomic,strong) SVGMatrix* matrix;

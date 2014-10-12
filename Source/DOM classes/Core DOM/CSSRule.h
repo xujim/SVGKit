@@ -23,7 +23,7 @@
 
 @class CSSStyleSheet;
 
-typedef enum CSSRuleType
+typedef NS_ENUM(int, CSSRuleType)
 {
 	UNKNOWN_RULE                   = 0,
 	STYLE_RULE                     = 1,
@@ -32,7 +32,7 @@ typedef enum CSSRuleType
 	MEDIA_RULE                     = 4,
 	FONT_FACE_RULE                 = 5,
 	PAGE_RULE                      = 6
-} CSSRuleType;
+};
 
 @interface CSSRule : NSObject
 

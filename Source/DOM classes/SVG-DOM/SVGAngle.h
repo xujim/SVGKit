@@ -23,14 +23,14 @@
 @interface SVGAngle : NSObject
 
 /*! Angle Unit Types */
-typedef enum SVGKAngleType
+typedef NS_ENUM(int, SVGKAngleType)
 {
 	SVG_ANGLETYPE_UNKNOWN = 0,
 	SVG_ANGLETYPE_UNSPECIFIED = 1,
 	SVG_ANGLETYPE_DEG = 2,
 	SVG_ANGLETYPE_RAD = 3,
 	SVG_ANGLETYPE_GRAD = 4
-} SVGKAngleType;
+};
 
 @property(nonatomic, readonly) SVGKAngleType unitType;
 @property(nonatomic) float value;
