@@ -6,9 +6,22 @@
 //  Copyright (c) 2014 na. All rights reserved.
 //
 
+
+#include <TargetConditionals.h>
+
+#if !TARGET_OS_IPHONE
+#define Comment AIFFComment
+#include <CoreServices/CoreServices.h>
+#undef Comment
+#endif
+
+#if !TARGET_OS_IPHONE
+#import <Cocoa/Cocoa.h>
+#else
 #import <UIKit/UIKit.h>
+#endif
 #import <XCTest/XCTest.h>
-#import "SVGKit.h"
+#import <SVGKit/SVGKit.h>
 
 #if ! __has_feature(objc_arc)
 #error This test file must be compiled with ARC.
@@ -58,14 +71,16 @@
 }
 
 - (void)testSameFileTwice {
-	@autoreleasepool {
-		SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
-		SVGKImage *image2 = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
-
-		// Yes, this is ARC, yes we do this to quiet a warning
-		[image class];
-		[image2 class];
-	}
+    XCTAssertNoThrow(^{
+        @autoreleasepool {
+            SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
+            SVGKImage *image2 = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
+            
+            // Yes, this is ARC, yes we do this to quiet a warning
+            [image class];
+            [image2 class];
+        }
+    });
 }
 
 @end

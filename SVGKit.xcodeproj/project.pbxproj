@@ -692,6 +692,20 @@
 		55801825176E4D7800F64989 /* BlankSVG.h in Headers */ = {isa = PBXBuildFile; fileRef = 55801823176E4D7800F64989 /* BlankSVG.h */; };
 		55801826176E4D7800F64989 /* BlankSVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 55801824176E4D7800F64989 /* BlankSVG.m */; };
 		558100D41780A11C00B2BB87 /* SVGKImageRep-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 558100D31780A11C00B2BB87 /* SVGKImageRep-private.h */; };
+		55825B4719EC80C400635497 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551164AB1970EE8B00C8A63D /* SVGKit.framework */; };
+		55825B5719EC80D400635497 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5540E66C17387C9F004029EF /* SVGKit.framework */; };
+		55825B6319EC80EF00635497 /* SVGKit_iOS-RetainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55825B5F19EC80EF00635497 /* SVGKit_iOS-RetainTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		55825B6419EC80EF00635497 /* SVGKit_iOS-RetainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55825B5F19EC80EF00635497 /* SVGKit_iOS-RetainTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		55825B6519EC80EF00635497 /* SVGKit_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55825B6019EC80EF00635497 /* SVGKit_iOS_Tests.m */; };
+		55825B6619EC80EF00635497 /* SVGKit_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55825B6019EC80EF00635497 /* SVGKit_iOS_Tests.m */; };
+		55825B6B19EC828E00635497 /* CurvedDiamond.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55825B6719EC828E00635497 /* CurvedDiamond.svg */; };
+		55825B6C19EC828E00635497 /* CurvedDiamond.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55825B6719EC828E00635497 /* CurvedDiamond.svg */; };
+		55825B6D19EC828E00635497 /* Lion.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55825B6819EC828E00635497 /* Lion.svg */; };
+		55825B6E19EC828E00635497 /* Lion.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55825B6819EC828E00635497 /* Lion.svg */; };
+		55825B6F19EC828E00635497 /* Monkey.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55825B6919EC828E00635497 /* Monkey.svg */; };
+		55825B7019EC828E00635497 /* Monkey.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55825B6919EC828E00635497 /* Monkey.svg */; };
+		55825B7119EC828E00635497 /* Note.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55825B6A19EC828E00635497 /* Note.svg */; };
+		55825B7219EC828E00635497 /* Note.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55825B6A19EC828E00635497 /* Note.svg */; };
 		5586007F17851F8A00CB3D85 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5586007D17851F8A00CB3D85 /* LICENSE */; };
 		5586008017851F8A00CB3D85 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 5586007E17851F8A00CB3D85 /* README.mdown */; };
 		55886F5E17DD79FA00021A82 /* SVGGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 55886F5C17DD79FA00021A82 /* SVGGradientLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -770,6 +784,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5568CD2E177B69B700047B7A;
 			remoteInfo = Lumberjack;
+		};
+		55825B4819EC80C400635497 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5540E66317387C9E004029EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 551164AA1970EE8B00C8A63D;
+			remoteInfo = "SVGKit-iOS Framework";
+		};
+		55825B5819EC80D400635497 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5540E66317387C9E004029EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5540E66B17387C9F004029EF;
+			remoteInfo = "SVGKit-OS X";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1156,6 +1184,15 @@
 		55801824176E4D7800F64989 /* BlankSVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlankSVG.m; path = Source/BlankSVG.m; sourceTree = SOURCE_ROOT; };
 		5580EBDA1744B702005BE5AC /* SVGKit.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; name = SVGKit.exp; path = "XCodeProjectData/SVGKit-OSX/SVGKit.exp"; sourceTree = SOURCE_ROOT; };
 		558100D31780A11C00B2BB87 /* SVGKImageRep-private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVGKImageRep-private.h"; sourceTree = "<group>"; };
+		55825B4119EC80C400635497 /* SVGKit-iOS Framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SVGKit-iOS Framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55825B5119EC80D400635497 /* SVGKit-OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SVGKit-OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55825B5E19EC80EF00635497 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55825B5F19EC80EF00635497 /* SVGKit_iOS-RetainTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVGKit_iOS-RetainTests.m"; sourceTree = "<group>"; };
+		55825B6019EC80EF00635497 /* SVGKit_iOS_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKit_iOS_Tests.m; sourceTree = "<group>"; };
+		55825B6719EC828E00635497 /* CurvedDiamond.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = CurvedDiamond.svg; path = "Demo-Samples/SVG/CurvedDiamond.svg"; sourceTree = SOURCE_ROOT; };
+		55825B6819EC828E00635497 /* Lion.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Lion.svg; path = "Demo-Samples/SVG/Lion.svg"; sourceTree = SOURCE_ROOT; };
+		55825B6919EC828E00635497 /* Monkey.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Monkey.svg; path = "Demo-Samples/SVG/Monkey.svg"; sourceTree = SOURCE_ROOT; };
+		55825B6A19EC828E00635497 /* Note.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Note.svg; path = "Demo-Samples/SVG/Note.svg"; sourceTree = SOURCE_ROOT; };
 		5586007D17851F8A00CB3D85 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		5586007E17851F8A00CB3D85 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = SOURCE_ROOT; };
 		55886F5C17DD79FA00021A82 /* SVGGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGGradientLayer.h; sourceTree = "<group>"; };
@@ -1266,6 +1303,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55825B3E19EC80C400635497 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55825B4719EC80C400635497 /* SVGKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55825B4E19EC80D400635497 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55825B5719EC80D400635497 /* SVGKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1291,6 +1344,7 @@
 				5540E67517387C9F004029EF /* SVGKit */,
 				5586007C17851F7000CB3D85 /* Documentation */,
 				55A5AD4A175FEBB0009F2FDD /* Vendor */,
+				55825B5D19EC80EF00635497 /* SVGKit-iOS Tests */,
 				5540E66E17387C9F004029EF /* Frameworks */,
 				5540E66D17387C9F004029EF /* Products */,
 			);
@@ -1304,6 +1358,8 @@
 				5568CD2F177B69B700047B7A /* Lumberjack.framework */,
 				5542C821193BBEB90046BB14 /* libSVGKit-iOS.1.2.0pre.a */,
 				551164AB1970EE8B00C8A63D /* SVGKit.framework */,
+				55825B4119EC80C400635497 /* SVGKit-iOS Framework Tests.xctest */,
+				55825B5119EC80D400635497 /* SVGKit-OS X Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1686,6 +1742,28 @@
 				5568CD37177B69B700047B7A /* Lumberjack-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55825B5D19EC80EF00635497 /* SVGKit-iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				55825B5F19EC80EF00635497 /* SVGKit_iOS-RetainTests.m */,
+				55825B6019EC80EF00635497 /* SVGKit_iOS_Tests.m */,
+				55825B7319EC829800635497 /* Auxiliary files */,
+			);
+			path = "SVGKit-iOS Tests";
+			sourceTree = "<group>";
+		};
+		55825B7319EC829800635497 /* Auxiliary files */ = {
+			isa = PBXGroup;
+			children = (
+				55825B5E19EC80EF00635497 /* Info.plist */,
+				55825B6719EC828E00635497 /* CurvedDiamond.svg */,
+				55825B6819EC828E00635497 /* Lion.svg */,
+				55825B6919EC828E00635497 /* Monkey.svg */,
+				55825B6A19EC828E00635497 /* Note.svg */,
+			);
+			name = "Auxiliary files";
 			sourceTree = "<group>";
 		};
 		5586007C17851F7000CB3D85 /* Documentation */ = {
@@ -2090,9 +2168,9 @@
 			productReference = 551164AB1970EE8B00C8A63D /* SVGKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5540E66B17387C9F004029EF /* SVGKit */ = {
+		5540E66B17387C9F004029EF /* SVGKit-OS X */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5540E68117387C9F004029EF /* Build configuration list for PBXNativeTarget "SVGKit" */;
+			buildConfigurationList = 5540E68117387C9F004029EF /* Build configuration list for PBXNativeTarget "SVGKit-OS X" */;
 			buildPhases = (
 				5540E66917387C9F004029EF /* Headers */,
 				5540E66717387C9F004029EF /* Sources */,
@@ -2105,7 +2183,7 @@
 			dependencies = (
 				5568CD4E177B6B2700047B7A /* PBXTargetDependency */,
 			);
-			name = SVGKit;
+			name = "SVGKit-OS X";
 			productName = SVGKit;
 			productReference = 5540E66C17387C9F004029EF /* SVGKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2145,17 +2223,59 @@
 			productReference = 5568CD2F177B69B700047B7A /* Lumberjack.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		55825B4019EC80C400635497 /* SVGKit-iOS Framework Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55825B4A19EC80C400635497 /* Build configuration list for PBXNativeTarget "SVGKit-iOS Framework Tests" */;
+			buildPhases = (
+				55825B3D19EC80C400635497 /* Sources */,
+				55825B3E19EC80C400635497 /* Frameworks */,
+				55825B3F19EC80C400635497 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55825B4919EC80C400635497 /* PBXTargetDependency */,
+			);
+			name = "SVGKit-iOS Framework Tests";
+			productName = "SVGKit-iOS Framework Tests";
+			productReference = 55825B4119EC80C400635497 /* SVGKit-iOS Framework Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		55825B5019EC80D400635497 /* SVGKit-OS X Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55825B5A19EC80D400635497 /* Build configuration list for PBXNativeTarget "SVGKit-OS X Tests" */;
+			buildPhases = (
+				55825B4D19EC80D400635497 /* Sources */,
+				55825B4E19EC80D400635497 /* Frameworks */,
+				55825B4F19EC80D400635497 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55825B5919EC80D400635497 /* PBXTargetDependency */,
+			);
+			name = "SVGKit-OS X Tests";
+			productName = "SVGKit-OS X Tests";
+			productReference = 55825B5119EC80D400635497 /* SVGKit-OS X Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5540E66317387C9E004029EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "C.W. Betts";
 				TargetAttributes = {
 					551164AA1970EE8B00C8A63D = {
 						CreatedOnToolsVersion = 6.0;
+					};
+					55825B4019EC80C400635497 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					55825B5019EC80D400635497 = {
+						CreatedOnToolsVersion = 6.1;
 					};
 				};
 			};
@@ -2171,10 +2291,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5540E66B17387C9F004029EF /* SVGKit */,
+				5540E66B17387C9F004029EF /* SVGKit-OS X */,
+				55825B5019EC80D400635497 /* SVGKit-OS X Tests */,
 				5568CD2E177B69B700047B7A /* Lumberjack */,
 				5542C820193BBEB90046BB14 /* SVGKit-iOS */,
 				551164AA1970EE8B00C8A63D /* SVGKit-iOS Framework */,
+				55825B4019EC80C400635497 /* SVGKit-iOS Framework Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -2203,6 +2325,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				5568CD36177B69B700047B7A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55825B3F19EC80C400635497 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55825B6C19EC828E00635497 /* CurvedDiamond.svg in Resources */,
+				55825B6E19EC828E00635497 /* Lion.svg in Resources */,
+				55825B7219EC828E00635497 /* Note.svg in Resources */,
+				55825B7019EC828E00635497 /* Monkey.svg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55825B4F19EC80D400635497 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55825B6B19EC828E00635497 /* CurvedDiamond.svg in Resources */,
+				55825B6D19EC828E00635497 /* Lion.svg in Resources */,
+				55825B7119EC828E00635497 /* Note.svg in Resources */,
+				55825B6F19EC828E00635497 /* Monkey.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2563,6 +2707,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55825B3D19EC80C400635497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55825B6519EC80EF00635497 /* SVGKit_iOS_Tests.m in Sources */,
+				55825B6319EC80EF00635497 /* SVGKit_iOS-RetainTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55825B4D19EC80D400635497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55825B6619EC80EF00635497 /* SVGKit_iOS_Tests.m in Sources */,
+				55825B6419EC80EF00635497 /* SVGKit_iOS-RetainTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2570,6 +2732,16 @@
 			isa = PBXTargetDependency;
 			target = 5568CD2E177B69B700047B7A /* Lumberjack */;
 			targetProxy = 5568CD4D177B6B2700047B7A /* PBXContainerItemProxy */;
+		};
+		55825B4919EC80C400635497 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 551164AA1970EE8B00C8A63D /* SVGKit-iOS Framework */;
+			targetProxy = 55825B4819EC80C400635497 /* PBXContainerItemProxy */;
+		};
+		55825B5919EC80D400635497 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5540E66B17387C9F004029EF /* SVGKit-OS X */;
+			targetProxy = 55825B5819EC80D400635497 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2757,8 +2929,7 @@
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
-				PRODUCT_MODULE_NAME = SVGKit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SVGKit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -2781,8 +2952,7 @@
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
-				PRODUCT_MODULE_NAME = SVGKit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SVGKit;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -2883,6 +3053,81 @@
 			};
 			name = Release;
 		};
+		55825B4B19EC80C400635497 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SVGKit-iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		55825B4C19EC80C400635497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SVGKit-iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		55825B5B19EC80D400635497 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SVGKit-iOS Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		55825B5C19EC80D400635497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SVGKit-iOS Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2904,7 +3149,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5540E68117387C9F004029EF /* Build configuration list for PBXNativeTarget "SVGKit" */ = {
+		5540E68117387C9F004029EF /* Build configuration list for PBXNativeTarget "SVGKit-OS X" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5540E68217387C9F004029EF /* Debug */,
@@ -2930,6 +3175,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		55825B4A19EC80C400635497 /* Build configuration list for PBXNativeTarget "SVGKit-iOS Framework Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55825B4B19EC80C400635497 /* Debug */,
+				55825B4C19EC80C400635497 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		55825B5A19EC80D400635497 /* Build configuration list for PBXNativeTarget "SVGKit-OS X Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55825B5B19EC80D400635497 /* Debug */,
+				55825B5C19EC80D400635497 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

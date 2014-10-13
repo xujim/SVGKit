@@ -6,9 +6,22 @@
 //  Copyright (c) 2014 na. All rights reserved.
 //
 
+
+#include <TargetConditionals.h>
+
+#if !TARGET_OS_IPHONE
+#define Comment AIFFComment
+#include <CoreServices/CoreServices.h>
+#undef Comment
+#endif
+
+#if !TARGET_OS_IPHONE
+#import <Cocoa/Cocoa.h>
+#else
 #import <UIKit/UIKit.h>
+#endif
 #import <XCTest/XCTest.h>
-#import "SVGKit.h"
+#import <SVGKit/SVGKit.h>
 
 #if __has_feature(objc_arc)
 #error This test file must not be compiled with ARC.
@@ -46,14 +59,12 @@
 
 - (void)testReplacing {
 	@try {
-		SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"CurvedDiamond" ofType:@"svg"]];
+		SVGKImage *image = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"CurvedDiamond" ofType:@"svg"]];
 
 		// Release the image
 		[image release];
 
 		image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Lion" ofType:@"svg"]];
-		// Release the image
-		[image release];
 
 		XCTAssertTrue(YES);
 	}
@@ -63,14 +74,16 @@
 }
 
 - (void)testSameFileTwice {
-	@autoreleasepool {
-		SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
-		SVGKImage *image2 = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
-
-		// Release the images
-		[image release];
-		[image2 release];
-	}
+    XCTAssertNoThrow(^{
+        @autoreleasepool {
+            SVGKImage *image = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
+            SVGKImage *image2 = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
+            
+            // Release the images
+            [image release];
+            [image2 release];
+        }
+    });
 }
 
 @end
