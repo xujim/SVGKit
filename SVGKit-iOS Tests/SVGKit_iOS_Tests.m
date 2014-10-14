@@ -23,7 +23,7 @@
 #import <XCTest/XCTest.h>
 #import <SVGKit/SVGKit.h>
 
-#if ! __has_feature(objc_arc)
+#if !__has_feature(objc_arc)
 #error This test file must be compiled with ARC.
 #endif
 

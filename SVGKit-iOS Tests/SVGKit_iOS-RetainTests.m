@@ -27,7 +27,6 @@
 #error This test file must not be compiled with ARC.
 #endif
 
-
 @interface SVGKit_iOS_RetainTests : XCTestCase
 @property (retain) NSBundle *pathsToSVGs;
 @end
@@ -49,7 +48,7 @@
 - (void)testReleasing {
 	XCTAssertNoThrow(^{
 		@autoreleasepool {
-			SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Note" ofType:@"svg"]];
+			SVGKImage *image = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Note" ofType:@"svg"]];
 
 			// Release the image
 			[image release];

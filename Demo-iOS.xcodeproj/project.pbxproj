@@ -271,6 +271,20 @@
 			remoteGlobalIDString = 551164AA1970EE8B00C8A63D;
 			remoteInfo = "SVGKit-iOS Framework";
 		};
+		55E6F32C19EC9EAB00005E76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6649E1021617574600AFE92A /* SVGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55825B5119EC80D400635497;
+			remoteInfo = "SVGKit-OS X Tests";
+		};
+		55E6F32E19EC9EAB00005E76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6649E1021617574600AFE92A /* SVGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55825B4119EC80C400635497;
+			remoteInfo = "SVGKit-iOS Framework Tests";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -477,9 +491,11 @@
 			isa = PBXGroup;
 			children = (
 				5542C8B7193BCCE60046BB14 /* SVGKit.framework */,
+				55E6F32D19EC9EAB00005E76 /* SVGKit-OS X Tests.xctest */,
 				5542C8B9193BCCE60046BB14 /* Lumberjack.framework */,
 				5542C8BB193BCCE60046BB14 /* libSVGKit-iOS.1.2.0pre.a */,
 				551165FA1970F14200C8A63D /* SVGKit.framework */,
+				55E6F32F19EC9EAB00005E76 /* SVGKit-iOS Framework Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -808,6 +824,20 @@
 			fileType = archive.ar;
 			path = "libSVGKit-iOS.1.2.0pre.a";
 			remoteRef = 5542C8BA193BCCE60046BB14 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55E6F32D19EC9EAB00005E76 /* SVGKit-OS X Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SVGKit-OS X Tests.xctest";
+			remoteRef = 55E6F32C19EC9EAB00005E76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55E6F32F19EC9EAB00005E76 /* SVGKit-iOS Framework Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SVGKit-iOS Framework Tests.xctest";
+			remoteRef = 55E6F32E19EC9EAB00005E76 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1384,6 +1414,7 @@
 				5531282619EA407B001CA2ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55E410CE19B686FE009A2E63 /* Build configuration list for PBXNativeTarget "Swift-iOS" */ = {
 			isa = XCConfigurationList;
