@@ -80,7 +80,7 @@
 }
 
 + (SVGKImage *)defaultImage {
-    return [self imageWithSource:[SVGKSourceNSData sourceFromContentsOfString:SVGKGetDefaultImageStringContents()]];
+    return [self imageWithSource:[SVGKSourceNSData sourceWithContentsOfString:SVGKGetDefaultImageStringContents()]];
 }
 
 #pragma mark - Convenience initializers
@@ -135,8 +135,10 @@
 
 + (SVGKImage *)imageNamed:(NSString *)name fromBundle:(NSBundle*)bundle {
 	NSParameterAssert(name != nil);
-    NSParameterAssert(bundle != nil);
-	
+    if (!bundle) {
+        bundle = [NSBundle mainBundle];
+    }
+    
 	if ([[NSBundle mainBundle] isEqual:bundle] && [SVGKImage isCacheEnabled]) {
 		SVGKImage* cacheImage = [SVGKImage cachedImageForName:name];
 		if( cacheImage != nil )

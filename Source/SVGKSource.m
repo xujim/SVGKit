@@ -23,12 +23,12 @@
 	return self;
 }
 
-+ (SVGKSource*)sourceFromFilename:(NSString*)p
++ (SVGKSource*)sourceWithFilename:(NSString*)p
 {
 	return [SVGKSourceLocalFile sourceFromFilename:p];
 }
 
-+ (SVGKSource*)sourceFromURL:(NSURL*)u
++ (SVGKSource*)sourceWithURL:(NSURL*)u
 {
 	return [SVGKSourceURL sourceFromURL:u];
 }
@@ -36,11 +36,11 @@
     return nil;
 }
 
-+ (SVGKSource*)sourceFromData:(NSData*)data {
-	return [SVGKSourceNSData sourceFromData:data];
++ (SVGKSource*)sourceWithData:(NSData*)data {
+	return [SVGKSourceNSData sourceWithData:data];
 }
 
-+ (SVGKSource*)sourceFromContentsOfString:(NSString*)rawString {
++ (SVGKSource*)sourceWithContentsOfString:(NSString*)rawString {
 	return [SVGKSourceString sourceFromContentsOfString:rawString];
 }
 

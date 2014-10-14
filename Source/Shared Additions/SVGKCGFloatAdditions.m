@@ -30,7 +30,6 @@
 #else
 	return [self floatValue];
 #endif
-
 }
 
 @end

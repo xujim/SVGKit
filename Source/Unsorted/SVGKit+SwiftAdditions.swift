@@ -9,7 +9,7 @@
 import Foundation
 
 extension SVGKImage {
-    class var cacheEnabled: Bool {
+    public class var cacheEnabled: Bool {
         get {
             return isCacheEnabled()
         }
@@ -22,3 +22,9 @@ extension SVGKImage {
         }
     }
 }
+
+#if os(OSX)
+    extension SVGKImageRef {
+    
+    }
+#endif
