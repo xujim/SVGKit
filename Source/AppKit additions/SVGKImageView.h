@@ -26,7 +26,7 @@
 #endif
 
 @property(nonatomic) BOOL showBorder; /*< mostly for debugging - adds a coloured 1-pixel border around the image */
-@property (nonatomic) SVGKImage *image;
+@property (nonatomic, strong) SVGKImage *image;
 
 - (instancetype)initWithSVGKImage:(SVGKImage*) im;
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
