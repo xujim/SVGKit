@@ -7,14 +7,6 @@
 #include <CoreGraphics/CoreGraphics.h>
 #include <CoreText/CoreText.h>
 #ifdef __OBJC__
-    #ifndef 
-    #if __has_attribute(objc_designated_initializer)
-    #define  __attribute__((objc_designated_initializer))
-    #else
-    #define 
-    #endif
-    #endif
-
     #import <Foundation/Foundation.h>
 	#import <UIKit/UIKit.h>
 	#import <QuartzCore/QuartzCore.h>
