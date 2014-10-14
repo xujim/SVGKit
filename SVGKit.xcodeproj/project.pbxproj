@@ -527,6 +527,7 @@
 		554A1DC5193BCDB300AFD0D8 /* SVGTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6EB17387F2B004029EF /* SVGTransform.m */; };
 		554A1DC6193BCDB300AFD0D8 /* SVGUseElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6EE17387F2B004029EF /* SVGUseElement.m */; };
 		554A1DC7193BCDCF00AFD0D8 /* CALayerExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E71C17387F2B004029EF /* CALayerExporter.m */; };
+		5554213819EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5554213719EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift */; };
 		555866B018626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.h in Headers */ = {isa = PBXBuildFile; fileRef = 555866AC18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		555866B218626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = 555866AD18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m */; };
 		555866B418626C0C005ACAE9 /* SVGPreserveAspectRatio.h in Headers */ = {isa = PBXBuildFile; fileRef = 555866AE18626C0C005ACAE9 /* SVGPreserveAspectRatio.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1162,6 +1163,7 @@
 		5542C893193BCC0F0046BB14 /* SVGTextElement-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVGTextElement-iOS.m"; sourceTree = "<group>"; };
 		55435573177F4F5D007E1FAD /* SVGKImageRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKImageRep.h; sourceTree = "<group>"; };
 		55435574177F4F5D007E1FAD /* SVGKImageRep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKImageRep.m; sourceTree = "<group>"; };
+		5554213719EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SVGKit+SwiftAdditions.swift"; path = "Source/SVGKit+SwiftAdditions.swift"; sourceTree = SOURCE_ROOT; };
 		555866AC18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGAnimatedPreserveAspectRatio.h; sourceTree = "<group>"; };
 		555866AD18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGAnimatedPreserveAspectRatio.m; sourceTree = "<group>"; };
 		555866AE18626C0C005ACAE9 /* SVGPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPreserveAspectRatio.h; sourceTree = "<group>"; };
@@ -1714,6 +1716,7 @@
 		5540E74917387F2B004029EF /* Unsorted */ = {
 			isa = PBXGroup;
 			children = (
+				5554213719EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift */,
 				5540E74C17387F2B004029EF /* SVGKPattern.h */,
 				5540E74D17387F2B004029EF /* SVGKPattern.m */,
 				5540E74E17387F2B004029EF /* SVGUtils.h */,
@@ -2427,6 +2430,7 @@
 				551165851970EFEB00C8A63D /* SVGKParserSVG.m in Sources */,
 				551165A51970F10200C8A63D /* DDAbstractDatabaseLogger.m in Sources */,
 				5511656C1970EFD200C8A63D /* SVGSVGElement.m in Sources */,
+				5554213819EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift in Sources */,
 				551165561970EFD200C8A63D /* SVGGradientElement.m in Sources */,
 				5511653A1970EFCB00C8A63D /* SVGRect.m in Sources */,
 				551165891970EFF200C8A63D /* SVGKParseResult.m in Sources */,
@@ -2769,6 +2773,7 @@
 		551164BF1970EE8B00C8A63D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -2795,6 +2800,7 @@
 				PRODUCT_NAME = SVGKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2804,6 +2810,7 @@
 		551164C01970EE8B00C8A63D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
