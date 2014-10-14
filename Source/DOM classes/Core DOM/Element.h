@@ -90,7 +90,7 @@
 
 #pragma mark - Objective-C init methods (not in SVG Spec - you're supposed to use SVGDocument's createXXX methods instead)
 
-- (instancetype)initWithLocalName:(NSString*) n attributes:(NSMutableDictionary*) attributes NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithQualifiedName:(NSString*) n inNameSpaceURI:(NSString*) nsURI attributes:(NSMutableDictionary*) attributes NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithLocalName:(NSString*) n attributes:(NSMutableDictionary*) attributes;
+- (instancetype)initWithQualifiedName:(NSString*) n inNameSpaceURI:(NSString*) nsURI attributes:(NSMutableDictionary*) attributes;
 	
 @end

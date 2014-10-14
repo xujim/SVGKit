@@ -7,7 +7,7 @@
 
 @property (nonatomic, retain, readonly) NSString* rawString;
 
-- (instancetype)initWithString:(NSString*)theStr NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithString:(NSString*)theStr;
 + (SVGKSource*)sourceFromContentsOfString:(NSString*)rawString;
 
 @end

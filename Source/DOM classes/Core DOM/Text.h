@@ -15,7 +15,7 @@
 
 @interface Text : CharacterData
 
-- (instancetype)initWithValue:(NSString*) v NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithValue:(NSString*) v;
 
 -(Text*) splitText:(NSUInteger) offset;
 

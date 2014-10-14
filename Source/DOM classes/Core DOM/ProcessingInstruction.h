@@ -19,6 +19,6 @@
 @property(nonatomic,strong,readonly) NSString* target;
 @property(nonatomic,strong,readonly) NSString* data;
 
--(instancetype) initProcessingInstruction:(NSString*) target value:(NSString*) data NS_DESIGNATED_INITIALIZER;
+-(instancetype) initProcessingInstruction:(NSString*) target value:(NSString*) data;
 
 @end

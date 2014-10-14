@@ -29,9 +29,9 @@
 @property (nonatomic, strong) SVGKImage *image;
 
 - (instancetype)initWithSVGKImage:(SVGKImage*) im;
-- (instancetype)init NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithFrame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
+- (instancetype)init;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)initWithFrame:(CGRect)frame;
 
 #if !TARGET_OS_IPHONE
 //Default initializer for (Cocoa) subclasses. Will set the frame of the view and init with an image

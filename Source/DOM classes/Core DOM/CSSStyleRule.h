@@ -19,6 +19,6 @@
 
 #pragma mark - methods needed for ObjectiveC implementation
 
-- (instancetype)initWithSelectorText:(NSString*) selector styleText:(NSString*) styleText NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSelectorText:(NSString*) selector styleText:(NSString*) styleText;
 
 @end

@@ -39,7 +39,7 @@
  Subclasses convert their proprietary data into something that implements NSInputStream, which allows the
  base class to handle everything else
  */
-- (instancetype)initWithInputSteam:(NSInputStream*)stream NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithInputSteam:(NSInputStream*)stream;
 - (SVGKSource *)sourceFromRelativePath:(NSString *)path;
 
 @end

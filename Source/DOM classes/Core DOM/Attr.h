@@ -30,7 +30,7 @@
 
 #pragma mark - ObjC methods
 
-- (instancetype)initWithName:(NSString*) n value:(NSString*) v NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithNamespace:(NSString*) ns qualifiedName:(NSString*) qn value:(NSString*) v NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithName:(NSString*) n value:(NSString*) v;
+- (instancetype)initWithNamespace:(NSString*) ns qualifiedName:(NSString*) qn value:(NSString*) v;
 
 @end

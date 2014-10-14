@@ -233,7 +233,7 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  NB: this is frequently used if you have to add custom SVGKParserExtensions to parse an
  SVG which contains custom tags
  */
-- (instancetype)initWithParsedSVG:(SVGKParseResult *)parseResult fromSource:(SVGKSource*) parseSource NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithParsedSVG:(SVGKParseResult *)parseResult fromSource:(SVGKSource*) parseSource;
 
 
 /*! Creates a new instance each time you call it. This should ONLY be used if you specifically need to duplicate

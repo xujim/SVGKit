@@ -9,7 +9,7 @@
 @property (nonatomic, strong) NSURL* effectiveURL;
 
 - (instancetype)initWithData:(NSData*)data;
-- (instancetype)initWithData:(NSData*)data URLForRelativeLinks:(NSURL*)url NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithData:(NSData*)data URLForRelativeLinks:(NSURL*)url;
 
 
 + (SVGKSource*)sourceFromData:(NSData*)data URLForRelativeLinks:(NSURL*) url;

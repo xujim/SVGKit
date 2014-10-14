@@ -11,6 +11,6 @@
 
 @interface CDATASection : Text
 
-- (instancetype)initWithValue:(NSString*) v NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithValue:(NSString*) v;
 
 @end

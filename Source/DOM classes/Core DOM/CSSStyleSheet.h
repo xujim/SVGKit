@@ -26,6 +26,6 @@
 
 #pragma mark - methods needed for ObjectiveC implementation
 
-- (instancetype)initWithString:(NSString*) styleSheetBody NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithString:(NSString*) styleSheetBody;
 
 @end

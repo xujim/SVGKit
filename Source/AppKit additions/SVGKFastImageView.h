@@ -68,16 +68,15 @@
  */
 +(BOOL)svgImageHasNoText:(SVGKImage*)image;
 +(BOOL)svgElementAndDescendentsHaveNoText:(SVGElement*) element DEPRECATED_ATTRIBUTE;
-- (instancetype)initWithSVGKImage:(SVGKImage*)im frame:(NSRect)theFrame NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSVGKImage:(SVGKImage*)im frame:(NSRect)theFrame;
 - (instancetype)initWithFrame:(NSRect)frame;
 - (instancetype)initWithSVGKImage:(SVGKImage*) im;
-- (instancetype)initWithCoder:(NSCoder *)aDecoder;
 #else
-- (instancetype)initWithFrame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithSVGKImage:(SVGKImage*) im NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFrame:(CGRect)frame;
+- (instancetype)initWithSVGKImage:(SVGKImage*) im;
 #endif
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @end

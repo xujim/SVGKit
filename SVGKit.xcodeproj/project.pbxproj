@@ -3105,7 +3105,6 @@
 				);
 				INFOPLIST_FILE = "SVGKit-iOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3122,7 +3121,6 @@
 				);
 				INFOPLIST_FILE = "SVGKit-iOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3183,6 +3181,7 @@
 				55825B4C19EC80C400635497 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55825B5A19EC80D400635497 /* Build configuration list for PBXNativeTarget "SVGKit-OS X Tests" */ = {
 			isa = XCConfigurationList;
@@ -3191,6 +3190,7 @@
 				55825B5C19EC80D400635497 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -28,7 +28,7 @@
 
 #pragma mark - Objective-C init methods (not part of DOM spec, but necessary!)
 
-- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)init;
 
 #pragma mark - Serialization methods that we think ought to be part of the SVG spec, as they are needed for a good implementation, but we can't find in the main Spec
 

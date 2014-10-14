@@ -13,6 +13,6 @@
 
 @interface Comment : CharacterData
 
-- (instancetype)initWithValue:(NSString*) v NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithValue:(NSString*) v;
 
 @end
