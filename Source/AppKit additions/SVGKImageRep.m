@@ -137,7 +137,7 @@
 
 - (instancetype)initWithSVGString:(NSString *)theString
 {
-	return [self initWithSVGSource:[SVGKSourceNSData sourceFromContentsOfString:theString]];
+	return [self initWithSVGSource:[SVGKSourceNSData sourceWithContentsOfString:theString]];
 }
 
 - (instancetype)initWithSVGSource:(SVGKSource*)theSource

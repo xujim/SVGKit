@@ -37,7 +37,7 @@ private var lastTappedLayerOriginalBorderColor: CGColor? = UIColor.clearColor().
 private var textLayerForLastTappedLayer: CATextLayer? = nil
 
 
-class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, UISplitViewControllerDelegate , CALayerExporterDelegate, UIScrollViewDelegate {
+class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, UISplitViewControllerDelegate, CALayerExporterDelegate, UIScrollViewDelegate {
                             
 	@IBOutlet weak var detailDescriptionLabel: UILabel!
     
@@ -60,11 +60,11 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
     var labelParseTime: UILabel?
 
     func deselectTappedLayer() {
-        if( lastTappedLayer != nil ) {
-            (lastTappedLayer as SVGKLayer).borderWidth = lastTappedLayerOriginalBorderWidth;
-            (lastTappedLayer as SVGKLayer).borderColor = lastTappedLayerOriginalBorderColor;
+        if let ourLastTappedLayer = lastTappedLayer as? SVGKLayer {
+            ourLastTappedLayer.borderWidth = lastTappedLayerOriginalBorderWidth;
+            ourLastTappedLayer.borderColor = lastTappedLayerOriginalBorderColor;
             
-            textLayerForLastTappedLayer?.removeFromSuperlayer()
+            ourLastTappedLayer.removeFromSuperlayer()
             textLayerForLastTappedLayer = nil;
             
             lastTappedLayer = nil;
@@ -83,12 +83,12 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
             
             lastTappedLayer = hitLayer
             
-            if( lastTappedLayer != nil ) {
-                lastTappedLayerOriginalBorderColor = (lastTappedLayer as SVGKLayer).borderColor;
-                lastTappedLayerOriginalBorderWidth = (lastTappedLayer as SVGKLayer).borderWidth;
+            if let ourLastTappedLayer = lastTappedLayer as? SVGKLayer {
+                lastTappedLayerOriginalBorderColor = ourLastTappedLayer.borderColor;
+                lastTappedLayerOriginalBorderWidth = ourLastTappedLayer.borderWidth;
                 
-                (lastTappedLayer as SVGKLayer).borderColor = UIColor.greenColor().CGColor
-                (lastTappedLayer as SVGKLayer).borderWidth = 3.0;
+                ourLastTappedLayer.borderColor = UIColor.greenColor().CGColor
+                ourLastTappedLayer.borderWidth = 3.0;
                 
                 if SHOW_DEBUG_INFO_ON_EACH_TAPPED_LAYER {
                     /** mtrubnikov's code for adding a text overlay showing exactly what you tapped
