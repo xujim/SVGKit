@@ -80,10 +80,10 @@ Instead of fixing the bug, in latest Xcode 5.0.2, Apple has simply made it allow
 
 Here are some posts on using SVGKit, with advice on which methods to use and why:
 
-  - GETTING STARTED, plus NEW FEATURES:  http://t-machine.org/index.php/2012/12/31/svgkit-2013-usage/
-  - QUICK RECIPES for common uses:  http://t-machine.org/index.php/2013/01/02/svgkit-2013-recipes/
+  - *Getting Started*, plus *new features*:  http://t-machine.org/index.php/2012/12/31/svgkit-2013-usage/
+  - *Quick Recipies* for common uses:  http://t-machine.org/index.php/2013/01/02/svgkit-2013-recipes/
      - additiona: How to scale an SVG image on screen: http://t-machine.org/index.php/2013/04/14/svgkit-scaling-svg-images/
-  - CONTRIBUTING to the project, CORE ARCHITECTURE: http://t-machine.org/index.php/2012/12/31/svgkit-2013-development/
+  - *Contributing* to the project, *Core Architecture*: http://t-machine.org/index.php/2012/12/31/svgkit-2013-development/
  
   - (November 2013): New (experimental) feature - writing SVG's out to disk, preserving any changes you made programmatically: http://t-machine.org/index.php/2013/11/17/svgkit-programmatic-editing-of-svg-files-on-ios/
 
@@ -118,14 +118,6 @@ or load an image and convert it to an NSImage or NSBitmapImageRep object:
 or load the SVG using NSImage:
 
     NSImage *svgImage = [NSImage imageNamed:@"mySVGfile.svg"];
-
-Note that there is a naming conflict with one of OS X's headers, specifically a struct called `Comment` in the AIFF header. The following code __must be included in any source file that will include SVGKit headers, *before* any other header includes.__ A good place to put it would be in the prefix header.
-
-    #define Comment AIFFComment
-    #include <CoreServices/CoreServices.h>
-    #undef Comment
-
-Also note that using Objective C modules support introduced in Xcode 5 may cause similar build failures.
 
 ## Usage - OS X
 
