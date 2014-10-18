@@ -17,15 +17,7 @@
 
 #include <TargetConditionals.h>
 
-//Include this code snippet on OS X to get the source code that includes SVGKit headers to work
-//There is a naming conflict with the AIFF header that needs to be worked around.
-#if !TARGET_OS_IPHONE
-#define Comment AIFFComment
-#include <CoreServices/CoreServices.h>
-#undef Comment
-#endif
-
-#import "DOMHelperUtilities.h"
+#import "SVGKDOMHelperUtilities.h"
 #import "SVGCircleElement.h"
 #import "SVGClipPathElement.h"
 #import "SVGDefsElement.h"

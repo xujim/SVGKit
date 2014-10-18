@@ -1,7 +1,7 @@
 #import "SVGLength.h"
 
-#import "CSSPrimitiveValue.h"
-#import "CSSPrimitiveValue_ConfigurablePixelsPerInch.h"
+#import "SVGKCSSPrimitiveValue.h"
+#import "SVGKCSSPrimitiveValue_ConfigurablePixelsPerInch.h"
 
 #import "SVGUtils.h"
 
@@ -9,7 +9,7 @@
 #include <sys/sysctl.h>
 
 @interface SVGLength()
-@property(nonatomic,strong) CSSPrimitiveValue* internalCSSPrimitiveValue;
+@property(nonatomic,strong) SVGKCSSPrimitiveValue* internalCSSPrimitiveValue;
 @end
 
 @implementation SVGLength
@@ -68,7 +68,7 @@ break
 #undef UnitSwitch
 }
 
-- (instancetype)initWithCSSPrimitiveValue:(CSSPrimitiveValue*) pv
+- (instancetype)initWithCSSPrimitiveValue:(SVGKCSSPrimitiveValue*) pv
 {
     self = [super init];
     if (self) {
@@ -138,7 +138,7 @@ break
 static CGFloat cachedDevicePixelsPerInch;
 +(SVGLength*) svgLengthFromNSString:(NSString*) s
 {
-	CSSPrimitiveValue* pv = [[CSSPrimitiveValue alloc] init];
+	SVGKCSSPrimitiveValue* pv = [[SVGKCSSPrimitiveValue alloc] init];
 	
 	pv.pixelsPerInch = cachedDevicePixelsPerInch;
 	pv.cssText = s;

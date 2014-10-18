@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NodeList: SequenceType {
+extension SVGKNodeList: SequenceType {
     public func generate() -> NSFastGenerator {
         return NSFastGenerator(self)
     }

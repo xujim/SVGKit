@@ -35,7 +35,7 @@
 		return FALSE;
 	else
 	{
-		for( Node* n in element.childNodes )
+		for( SVGKNode* n in element.childNodes )
 		{
 			if( [n isKindOfClass:[SVGElement class]])
 			{

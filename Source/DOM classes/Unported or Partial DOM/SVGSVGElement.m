@@ -2,9 +2,9 @@
 
 #import "SVGSVGElement_Mutable.h"
 #import "CALayerWithChildHitTest.h"
-#import "DOMHelperUtilities.h"
+#import "SVGKDOMHelperUtilities.h"
 #import "SVGHelperUtilities.h"
-#import "StyleSheetList.h"
+#import "SVGKStyleSheetList.h"
 
 #import "SVGElement_ForParser.h" // to resolve Xcode circular dependencies; in long term, parsing SHOULD NOT HAPPEN inside any class whose name starts "SVG" (because those are reserved classes for the SVG Spec)
 
@@ -52,11 +52,11 @@
 
 -(void)loadDefaults
 {
-	self.styleSheets = [[StyleSheetList alloc] init];
+	self.styleSheets = [[SVGKStyleSheetList alloc] init];
 }
 @synthesize styleSheets;
 
--(CSSStyleDeclaration *)getOverrideStyle:(Element *)element pseudoElt:(NSString *)pseudoElt
+-(SVGKCSSStyleDeclaration *)getOverrideStyle:(SVGKElement *)element pseudoElt:(NSString *)pseudoElt
 {
 	NSAssert(FALSE, @"Not implemented yet");
 	
@@ -74,8 +74,8 @@
 -(BOOL) animationsPaused { NSAssert( FALSE, @"Not implemented yet" ); return TRUE; }
 -(float) getCurrentTime { NSAssert( FALSE, @"Not implemented yet" ); return 0.0; }
 -(void) setCurrentTime:(float) seconds { NSAssert( FALSE, @"Not implemented yet" ); }
--(NodeList*) getIntersectionList:(SVGRect) rect referenceElement:(SVGElement*) referenceElement { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
--(NodeList*) getEnclosureList:(SVGRect) rect referenceElement:(SVGElement*) referenceElement { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
+-(SVGKNodeList*) getIntersectionList:(SVGRect) rect referenceElement:(SVGElement*) referenceElement { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
+-(SVGKNodeList*) getEnclosureList:(SVGRect) rect referenceElement:(SVGElement*) referenceElement { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
 -(BOOL) checkIntersection:(SVGElement*) element rect:(SVGRect) rect { NSAssert( FALSE, @"Not implemented yet" ); return FALSE; }
 -(BOOL) checkEnclosure:(SVGElement*) element rect:(SVGRect) rect { NSAssert( FALSE, @"Not implemented yet" ); return FALSE; }
 -(void) deselectAll { NSAssert( FALSE, @"Not implemented yet" );}
@@ -99,9 +99,9 @@
 -(SVGTransform*) createSVGTransform { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
 -(SVGTransform*) createSVGTransformFromMatrix:(SVGMatrix*) matrix { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
 
--(Element*) getElementById:(NSString*) elementId
+-(SVGKElement*) getElementById:(NSString*) elementId
 {
-	return [DOMHelperUtilities privateGetElementById:elementId childrenOfElement:self];
+	return [SVGKDOMHelperUtilities privateGetElementById:elementId childrenOfElement:self];
 }
 
 

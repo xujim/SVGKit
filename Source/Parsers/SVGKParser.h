@@ -56,7 +56,7 @@
 	NSMutableString *_storedChars;
 	//NSMutableArray *_elementStack;
 	NSMutableArray * _stackOfParserExtensions;
-	Node * _parentOfCurrentNode;
+	SVGKNode * _parentOfCurrentNode;
 }
 
 @property(nonatomic,strong,readonly) SVGKSource* source;
@@ -102,7 +102,7 @@
  */
 - (SVGKParseResult*) parseSynchronously;
 
-+(NSDictionary *) NSDictionaryFromCSSAttributes: (Attr*) styleAttribute;
++(NSDictionary *) NSDictionaryFromCSSAttributes: (SVGKAttr*) styleAttribute;
 
 #pragma mark - OLD - POTENTIALLY DELETE THESE ONCE THEY'VE ALL BEEN CHECKED AND CONVERTED
 
