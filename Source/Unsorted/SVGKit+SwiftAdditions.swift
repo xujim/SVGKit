@@ -8,6 +8,12 @@
 
 import Foundation
 
+extension NodeList: SequenceType {
+    public func generate() -> NSFastGenerator {
+        return NSFastGenerator(self)
+    }
+}
+
 extension SVGKImage {
     public class var cacheEnabled: Bool {
         get {
