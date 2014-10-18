@@ -7,11 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <SVGKit/SVGKit.h>
 #import <SVGKit/SVGKImageRep.h>
-
-@interface SVGKit : NSObject
-+ (void) enableLogging;
-@end
 
 @implementation AppDelegate
 @synthesize useRepDirectly;

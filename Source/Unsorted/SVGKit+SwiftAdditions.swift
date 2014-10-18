@@ -30,7 +30,7 @@ extension SVGKImage {
 }
 
 #if os(OSX)
-    extension SVGKImageRef {
-    
-    }
+extension SVGKImageRep {
+	
+}
 #endif

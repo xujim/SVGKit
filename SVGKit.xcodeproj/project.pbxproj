@@ -257,10 +257,10 @@
 		5540E75917387F2B004029EF /* SVGKComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E69017387F2A004029EF /* SVGKComment.m */; };
 		5540E75A17387F2B004029EF /* SVGKCSSPrimitiveValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E69117387F2A004029EF /* SVGKCSSPrimitiveValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E75B17387F2B004029EF /* SVGKCSSPrimitiveValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E69217387F2A004029EF /* SVGKCSSPrimitiveValue.m */; };
-		5540E75C17387F2B004029EF /* SVGKCSSPrimitiveValue_ConfigurablePixelsPerInch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E69317387F2A004029EF /* SVGKCSSPrimitiveValue_ConfigurablePixelsPerInch.h */; settings = {ATTRIBUTES = (); }; };
+		5540E75C17387F2B004029EF /* SVGKCSSPrimitiveValue_ConfigurablePixelsPerInch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E69317387F2A004029EF /* SVGKCSSPrimitiveValue_ConfigurablePixelsPerInch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E75D17387F2B004029EF /* SVGKCSSRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E69417387F2A004029EF /* SVGKCSSRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E75E17387F2B004029EF /* SVGKCSSRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E69517387F2A004029EF /* SVGKCSSRule.m */; };
-		5540E75F17387F2B004029EF /* SVGKCSSRuleList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E69617387F2A004029EF /* SVGKCSSRuleList+Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5540E75F17387F2B004029EF /* SVGKCSSRuleList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E69617387F2A004029EF /* SVGKCSSRuleList+Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E76017387F2B004029EF /* SVGKCSSRuleList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E69717387F2A004029EF /* SVGKCSSRuleList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E76117387F2B004029EF /* SVGKCSSRuleList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E69817387F2A004029EF /* SVGKCSSRuleList.m */; };
 		5540E76217387F2B004029EF /* SVGKCSSStyleDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E69917387F2B004029EF /* SVGKCSSStyleDeclaration.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -274,7 +274,7 @@
 		5540E76A17387F2B004029EF /* SVGKCSSValue_ForSubclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6A117387F2B004029EF /* SVGKCSSValue_ForSubclasses.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E76B17387F2B004029EF /* SVGKCSSValueList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6A217387F2B004029EF /* SVGKCSSValueList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E76C17387F2B004029EF /* SVGKCSSValueList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6A317387F2B004029EF /* SVGKCSSValueList.m */; };
-		5540E76D17387F2B004029EF /* SVGKDocument+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6A417387F2B004029EF /* SVGKDocument+Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5540E76D17387F2B004029EF /* SVGKDocument+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6A417387F2B004029EF /* SVGKDocument+Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E76E17387F2B004029EF /* SVGKDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6A517387F2B004029EF /* SVGKDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E76F17387F2B004029EF /* SVGKDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6A617387F2B004029EF /* SVGKDocument.m */; };
 		5540E77017387F2B004029EF /* SVGKDocumentCSS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6A717387F2B004029EF /* SVGKDocumentCSS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -297,7 +297,7 @@
 		5540E78117387F2B004029EF /* SVGKNode+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6B817387F2B004029EF /* SVGKNode+Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E78217387F2B004029EF /* SVGKNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6B917387F2B004029EF /* SVGKNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E78317387F2B004029EF /* SVGKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6BA17387F2B004029EF /* SVGKNode.m */; };
-		5540E78417387F2B004029EF /* SVGKNodeList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6BB17387F2B004029EF /* SVGKNodeList+Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5540E78417387F2B004029EF /* SVGKNodeList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6BB17387F2B004029EF /* SVGKNodeList+Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E78517387F2B004029EF /* SVGKNodeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6BC17387F2B004029EF /* SVGKNodeList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E78617387F2B004029EF /* SVGKNodeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6BD17387F2B004029EF /* SVGKNodeList.m */; };
 		5540E78717387F2B004029EF /* SVGKProcessingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6BE17387F2B004029EF /* SVGKProcessingInstruction.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -315,10 +315,10 @@
 		5540E79317387F2B004029EF /* SVGDefsElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6CB17387F2B004029EF /* SVGDefsElement.m */; };
 		5540E79417387F2B004029EF /* SVGDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6CC17387F2B004029EF /* SVGDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79517387F2B004029EF /* SVGDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6CD17387F2B004029EF /* SVGDocument.m */; };
-		5540E79617387F2B004029EF /* SVGDocument_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6CE17387F2B004029EF /* SVGDocument_Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5540E79617387F2B004029EF /* SVGDocument_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6CE17387F2B004029EF /* SVGDocument_Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79717387F2B004029EF /* SVGElementInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6CF17387F2B004029EF /* SVGElementInstance.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79817387F2B004029EF /* SVGElementInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6D017387F2B004029EF /* SVGElementInstance.m */; };
-		5540E79917387F2B004029EF /* SVGElementInstance_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D117387F2B004029EF /* SVGElementInstance_Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5540E79917387F2B004029EF /* SVGElementInstance_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D117387F2B004029EF /* SVGElementInstance_Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79A17387F2B004029EF /* SVGElementInstanceList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D217387F2B004029EF /* SVGElementInstanceList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79B17387F2B004029EF /* SVGElementInstanceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6D317387F2B004029EF /* SVGElementInstanceList.m */; };
 		5540E79C17387F2B004029EF /* SVGElementInstanceList_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D417387F2B004029EF /* SVGElementInstanceList_Internal.h */; };
@@ -337,7 +337,7 @@
 		5540E7A917387F2B004029EF /* SVGRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E117387F2B004029EF /* SVGRect.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7AA17387F2B004029EF /* SVGRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6E217387F2B004029EF /* SVGRect.m */; };
 		5540E7AB17387F2B004029EF /* SVGStylable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E317387F2B004029EF /* SVGStylable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5540E7AC17387F2B004029EF /* SVGSVGElement_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E417387F2B004029EF /* SVGSVGElement_Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5540E7AC17387F2B004029EF /* SVGSVGElement_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E417387F2B004029EF /* SVGSVGElement_Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7AD17387F2B004029EF /* SVGTextContentElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E517387F2B004029EF /* SVGTextContentElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7AE17387F2B004029EF /* SVGTextContentElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6E617387F2B004029EF /* SVGTextContentElement.m */; };
 		5540E7AF17387F2B004029EF /* SVGTextPositioningElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E717387F2B004029EF /* SVGTextPositioningElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -532,7 +532,7 @@
 		555866B218626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = 555866AD18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m */; };
 		555866B418626C0C005ACAE9 /* SVGPreserveAspectRatio.h in Headers */ = {isa = PBXBuildFile; fileRef = 555866AE18626C0C005ACAE9 /* SVGPreserveAspectRatio.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		555866B618626C0C005ACAE9 /* SVGPreserveAspectRatio.m in Sources */ = {isa = PBXBuildFile; fileRef = 555866AF18626C0C005ACAE9 /* SVGPreserveAspectRatio.m */; };
-		555866B918626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h in Headers */ = {isa = PBXBuildFile; fileRef = 555866B818626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h */; };
+		555866B918626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h in Headers */ = {isa = PBXBuildFile; fileRef = 555866B818626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		555DC07B19DF697D002B424E /* SVGKImageView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 55B4D79F173EC58700D2C676 /* SVGKImageView.h */; };
 		555DC07C19DF697D002B424E /* SVGKFastImageView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 55B4D79D173EC58700D2C676 /* SVGKFastImageView.h */; };
 		555DC07D19DF697D002B424E /* SVGKLayeredImageView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 55B4D7A1173EC58700D2C676 /* SVGKLayeredImageView.h */; };
@@ -739,13 +739,14 @@
 		55C361A11782102900BA24FA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5540E66F17387C9F004029EF /* Cocoa.framework */; };
 		55C361A5178212F800BA24FA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C361A4178212F600BA24FA /* libxml2.dylib */; };
 		55C361AA178214A300BA24FA /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F3267B178156EF0064271D /* CoreFoundation.framework */; };
-		55C53D8C1940B9CC00649455 /* SVGKExporterNSData.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D861940B9CC00649455 /* SVGKExporterNSData.h */; };
+		55C53D8C1940B9CC00649455 /* SVGKExporterNSData.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D861940B9CC00649455 /* SVGKExporterNSData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55C53D8D1940B9CC00649455 /* SVGKExporterNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D871940B9CC00649455 /* SVGKExporterNSData.m */; };
 		55C53D8E1940B9CC00649455 /* SVGKExporterNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D871940B9CC00649455 /* SVGKExporterNSData.m */; };
 		55C53D911940B9CD00649455 /* SVGKExporterUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D891940B9CC00649455 /* SVGKExporterUIImage.m */; };
 		55C53D921940B9CD00649455 /* SVGKImage+CGContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D8A1940B9CC00649455 /* SVGKImage+CGContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55C53D931940B9CD00649455 /* SVGKImage+CGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D8B1940B9CC00649455 /* SVGKImage+CGContext.m */; };
 		55C53D941940B9CD00649455 /* SVGKImage+CGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D8B1940B9CC00649455 /* SVGKImage+CGContext.m */; };
+		55C8980A19F32F800035BD69 /* SVGKit+SwiftAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5554213719EDC2FB004388E4 /* SVGKit+SwiftAdditions.swift */; };
 		55CCBF2319BA739600957A39 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107F19B682C7009A2E63 /* CoreImage.framework */; };
 		55CCBF2419BA739B00957A39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107D19B682B2009A2E63 /* QuartzCore.framework */; };
 		55CCBF2519BA73B000957A39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107919B682A6009A2E63 /* UIKit.framework */; };
@@ -757,10 +758,10 @@
 		55E4107C19B682AD009A2E63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107B19B682AD009A2E63 /* Foundation.framework */; };
 		55E4107E19B682B3009A2E63 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107D19B682B2009A2E63 /* QuartzCore.framework */; };
 		55E4108019B682C7009A2E63 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107F19B682C7009A2E63 /* CoreImage.framework */; };
-		55F2684D19B66B9C00F6410E /* CALayerWithClipRender.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2684919B66B9C00F6410E /* CALayerWithClipRender.h */; };
+		55F2684D19B66B9C00F6410E /* CALayerWithClipRender.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2684919B66B9C00F6410E /* CALayerWithClipRender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55F2684E19B66B9C00F6410E /* CALayerWithClipRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2684A19B66B9C00F6410E /* CALayerWithClipRender.m */; };
 		55F2684F19B66B9C00F6410E /* CALayerWithClipRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2684A19B66B9C00F6410E /* CALayerWithClipRender.m */; };
-		55F2685019B66B9C00F6410E /* CAShapeLayerWithClipRender.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2684B19B66B9C00F6410E /* CAShapeLayerWithClipRender.h */; };
+		55F2685019B66B9C00F6410E /* CAShapeLayerWithClipRender.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2684B19B66B9C00F6410E /* CAShapeLayerWithClipRender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55F2685119B66B9C00F6410E /* CAShapeLayerWithClipRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2684C19B66B9C00F6410E /* CAShapeLayerWithClipRender.m */; };
 		55F2685219B66B9C00F6410E /* CAShapeLayerWithClipRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2684C19B66B9C00F6410E /* CAShapeLayerWithClipRender.m */; };
 		55F2685519B66BCD00F6410E /* NSData+NSInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685319B66BCD00F6410E /* NSData+NSInputStream.h */; };
@@ -2504,6 +2505,7 @@
 				5540E78817387F2B004029EF /* SVGKProcessingInstruction.m in Sources */,
 				5540E78A17387F2B004029EF /* SVGKStyleSheet.m in Sources */,
 				55F2686219B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */,
+				55C8980A19F32F800035BD69 /* SVGKit+SwiftAdditions.swift in Sources */,
 				55F2685119B66B9C00F6410E /* CAShapeLayerWithClipRender.m in Sources */,
 				5540E78D17387F2B004029EF /* SVGKStyleSheetList.m in Sources */,
 				5540E78F17387F2B004029EF /* SVGKText.m in Sources */,
@@ -2923,9 +2925,8 @@
 		5540E68217387C9F004029EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -2945,9 +2946,8 @@
 		5540E68317387C9F004029EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXPORTED_SYMBOLS_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.exp";
@@ -3030,7 +3030,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -3047,7 +3047,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;

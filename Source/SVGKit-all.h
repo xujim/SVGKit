@@ -35,7 +35,6 @@
 #import "SVGGradientStop.h"
 #import "SVGGroupElement.h"
 #import "SVGKExporterNSData.h"
-#import "SVGKExporterUIImage.h"
 #import "SVGHelperUtilities.h"
 #import "SVGStyleCatcher.h"
 #import "SVGStyleElement.h"
