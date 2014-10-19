@@ -32,7 +32,7 @@
 
 @interface SVGKParser()
 @property(nonatomic,strong, readwrite) SVGKSource* source;
-@property(nonatomic,retain, readwrite) NSMutableArray* externalStylesheets;
+@property(nonatomic,strong, readwrite) NSMutableArray* externalStylesheets;
 @property(nonatomic,strong, readwrite) SVGKParseResult* currentParseRun;
 @property(nonatomic,strong) NSString* defaultXMLNamespaceForThisParseRun;
 @property(nonatomic) BOOL hasCancelBeenRequested;

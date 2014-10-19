@@ -27,7 +27,7 @@
 
 #if ENABLE_PARSER_EXTENSIONS_CUSTOM_DATA
 /*! Each SVGKParserExtension can optionally save extra data here */
-@property(nonatomic,retain) NSMutableDictionary* extensionsData;
+@property(nonatomic,strong) NSMutableDictionary* extensionsData;
 
 -(NSMutableDictionary*) dictionaryForParserExtension:(NSObject<SVGKParserExtension>*) extension;
 #endif

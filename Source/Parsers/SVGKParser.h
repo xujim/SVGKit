@@ -60,7 +60,7 @@
 }
 
 @property(nonatomic,strong,readonly) SVGKSource* source;
-@property(nonatomic,retain,readonly) NSMutableArray* externalStylesheets;
+@property(nonatomic,strong,readonly) NSMutableArray* externalStylesheets;
 @property(nonatomic,strong,readonly) SVGKParseResult* currentParseRun;
 
 @property(nonatomic,strong) NSMutableArray* parserExtensions;

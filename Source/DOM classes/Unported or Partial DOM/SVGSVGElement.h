@@ -91,7 +91,7 @@
 @property (nonatomic, strong, readonly) SVGViewSpec* currentView;
 @property (nonatomic, readonly) float currentScale;
 @property (nonatomic, strong, readonly) SVGPoint* currentTranslate;
-@property (nonatomic, retain, readwrite) SVGKSource *source;
+@property (nonatomic, strong, readwrite) SVGKSource *source;
 
 -(long) suspendRedraw:(long) maxWaitMilliseconds;
 -(void) unsuspendRedraw:(long) suspendHandleID;

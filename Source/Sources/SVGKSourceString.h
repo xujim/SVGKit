@@ -5,7 +5,7 @@
 
 @interface SVGKSourceString : SVGKSource <NSCopying>
 
-@property (nonatomic, retain, readonly) NSString* rawString;
+@property (nonatomic, strong, readonly) NSString* rawString;
 
 - (instancetype)initWithString:(NSString*)theStr;
 + (SVGKSource*)sourceFromContentsOfString:(NSString*)rawString;

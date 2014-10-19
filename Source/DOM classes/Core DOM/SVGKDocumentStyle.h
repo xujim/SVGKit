@@ -12,6 +12,6 @@
 
 @protocol SVGKDocumentStyle <NSObject>
 
-@property(nonatomic,retain) SVGKStyleSheetList* styleSheets;
+@property(nonatomic,strong) SVGKStyleSheetList* styleSheets;
 
 @end

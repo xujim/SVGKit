@@ -2,7 +2,7 @@
 #import "SVGKSource-private.h"
 
 @interface SVGKSourceString ()
-@property (nonatomic, retain, readwrite) NSString* rawString;
+@property (nonatomic, strong, readwrite) NSString* rawString;
 @end
 
 @implementation SVGKSourceString

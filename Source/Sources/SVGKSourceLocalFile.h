@@ -5,7 +5,7 @@
 
 @interface SVGKSourceLocalFile : SVGKSource <NSCopying>
 
-@property (nonatomic, retain) NSString* filePath;
+@property (nonatomic, strong) NSString* filePath;
 @property (nonatomic, readonly) BOOL wasRelative;
 
 - (instancetype)initWithFilename:(NSString*)p;

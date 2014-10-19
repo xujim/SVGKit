@@ -20,7 +20,7 @@ static NSString * const kExt_CAGradientLayerRadial = @"radialGradient";
 @interface SVGGradientLayer : CAGradientLayer <SVGTransformable>
 
 @property (nonatomic, readwrite) CGPathRef maskPath;
-@property (nonatomic, readwrite, retain) NSArray *stopIdentifiers;
+@property (nonatomic, readwrite, strong) NSArray *stopIdentifiers;
 
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 - (void)setStopColor:(UIColor *)color forIdentifier:(NSString *)identifier;
