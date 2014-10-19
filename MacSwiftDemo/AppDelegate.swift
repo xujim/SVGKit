@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
 		// Insert code here to initialize your application
+        SVGKImageRep.unloadSVGKImageRep()
 	}
 
 	func applicationWillTerminate(aNotification: NSNotification) {
