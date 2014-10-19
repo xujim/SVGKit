@@ -107,10 +107,10 @@ typedef NS_ENUM(int, DOMNodeType)
 @property(nonatomic,readonly) DOMNodeType nodeType;
 @property(nonatomic,weak,readonly) SVGKNode* parentNode;
 @property(nonatomic,strong,readonly) SVGKNodeList* childNodes;
-@property(nonatomic,strong,readonly) SVGKNode* firstChild;
-@property(nonatomic,strong,readonly) SVGKNode* lastChild;
-@property(nonatomic,strong,readonly) SVGKNode* previousSibling;
-@property(nonatomic,strong,readonly) SVGKNode* nextSibling;
+@property(nonatomic,weak,readonly) SVGKNode* firstChild;
+@property(nonatomic,weak,readonly) SVGKNode* lastChild;
+@property(nonatomic,weak,readonly) SVGKNode* previousSibling;
+@property(nonatomic,weak,readonly) SVGKNode* nextSibling;
 @property(nonatomic,strong,readonly) SVGKNamedNodeMap* attributes; /*< NB: according to DOM Spec, this is null if the Node is NOT subclassed as an Element */
 
 // Modified in DOM Level 2:
