@@ -26,7 +26,6 @@
 - (instancetype)initWithSVGString:(NSString *)theString;
 - (instancetype)initWithSVGImage:(SVGKImage*)theImage;
 - (instancetype)initWithSVGSource:(SVGKSource*)theSource;
-- (instancetype)initWithSVGImage:(SVGKImage*)theImage copy:(BOOL)copyImage;
 
 - (NSData *)TIFFRepresentation;
 - (NSData *)TIFFRepresentationWithSize:(NSSize)theSize;
@@ -35,9 +34,5 @@
 
 + (void)loadSVGKImageRep;
 + (void)unloadSVGKImageRep;
-
-// init methods inherited from NSImageRep
-- (instancetype)initWithCoder:(NSCoder *)coder;
-- (instancetype)init;
 
 @end
