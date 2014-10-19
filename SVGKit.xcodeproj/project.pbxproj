@@ -1169,7 +1169,7 @@
 		555866AD18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGAnimatedPreserveAspectRatio.m; sourceTree = "<group>"; };
 		555866AE18626C0C005ACAE9 /* SVGPreserveAspectRatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPreserveAspectRatio.h; sourceTree = "<group>"; };
 		555866AF18626C0C005ACAE9 /* SVGPreserveAspectRatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPreserveAspectRatio.m; sourceTree = "<group>"; };
-		555866B818626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVGKNamedNodeMap_Iterable.h; path = "../Core DOM/SVGKNamedNodeMap_Iterable.h"; sourceTree = "<group>"; };
+		555866B818626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKNamedNodeMap_Iterable.h; sourceTree = "<group>"; };
 		5563201419B670DD0097D2EF /* SVGKSourceNSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKSourceNSData.h; sourceTree = "<group>"; };
 		5563201519B670DD0097D2EF /* SVGKSourceNSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKSourceNSData.m; sourceTree = "<group>"; };
 		5563201919B675A80097D2EF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
@@ -1512,6 +1512,7 @@
 				5540E6B317387F2B004029EF /* SVGKEntityReference.m */,
 				5540E6B417387F2B004029EF /* SVGKMediaList.h */,
 				5540E6B517387F2B004029EF /* SVGKMediaList.m */,
+				555866B818626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h */,
 				5540E6B617387F2B004029EF /* SVGKNamedNodeMap.h */,
 				5540E6B717387F2B004029EF /* SVGKNamedNodeMap.m */,
 				5540E6B817387F2B004029EF /* SVGKNode+Mutable.h */,
@@ -1539,7 +1540,6 @@
 				55F2685819B66C6500F6410E /* SVGClipPathElement.h */,
 				55F2685919B66C6500F6410E /* SVGClipPathElement.m */,
 				55F2685A19B66C6500F6410E /* SVGUnitTypes.h */,
-				555866B818626C4D005ACAE9 /* SVGKNamedNodeMap_Iterable.h */,
 				555866AC18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.h */,
 				555866AD18626C0C005ACAE9 /* SVGAnimatedPreserveAspectRatio.m */,
 				555866AE18626C0C005ACAE9 /* SVGPreserveAspectRatio.h */,
