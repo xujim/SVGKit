@@ -293,6 +293,11 @@
 	return YES;
 }
 
+//- (CGImageRef)CGImageForProposedRect:(NSRect *)proposedDestRect context:(NSGraphicsContext *)context hints:(NSDictionary *)hints
+//{
+//
+//}
+
 #pragma mark - Inherited protocols
 
 #pragma mark NSCopying
