@@ -21,26 +21,28 @@
 
 - (IBAction)selectSVG:(id)sender
 {
-	NSOpenPanel *op = [NSOpenPanel openPanel];
+    NSOpenPanel *op = [NSOpenPanel openPanel];
     op.title = @"Open SVG file";
     op.allowsMultipleSelection = NO;
     op.allowedFileTypes = @[@"public.svg-image", @"svg"];
-	
-	if ([op runModal] != NSOKButton)
-		return;
-	NSURL *svgUrl = [op URLs][0];
-	NSImage *selectImage;
-	if (!self.useRepDirectly) {
-		selectImage = [[NSImage alloc] initWithContentsOfURL:svgUrl];
-	} else {
-		selectImage = [[NSImage alloc] init];
-		SVGKImageRep *imRep = [[SVGKImageRep alloc] initWithContentsOfURL:svgUrl];
-		if (!imRep) {
-			return;
-		}
-		[selectImage addRepresentation:imRep];
-	}
-	[svgSelected setImage:selectImage];
+    
+    [op beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        if (result == NSOKButton) {
+            NSURL *svgUrl = [op URLs][0];
+            NSImage *selectImage;
+            if (!self.useRepDirectly) {
+                selectImage = [[NSImage alloc] initWithContentsOfURL:svgUrl];
+            } else {
+                selectImage = [[NSImage alloc] init];
+                SVGKImageRep *imRep = [[SVGKImageRep alloc] initWithContentsOfURL:svgUrl];
+                if (!imRep) {
+                    return;
+                }
+                [selectImage addRepresentation:imRep];
+            }
+            [svgSelected setImage:selectImage];
+        }
+    }];
 }
 
 - (IBAction)exportAsTIFF:(id)sender
