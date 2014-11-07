@@ -22,11 +22,9 @@
 - (IBAction)selectSVG:(id)sender
 {
 	NSOpenPanel *op = [NSOpenPanel openPanel];
-	[op setTitle: @"Open SVG file"];
-	[op setAllowsMultipleSelection: NO];
-	[op setAllowedFileTypes:@[@"public.svg-image", @"svg"]];
-	[op setCanChooseDirectories: NO];
-	[op setCanChooseFiles: YES];
+    op.title = @"Open SVG file";
+    op.allowsMultipleSelection = NO;
+    op.allowedFileTypes = @[@"public.svg-image", @"svg"];
 	
 	if ([op runModal] != NSOKButton)
 		return;
