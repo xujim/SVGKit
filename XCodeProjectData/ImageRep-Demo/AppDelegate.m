@@ -12,6 +12,7 @@
 
 @implementation AppDelegate
 @synthesize useRepDirectly;
+@synthesize svgSelected;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
