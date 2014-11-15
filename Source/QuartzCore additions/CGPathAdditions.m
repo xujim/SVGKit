@@ -15,13 +15,13 @@ typedef struct {
 	CGFloat offY;
 } PathInfo;
 
-CGFloat fixInfinity(CGFloat inputFloat){
+static CGFloat fixInfinity(CGFloat inputFloat){
     if(inputFloat>CGFLOAT_MAX) inputFloat=CGFLOAT_MAX;
     if(inputFloat<(-1)*CGFLOAT_MAX) inputFloat=(-1)*CGFLOAT_MAX;
     return inputFloat;
 }
 
-CGPoint *fixPointsInfinity(CGPathElement *element){
+static CGPoint *fixPointsInfinity(const CGPathElement *element) {
     int i,total;
     
     switch (element->type) {
@@ -50,7 +50,7 @@ CGPoint *fixPointsInfinity(CGPathElement *element){
     return element->points;
 }
 
-void applier (void *info, const CGPathElement *element) {
+static void applier (void *info, const CGPathElement *element) {
 	PathInfo *pathInfo = (PathInfo *) info;
 	
 	CGMutablePathRef path = pathInfo->path;
