@@ -384,6 +384,7 @@
 		55D8EE1B17628A71009C25F1 = {
 			isa = PBXGroup;
 			children = (
+				55D8EE4417628B56009C25F1 /* SVGKit.xcodeproj */,
 				55D8EE5017629223009C25F1 /* SVG */,
 				55D8EE2D17628A71009C25F1 /* Demo-OSX */,
 				55CB786C176BE36F00BD97F1 /* ImageRep-Demo */,
@@ -407,7 +408,6 @@
 		55D8EE2617628A71009C25F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				55D8EE4417628B56009C25F1 /* SVGKit.xcodeproj */,
 				55C362CA1782208700BA24FA /* QuartzCore.framework */,
 				55D8EE2717628A71009C25F1 /* Cocoa.framework */,
 				55D8EE2917628A71009C25F1 /* Other Frameworks */,
