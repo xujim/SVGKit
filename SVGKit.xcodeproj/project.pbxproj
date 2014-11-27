@@ -1757,6 +1757,7 @@
 			);
 			path = "SVGKit-iOS Tests";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55825B7319EC829800635497 /* Auxiliary files */ = {
 			isa = PBXGroup;
