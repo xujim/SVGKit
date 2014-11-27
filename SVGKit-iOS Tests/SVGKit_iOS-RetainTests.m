@@ -14,7 +14,6 @@
 #error This test file must not be compiled with ARC.
 #endif
 
-
 @interface SVGKit_iOS_RetainTests : XCTestCase
 @property (retain) NSBundle *pathsToSVGs;
 @end
