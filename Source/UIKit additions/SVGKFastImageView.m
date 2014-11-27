@@ -119,6 +119,18 @@
     [self addObserver:self forKeyPath:@"showBorder" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
 }
 
+- (void)removeSizeObserver
+{
+	if (_image) {
+		[_image removeObserver:self forKeyPath:@"size" context:internalContextPointerBecauseApplesDemandsIt];
+	}
+}
+
+- (void)addSizeObserver
+{
+	[_image addObserver:self forKeyPath:@"size" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
+}
+
 - (void)setImage:(SVGKImage *)image {
 	
 #if TEMPORARY_WARNING_FOR_APPLES_BROKEN_RENDERINCONTEXT_METHOD

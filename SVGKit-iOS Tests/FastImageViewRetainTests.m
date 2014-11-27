@@ -28,13 +28,21 @@
 
 - (void)testImageViewInitializers
 {
-	XCTAssertNoThrow({
-	@autoreleasepool {
-		SVGKImage *note = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Note" ofType:@"svg"]];
-		SVGKFastImageView *imageWithSVGKImage = [[SVGKFastImageView alloc] initWithSVGKImage:note];
-		CGSize aSize = imageWithSVGKImage.intrinsicContentSize;
-		NSLog(@"intrinsicContentSize: %@", NSStringFromCGSize(aSize));
-	}});
+	@try {
+		@autoreleasepool {
+			SVGKImage *note = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Note" ofType:@"svg"]];
+			SVGKImage *monkey = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
+			SVGKFastImageView *imageWithSVGKImage = [[SVGKFastImageView alloc] initWithSVGKImage:note];
+			imageWithSVGKImage.disableAutoRedrawAtHighestResolution = YES;
+			imageWithSVGKImage.image = monkey;
+			CGSize aSize = imageWithSVGKImage.intrinsicContentSize;
+			NSLog(@"intrinsicContentSize: %@", NSStringFromCGSize(aSize));
+		}
+		XCTAssertTrue(YES);
+	}
+	@catch (NSException *exception) {
+		XCTFail(@"Exception Thrown: %@", exception);
+	}
 }
 
 @end

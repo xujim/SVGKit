@@ -33,34 +33,41 @@
 }
 
 - (void)testReleasing {
-	XCTAssertNoThrow(^{
+	@try {
 		@autoreleasepool {
 			SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Note" ofType:@"svg"]];
 
 			// Release the image
 			[image release];
 		}
-	});
+		XCTAssertTrue(YES);
+	}
+	@catch (NSException *exception) {
+		XCTFail(@"Exception Thrown: %@", exception);
+	}
+	
 }
 
 - (void)testReplacing {
 	@try {
-		SVGKImage *image = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"CurvedDiamond" ofType:@"svg"]];
-
-		// Release the image
-		[image release];
-
-		image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Lion" ofType:@"svg"]];
-
+		@autoreleasepool {
+			SVGKImage *image = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"CurvedDiamond" ofType:@"svg"]];
+			
+			// Release the image
+			[image release];
+			
+			image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Lion" ofType:@"svg"]];
+			
+		}
 		XCTAssertTrue(YES);
 	}
 	@catch (NSException *exception) {
-		XCTFail(@"Exception Thrown");
+		XCTFail(@"Exception Thrown: %@", exception);
 	}
 }
 
 - (void)testSameFileTwice {
-    XCTAssertNoThrow(^{
+    @try {
         @autoreleasepool {
             SVGKImage *image = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
             SVGKImage *image2 = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
@@ -69,7 +76,11 @@
             [image release];
             [image2 release];
         }
-    });
+		XCTAssertTrue(YES);
+    }
+	@catch (NSException *exception) {
+		XCTFail(@"Exception Thrown: %@", exception);
+	}
 }
 
 @end

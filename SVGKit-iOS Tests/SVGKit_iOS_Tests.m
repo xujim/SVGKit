@@ -32,24 +32,14 @@
 }
 
 - (void)testReleasing {
-	XCTAssertNoThrow(^{
+	@try {
 		@autoreleasepool {
-			SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Note" ofType:@"svg"]];
+			SVGKImage *image = [[SVGKImage alloc] initWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Note" ofType:@"svg"]];
 			// Yes, this is ARC, yes we do this to quiet a warning
+			NSLog(@"description: %@", [image description]);
 			[image class];
 			image = nil;
 		}
-	});
-}
-
-- (void)testReplacing {
-	@try {
-		SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"CurvedDiamond" ofType:@"svg"]];
-
-		// Yes, this is ARC, yes we do this to quiet a warning
-		[image class];
-
-		image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Lion" ofType:@"svg"]];
 		XCTAssertTrue(YES);
 	}
 	@catch (NSException *exception) {
@@ -57,17 +47,42 @@
 	}
 }
 
+- (void)testReplacing {
+	@try {
+		@autoreleasepool {
+			SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"CurvedDiamond" ofType:@"svg"]];
+			
+			// Yes, this is ARC, yes we do this to quiet a warning
+			NSLog(@"description: %@", [image description]);
+			[image class];
+			
+			image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Lion" ofType:@"svg"]];
+			NSLog(@"description: %@", [image description]);
+			[image class];
+		}
+		XCTAssertTrue(YES);
+	}
+	@catch (NSException *exception) {
+		XCTFail(@"Exception Thrown: %@", exception);
+	}
+}
+
 - (void)testSameFileTwice {
-    XCTAssertNoThrow(^{
+    @try {
         @autoreleasepool {
             SVGKImage *image = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
             SVGKImage *image2 = [SVGKImage imageWithContentsOfFile:[self.pathsToSVGs pathForResource:@"Monkey" ofType:@"svg"]];
             
             // Yes, this is ARC, yes we do this to quiet a warning
-            [image class];
-            [image2 class];
+			NSString *image1Desc = [image description];
+			NSString *image2Desc = [image2 description];
+			NSLog(@"image1: %@, image 2: %@", image1Desc, image2Desc);
         }
-    });
+		XCTAssertTrue(YES);
+    }
+	@catch (NSException *exception) {
+		XCTFail(@"Exception Thrown: %@", exception);
+	}
 }
 
 @end
