@@ -480,6 +480,7 @@
 			);
 			path = SimpleSwiftDemo;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		5531280B19EA407B001CA2ED /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -514,6 +515,7 @@
 			);
 			path = "Swift-iOS";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55E410AF19B686FD009A2E63 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -529,8 +531,8 @@
 				6649E1021617574600AFE92A /* SVGKit.xcodeproj */,
 				66E862561688BA0B0059C9C4 /* Demo-iOS */,
 				55E410AE19B686FD009A2E63 /* Swift-iOS */,
-				66E862761688BA510059C9C4 /* Demo-Samples */,
 				5531280A19EA407B001CA2ED /* SimpleSwiftDemo */,
+				66E862761688BA510059C9C4 /* Demo-Samples */,
 				661A0DCD161727CF008D5FBE /* Frameworks */,
 				661A0DCB161727CF008D5FBE /* Products */,
 				551165F51970F14200C8A63D /* Demo-iOS copy-Info.plist */,
