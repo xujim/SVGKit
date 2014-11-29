@@ -2,8 +2,8 @@ Pod::Spec.new do |s|
   s.name        = 'SVGKit'
   s.version     = '2.x'
   s.license     = 'MIT'
-  s.ios.deployment_target = "6.0"
-  s.osx.deployment_target = "10.7"
+  s.ios.deployment_target = "8.0"
+  s.osx.deployment_target = "10.9"
 
   s.summary     = "Display and interact with SVG Images on iOS, using native rendering (CoreAnimation)."
   s.homepage = 'https://github.com/SVGKit/SVGKit'
