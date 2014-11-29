@@ -17,10 +17,10 @@ Pod::Spec.new do |s|
                  'Steven Fusco'    => 'sfusco@spiral.local',
                  'Eric Man'        => 'Eric@eric-mans-macbook-2.local',
                  'C.W. Betts'      => 'computers57@hotmail.com' }
-  s.source   = { :git => 'https://github.com/MaddTheSane/SVGKit.git', :branch => "cleanup" }
+  s.source   = { :git => 'https://github.com/MaddTheSane/SVGKit.git', :branch => "master" }
 
-  s.ios.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/UIKit additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}'
-  s.osx.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/AppKit additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}'
+  s.ios.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/UIKit additions/**/*.{h,m}', 'Source/Shared additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}', 'Source/AppKit additions/*View*.h'
+  s.osx.source_files = 'Source/*{.h,m}', 'Source/DOM classes/**/*.{h,m}', 'Source/Exporters/*.{h,m}', 'Source/Parsers/**/*.{h,m}', 'Source/QuartzCore additions/**/*.{h,m}', 'Source/Sources/**/*.{h,m}', 'Source/Shared additions/**/*.{h,m}', 'Source/AppKit additions/**/*.{h,m}', 'Source/Unsorted/**/*.{h,m}'
 
   s.libraries = 'xml2'
   s.framework = 'QuartzCore', 'CoreText'
