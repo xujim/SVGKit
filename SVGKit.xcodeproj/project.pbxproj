@@ -654,13 +654,13 @@
 		556CACCA19D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACF719D644FA00DAEFCA /* SVGClipPathElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685819B66C6500F6410E /* SVGClipPathElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACF819D6451700DAEFCA /* SVGUnitTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685A19B66C6500F6410E /* SVGUnitTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5574ADAA17889CA000EA4281 /* SVGKSource-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5574ADA917889CA000EA4281 /* SVGKSource-private.h */; };
-		55788779178892D30021D775 /* SVGKImage-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 55788778178892D30021D775 /* SVGKImage-private.h */; };
+		5574ADAA17889CA000EA4281 /* SVGKSource-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5574ADA917889CA000EA4281 /* SVGKSource-private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		55788779178892D30021D775 /* SVGKImage-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 55788778178892D30021D775 /* SVGKImage-private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		557E69D3174014E4006B0029 /* SVGKCGFloatAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 557E69D1174014E4006B0029 /* SVGKCGFloatAdditions.h */; };
 		557E69D4174014E4006B0029 /* SVGKCGFloatAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 557E69D2174014E4006B0029 /* SVGKCGFloatAdditions.m */; };
 		55801825176E4D7800F64989 /* BlankSVG.h in Headers */ = {isa = PBXBuildFile; fileRef = 55801823176E4D7800F64989 /* BlankSVG.h */; };
 		55801826176E4D7800F64989 /* BlankSVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 55801824176E4D7800F64989 /* BlankSVG.m */; };
-		558100D41780A11C00B2BB87 /* SVGKImageRep-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 558100D31780A11C00B2BB87 /* SVGKImageRep-private.h */; };
+		558100D41780A11C00B2BB87 /* SVGKImageRep-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 558100D31780A11C00B2BB87 /* SVGKImageRep-private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		55825B4719EC80C400635497 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551164AB1970EE8B00C8A63D /* SVGKit.framework */; };
 		55825B5719EC80D400635497 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5540E66C17387C9F004029EF /* SVGKit.framework */; };
 		55825B6319EC80EF00635497 /* SVGKit_iOS-RetainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55825B5F19EC80EF00635497 /* SVGKit_iOS-RetainTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -2057,15 +2057,15 @@
 				55B4D7AB173ECEC200D2C676 /* CALayerExporter.h in Headers */,
 				553F327517F2A8ED00221391 /* SVGKSourceString.h in Headers */,
 				557E69D3174014E4006B0029 /* SVGKCGFloatAdditions.h in Headers */,
+				558100D41780A11C00B2BB87 /* SVGKImageRep-private.h in Headers */,
+				55788779178892D30021D775 /* SVGKImage-private.h in Headers */,
+				5574ADAA17889CA000EA4281 /* SVGKSource-private.h in Headers */,
 				55A5AD6C175FEBF4009F2FDD /* ConverterSVGToCALayer.h in Headers */,
 				55801825176E4D7800F64989 /* BlankSVG.h in Headers */,
 				558BE71C177B9D3F00DC9516 /* SVGKImage+CacheManagement.h in Headers */,
 				55435575177F4F5D007E1FAD /* SVGKImageRep.h in Headers */,
-				558100D41780A11C00B2BB87 /* SVGKImageRep-private.h in Headers */,
 				55F2685019B66B9C00F6410E /* CAShapeLayerWithClipRender.h in Headers */,
 				55C360AF1781E8DD00BA24FA /* SVGKFastImageView.h in Headers */,
-				55788779178892D30021D775 /* SVGKImage-private.h in Headers */,
-				5574ADAA17889CA000EA4281 /* SVGKSource-private.h in Headers */,
 				55886F5E17DD79FA00021A82 /* SVGGradientLayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
