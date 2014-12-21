@@ -1352,7 +1352,7 @@
 				5540E66D17387C9F004029EF /* Products */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
+			usesTabs = 1;
 		};
 		5540E66D17387C9F004029EF /* Products */ = {
 			isa = PBXGroup;
@@ -1760,7 +1760,6 @@
 			);
 			path = "SVGKit-iOS Tests";
 			sourceTree = "<group>";
-			usesTabs = 1;
 		};
 		55825B7319EC829800635497 /* Auxiliary files */ = {
 			isa = PBXGroup;

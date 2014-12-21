@@ -422,7 +422,7 @@
 				55D8EE2517628A71009C25F1 /* Products */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
+			usesTabs = 1;
 		};
 		55D8EE2517628A71009C25F1 /* Products */ = {
 			isa = PBXGroup;
@@ -679,7 +679,7 @@
 		554A1DAC193BCD4400AFD0D8 /* Lumberjack.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Lumberjack.framework;
+			path = CocoaLumberjack.framework;
 			remoteRef = 554A1DAB193BCD4400AFD0D8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
