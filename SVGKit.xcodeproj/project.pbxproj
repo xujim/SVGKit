@@ -742,6 +742,7 @@
 		55F2686219B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */; };
 		55F2686319B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */; };
 		55F3267A178156770064271D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F32679178156770064271D /* QuartzCore.framework */; };
+		D37B94421A47D502007C8EA6 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D37B94411A47D502007C8EA6 /* libCocoaLumberjack.a */; };
 		D3A763AE1A3EBF7C00D93E37 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A763AD1A3EBF7C00D93E37 /* libCocoaLumberjack.a */; };
 		D3E1A9061A3E226700813D88 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E1A8FD1A3E224600813D88 /* CocoaLumberjack.framework */; };
 /* End PBXBuildFile section */
@@ -1230,6 +1231,7 @@
 		55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinySVGTextAreaElement.m; sourceTree = "<group>"; };
 		55F32679178156770064271D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55F3267B178156EF0064271D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		D37B94411A47D502007C8EA6 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Source/Vendor/CocoaLumberjack/Framework/Mobile/build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		D3A763AD1A3EBF7C00D93E37 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Source/Vendor/CocoaLumberjack/Framework/Mobile/build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = Source/Vendor/CocoaLumberjack/Framework/Desktop/Lumberjack.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1239,6 +1241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37B94421A47D502007C8EA6 /* libCocoaLumberjack.a in Frameworks */,
 				55E4108019B682C7009A2E63 /* CoreImage.framework in Frameworks */,
 				55CCBF2619BA73C200957A39 /* libxml2.dylib in Frameworks */,
 				55E4107E19B682B3009A2E63 /* QuartzCore.framework in Frameworks */,
@@ -1336,6 +1339,7 @@
 		5540E66E17387C9F004029EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D37B94411A47D502007C8EA6 /* libCocoaLumberjack.a */,
 				D3A763AD1A3EBF7C00D93E37 /* libCocoaLumberjack.a */,
 				D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */,
 				55E4107F19B682C7009A2E63 /* CoreImage.framework */,
@@ -2695,6 +2699,10 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source/Vendor/CocoaLumberjack/Framework/Mobile/build/Debug-iphoneos",
+				);
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = SVGKit;
@@ -2732,6 +2740,10 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source/Vendor/CocoaLumberjack/Framework/Mobile/build/Debug-iphoneos",
+				);
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = SVGKit;
