@@ -16,14 +16,14 @@
 		551164C91970EF4300C8A63D /* SVGKLayeredImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B4D7A1173EC58700D2C676 /* SVGKLayeredImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551164CA1970EF4F00C8A63D /* SVGKImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73B17387F2B004029EF /* SVGKImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551164CB1970EF4F00C8A63D /* SVGKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73C17387F2B004029EF /* SVGKImage.m */; };
-		551164CC1970EF4F00C8A63D /* SVGKImage-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 55788778178892D30021D775 /* SVGKImage-private.h */; };
+		551164CC1970EF4F00C8A63D /* SVGKImage-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 55788778178892D30021D775 /* SVGKImage-private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		551164CD1970EF4F00C8A63D /* SVGKImage+CacheManagement.h in Headers */ = {isa = PBXBuildFile; fileRef = 558BE71B177B9D3F00DC9516 /* SVGKImage+CacheManagement.h */; };
 		551164CE1970EF4F00C8A63D /* SVGKImage+CacheManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BE719177B98FE00DC9516 /* SVGKImage+CacheManagement.m */; };
 		551164CF1970EF4F00C8A63D /* SVGKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73D17387F2B004029EF /* SVGKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551164D01970EF4F00C8A63D /* SVGKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5AD48175FEB94009F2FDD /* SVGKit.m */; };
 		551164D21970EF4F00C8A63D /* SVGKSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73E17387F2B004029EF /* SVGKSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551164D31970EF4F00C8A63D /* SVGKSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73F17387F2B004029EF /* SVGKSource.m */; };
-		551164D41970EF4F00C8A63D /* SVGKSource-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5574ADA917889CA000EA4281 /* SVGKSource-private.h */; };
+		551164D41970EF4F00C8A63D /* SVGKSource-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5574ADA917889CA000EA4281 /* SVGKSource-private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		551164D51970EF4F00C8A63D /* BlankSVG.h in Headers */ = {isa = PBXBuildFile; fileRef = 55801823176E4D7800F64989 /* BlankSVG.h */; };
 		551164D61970EF4F00C8A63D /* BlankSVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 55801824176E4D7800F64989 /* BlankSVG.m */; };
 		551164D71970EF7D00C8A63D /* SVGKPattern.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E74C17387F2B004029EF /* SVGKPattern.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,7 +89,7 @@
 		551165131970EFC100C8A63D /* SVGKProcessingInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6BF17387F2B004029EF /* SVGKProcessingInstruction.m */; };
 		551165141970EFC100C8A63D /* SVGKStyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C017387F2B004029EF /* SVGKStyleSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165151970EFC100C8A63D /* SVGKStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6C117387F2B004029EF /* SVGKStyleSheet.m */; };
-		551165161970EFC100C8A63D /* SVGKStyleSheetList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C217387F2B004029EF /* SVGKStyleSheetList+Mutable.h */; };
+		551165161970EFC100C8A63D /* SVGKStyleSheetList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C217387F2B004029EF /* SVGKStyleSheetList+Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		551165171970EFC100C8A63D /* SVGKStyleSheetList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C317387F2B004029EF /* SVGKStyleSheetList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165181970EFC100C8A63D /* SVGKStyleSheetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6C417387F2B004029EF /* SVGKStyleSheetList.m */; };
 		551165191970EFC100C8A63D /* SVGKText.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C517387F2B004029EF /* SVGKText.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -132,7 +132,7 @@
 		5511653E1970EFCB00C8A63D /* SVGTextContentElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6E617387F2B004029EF /* SVGTextContentElement.m */; };
 		5511653F1970EFCB00C8A63D /* SVGTextPositioningElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E717387F2B004029EF /* SVGTextPositioningElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165401970EFCB00C8A63D /* SVGTextPositioningElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6E817387F2B004029EF /* SVGTextPositioningElement.m */; };
-		551165411970EFCB00C8A63D /* SVGTextPositioningElement_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E917387F2B004029EF /* SVGTextPositioningElement_Mutable.h */; };
+		551165411970EFCB00C8A63D /* SVGTextPositioningElement_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E917387F2B004029EF /* SVGTextPositioningElement_Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		551165421970EFCB00C8A63D /* SVGTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6EA17387F2B004029EF /* SVGTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165431970EFCB00C8A63D /* SVGTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6EB17387F2B004029EF /* SVGTransform.m */; };
 		551165441970EFCB00C8A63D /* SVGTransformable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6EC17387F2B004029EF /* SVGTransformable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -742,6 +742,7 @@
 		55F2686219B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */; };
 		55F2686319B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */; };
 		55F3267A178156770064271D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F32679178156770064271D /* QuartzCore.framework */; };
+		D3A763AE1A3EBF7C00D93E37 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A763AD1A3EBF7C00D93E37 /* libCocoaLumberjack.a */; };
 		D3E1A9061A3E226700813D88 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E1A8FD1A3E224600813D88 /* CocoaLumberjack.framework */; };
 /* End PBXBuildFile section */
 
@@ -1229,6 +1230,7 @@
 		55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinySVGTextAreaElement.m; sourceTree = "<group>"; };
 		55F32679178156770064271D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55F3267B178156EF0064271D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		D3A763AD1A3EBF7C00D93E37 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Source/Vendor/CocoaLumberjack/Framework/Mobile/build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = Source/Vendor/CocoaLumberjack/Framework/Desktop/Lumberjack.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1262,6 +1264,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A763AE1A3EBF7C00D93E37 /* libCocoaLumberjack.a in Frameworks */,
 				55CCBF2519BA73B000957A39 /* UIKit.framework in Frameworks */,
 				5542C855193BC0190046BB14 /* CoreGraphics.framework in Frameworks */,
 				55CCBF2419BA739B00957A39 /* QuartzCore.framework in Frameworks */,
@@ -1333,6 +1336,7 @@
 		5540E66E17387C9F004029EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3A763AD1A3EBF7C00D93E37 /* libCocoaLumberjack.a */,
 				D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */,
 				55E4107F19B682C7009A2E63 /* CoreImage.framework */,
 				55E4107D19B682B2009A2E63 /* QuartzCore.framework */,
@@ -1912,19 +1916,19 @@
 				551164FE1970EFC100C8A63D /* SVGKDocumentStyle.h in Headers */,
 				5511654E1970EFD200C8A63D /* SVGDescriptionElement.h in Headers */,
 				5511656B1970EFD200C8A63D /* SVGSVGElement.h in Headers */,
-				551164CC1970EF4F00C8A63D /* SVGKImage-private.h in Headers */,
 				551164C91970EF4300C8A63D /* SVGKLayeredImageView.h in Headers */,
 				551164C81970EF4300C8A63D /* SVGKFastImageView.h in Headers */,
+				551164CC1970EF4F00C8A63D /* SVGKImage-private.h in Headers */,
+				551164D41970EF4F00C8A63D /* SVGKSource-private.h in Headers */,
 				551164D71970EF7D00C8A63D /* SVGKPattern.h in Headers */,
+				551165161970EFC100C8A63D /* SVGKStyleSheetList+Mutable.h in Headers */,
+				551165411970EFCB00C8A63D /* SVGTextPositioningElement_Mutable.h in Headers */,
 				551164CF1970EF4F00C8A63D /* SVGKit.h in Headers */,
 				551164C71970EF4300C8A63D /* SVGKImageView.h in Headers */,
 				551164CA1970EF4F00C8A63D /* SVGKImage.h in Headers */,
 				551164D91970EF7D00C8A63D /* SVGUtils.h in Headers */,
 				55B00FEA19B67D1B0058B2FD /* CALayerWithClipRender.h in Headers */,
 				551164CD1970EF4F00C8A63D /* SVGKImage+CacheManagement.h in Headers */,
-				551164D41970EF4F00C8A63D /* SVGKSource-private.h in Headers */,
-				551165161970EFC100C8A63D /* SVGKStyleSheetList+Mutable.h in Headers */,
-				551165411970EFCB00C8A63D /* SVGTextPositioningElement_Mutable.h in Headers */,
 				551164D21970EF4F00C8A63D /* SVGKSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2894,6 +2898,10 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				KEEP_PRIVATE_EXTERNS = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source/Vendor/CocoaLumberjack/Framework/Mobile/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME).${DYLIB_CURRENT_VERSION}";
 				SDKROOT = iphoneos;
@@ -2923,6 +2931,10 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				KEEP_PRIVATE_EXTERNS = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source/Vendor/CocoaLumberjack/Framework/Mobile/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME).${DYLIB_CURRENT_VERSION}";
 				SDKROOT = iphoneos;
