@@ -706,6 +706,7 @@
 		55C360AF1781E8DD00BA24FA /* SVGKFastImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B4D79D173EC58700D2C676 /* SVGKFastImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55C361A11782102900BA24FA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5540E66F17387C9F004029EF /* Cocoa.framework */; };
 		55C361A5178212F800BA24FA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C361A4178212F600BA24FA /* libxml2.dylib */; };
+		55C361AA178214A300BA24FA /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F3267B178156EF0064271D /* CoreFoundation.framework */; };
 		55C53D8C1940B9CC00649455 /* SVGKExporterNSData.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C53D861940B9CC00649455 /* SVGKExporterNSData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55C53D8D1940B9CC00649455 /* SVGKExporterNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D871940B9CC00649455 /* SVGKExporterNSData.m */; };
 		55C53D8E1940B9CC00649455 /* SVGKExporterNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C53D871940B9CC00649455 /* SVGKExporterNSData.m */; };
@@ -1322,7 +1323,7 @@
 				5540E66D17387C9F004029EF /* Products */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
+			usesTabs = 1;
 		};
 		5540E66D17387C9F004029EF /* Products */ = {
 			isa = PBXGroup;
@@ -1702,8 +1703,11 @@
 		5542C848193BBFC50046BB14 /* UIKit additions */ = {
 			isa = PBXGroup;
 			children = (
+				55B4D79F173EC58700D2C676 /* SVGKImageView.h */,
 				5542C84C193BBFC50046BB14 /* SVGKImageView.m */,
+				55B4D79D173EC58700D2C676 /* SVGKFastImageView.h */,
 				5542C84A193BBFC50046BB14 /* SVGKFastImageView.m */,
+				55B4D7A1173EC58700D2C676 /* SVGKLayeredImageView.h */,
 				5542C84E193BBFC50046BB14 /* SVGKLayeredImageView.m */,
 			);
 			name = "UIKit additions";
@@ -1719,7 +1723,6 @@
 			);
 			path = "SVGKit-iOS Tests";
 			sourceTree = "<group>";
-			usesTabs = 1;
 		};
 		55825B7319EC829800635497 /* Auxiliary files */ = {
 			isa = PBXGroup;
@@ -1754,11 +1757,8 @@
 		55B4D792173EC37900D2C676 /* AppKit additions */ = {
 			isa = PBXGroup;
 			children = (
-				55B4D79F173EC58700D2C676 /* SVGKImageView.h */,
 				55B4D7A0173EC58700D2C676 /* SVGKImageView.m */,
-				55B4D79D173EC58700D2C676 /* SVGKFastImageView.h */,
 				55B4D79E173EC58700D2C676 /* SVGKFastImageView.m */,
-				55B4D7A1173EC58700D2C676 /* SVGKLayeredImageView.h */,
 				55B4D7A2173EC58700D2C676 /* SVGKLayeredImageView.m */,
 				55435573177F4F5D007E1FAD /* SVGKImageRep.h */,
 				558100D31780A11C00B2BB87 /* SVGKImageRep-private.h */,
@@ -2670,6 +2670,14 @@
 			name = InfoPlist.strings;
 			path = "XCodeProjectData/SVGKit-OSX";
 			sourceTree = SOURCE_ROOT;
+		};
+		5568CD34177B69B700047B7A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5568CD35177B69B700047B7A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 

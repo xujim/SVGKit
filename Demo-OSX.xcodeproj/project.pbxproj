@@ -414,7 +414,7 @@
 				55D8EE2517628A71009C25F1 /* Products */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
+			usesTabs = 1;
 		};
 		55D8EE2517628A71009C25F1 /* Products */ = {
 			isa = PBXGroup;

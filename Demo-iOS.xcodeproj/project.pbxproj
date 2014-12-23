@@ -545,7 +545,7 @@
 				551165F51970F14200C8A63D /* Demo-iOS copy-Info.plist */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
+			usesTabs = 1;
 		};
 		661A0DCB161727CF008D5FBE /* Products */ = {
 			isa = PBXGroup;
