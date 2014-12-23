@@ -17,8 +17,6 @@
 
 #include <TargetConditionals.h>
 
-//#import "SVGKLog.h"
-
 #import "SVGKDOMHelperUtilities.h"
 #import "SVGCircleElement.h"
 #import "SVGClipPathElement.h"
