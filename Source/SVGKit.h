@@ -48,23 +48,23 @@
 #import "SVGKExporterUIImage.h"
 #endif
 
-//typedef NS_ENUM(int, SVGKLoggingLevel)
-//{
-//	SVGKLoggingMixed = -1,
-//	SVGKLoggingOff = 0,
-//	SVGKLoggingInfo,
-//	SVGKLoggingWarning,
-//	SVGKLoggingError,
-//	SVGKLoggingVerbose
-//};
+typedef NS_ENUM(int, SVGKLoggingLevel)
+{
+	SVGKLoggingMixed = -1,
+	SVGKLoggingOff = 0,
+	SVGKLoggingInfo,
+	SVGKLoggingWarning,
+	SVGKLoggingError,
+	SVGKLoggingVerbose
+};
 
 @interface SVGKit : NSObject
 
 + (void) enableLogging;
-//+ (void) setLogLevel:(SVGKLoggingLevel)newLevel;
-//+ (SVGKLoggingLevel) logLevel;
-//
-//+ (void) setRawLogLevel:(int)rawLevel;
-//+ (int) rawLogLevel;
++ (void) setLogLevel:(SVGKLoggingLevel)newLevel;
++ (SVGKLoggingLevel) logLevel;
+
++ (void) setRawLogLevel:(int)rawLevel;
++ (int) rawLogLevel;
 
 @end
