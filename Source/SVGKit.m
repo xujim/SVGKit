@@ -16,11 +16,11 @@ static const DDLogLevel defaultLogLevel = DDLogLevelWarn;
 #endif
 
 #if IS_ALSO_LUMBERJACK_LOG_LEVEL
-int ddLogLevel = defaultLogLevel;
+NSUInteger ddLogLevel = defaultLogLevel;
 #define ddLogLevelInternal ddLogLevel
 #else
 static DDLogLevel ddLogLevelInternal = defaultLogLevel;
-int SVGCurrentLogLevel()
+NSUInteger SVGCurrentLogLevel()
 {
 	return ddLogLevelInternal;
 }
@@ -66,7 +66,7 @@ static dispatch_once_t rawLogLevelToken;
 NSLog(@"[%@] WARN: Only set/get the raw log level if you know what you're doing!", self); \
 })
 
-+ (int) rawLogLevelWithWarning:(BOOL)warn
++ (NSUInteger) rawLogLevelWithWarning:(BOOL)warn
 {
 	if (warn) {
 		RawLevelWarn();
@@ -75,12 +75,12 @@ NSLog(@"[%@] WARN: Only set/get the raw log level if you know what you're doing!
 	return ddLogLevel;
 }
 
-+ (int) rawLogLevel
++ (NSUInteger) rawLogLevel
 {
 	return [self rawLogLevelWithWarning:YES];
 }
 
-+ (void) setRawLogLevel:(int)rawLevel withWarning:(BOOL)warn
++ (void) setRawLogLevel:(NSUInteger)rawLevel withWarning:(BOOL)warn
 {
 #define LOGFLAGCHECK(theFlag, mutStr, logVal) \
 if ((logVal & theFlag) == theFlag) { \
@@ -97,7 +97,7 @@ if (mutStr.length == 0) { \
 	}
 	
 	if ((rawLevel & ~((int)DDLogLevelVerbose)) != 0) {
-		int newLogLevel = rawLevel;
+		NSUInteger newLogLevel = rawLevel;
 		newLogLevel &= ((int)DDLogLevelVerbose);
 		NSMutableString *valString = [[NSMutableString alloc] init];
 		
@@ -109,10 +109,10 @@ if (mutStr.length == 0) { \
 			[valString setString:@"LOG_LEVEL_OFF"];
 		}
 		
-		LOG_MAYBE(YES, (ddLogLevelInternal | newLogLevel), DDLogFlagInfo, 0, nil, sel_getName(_cmd), @"[%@] WARN: The raw log level %i is invalid! The new raw log level is %i, or with the following flags: %@.", self, rawLevel, newLogLevel, valString);
+		LOG_MAYBE(YES, (ddLogLevelInternal | newLogLevel), DDLogFlagInfo, 0, nil, sel_getName(_cmd), @"[%@] WARN: The raw log level %lu is invalid! The new raw log level is %lu, or with the following flags: %@.", self, (unsigned long)rawLevel, (unsigned long)newLogLevel, valString);
 
 		ddLogLevelInternal = newLogLevel;
-	}else {
+	} else {
 		NSMutableString *valStr = [[NSMutableString alloc] init];
 		
 		LOGFLAGCHECK(DDLogLevelVerbose, valStr, rawLevel);
@@ -123,14 +123,14 @@ if (mutStr.length == 0) { \
 			[valStr setString:@"LOG_LEVEL_OFF"];
 		}
 		
-		LOG_MAYBE(YES, (ddLogLevelInternal | rawLevel), DDLogFlagVerbose, 0, nil, sel_getName(_cmd), @"[%@] DEBUG: Current raw debug level has been set at %i, or with the following flags: %@", [self class], rawLevel, valStr);
+		LOG_MAYBE(YES, (ddLogLevelInternal | rawLevel), DDLogFlagVerbose, 0, nil, sel_getName(_cmd), @"[%@] DEBUG: Current raw debug level has been set at %lu, or with the following flags: %@", [self class], (unsigned long)rawLevel, valStr);
 		
 		ddLogLevelInternal = rawLevel;
 	}
 #undef LOGFLAGCHECK
 }
 
-+ (void) setRawLogLevel:(int)rawLevel
++ (void) setRawLogLevel:(NSUInteger)rawLevel
 {
 	[self setRawLogLevel:rawLevel withWarning:YES];
 }
