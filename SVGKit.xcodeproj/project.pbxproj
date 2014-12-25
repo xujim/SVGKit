@@ -652,7 +652,6 @@
 		5563201819B670DD0097D2EF /* SVGKSourceNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5563201519B670DD0097D2EF /* SVGKSourceNSData.m */; };
 		5564276D1A4B98A1006A7269 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5564275C1A4B988B006A7269 /* CocoaLumberjack.framework */; };
 		5564276E1A4B98BB006A7269 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5564275C1A4B988B006A7269 /* CocoaLumberjack.framework */; };
-		5564276F1A4B98CB006A7269 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5564276A1A4B988B006A7269 /* libCocoaLumberjack.a */; };
 		556CACC919D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACCA19D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACF719D644FA00DAEFCA /* SVGClipPathElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685819B66C6500F6410E /* SVGClipPathElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1301,7 +1300,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5564276F1A4B98CB006A7269 /* libCocoaLumberjack.a in Frameworks */,
 				55CCBF2519BA73B000957A39 /* UIKit.framework in Frameworks */,
 				5542C855193BC0190046BB14 /* CoreGraphics.framework in Frameworks */,
 				55CCBF2419BA739B00957A39 /* QuartzCore.framework in Frameworks */,
