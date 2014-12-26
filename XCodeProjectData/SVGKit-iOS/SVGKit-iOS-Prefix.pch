@@ -15,5 +15,5 @@
 	#ifndef IS_ALSO_LUMBERJACK_LOG_LEVEL
 		#define IS_ALSO_LUMBERJACK_LOG_LEVEL 1
 	#endif
-	#import "SVGKit_logging.pch"
+	#import "SVGKit_logging.h"
 #endif
