@@ -12,7 +12,7 @@
 #ifdef DEBUG
 static const DDLogLevel defaultLogLevel = DDLogLevelVerbose;
 #else
-static const DDLogLevel defaultLogLevel = DDLogLevelWarn;
+static const DDLogLevel defaultLogLevel = DDLogLevelWarning;
 #endif
 
 #if IS_ALSO_LUMBERJACK_LOG_LEVEL
