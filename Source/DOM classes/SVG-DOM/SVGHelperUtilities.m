@@ -11,10 +11,6 @@
 
 #import "SVGKCGFloatAdditions.h"
 
-@interface SVGHelperUtilities ()
-+(CGColorRef) parseFillForElement:(SVGElement *)svgElement fromFill:(NSString *)actualFill andOpacity:(NSString *)actualFillOpacity CF_RETURNS_RETAINED;
-@end
-
 @implementation SVGHelperUtilities
 
 
@@ -376,11 +372,8 @@
 		NSString* actualStrokeOpacity = [svgElement cascadedValueForStylableProperty:@"stroke-opacity"];
 		if( actualStrokeOpacity.length > 0 )
 			strokeColorAsSVGColor.a = (uint8_t) ([actualStrokeOpacity SVGKCGFloatValue] * 0xFF);
-        {
-            CGColorRef tmpColor = CreateCGColorWithSVGColor( strokeColorAsSVGColor );
-            _shapeLayer.strokeColor = tmpColor;
-            CGColorRelease(tmpColor);
-        }
+		
+		_shapeLayer.strokeColor = CGColorWithSVGColor( strokeColorAsSVGColor );
 		
         /**
          Stroke dash array
@@ -479,9 +472,7 @@
 	}
 	else if( actualFill.length > 0 || actualFillOpacity.length > 0 )
 	{
-        CGColorRef tmpColor = [self parseFillForElement:svgElement fromFill:actualFill andOpacity:actualFillOpacity];
-        _shapeLayer.fillColor = tmpColor;
-        CGColorRelease(tmpColor);
+		_shapeLayer.fillColor = [self parseFillForElement:svgElement fromFill:actualFill andOpacity:actualFillOpacity];
 	}
     
 	NSString* actualOpacity = [svgElement cascadedValueForStylableProperty:@"opacity"];
@@ -515,14 +506,14 @@
         if( actualFillOpacity.length > 0 )
             fillColorAsSVGColor.a = (uint8_t) ([actualFillOpacity floatValue] * 0xFF);
 		
-        fillColor = CreateCGColorWithSVGColor(fillColorAsSVGColor);
+        fillColor = CGColorWithSVGColor(fillColorAsSVGColor);
 	}
 	else
 	{
 #if TARGET_OS_IPHONE
-		fillColor = CGColorRetain([UIColor blackColor].CGColor);
+		fillColor = [UIColor blackColor].CGColor;
 #else
-		fillColor = CGColorRetain(CGColorGetConstantColor(kCGColorBlack));
+		fillColor = CGColorGetConstantColor(kCGColorBlack);
 #endif
 	}
 

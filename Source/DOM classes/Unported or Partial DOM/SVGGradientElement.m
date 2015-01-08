@@ -157,9 +157,8 @@
             [locationBuilder addObject:@(theStop.offset)];
 			// theColor = CGColorWithSVGColor([theStop stopColor]);
             // alphaColor = CGColorCreateCopyWithAlpha(theColor, [theStop stopOpacity]);
-            CGColorRef tmpColor = CreateCGColorWithSVGColor([theStop stopColor]);
+            CGColorRef tmpColor = CGColorWithSVGColor([theStop stopColor]);
             CFArrayAppendValue(colorBuilder, tmpColor);
-            CGColorRelease(tmpColor);
             // CGColorRelease(alphaColor);
         }
         

@@ -235,11 +235,7 @@
 	label.fontSize = effectiveFontSize;
 	label.string = effectiveText;
 	label.alignmentMode = alignmentMode;
-    {
-        CGColorRef tmpColor = CreateCGColorWithSVGColor(col);
-        label.foregroundColor = tmpColor;
-        CGColorRelease(tmpColor);
-    }
+	label.foregroundColor = [SVGHelperUtilities parseFillForElement:self];
 	
 	/** VERY USEFUL when trying to debug text issues:
 	label.backgroundColor = [UIColor colorWithRed:0.5 green:0 blue:0 alpha:0.5].CGColor;

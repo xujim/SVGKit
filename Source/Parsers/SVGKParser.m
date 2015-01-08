@@ -861,7 +861,7 @@ static NSMutableDictionary *NSDictionaryFromLibxmlAttributes (const xmlChar **at
 		
 		NSString* value = [[NSString alloc] initWithBytes:begin length:len encoding:NSUTF8StringEncoding];
 		
-		NSString* localName = NSStringFromLibxmlString(attrs[i]);
+		NSString* localName = NSStringFromLibxmlString(attrs[i]) ?: @"";
 		NSString* prefix = NSStringFromLibxmlString(attrs[i+1]);
 		NSString* uri = NSStringFromLibxmlString(attrs[i+2]);
 		
