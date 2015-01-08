@@ -1210,7 +1210,6 @@
 		557E69D2174014E4006B0029 /* SVGKCGFloatAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKCGFloatAdditions.m; sourceTree = "<group>"; };
 		55801823176E4D7800F64989 /* BlankSVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlankSVG.h; path = Source/BlankSVG.h; sourceTree = SOURCE_ROOT; };
 		55801824176E4D7800F64989 /* BlankSVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlankSVG.m; path = Source/BlankSVG.m; sourceTree = SOURCE_ROOT; };
-		5580EBDA1744B702005BE5AC /* SVGKit.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; name = SVGKit.exp; path = "XCodeProjectData/SVGKit-OSX/SVGKit.exp"; sourceTree = SOURCE_ROOT; };
 		558100D31780A11C00B2BB87 /* SVGKImageRep-private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVGKImageRep-private.h"; sourceTree = "<group>"; };
 		55825B4119EC80C400635497 /* SVGKit-iOS Framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SVGKit-iOS Framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55825B5119EC80D400635497 /* SVGKit-OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SVGKit-OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1416,7 +1415,6 @@
 				55C360CD178203C500BA24FA /* SVGKit_logging.h */,
 				5542C874193BC60C0046BB14 /* SVGKit-iOS-Prefix.pch */,
 				5540E67B17387C9F004029EF /* SVGKit-OSX-Prefix.pch */,
-				5580EBDA1744B702005BE5AC /* SVGKit.exp */,
 				55EB3EC51970D9DC00D03713 /* SVGKit.modulemap */,
 			);
 			name = "Supporting Files";
@@ -2956,7 +2954,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				EXPORTED_SYMBOLS_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.exp";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Source/Vendor/CocoaLumberjack/Framework/Desktop/build/Release",
