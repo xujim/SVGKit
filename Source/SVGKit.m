@@ -15,16 +15,11 @@ static const DDLogLevel defaultLogLevel = DDLogLevelVerbose;
 static const DDLogLevel defaultLogLevel = DDLogLevelWarning;
 #endif
 
-#if IS_ALSO_LUMBERJACK_LOG_LEVEL
-NSUInteger ddLogLevel = defaultLogLevel;
-#define ddLogLevelInternal ddLogLevel
-#else
 static DDLogLevel ddLogLevelInternal = defaultLogLevel;
 NSUInteger SVGCurrentLogLevel()
 {
 	return ddLogLevelInternal;
 }
-#endif
 
 #undef DEFAULT_LOG_LEVEL
 
@@ -157,7 +152,7 @@ break
 			static dispatch_once_t rawOnceInfoToken;
 			dispatch_once(&rawOnceInfoToken, ^{
 				NSLog(@"[%@] INFO: If you want a different value than what is available via SVGKLoggingLevel, look into setRawLogLevel.", self);
-				NSLog(@"[%@] INFO: The raw log level values are based on the Lumberjack log levels. Look at their documentation for more info.", self);
+				NSLog(@"[%@] INFO: The raw log level values are based on the CocoaLumberjack log levels. Look at their documentation for more info.", self);
 			});
 #undef ARG
 		}

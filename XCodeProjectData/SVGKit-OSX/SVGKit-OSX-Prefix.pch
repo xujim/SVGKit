@@ -16,7 +16,6 @@
 	#define NSStringFromCGRect(theRect) NSStringFromRect(theRect)
 	#define NSStringFromCGSize(theSize) NSStringFromSize(theSize)
 
-	#define IS_ALSO_LUMBERJACK_LOG_LEVEL 0
 	#import "SVGKit_logging.h"
 #endif
 
