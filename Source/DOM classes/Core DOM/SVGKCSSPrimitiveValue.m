@@ -5,8 +5,8 @@
 #import "SVGKDOMGlobalSettings.h"
 #import "SVGKCGFloatAdditions.h"
 
-#define INCHES_PER_CENTIMETRE ( 0.393700787 )
-#define INCHES_PER_MILLIMETER ( 0.0393700787 )
+#define INCHES_PER_CENTIMETRE ( (CGFloat)(0.393700787) )
+#define INCHES_PER_MILLIMETER ( (CGFloat)(0.0393700787) )
 
 @interface SVGKCSSPrimitiveValue()
 
