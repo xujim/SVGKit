@@ -17,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
 		// Insert code here to initialize your application
         SVGKit.enableLogging()
+		
+		//Don't attempt to use SVGKImageRep: just unload it.
         SVGKImageRep.unloadSVGKImageRep()
 	}
 

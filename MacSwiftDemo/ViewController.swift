@@ -11,11 +11,12 @@ import SVGKit.SVGKit
 
 class ViewController: NSViewController {
 
-    @IBOutlet var layeredImage: SVGKLayeredImageView?
+    @IBOutlet weak var layeredImage: SVGKLayeredImageView?
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
+		layeredImage?.image = SVGKImage(named: "Coins")
 	}
 
 	override var representedObject: AnyObject? {
