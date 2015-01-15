@@ -702,7 +702,9 @@ static void	endElementSAX (void *ctx, const xmlChar *localname, const xmlChar *p
 }
 
 - (void)handleFoundCharacters:(const xmlChar *)chars length:(int)len {
-	[_storedChars appendString:[[NSString alloc] initWithBytes:chars length:len encoding:NSUTF8StringEncoding]];
+	NSString *foundChar = [[NSString alloc] initWithBytes:chars length:len encoding:NSUTF8StringEncoding];
+	
+	[_storedChars appendString:foundChar];
 }
 
 static void cDataFoundSAX(void *ctx, const xmlChar *value, int len)

@@ -52,11 +52,6 @@
 @class SVGSVGElement;
 @class SVGKSource;
 @class SVGKParseResult;
-
-#import "SVGKParser.h"
-#import "SVGKSource.h"
-#import "SVGKParseResult.h"
-
 @class SVGDefsElement;
 
 @class SVGKImage; // needed for typedef below
@@ -100,8 +95,8 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  - If that's missing, it finds the same file in the App's Bundle (i.e. the files stored at compile-time by Xcode, and shipped as the app)
  - Creates an SVGKSource so that you can later inspect exactly where it found the file
  */
-+ (SVGKImage *)imageNamed:(NSString *)name;      // load from main bundle
-+ (SVGKImage *)imageNamed:(NSString*)name fromBundle:(NSBundle*)bundle;
++ (instancetype)imageNamed:(NSString *)name;      // load from main bundle
++ (instancetype)imageNamed:(NSString*)name fromBundle:(NSBundle*)bundle;
 /**
  Almost identical to imageNamed: except that it performs the parse in a separate thread.
  
@@ -110,9 +105,9 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  UNLESS the image was already loaded, and a cached version can be returned - in which case,
  returns nil and immmediately calls the completion block
  */
-+(SVGKParser *) imageAsynchronouslyNamed:(NSString *)name onCompletion:(SVGKImageAsynchronousLoadingDelegate) blockCompleted;
-+ (SVGKImage *)imageWithContentsOfFile:(NSString *)path;
-+ (SVGKImage *)imageWithData:(NSData *)data;
++ (SVGKParser *) imageAsynchronouslyNamed:(NSString *)name onCompletion:(SVGKImageAsynchronousLoadingDelegate) blockCompleted;
++ (instancetype)imageWithContentsOfFile:(NSString *)path;
++ (instancetype)imageWithData:(NSData *)data;
 
 /**
  PREFERABLY: this is our only method, apart from the convenience "imageNamed"
@@ -123,8 +118,8 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  This is because SVG's cannot parse correctly without the metadata about where
  the file came from: e.g. they cannot process relative links, cross-references, etc.
  */
-+ (SVGKImage*) imageWithSource:(SVGKSource *)newSource; // if you have custom source's you want to use
-+ (SVGKImage*) defaultImage; //For a simple default image
++ (instancetype) imageWithSource:(SVGKSource *)newSource; // if you have custom source's you want to use
++ (instancetype) defaultImage; //For a simple default image
 
 - (instancetype)initWithContentsOfURL:(NSURL *)url;
 - (instancetype)initWithContentsOfFile:(NSString *)path;
@@ -219,7 +214,7 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  */
 #pragma mark ---------end of unsupported items
 
-+ (SVGKImage*)imageWithContentsOfURL:(NSURL *)url;
++ (instancetype)imageWithContentsOfURL:(NSURL *)url;
 
 #pragma mark - core methods for interacting with an SVG image usefully (not from UIImage)
 
