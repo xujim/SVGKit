@@ -5,7 +5,8 @@
 #import "SVGKDOMGlobalSettings.h"
 #import "SVGKCGFloatAdditions.h"
 
-#define INCHES_PER_CENTIMETRE ( 0.393700787)
+#define INCHES_PER_CENTIMETRE ( 0.393700787 )
+#define INCHES_PER_MILLIMETER ( 0.0393700787 )
 
 @interface SVGKCSSPrimitiveValue()
 
@@ -73,7 +74,7 @@
 				}break;
 				case CSS_MM:
 				{
-					valueAsInches = self.internalValue * INCHES_PER_CENTIMETRE * 10.0;
+					valueAsInches = self.internalValue * INCHES_PER_MILLIMETER;
 				}break;
 				case CSS_PT:
 				{
@@ -98,7 +99,7 @@
 				}break;
 				case CSS_MM:
 				{
-					return valueAsInches / INCHES_PER_CENTIMETRE * 10.0;
+					return valueAsInches / INCHES_PER_MILLIMETER;
 				}break;
 				case CSS_PT:
 				{
