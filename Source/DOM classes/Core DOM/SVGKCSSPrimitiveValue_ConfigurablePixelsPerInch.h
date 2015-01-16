@@ -2,6 +2,6 @@
 
 @interface SVGKCSSPrimitiveValue ()
 
-@property(nonatomic) float pixelsPerInch;
+@property(nonatomic) CGFloat pixelsPerInch;
 
 @end

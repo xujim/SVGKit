@@ -107,7 +107,7 @@
 -(BOOL) checkEnclosure:(SVGElement*) element rect:(SVGRect) rect;
 -(void) deselectAll;
 -(SVGNumber) createSVGNumber;
--(SVGLength*) createSVGLength __attribute__((ns_returns_retained));
+-(SVGLength*) createSVGLength NS_RETURNS_RETAINED;
 -(SVGAngle*) createSVGAngle;
 -(SVGPoint*) createSVGPoint;
 -(SVGMatrix*) createSVGMatrix;

@@ -72,14 +72,14 @@
 @property(nonatomic,strong,readonly) SVGKElement*          documentElement;
 
 
--(SVGKElement*) createElement:(NSString*) tagName __attribute__((ns_returns_retained));
--(SVGKDocumentFragment*) createDocumentFragment __attribute__((ns_returns_retained));
--(SVGKText*) createTextNode:(NSString*) data __attribute__((ns_returns_retained));
--(SVGKComment*) createComment:(NSString*) data __attribute__((ns_returns_retained));
--(SVGKCDATASection*) createCDATASection:(NSString*) data __attribute__((ns_returns_retained));
--(SVGKProcessingInstruction*) createProcessingInstruction:(NSString*) target data:(NSString*) data __attribute__((ns_returns_retained));
--(SVGKAttr*) createAttribute:(NSString*) data __attribute__((ns_returns_retained));
--(SVGKEntityReference*) createEntityReference:(NSString*) data __attribute__((ns_returns_retained));
+-(SVGKElement*) createElement:(NSString*) tagName NS_RETURNS_RETAINED;
+-(SVGKDocumentFragment*) createDocumentFragment NS_RETURNS_RETAINED;
+-(SVGKText*) createTextNode:(NSString*) data NS_RETURNS_RETAINED;
+-(SVGKComment*) createComment:(NSString*) data NS_RETURNS_RETAINED;
+-(SVGKCDATASection*) createCDATASection:(NSString*) data NS_RETURNS_RETAINED;
+-(SVGKProcessingInstruction*) createProcessingInstruction:(NSString*) target data:(NSString*) data NS_RETURNS_RETAINED;
+-(SVGKAttr*) createAttribute:(NSString*) data NS_RETURNS_RETAINED;
+-(SVGKEntityReference*) createEntityReference:(NSString*) data NS_RETURNS_RETAINED;
 
 -(SVGKNodeList*) getElementsByTagName:(NSString*) data;
 
@@ -87,7 +87,7 @@
 -(SVGKNode*) importNode:(SVGKNode*) importedNode deep:(BOOL) deep;
 
 // Introduced in DOM Level 2:
--(SVGKElement*) createElementNS:(NSString*) namespaceURI qualifiedName:(NSString*) qualifiedName __attribute__((ns_returns_retained));
+-(SVGKElement*) createElementNS:(NSString*) namespaceURI qualifiedName:(NSString*) qualifiedName NS_RETURNS_RETAINED;
 
 // Introduced in DOM Level 2:
 -(SVGKAttr*) createAttributeNS:(NSString*) namespaceURI qualifiedName:(NSString*) qualifiedName;
