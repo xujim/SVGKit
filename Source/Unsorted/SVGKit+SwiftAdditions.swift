@@ -45,10 +45,6 @@ extension SVGKStyleSheetList: SequenceType {
 	}
 }
 
-public func ==(lhs: SVGCurve, rhs: SVGCurve) -> Bool {
-	return SVGCurveEqualToCurve(lhs, rhs)
-}
-
 extension SVGCurve: Equatable {
 	public init() {
 		c1 = CGPoint.zeroPoint
@@ -70,6 +66,7 @@ extension SVGCurve: Equatable {
 }
 
 extension SVGRect {
+	/// Returns an initialized SVGRect
 	public init() {
 		self = SVGRectUninitialized()
 	}
@@ -79,7 +76,7 @@ extension SVGRect {
 	}
 }
 
-extension SVGColor {
+extension SVGColor: Equatable {
 	public init(string: String) {
 		self = SVGColorFromString(string)
 	}
@@ -94,3 +91,21 @@ extension SVGKImageRep {
 	
 }
 #endif
+
+public func ==(lhs: SVGColor, rhs: SVGColor) -> Bool {
+	if lhs.r != rhs.r {
+		return false
+	} else if lhs.g != rhs.g {
+		return false
+	} else if lhs.b != rhs.b {
+		return false
+	} else if lhs.a != rhs.a {
+		return false
+	} else {
+		return true
+	}
+}
+
+public func ==(lhs: SVGCurve, rhs: SVGCurve) -> Bool {
+	return SVGCurveEqualToCurve(lhs, rhs)
+}

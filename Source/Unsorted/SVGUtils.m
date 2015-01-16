@@ -447,12 +447,17 @@ CGColorRef CGColorWithSVGColor (SVGColor color) {
 							   alpha:RGB_N(color.a)].CGColor;
 #else
 	if ([NSColor instancesRespondToSelector:@selector(CGColor)]) {
-		outColor = [NSColor colorWithCalibratedRed:RGB_N(color.r) green:RGB_N(color.g)
-											  blue:RGB_N(color.b) alpha:RGB_N(color.a)].CGColor;
+		outColor = [NSColor colorWithCalibratedRed:RGB_N(color.r)
+											 green:RGB_N(color.g)
+											  blue:RGB_N(color.b)
+											 alpha:RGB_N(color.a)].CGColor;
 	}
     
     if (outColor == NULL) {
-		outColor = (CGColorRef)CFAutorelease(CGColorCreateGenericRGB(RGB_N(color.r), RGB_N(color.g), RGB_N(color.b), RGB_N(color.a)));
+		outColor = (CGColorRef)CFAutorelease(CGColorCreateGenericRGB(RGB_N(color.r),
+																	 RGB_N(color.g),
+																	 RGB_N(color.b),
+																	 RGB_N(color.a)));
 	}
 #endif
 	
