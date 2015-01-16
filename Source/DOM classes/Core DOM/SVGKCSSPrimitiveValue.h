@@ -51,7 +51,7 @@
  */
 #import "SVGKCSSValue.h"
 
-typedef NS_ENUM(int, CSSPrimitiveType)
+typedef NS_ENUM(unsigned short, CSSPrimitiveType)
 {
 	CSS_UNKNOWN                    = 0,
 	CSS_NUMBER                     = 1,

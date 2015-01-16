@@ -27,7 +27,7 @@
  */
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(int, SVG_LENGTH_TYPE)
+typedef NS_ENUM(unsigned short, SVG_LENGTH_TYPE)
 {
 	SVG_LENGTHTYPE_UNKNOWN = 0,
 	SVG_LENGTHTYPE_NUMBER = 1,

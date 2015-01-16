@@ -29,7 +29,7 @@
 @interface SVGTransform : NSObject
 
 /*! Transform Types */
-typedef NS_ENUM(int, SVGKTransformType)
+typedef NS_ENUM(unsigned short, SVGKTransformType)
 {
 	SVG_TRANSFORM_UNKNOWN = 0,
 	SVG_TRANSFORM_MATRIX = 1,

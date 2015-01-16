@@ -23,7 +23,7 @@
 
 @class SVGKCSSStyleSheet;
 
-typedef NS_ENUM(int, CSSRuleType)
+typedef NS_ENUM(unsigned short, CSSRuleType)
 {
 	UNKNOWN_RULE                   = 0,
 	STYLE_RULE                     = 1,
@@ -36,7 +36,7 @@ typedef NS_ENUM(int, CSSRuleType)
 
 @interface SVGKCSSRule : NSObject
 
-@property(nonatomic) unsigned short type;
+@property(nonatomic) CSSRuleType type;
 @property(nonatomic,strong) NSString* cssText;
 
 @property(nonatomic,strong) SVGKCSSStyleSheet* parentStyleSheet;

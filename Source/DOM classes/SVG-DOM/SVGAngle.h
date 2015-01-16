@@ -23,7 +23,7 @@
 @interface SVGAngle : NSObject
 
 /*! Angle Unit Types */
-typedef NS_ENUM(int, SVGKAngleType)
+typedef NS_ENUM(unsigned short, SVGKAngleType)
 {
 	SVG_ANGLETYPE_UNKNOWN = 0,
 	SVG_ANGLETYPE_UNSPECIFIED = 1,

@@ -15,7 +15,6 @@
 #import "SVGElement.h"
 #import "SVGElementInstanceList.h"
 @class SVGUseElement;
-#import "SVGUseElement.h"
 
 
 @interface SVGElementInstance : NSObject

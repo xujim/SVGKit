@@ -9,7 +9,7 @@
 #ifndef SVGKit_iOS_SVGUnitTypes_h
 #define SVGKit_iOS_SVGUnitTypes_h
 
-typedef NS_ENUM(int, SVG_UNIT_TYPE)
+typedef NS_ENUM(unsigned short, SVG_UNIT_TYPE)
 {
     // Unit Types
     SVG_UNIT_TYPE_UNKNOWN = 0,

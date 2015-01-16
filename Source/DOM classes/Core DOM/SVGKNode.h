@@ -80,7 +80,7 @@
 @class SVGKNodeList;
 @class SVGKNamedNodeMap;
 
-typedef NS_ENUM(int, DOMNodeType)
+typedef NS_ENUM(unsigned short, DOMNodeType)
 {
 	DOMNodeType_ELEMENT_NODE                   = 1,
 	DOMNodeType_ATTRIBUTE_NODE                 = 2,

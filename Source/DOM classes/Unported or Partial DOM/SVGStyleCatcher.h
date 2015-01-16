@@ -18,6 +18,8 @@
 -(void)styleCatchLayer:(CALayer *)styledLayer forClass:(NSString *)colorIndex;
 #if TARGET_OS_IPHONE
 -(UIColor *)styleCatchOverrideFill:(NSString *)fillClassName;
+#else
+-(NSColor *)styleCatchOverrideFill:(NSString *)fillClassName;
 #endif
 @end
 

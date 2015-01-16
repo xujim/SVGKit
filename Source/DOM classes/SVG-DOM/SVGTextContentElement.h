@@ -29,7 +29,7 @@
 #import "SVGStylable.h"
 #import "SVGLength.h"
 
-typedef NS_ENUM(int, SVGLengthAdjust)
+typedef NS_ENUM(unsigned short, SVGLengthAdjust)
 {
 	// lengthAdjust Types
 	SVGLengthAdjustUnknown = 0,

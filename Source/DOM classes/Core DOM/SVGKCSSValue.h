@@ -16,7 +16,7 @@
  */
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(int, CSSUnitType)
+typedef NS_ENUM(unsigned short, CSSUnitType)
 {
 	CSS_INHERIT                    = 0,
 	CSS_PRIMITIVE_VALUE            = 1,
