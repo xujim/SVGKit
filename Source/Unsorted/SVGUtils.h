@@ -22,6 +22,8 @@ typedef struct {
 	uint8_t a;
 } SVGColor;
 
+__BEGIN_DECLS
+
 SVGColor SVGColorMake (uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 SVGColor SVGColorFromString (const char *string);
 
@@ -35,3 +37,4 @@ CGColorRef CGColorWithSVGColor (SVGColor color);
 
 CF_IMPLICIT_BRIDGING_DISABLED
 
+__END_DECLS

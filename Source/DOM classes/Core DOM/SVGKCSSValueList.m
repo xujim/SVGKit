@@ -43,3 +43,17 @@
 }
 
 @end
+
+@implementation SVGKCSSValueList (CocoaAdditions)
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id [])buffer count:(NSUInteger)len
+{
+	return [self.internalArray countByEnumeratingWithState:state objects:buffer count:len];
+}
+
+- (SVGKCSSValue*)objectAtIndexedSubscript:(NSInteger)idx
+{
+	return (self.internalArray)[idx];
+}
+
+@end

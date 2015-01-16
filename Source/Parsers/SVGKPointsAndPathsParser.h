@@ -42,10 +42,14 @@ typedef struct SVGCurve
     CGPoint p;
 } SVGCurve;
 
+__BEGIN_DECLS
+
 SVGCurve SVGCurveMake(CGFloat cx1, CGFloat cy1, CGFloat cx2, CGFloat cy2, CGFloat px, CGFloat py);
 BOOL SVGCurveEqualToCurve(SVGCurve curve1, SVGCurve curve2);
 
 #define SVGCurveZero SVGCurveMake(0.,0.,0.,0.,0.,0.)
+
+__END_DECLS
 
 @interface SVGKPointsAndPathsParser : NSObject
 

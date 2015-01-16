@@ -30,3 +30,17 @@
 }
 
 @end
+
+@implementation SVGKCSSRuleList (CocoaAdditions)
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id [])buffer count:(NSUInteger)len
+{
+	return [self.internalArray countByEnumeratingWithState:state objects:buffer count:len];
+}
+
+- (SVGKCSSRule*)objectAtIndexedSubscript:(NSInteger)idx
+{
+	return (self.internalArray)[idx];
+}
+
+@end

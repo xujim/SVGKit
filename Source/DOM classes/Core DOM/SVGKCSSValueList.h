@@ -15,3 +15,7 @@
 -(SVGKCSSValue*) item:(NSUInteger) index;
 
 @end
+
+@interface SVGKCSSValueList (CocoaAdditions) <NSFastEnumeration>
+- (SVGKCSSValue*)objectAtIndexedSubscript:(NSInteger)idx;
+@end

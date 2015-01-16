@@ -25,3 +25,17 @@
 }
 
 @end
+
+@implementation SVGKStyleSheetList (CocoaAdditions)
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id [])buffer count:(NSUInteger)len
+{
+	return [self.internalArray countByEnumeratingWithState:state objects:buffer count:len];
+}
+
+- (SVGKStyleSheet*)objectAtIndexedSubscript:(NSInteger)idx
+{
+	return (self.internalArray)[idx];
+}
+
+@end

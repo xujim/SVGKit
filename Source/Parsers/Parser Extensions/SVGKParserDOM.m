@@ -1,5 +1,6 @@
 #import "SVGKParserDOM.h"
 #import "SVGKNode+Mutable.h"
+#import "SVGKElement.h"
 
 @implementation SVGKParserDOM
 

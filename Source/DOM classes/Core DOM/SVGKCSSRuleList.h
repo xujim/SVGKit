@@ -16,3 +16,7 @@
 -(SVGKCSSRule*) item:(unsigned long) index;
 
 @end
+
+@interface SVGKCSSRuleList (CocoaAdditions) <NSFastEnumeration>
+- (SVGKCSSRule*)objectAtIndexedSubscript:(NSInteger)idx;
+@end

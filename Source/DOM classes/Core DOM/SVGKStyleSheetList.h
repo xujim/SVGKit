@@ -17,3 +17,7 @@
 -(SVGKStyleSheet*) item:(NSUInteger) index;
 
 @end
+
+@interface SVGKStyleSheetList (CocoaAdditions) <NSFastEnumeration>
+- (SVGKStyleSheet*)objectAtIndexedSubscript:(NSInteger)idx;
+@end
