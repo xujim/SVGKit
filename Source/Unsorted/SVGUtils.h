@@ -32,7 +32,7 @@ CGFloat SVGPercentageFromString (const char *string);
 
 CF_IMPLICIT_BRIDGING_ENABLED
 
-CGMutablePathRef CreatePathFromPointsInString (const char *string, boolean_t close);
+CGMutablePathRef CreatePathFromPointsInString (const char *string, bool close);
 CGColorRef CGColorWithSVGColor (SVGColor color);
 
 CF_IMPLICIT_BRIDGING_DISABLED
