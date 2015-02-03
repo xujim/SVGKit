@@ -75,10 +75,12 @@ extension SVGRect: Equatable {
 		return SVGRectIsInitialized(self)
 	}
 	
+	/// Convenience variable to convert to ObjectiveC's kind of rect
 	public var cgRect: CGRect {
 		return CGRectFromSVGRect(self)
 	}
 	
+	/// Convenience variable to convert to ObjectiveC's kind of size - <b>Only</b> the width and height of this rect.
 	public var cgSize: CGSize {
 		return CGSizeFromSVGRect(self)
 	}
