@@ -65,8 +65,8 @@ extension SVGCurve: Equatable {
 	}
 }
 
-extension SVGRect {
-	/// Returns an initialized SVGRect
+extension SVGRect: Equatable {
+	/// Returns an uninitialized SVGRect
 	public init() {
 		self = SVGRectUninitialized()
 	}
@@ -74,11 +74,23 @@ extension SVGRect {
 	public var initialized: Bool {
 		return SVGRectIsInitialized(self)
 	}
+	
+	public var cgRect: CGRect {
+		return CGRectFromSVGRect(self)
+	}
+	
+	public var cgSize: CGSize {
+		return CGSizeFromSVGRect(self)
+	}
 }
 
 extension SVGColor: Equatable {
 	public init(string: String) {
 		self = SVGColorFromString(string)
+	}
+	
+	public init() {
+		r = 0; g = 0; b = 0; a = 0;
 	}
 	
 	public var cgColor: CGColor {
@@ -91,6 +103,20 @@ extension SVGKImageRep {
 	
 }
 #endif
+
+public func ==(lhs: SVGRect, rhs: SVGRect) -> Bool {
+	if lhs.x != rhs.x {
+		return false
+	} else if lhs.y != rhs.y {
+		return false
+	} else if lhs.height != rhs.height {
+		return false
+	} else if lhs.width != rhs.width {
+		return false
+	} else {
+		return true
+	}
+}
 
 public func ==(lhs: SVGColor, rhs: SVGColor) -> Bool {
 	if lhs.r != rhs.r {
