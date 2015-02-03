@@ -16,8 +16,8 @@
 #import "SVGKNode.h"
 
 @interface SVGKProcessingInstruction : SVGKNode
-@property(nonatomic,strong,readonly) NSString* target;
-@property(nonatomic,strong,readonly) NSString* data;
+@property(nonatomic,copy,readonly) NSString* target;
+@property(nonatomic,copy,readonly) NSString* data;
 
 -(instancetype) initProcessingInstruction:(NSString*) target value:(NSString*) data;
 

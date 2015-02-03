@@ -22,18 +22,18 @@
 
 @interface SVGKDocumentType : SVGKNode
 
-@property(nonatomic,strong,readonly) NSString* name;
+@property(nonatomic,copy,readonly) NSString* name;
 @property(nonatomic,strong,readonly) SVGKNamedNodeMap* entities;
 @property(nonatomic,strong,readonly) SVGKNamedNodeMap* notations;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readonly) NSString* publicId;
+@property(nonatomic,copy,readonly) NSString* publicId;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readonly) NSString* systemId;
+@property(nonatomic,copy,readonly) NSString* systemId;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readonly) NSString* internalSubset;
+@property(nonatomic,copy,readonly) NSString* internalSubset;
 
 
 @end

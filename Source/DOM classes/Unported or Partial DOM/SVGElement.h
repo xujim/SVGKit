@@ -18,8 +18,8 @@
 
 @interface SVGElement : SVGKElement <SVGStylable>
 
-@property (nonatomic, readwrite, strong) NSString *identifier; // 'id' is reserved in Obj-C, so we have to break SVG Spec here, slightly
-@property (nonatomic, strong) NSString* xmlbase;
+@property (nonatomic, readwrite, copy) NSString *identifier; // 'id' is reserved in Obj-C, so we have to break SVG Spec here, slightly
+@property (nonatomic, copy) NSString* xmlbase;
 /*!
  
  http://www.w3.org/TR/SVG/intro.html#TermSVGDocumentFragment

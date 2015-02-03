@@ -5,9 +5,9 @@
 #import "SVGDocument.h"
 
 @interface SVGDocument ()
-@property (nonatomic, strong, readwrite) NSString* title;
-@property (nonatomic, strong, readwrite) NSString* referrer;
-@property (nonatomic, strong, readwrite) NSString* domain;
-@property (nonatomic, strong, readwrite) NSString* URL;
+@property (nonatomic, copy, readwrite) NSString* title;
+@property (nonatomic, copy, readwrite) NSString* referrer;
+@property (nonatomic, copy, readwrite) NSString* domain;
+@property (nonatomic, copy, readwrite) NSString* URL;
 @property (nonatomic, strong, readwrite) SVGSVGElement* rootElement;
 @end

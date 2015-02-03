@@ -21,9 +21,9 @@
 @interface SVGKAttr : SVGKNode
 
 /*! NB: The official DOM spec FAILS TO SPECIFY what the value of "name" is */
-@property(nonatomic,strong,readonly) NSString* name;
+@property(nonatomic,copy,readonly) NSString* name;
 @property(nonatomic,readonly) BOOL specified;
-@property(nonatomic,strong,readonly) NSString* value;
+@property(nonatomic,copy,readonly) NSString* value;
 
 // Introduced in DOM Level 2:
 @property(nonatomic,strong,readonly) SVGKElement* ownerElement;

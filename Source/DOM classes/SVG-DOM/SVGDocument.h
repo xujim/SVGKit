@@ -20,10 +20,10 @@
 
 @interface SVGDocument : SVGKDocument
 
-@property (nonatomic, strong, readonly) NSString* title;
-@property (nonatomic, strong, readonly) NSString* referrer;
-@property (nonatomic, strong, readonly) NSString* domain;
-@property (nonatomic, strong, readonly) NSString* URL;
+@property (nonatomic, copy, readonly) NSString* title;
+@property (nonatomic, copy, readonly) NSString* referrer;
+@property (nonatomic, copy, readonly) NSString* domain;
+@property (nonatomic, copy, readonly) NSString* URL;
 @property (nonatomic, strong, readonly) SVGSVGElement* rootElement;
 
 #pragma mark - Objective-C init methods (not part of DOM spec, but necessary!)
@@ -37,7 +37,7 @@
  
  @return a dictionary mapping "namespace" to "ARRAY of prefix-strings"
  */
-@property (nonatomic, readonly, copy) NSMutableDictionary *allPrefixesByNamespace;
+@property (nonatomic, readonly, strong) NSMutableDictionary *allPrefixesByNamespace;
 
 /**
  As per allPrefixesByNamespace, but takes the output and guarantees that:
@@ -58,6 +58,6 @@
  
  @return a dictionary mapping "namespace" to "prefix-string or empty-string for the default namespace"
  */
-@property (nonatomic, readonly, copy) NSMutableDictionary *allPrefixesByNamespaceNormalized;
+@property (nonatomic, readonly, strong) NSMutableDictionary *allPrefixesByNamespaceNormalized;
 
 @end

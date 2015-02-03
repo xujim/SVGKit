@@ -18,12 +18,12 @@
 
 @interface SVGKStyleSheet : NSObject
 
-@property(nonatomic,strong) NSString* type;
+@property(nonatomic,copy) NSString* type;
 @property(nonatomic) BOOL disabled;
 @property(nonatomic,strong) SVGKNode* ownerNode;
 @property(nonatomic,strong) SVGKStyleSheet* parentStyleSheet;
-@property(nonatomic,strong) NSString* href;
-@property(nonatomic,strong) NSString* title;
+@property(nonatomic,copy) NSString* href;
+@property(nonatomic,copy) NSString* title;
 @property(nonatomic,strong) SVGKMediaList* media;
 
 @end

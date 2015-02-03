@@ -11,7 +11,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class SVGKCharacterData;
 #import "SVGKCharacterData.h"
 
 @interface SVGKText : SVGKCharacterData

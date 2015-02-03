@@ -15,12 +15,12 @@
 @property(nonatomic,weak,readwrite) SVGKDocument* ownerDocument;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readwrite) NSString* namespaceURI;
+@property(nonatomic,copy,readwrite) NSString* namespaceURI;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readwrite) NSString* prefix;
+@property(nonatomic,copy,readwrite) NSString* prefix;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readwrite) NSString* localName;
+@property(nonatomic,copy,readwrite) NSString* localName;
 
 @end

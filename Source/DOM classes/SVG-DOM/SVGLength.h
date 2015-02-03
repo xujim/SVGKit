@@ -27,28 +27,26 @@
  */
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(unsigned short, SVG_LENGTH_TYPE)
-{
+typedef NS_ENUM(unsigned short, SVG_LENGTH_TYPE) {
 	SVG_LENGTHTYPE_UNKNOWN = 0,
 	SVG_LENGTHTYPE_NUMBER = 1,
-	 SVG_LENGTHTYPE_PERCENTAGE = 2,
-	 SVG_LENGTHTYPE_EMS = 3,
-	 SVG_LENGTHTYPE_EXS = 4,
-	 SVG_LENGTHTYPE_PX = 5,
-	 SVG_LENGTHTYPE_CM = 6,
-	 SVG_LENGTHTYPE_MM = 7,
-	 SVG_LENGTHTYPE_IN = 8,
-	 SVG_LENGTHTYPE_PT = 9,
-	 SVG_LENGTHTYPE_PC = 10
+	SVG_LENGTHTYPE_PERCENTAGE = 2,
+	SVG_LENGTHTYPE_EMS = 3,
+	SVG_LENGTHTYPE_EXS = 4,
+	SVG_LENGTHTYPE_PX = 5,
+	SVG_LENGTHTYPE_CM = 6,
+	SVG_LENGTHTYPE_MM = 7,
+	SVG_LENGTHTYPE_IN = 8,
+	SVG_LENGTHTYPE_PT = 9,
+	SVG_LENGTHTYPE_PC = 10
 };
-
 
 @interface SVGLength : NSObject
 
 @property(nonatomic,readonly) SVG_LENGTH_TYPE unitType;
 @property(nonatomic) CGFloat value;
 @property(nonatomic) CGFloat valueInSpecifiedUnits;
-@property(nonatomic,strong) NSString* valueAsString;
+@property(nonatomic,copy) NSString* valueAsString;
 	
 -(void) newValueSpecifiedUnits:(SVG_LENGTH_TYPE) unitType valueInSpecifiedUnits:(CGFloat) valueInSpecifiedUnits;
 -(void) convertToSpecifiedUnits:(SVG_LENGTH_TYPE) unitType;

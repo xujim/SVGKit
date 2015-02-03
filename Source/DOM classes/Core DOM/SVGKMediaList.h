@@ -17,7 +17,7 @@
 
 @interface SVGKMediaList : NSObject
 
-@property(nonatomic,strong) NSString* mediaText;
+@property(nonatomic,copy) NSString* mediaText;
 @property(nonatomic) unsigned long length;
 
 -(NSString*) item:(unsigned long) index;

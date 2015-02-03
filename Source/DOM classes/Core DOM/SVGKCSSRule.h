@@ -37,7 +37,7 @@ typedef NS_ENUM(unsigned short, CSSRuleType)
 @interface SVGKCSSRule : NSObject
 
 @property(nonatomic) CSSRuleType type;
-@property(nonatomic,strong) NSString* cssText;
+@property(nonatomic,copy) NSString* cssText;
 
 @property(nonatomic,strong) SVGKCSSStyleSheet* parentStyleSheet;
 @property(nonatomic,strong) SVGKCSSRule* parentRule;

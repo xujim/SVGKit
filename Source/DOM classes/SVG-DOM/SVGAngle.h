@@ -35,7 +35,7 @@ typedef NS_ENUM(unsigned short, SVGKAngleType)
 @property(nonatomic, readonly) SVGKAngleType unitType;
 @property(nonatomic) float value;
 @property(nonatomic) float valueInSpecifiedUnits;
-@property(nonatomic,strong) NSString* valueAsString;
+@property(nonatomic,copy) NSString* valueAsString;
 
 -(void) newValueSpecifiedUnits:(SVGKAngleType) unitType valueInSpecifiedUnits:(float) valueInSpecifiedUnits;
 -(void) convertToSpecifiedUnits:(SVGKAngleType) unitType;

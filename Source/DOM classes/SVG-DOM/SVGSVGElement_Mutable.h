@@ -6,8 +6,8 @@
 @property (nonatomic, strong, readwrite) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* y;
 @property (nonatomic, strong, readwrite) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* width;
 @property (nonatomic, strong, readwrite) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* height;
-@property (nonatomic, strong, readwrite) NSString* contentScriptType;
-@property (nonatomic, strong, readwrite) NSString* contentStyleType;
+@property (nonatomic, copy, readwrite) NSString* contentScriptType;
+@property (nonatomic, copy, readwrite) NSString* contentStyleType;
 @property (nonatomic, readwrite) SVGRect viewport;
 @property (nonatomic, readwrite) float pixelUnitToMillimeterX;
 @property (nonatomic, readwrite) float pixelUnitToMillimeterY;

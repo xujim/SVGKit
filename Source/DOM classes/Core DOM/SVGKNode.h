@@ -133,13 +133,13 @@ typedef NS_ENUM(unsigned short, DOMNodeType)
 -(BOOL) isSupportedFeature:(NSString*) feature version:(NSString*) version;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readonly) NSString* namespaceURI;
+@property(nonatomic,copy,readonly) NSString* namespaceURI;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readonly) NSString* prefix;
+@property(nonatomic,copy,readonly) NSString* prefix;
 
 // Introduced in DOM Level 2:
-@property(nonatomic,strong,readonly) NSString* localName;
+@property(nonatomic,copy,readonly) NSString* localName;
 
 // Introduced in DOM Level 2:
 @property(nonatomic) BOOL hasAttributes;

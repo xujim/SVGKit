@@ -14,7 +14,7 @@
 
 @interface SVGKCSSStyleRule : SVGKCSSRule
 
-@property(nonatomic,strong) NSString* selectorText;
+@property(nonatomic,copy) NSString* selectorText;
 @property(nonatomic,strong) SVGKCSSStyleDeclaration* style;
 
 #pragma mark - methods needed for ObjectiveC implementation

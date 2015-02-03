@@ -9,8 +9,8 @@
 #import "SVGKProcessingInstruction.h"
 
 @interface SVGKProcessingInstruction()
-@property(nonatomic,strong,readwrite) NSString* target;
-@property(nonatomic,strong,readwrite) NSString* data;
+@property(nonatomic,copy,readwrite) NSString* target;
+@property(nonatomic,copy,readwrite) NSString* data;
 @end
 
 @implementation SVGKProcessingInstruction

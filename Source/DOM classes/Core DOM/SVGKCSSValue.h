@@ -29,7 +29,7 @@ typedef NS_ENUM(unsigned short, CSSUnitType)
 	NSString* _cssText; // for subclasses to manually set
 }
 
-@property(nonatomic,strong) NSString* cssText;
+@property(nonatomic,copy) NSString* cssText;
 @property(nonatomic) CSSUnitType cssValueType;
 
 @end

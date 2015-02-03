@@ -11,9 +11,9 @@
 #import "SVGKNode+Mutable.h"
 
 @interface SVGKAttr()
-@property(nonatomic,strong,readwrite) NSString* name;
+@property(nonatomic,copy,readwrite) NSString* name;
 @property(nonatomic,readwrite) BOOL specified;
-@property(nonatomic,strong,readwrite) NSString* value;
+@property(nonatomic,copy,readwrite) NSString* value;
 
 // Introduced in DOM Level 2:
 @property(nonatomic,strong,readwrite) SVGKElement* ownerElement;

@@ -34,7 +34,7 @@
 
 @interface SVGKCharacterData : SVGKNode
 
-@property(nonatomic,strong,readonly) NSString* data;
+@property(nonatomic,copy,readonly) NSString* data;
 	
 @property(nonatomic,readonly) unsigned long length;
 

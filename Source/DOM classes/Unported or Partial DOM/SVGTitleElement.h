@@ -7,6 +7,6 @@
 
 #import "SVGElement.h"
 
-@interface SVGTitleElement : SVGElement { }
+@interface SVGTitleElement : SVGElement
 
 @end
