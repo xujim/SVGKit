@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5505CF6419BA51C40028CF57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5540E816173881BF004029EF /* InfoPlist.strings */; };
-		550884761A82B2050071E5C0 /* SVGPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550884751A82B2050071E5C0 /* SVGPattern.swift */; };
-		550884771A82B2050071E5C0 /* SVGPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550884751A82B2050071E5C0 /* SVGPattern.swift */; };
 		550884821A82B4A40071E5C0 /* TBColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5508847F1A82B4A40071E5C0 /* TBColor.h */; };
 		550884831A82B4A40071E5C0 /* TBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 550884801A82B4A40071E5C0 /* TBColor.m */; };
+		550884841A82B6040071E5C0 /* TBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 550884801A82B4A40071E5C0 /* TBColor.m */; };
+		550884851A82B6050071E5C0 /* TBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 550884801A82B4A40071E5C0 /* TBColor.m */; };
 		550A1E621A81FBB200A96D9C /* SVGPatternElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 550A1E601A81FBB200A96D9C /* SVGPatternElement.h */; };
 		550A1E631A81FBB200A96D9C /* SVGPatternElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 550A1E601A81FBB200A96D9C /* SVGPatternElement.h */; };
 		550A1E641A81FBB200A96D9C /* SVGPatternElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 550A1E611A81FBB200A96D9C /* SVGPatternElement.m */; };
@@ -994,7 +994,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		550884751A82B2050071E5C0 /* SVGPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGPattern.swift; sourceTree = "<group>"; };
 		5508847E1A82B4A40071E5C0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5508847F1A82B4A40071E5C0 /* TBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBColor.h; sourceTree = "<group>"; };
 		550884801A82B4A40071E5C0 /* TBColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBColor.m; sourceTree = "<group>"; };
@@ -1645,7 +1644,6 @@
 				5540E70A17387F2B004029EF /* SVGPathElement.m */,
 				550A1E601A81FBB200A96D9C /* SVGPatternElement.h */,
 				550A1E611A81FBB200A96D9C /* SVGPatternElement.m */,
-				550884751A82B2050071E5C0 /* SVGPattern.swift */,
 				5540E70B17387F2B004029EF /* SVGPolygonElement.h */,
 				5540E70C17387F2B004029EF /* SVGPolygonElement.m */,
 				5540E70D17387F2B004029EF /* SVGPolylineElement.h */,
@@ -2451,7 +2449,6 @@
 				551164EE1970EFC100C8A63D /* SVGKCSSStyleDeclaration.m in Sources */,
 				551164E21970EFC100C8A63D /* SVGKCharacterData.m in Sources */,
 				5511651F1970EFCB00C8A63D /* SVGPreserveAspectRatio.m in Sources */,
-				550884771A82B2050071E5C0 /* SVGPattern.swift in Sources */,
 				551165791970EFE300C8A63D /* SVGKImage+CGContext.m in Sources */,
 				551165941970EFFB00C8A63D /* CGPathAdditions.m in Sources */,
 				5511657D1970EFEB00C8A63D /* SVGKParserDOM.m in Sources */,
@@ -2484,6 +2481,7 @@
 				551165A21970F00C00C8A63D /* SVGKSourceURL.m in Sources */,
 				551164E91970EFC100C8A63D /* SVGKCSSRule.m in Sources */,
 				551164C51970EF3B00C8A63D /* SVGKImageView.m in Sources */,
+				550884841A82B6040071E5C0 /* TBColor.m in Sources */,
 				551165981970EFFB00C8A63D /* SVGKLayer.m in Sources */,
 				551165091970EFC100C8A63D /* SVGKMediaList.m in Sources */,
 				551165131970EFC100C8A63D /* SVGKProcessingInstruction.m in Sources */,
@@ -2574,7 +2572,6 @@
 				550884831A82B4A40071E5C0 /* TBColor.m in Sources */,
 				5540E7CC17387F2B004029EF /* SVGImageElement.m in Sources */,
 				5540E7CF17387F2B004029EF /* SVGLineElement.m in Sources */,
-				550884761A82B2050071E5C0 /* SVGPattern.swift in Sources */,
 				5540E7D117387F2B004029EF /* SVGPathElement.m in Sources */,
 				5540E7D317387F2B004029EF /* SVGPolygonElement.m in Sources */,
 				550A1E641A81FBB200A96D9C /* SVGPatternElement.m in Sources */,
@@ -2707,6 +2704,7 @@
 				5542C85C193BC03E0046BB14 /* SVGKit.m in Sources */,
 				5542C86A193BC0F10046BB14 /* NSCharacterSet+SVGKExtensions.m in Sources */,
 				5542C88B193BCBE90046BB14 /* SVGKMediaList.m in Sources */,
+				550884851A82B6050071E5C0 /* TBColor.m in Sources */,
 				5542C880193BCBE90046BB14 /* SVGKCSSStyleDeclaration.m in Sources */,
 				5542C8A2193BCC360046BB14 /* SVGRectElement.m in Sources */,
 				5542C88E193BCBE90046BB14 /* SVGKNodeList.m in Sources */,

@@ -1,62 +1,44 @@
 #import "SVGKPattern.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#import "TBColor.h"
 
-//Code taken from TBColor from https://github.com/zrxq/TBColor
-static void ImagePatternCallback (void *imagePtr, CGContextRef ctx) {
-    CGContextDrawImage(ctx, CGRectMake(0, 0, CGImageGetWidth(imagePtr), CGImageGetHeight(imagePtr)), imagePtr);
-}
-
-static void ImageReleaseCallback(void *imagePtr) {
-    CGImageRelease(imagePtr);
-}
-
-static CGColorRef CGColorMakeFromImage(CGImageRef image) {
-    static const CGPatternCallbacks callback = {0, ImagePatternCallback, ImageReleaseCallback};
-    CGPatternRef pattern = CGPatternCreate(CGImageRetain(image), CGRectMake(0, 0, CGImageGetWidth(image), CGImageGetHeight(image)), CGAffineTransformIdentity, CGImageGetWidth(image), CGImageGetHeight(image), kCGPatternTilingConstantSpacing, true, &callback);
-    CGColorSpaceRef coloredPatternColorSpace = CGColorSpaceCreatePattern(NULL);
-    CGFloat dummy = 1.0f;
-    CGColorRef color = CGColorCreateWithPattern(coloredPatternColorSpace, pattern, &dummy);
-    CGColorSpaceRelease(coloredPatternColorSpace);
-    CGPatternRelease(pattern);
-    return color;
-}
-//end taken code
+@interface SVGKPattern ()
+@property (strong) TBColor* internalColor;
+@end
 
 @implementation SVGKPattern
 
-@synthesize color;
-- (void)setColor:(CGColorRef)aColor
+- (CGColorRef)color
 {
-	if (color != aColor) {
-		if (color) {
-			CGColorRelease(color);
-		}
-		if (aColor) {
-			color = CGColorRetain(aColor);
-		} else {
-			color = NULL;
-		}
+	return _internalColor.CGColor;
+}
+
+- (instancetype)initWithTBColor:(TBColor*)aColor
+{
+	if (self = [super init]) {
+		self.internalColor = aColor;
 	}
+	return self;
+}
+
+- (instancetype)initWithCGImage:(CGImageRef)cgImage
+{
+	return [self initWithTBColor:[[TBColor alloc] initWithPatternCGImage:cgImage]];
+}
+
+- (instancetype)initWithCGColor:(CGColorRef)cgColor
+{
+	return [self initWithTBColor:[[TBColor alloc] initWithCGColor:cgColor]];
 }
 
 + (SVGKPattern*)patternWithCGImage:(CGImageRef)cgImage
 {
-	SVGKPattern *p;
-	
-	CGColorRef tmpColor = CGColorMakeFromImage(cgImage);
-	p = [SVGKPattern patternWithCGColor:tmpColor];
-	CGColorRelease(tmpColor);
-	
-	return p;
+	return [[SVGKPattern alloc] initWithCGImage:cgImage];
 }
 
 + (SVGKPattern*)patternWithCGColor:(CGColorRef)cgColor
 {
-	SVGKPattern *p = [[SVGKPattern alloc] init];
-	
-	p.color = cgColor;
-	
-	return p;
+	return [[SVGKPattern alloc] initWithCGColor:cgColor];
 }
 
 #if TARGET_OS_IPHONE
@@ -75,42 +57,13 @@ static CGColorRef CGColorMakeFromImage(CGImageRef image) {
 
 + (SVGKPattern*)patternWithImage:(NSImage*)image
 {
-	CGImageRef quartzImage = [image CGImageForProposedRect:NULL context:NULL hints:NULL];
-	return [self patternWithCGImage:quartzImage];
+	return [[SVGKPattern alloc] initWithTBColor:[[TBColor alloc] initWithPatternImage:image]];
 }
 
 
 + (SVGKPattern*)patternWithNSColor:(NSColor*)color
 {
-	if ([color respondsToSelector:@selector(CGColor)]) {
-		return [self patternWithCGColor:color.CGColor];
-	} else {
-		if ([[color colorSpace] colorSpaceModel] == NSPatternColorSpaceModel) {
-			return [self patternWithImage:[color patternImage]];
-		} else {
-			DDLogWarn(@"The color %@ is not a pattern color. Attempting to convert to CGColor", [color description]);
-			CGColorSpaceRef spaceRef = [[color colorSpace] CGColorSpace];
-			if (!spaceRef) {
-				DDLogError(@"Could not get CGColorSpace from the color %@", [color description]);
-				return nil;
-			}
-			NSInteger colorComponents = 0;
-			@try {
-				colorComponents = [color numberOfComponents];
-			}
-			@catch (NSException *exception) {
-				DDLogError(@"Color %@ does not have components", [color description]);
-				return nil;
-			}
-			CGFloat * components = malloc(sizeof(CGFloat) * colorComponents);
-			[color getComponents:components];
-			CGColorRef tmpColor = CGColorCreate(spaceRef, components);
-			free(components);
-			SVGKPattern *p = [SVGKPattern patternWithCGColor:tmpColor];
-			CGColorRelease(tmpColor);
-			return p;
-		}
-	}
+	return [self patternWithCGColor:color.CGColor];
 }
 
 #endif
@@ -118,11 +71,6 @@ static CGColorRef CGColorMakeFromImage(CGImageRef image) {
 - (CGColorRef)CGColor
 {
     return self.color;
-}
-
-- (void)dealloc
-{
-	self.color = NULL;
 }
 
 @end

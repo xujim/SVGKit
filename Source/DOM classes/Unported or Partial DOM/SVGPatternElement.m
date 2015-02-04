@@ -40,7 +40,7 @@
 
 - (CGColorRef)colorPattern
 {
-	return self.pattern.CGColor;
+	return self.pattern.color;
 }
 
 @end

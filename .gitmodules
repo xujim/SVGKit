@@ -3,4 +3,4 @@
 	url = https://github.com/CocoaLumberjack/CocoaLumberjack.git
 [submodule "Source/Vendor/TBColor"]
 	path = Source/Vendor/TBColor
-	url = https://github.com/th-in-gs/TBColor.git
+	url = https://github.com/MaddTheSane/TBColor.git
