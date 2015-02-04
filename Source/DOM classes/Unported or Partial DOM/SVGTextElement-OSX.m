@@ -112,7 +112,7 @@
 	if (fillColorString.length > 0) {
 		col = SVGColorFromString([fillColorString UTF8String]);
 	} else {
-		col = SVGColorMake(0, 0, 0, 255);
+		col = SVGColorFromString("black");
 	}
 #if 1
 	CGFloat effectiveFontSize = 12; // I chose 12. I couldn't find an official "default" value in the SVG spec.
