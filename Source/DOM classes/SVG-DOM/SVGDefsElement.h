@@ -4,6 +4,6 @@
  */
 #import "SVGElement.h"
 
-@interface SVGDefsElement : SVGElement { }
+@interface SVGDefsElement : SVGElement
 
 @end

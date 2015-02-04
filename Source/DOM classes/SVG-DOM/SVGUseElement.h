@@ -20,7 +20,6 @@
 #import "SVGLength.h"
 #import "SVGElement.h"
 
-@class SVGElementInstance;
 #import "SVGElementInstance.h"
 
 #import "ConverterSVGToCALayer.h"
@@ -28,11 +27,11 @@
 
 @interface SVGUseElement : SVGElement < SVGTransformable /*FIXME: delete this rubbish:*/, ConverterSVGToCALayer>
 
-@property(nonatomic, retain, readonly) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* x;
-@property(nonatomic, retain, readonly) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* y;
-@property(nonatomic, retain, readonly) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* width;
-@property(nonatomic, retain, readonly) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* height;
-@property(nonatomic, retain, readonly) SVGElementInstance* instanceRoot;
-@property(nonatomic, retain, readonly) SVGElementInstance* animatedInstanceRoot;
+@property(nonatomic, strong, readonly) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* x;
+@property(nonatomic, strong, readonly) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* y;
+@property(nonatomic, strong, readonly) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* width;
+@property(nonatomic, strong, readonly) /*FIXME: should be SVGAnimatedLength instead*/ SVGLength* height;
+@property(nonatomic, strong, readonly) SVGElementInstance* instanceRoot;
+@property(nonatomic, strong, readonly) SVGElementInstance* animatedInstanceRoot;
 
 @end

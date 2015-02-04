@@ -7,11 +7,8 @@
 //
 
 #import "SVGKParserGradient.h"
-
 #import "SVGElement_ForParser.h"
-
 #import "SVGGradientStop.h"
-
 #import "SVGGradientElement.h"
 
 @implementation SVGKParserGradient
@@ -28,18 +25,18 @@
 static NSSet *_svgGradientParserSupportedTags = nil;
 -(NSSet *)supportedTags
 {
-//    static NSSet *supportedTags = nil;
+	//    static NSSet *supportedTags = nil;
     if( _svgGradientParserSupportedTags == nil )
         _svgGradientParserSupportedTags = [[NSSet alloc] initWithObjects:@"linearGradient", @"radialGradient", @"stop", nil];
     return _svgGradientParserSupportedTags;
 }
 
--(Node *)handleStartElement:(NSString *)name document:(SVGKSource *)document namePrefix:(NSString *)prefix namespaceURI:(NSString *)XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(Node *)parentNode
+-(SVGKNode *)handleStartElement:(NSString *)name document:(SVGKSource *)document namePrefix:(NSString *)prefix namespaceURI:(NSString *)XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode *)parentNode
 {
-//    SVGColor startColor = SVGColorFromString(<#const char *string#>)
-//    CGPoint startPos = CGPointMake([attributes objectFor, <#CGFloat y#>)
+	//    SVGColor startColor = SVGColorFromString(<#const char *string#>)
+	//    CGPoint startPos = CGPointMake([attributes objectFor, <#CGFloat y#>)
     
-    Node *returnObject = nil;
+    SVGKNode *returnObject = nil;
     
     NSRange range = [name rangeOfString:@"Gradient"];
     if( ( range.location != NSNotFound) )
@@ -54,7 +51,7 @@ static NSSet *_svgGradientParserSupportedTags = nil;
         SVGGradientStop *gradientStop = [[SVGGradientStop alloc] initWithQualifiedName:name inNameSpaceURI:XMLNSURI attributes:attributes];
         
         [gradientStop postProcessAttributesAddingErrorsTo:parseResult];
-        returnObject = gradientStop;       
+        returnObject = gradientStop;
         
         [currentElement addStop:gradientStop];
     }
@@ -80,24 +77,16 @@ static NSSet *_svgGradientParserSupportedTags = nil;
 //                                                        linearGrad.y2 = xml_grad.@y2;
 //                                            else if(linearGrad.y2 == null)
 //                                                        linearGrad.y2 = "0%";
-    return [returnObject autorelease];
+    return returnObject;
 }
 
--(void)handleEndElement:(Node *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
+-(void)handleEndElement:(SVGKNode *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
 {
 	
 }
 
-//-(void)dealloc
-//{
-//    currentElement = nil;
-//    [super dealloc];
-//}
-
-
 +(void)trim
 {
-    [_svgGradientParserSupportedTags release];
     _svgGradientParserSupportedTags = nil;
 }
 
@@ -244,4 +233,4 @@ static NSSet *_svgGradientParserSupportedTags = nil;
                          //
                          
                          return grad;
-*/
+ */

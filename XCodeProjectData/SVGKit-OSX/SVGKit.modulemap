@@ -1,0 +1,5 @@
+framework module SVGKit {
+	umbrella header "SVGKit-all.h"
+	export *
+    module * { export * }
+}

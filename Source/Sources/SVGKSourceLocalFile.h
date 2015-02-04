@@ -3,10 +3,12 @@
  */
 #import "SVGKSource.h"
 
-@interface SVGKSourceLocalFile : SVGKSource
+@interface SVGKSourceLocalFile : SVGKSource <NSCopying>
 
-@property (nonatomic, retain) NSString* filePath;
+@property (nonatomic, strong) NSString* filePath;
+@property (nonatomic, readonly) BOOL wasRelative;
 
-+ (SVGKSource*)sourceFromFilename:(NSString*)p;
+- (instancetype)initWithFilename:(NSString*)p;
++ (SVGKSourceLocalFile*)sourceFromFilename:(NSString*)p;
 
 @end

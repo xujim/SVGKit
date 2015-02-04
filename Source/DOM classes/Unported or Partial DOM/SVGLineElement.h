@@ -7,7 +7,7 @@
 
 #import "BaseClassForAllSVGBasicShapes.h"
 
-@interface SVGLineElement : BaseClassForAllSVGBasicShapes { }
+@interface SVGLineElement : BaseClassForAllSVGBasicShapes
 
 @property (nonatomic, readonly) CGFloat x1;
 @property (nonatomic, readonly) CGFloat y1;

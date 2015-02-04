@@ -2,13 +2,16 @@
 
 #import "SVGSVGElement_Mutable.h"
 #import "CALayerWithChildHitTest.h"
-#import "DOMHelperUtilities.h"
+#import "SVGKDOMHelperUtilities.h"
 #import "SVGHelperUtilities.h"
+#import "SVGKStyleSheetList.h"
 
 #import "SVGElement_ForParser.h" // to resolve Xcode circular dependencies; in long term, parsing SHOULD NOT HAPPEN inside any class whose name starts "SVG" (because those are reserved classes for the SVG Spec)
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#else
+#import <Cocoa/Cocoa.h>
 #endif
 
 @interface SVGSVGElement()
@@ -33,35 +36,27 @@
 @synthesize currentView;
 @synthesize currentScale;
 @synthesize currentTranslate;
+@synthesize source;
 
-@synthesize viewBox = _viewBox;
+@synthesize viewBox = _viewBox; // each SVGElement subclass that conforms to protocol "SVGFitToViewBox" has to re-synthesize this to work around bugs in Apple's Objective-C 2.0 design that don't allow @properties to be extended by categories / protocols
+@synthesize preserveAspectRatio; // each SVGElement subclass that conforms to protocol "SVGFitToViewBox" has to re-synthesize this to work around bugs in Apple's Objective-C 2.0 design that don't allow @properties to be extended by categories / protocols
 
 #pragma mark - NON SPEC, violating, properties
 
 -(void)dealloc
 {
 	self.viewBox = SVGRectUninitialized();
-    [x release];
-    [y release];
-    [width release];
-    [height release];
-    [contentScriptType release];
-    [contentStyleType release];
-    self.currentView = nil;
-    self.currentTranslate = nil;
-    self.styleSheets = nil;
-	[super dealloc];	
 }
 
 #pragma mark - CSS Spec methods (via the DocumentCSS protocol)
 
 -(void)loadDefaults
 {
-	self.styleSheets = [[[StyleSheetList alloc] init] autorelease];
+	self.styleSheets = [[SVGKStyleSheetList alloc] init];
 }
 @synthesize styleSheets;
 
--(CSSStyleDeclaration *)getOverrideStyle:(Element *)element pseudoElt:(NSString *)pseudoElt
+-(SVGKCSSStyleDeclaration *)getOverrideStyle:(SVGKElement *)element pseudoElt:(NSString *)pseudoElt
 {
 	NSAssert(FALSE, @"Not implemented yet");
 	
@@ -79,8 +74,8 @@
 -(BOOL) animationsPaused { NSAssert( FALSE, @"Not implemented yet" ); return TRUE; }
 -(float) getCurrentTime { NSAssert( FALSE, @"Not implemented yet" ); return 0.0; }
 -(void) setCurrentTime:(float) seconds { NSAssert( FALSE, @"Not implemented yet" ); }
--(NodeList*) getIntersectionList:(SVGRect) rect referenceElement:(SVGElement*) referenceElement { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
--(NodeList*) getEnclosureList:(SVGRect) rect referenceElement:(SVGElement*) referenceElement { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
+-(SVGKNodeList*) getIntersectionList:(SVGRect) rect referenceElement:(SVGElement*) referenceElement { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
+-(SVGKNodeList*) getEnclosureList:(SVGRect) rect referenceElement:(SVGElement*) referenceElement { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
 -(BOOL) checkIntersection:(SVGElement*) element rect:(SVGRect) rect { NSAssert( FALSE, @"Not implemented yet" ); return FALSE; }
 -(BOOL) checkEnclosure:(SVGElement*) element rect:(SVGRect) rect { NSAssert( FALSE, @"Not implemented yet" ); return FALSE; }
 -(void) deselectAll { NSAssert( FALSE, @"Not implemented yet" );}
@@ -104,9 +99,9 @@
 -(SVGTransform*) createSVGTransform { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
 -(SVGTransform*) createSVGTransformFromMatrix:(SVGMatrix*) matrix { NSAssert( FALSE, @"Not implemented yet" ); return nil; }
 
--(Element*) getElementById:(NSString*) elementId
+-(SVGKElement*) getElementById:(NSString*) elementId
 {
-	return [DOMHelperUtilities privateGetElementById:elementId childrenOfElement:self];
+	return [SVGKDOMHelperUtilities privateGetElementById:elementId childrenOfElement:self];
 }
 
 
@@ -162,28 +157,31 @@
 	if( [[self getAttribute:@"viewBox"] length] > 0 )
 	{
 		NSArray* boxElements = [[self getAttribute:@"viewBox"] componentsSeparatedByString:@" "];
-		
-		_viewBox = SVGRectMake([[boxElements objectAtIndex:0] floatValue], [[boxElements objectAtIndex:1] floatValue], [[boxElements objectAtIndex:2] floatValue], [[boxElements objectAtIndex:3] floatValue]);
+		if ([boxElements count] < 2) {
+            /* count should be 4 -- maybe they're comma separated like (x,y,w,h) */
+            boxElements = [[self getAttribute:@"viewBox"] componentsSeparatedByString:@","];
+        }
+		_viewBox = SVGRectMake([boxElements[0] floatValue], [boxElements[1] floatValue], [boxElements[2] floatValue], [boxElements[3] floatValue]);
 	}
 	else
 	{
-		self.viewBox = SVGRectUninitialized(); // VERY IMPORTANT: we MUST make it clear this was never initialized, instead of saying its 0,0,0,0 !		
+		self.viewBox = SVGRectUninitialized(); // VERY IMPORTANT: we MUST make it clear this was never initialized, instead of saying its 0,0,0,0 !
 	}
-		DDLogVerbose(@"[%@] WARNING: SVG spec says we should calculate the 'intrinsic aspect ratio'. Some badly-made SVG files work better if you do this and then post-multiply onto the specified viewBox attribute ... BUT they ALSO require that you 're-center' them inside the newly-created viewBox; and the SVG Spec DOES NOT SAY you should do that. All examples so far were authored in Inkscape, I think, so ... I think it's a serious bug in Inkscape that has tricked people into making incorrect SVG files. For example, c.f. http://en.wikipedia.org/wiki/File:BlankMap-World6-Equirectangular.svg", [self class]);
-        //osx logging
-#if TARGET_OS_IPHONE        
-        DDLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromCGRect( CGRectFromSVGRect(self.viewBox)));
-#else
-        //mac logging
-     DDLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromRect(self.viewBox));
-#endif   
 	
+    [SVGHelperUtilities parsePreserveAspectRatioFor:self];
+
+	if( stringWidth == nil || stringWidth.length < 1 )
+		self.width = nil; // i.e. undefined
+	else
+		self.width = [SVGLength svgLengthFromNSString:[self getAttribute:@"width"]];
+	    //osx logging
+        DDLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromCGRect( CGRectFromSVGRect(self.viewBox)));
 }
 
-- (SVGElement *)findFirstElementOfClass:(Class)class {
+- (SVGElement *)findFirstElementOfClass:(Class)classParameter {
 	for (SVGElement *element in self.childNodes)
 	{
-		if ([element isKindOfClass:class])
+		if ([element isKindOfClass:classParameter])
 			return element;
 	}
 	
@@ -193,7 +191,7 @@
 - (CALayer *) newLayer
 {
 	
-	CALayer* _layer = [[CALayerWithChildHitTest layer] retain];
+	CALayer* _layer = [[CALayerWithChildHitTest alloc] init];
 	
 	[SVGHelperUtilities configureCALayer:_layer usingElement:self];
 	
@@ -210,6 +208,18 @@
 	According to the SVG spec ... what this method originaly did is illegal. I've deleted all of it, and now a few more SVG's render correctly, that
 	 previously were rendering with strange offsets at the top level
 	 */
+}
+
+#pragma mark - elements REQUIRED to implement the spec but not included in SVG Spec due to bugs in the spec writing!
+
+-(double)aspectRatioFromWidthPerHeight
+{
+	return [self.height pixelsValue] == 0 ? 0 : [self.width pixelsValue] / [self.height pixelsValue];
+}
+
+-(double)aspectRatioFromViewBox
+{	
+	return  self.viewBox.height == 0 ? 0 : self.viewBox.width / self.viewBox.height;
 }
 
 @end

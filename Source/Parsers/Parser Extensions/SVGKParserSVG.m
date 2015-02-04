@@ -2,6 +2,7 @@
 
 #import "SVGSVGElement.h"
 #import "SVGCircleElement.h"
+#import "SVGClipPathElement.h"
 #import "SVGDefsElement.h"
 #import "SVGDescriptionElement.h"
 //#import "SVGKSource.h"
@@ -15,48 +16,42 @@
 #import "SVGRectElement.h"
 #import "SVGTitleElement.h"
 #import "SVGTextElement.h"
+#import "TinySVGTextAreaElement.h"
 
 #import "SVGDocument_Mutable.h"
 
 @implementation SVGKParserSVG
 
-static NSDictionary *elementMap;
+static NSDictionary *elementMap = nil;
 
-- (id)init {
+- (instancetype)init {
 	self = [super init];
 	if (self) {
 		
 		if (!elementMap) {
-			elementMap = [[NSDictionary dictionaryWithObjectsAndKeys:
-						   [SVGSVGElement class], @"svg",
-                          [SVGCircleElement class], @"circle",
-                          [SVGDescriptionElement class], @"description",
-                          [SVGEllipseElement class], @"ellipse",
-                          [SVGGElement class], @"g",
-                          [SVGImageElement class], @"image",
-                          [SVGLineElement class], @"line",
-                          [SVGPathElement class], @"path",
-                          [SVGPolygonElement class], @"polygon",
-                          [SVGPolylineElement class], @"polyline",
-                          [SVGRectElement class], @"rect",
-                          [SVGTitleElement class], @"title",
-						   [SVGTextElement class], @"text",
-						   nil] retain];
+			elementMap = @{@"svg": [SVGSVGElement class],
+                          @"circle": [SVGCircleElement class],
+                          @"description": [SVGDescriptionElement class],
+                          @"ellipse": [SVGEllipseElement class],
+                          @"g": [SVGGElement class],
+                          @"image": [SVGImageElement class],
+                          @"line": [SVGLineElement class],
+                          @"path": [SVGPathElement class],
+                          @"polygon": [SVGPolygonElement class],
+                          @"polyline": [SVGPolylineElement class],
+                          @"rect": [SVGRectElement class],
+                          @"title": [SVGTitleElement class],
+						   @"text": [SVGTextElement class],
+						   @"textArea": [TinySVGTextAreaElement class],
+};
 		}
 	}
 	return self;
 }
 
-- (void)dealloc {
-	
-	[super dealloc];
-}
-
 -(NSArray*) supportedNamespaces
 {
-	return [NSArray arrayWithObjects:
-			 @"http://www.w3.org/2000/svg",
-			nil];
+	return @[@"http://www.w3.org/2000/svg"];
 }
 
 /** "tags supported" is exactly the set of all SVGElement subclasses that already exist */
@@ -65,11 +60,11 @@ static NSDictionary *elementMap;
 	return [NSMutableArray arrayWithArray:[elementMap allKeys]];
 }
 
-- (Node*) handleStartElement:(NSString *)name document:(SVGKSource*) SVGKSource namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(Node*) parentNode
+- (SVGKNode*) handleStartElement:(NSString *)name document:(SVGKSource*) SVGKSource namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode*) parentNode
 {
 	if( [[self supportedNamespaces] containsObject:XMLNSURI] )
 	{
-		Class elementClass = [elementMap objectForKey:name];
+		Class elementClass = elementMap[name];
 		
 		if (!elementClass) {
 			elementClass = [SVGElement class];
@@ -89,7 +84,7 @@ static NSDictionary *elementMap;
 		
 		NSString* qualifiedName = (prefix == nil) ? name : [NSString stringWithFormat:@"%@:%@", prefix, name];
 		/** NB: must supply a NON-qualified name if we have no specific prefix here ! */
-		SVGElement *element = [[[elementClass alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes] autorelease];
+		SVGElement *element = [[elementClass alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes];
 		
 		/** NB: all the interesting handling of shared / generic attributes - e.g. the whole of CSS styling etc - takes place in this method: */
 		[element postProcessAttributesAddingErrorsTo:parseResult];
@@ -97,6 +92,8 @@ static NSDictionary *elementMap;
 		/** special case: <svg:svg ... version="XXX"> */
 		if( [@"svg" isEqualToString:name] )
 		{
+            ((SVGSVGElement *) element).source = SVGKSource;
+            
 			NSString* svgVersion = nil;
 			
 			/** According to spec, if the first XML node is an SVG node, then it
@@ -152,7 +149,7 @@ static NSDictionary *elementMap;
 				
 				/** Post-processing of the ROOT SVG ONLY (doesn't apply to embedded SVG's )
 				 */
-				if ((svgVersion = [attributes objectForKey:@"version"])) {
+				if ((svgVersion = attributes[@"version"])) {
 					SVGKSource.svgLanguageVersion = svgVersion;
 				}
 			}
@@ -160,7 +157,7 @@ static NSDictionary *elementMap;
 			{
 				NSAssert( [element isKindOfClass:[SVGSVGElement class]], @"Trying to create a new internal SVGDocument from a Node that is NOT of type SVGSVGElement (tag: svg). Node was of type: %@", NSStringFromClass([element class]));
 				
-				SVGDocument* newDocument = [[[SVGDocument alloc] init] autorelease];
+				SVGDocument* newDocument = [[SVGDocument alloc] init];
 				newDocument.rootElement = (SVGSVGElement*) element;
 				
 				if( overwriteRootSVGDocument )
@@ -182,7 +179,7 @@ static NSDictionary *elementMap;
 	return nil;
 }
 
--(void)handleEndElement:(Node *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
+-(void)handleEndElement:(SVGKNode *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
 {
 	
 }

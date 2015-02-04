@@ -29,17 +29,17 @@
 #import "SVGStylable.h"
 #import "SVGLength.h"
 
-typedef enum SVGLengthAdjust
+typedef NS_ENUM(unsigned short, SVGLengthAdjust)
 {
 	// lengthAdjust Types
 	SVGLengthAdjustUnknown = 0,
 	SVGLengthAdjustSpacing = 1,
 	SVGLengthAdjustSpacingAndGlyphs = 2
-} SVGLengthAdjust;
+};
 
 @interface SVGTextContentElement : SVGElement <SVGStylable>
 	
-@property(nonatomic,readonly) SVGLength* /* FIXMED: should be SVGAnimatedLength*/ textLength;
+@property(unsafe_unretained, nonatomic,readonly) SVGLength* /* FIXME: should be SVGAnimatedLength*/ textLength;
 /**FIXME: missing:	readonly attribute SVGAnimatedEnumeration lengthAdjust;*/
 
 /**FIXME: missing:	

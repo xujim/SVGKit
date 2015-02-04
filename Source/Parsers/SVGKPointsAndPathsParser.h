@@ -20,6 +20,21 @@
 #import <QuartzCore/QuartzCore.h>
 #endif
 
+/**
+ * Partially spammy; not as spammy as DEBUG_PATH_CREATION
+ */
+#define VERBOSE_PARSE_SVG_COMMAND_STRINGS 0
+
+/*! Very useful for debugging the parser - this will output one line of logging
+ * for every CGPath command that's actually done; you can then compare these lines
+ * to the input source file, and manually check what's being sent to the renderer
+ * versus what was expected
+ *
+ * this is MORE SPAMMY than VERBOSE_PARSE_SVG_COMMAND_STRINGS
+ */
+#define DEBUG_PATH_CREATION 0
+
+
 typedef struct SVGCurve
 {
     CGPoint c1;
@@ -27,21 +42,24 @@ typedef struct SVGCurve
     CGPoint p;
 } SVGCurve;
 
+__BEGIN_DECLS
+
 SVGCurve SVGCurveMake(CGFloat cx1, CGFloat cy1, CGFloat cx2, CGFloat cy2, CGFloat px, CGFloat py);
 BOOL SVGCurveEqualToCurve(SVGCurve curve1, SVGCurve curve2);
 
 #define SVGCurveZero SVGCurveMake(0.,0.,0.,0.,0.,0.)
+
+__END_DECLS
 
 @interface SVGKPointsAndPathsParser : NSObject
 
 + (void) readWhitespace:(NSScanner*)scanner;
 + (void) readCommaAndWhitespace:(NSScanner*)scanner;
 
-+ (CGFloat) readCoordinate:(NSScanner*)scanner;
++ (void) readCoordinate:(NSScanner*)scanner intoFloat:(CGFloat*) floatPointer;
 + (CGPoint) readCoordinatePair:(NSScanner*)scanner;
 
 + (CGPoint) readMovetoDrawtoCommandGroups:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;
-+ (CGPoint) readMovetoDrawtoCommandGroup:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;
 + (CGPoint) readMovetoDrawto:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;
 + (CGPoint) readMoveto:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;
 + (CGPoint) readMovetoArgumentSequence:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;
@@ -56,6 +74,9 @@ BOOL SVGCurveEqualToCurve(SVGCurve curve1, SVGCurve curve2);
 + (SVGCurve) readQuadraticCurvetoCommand:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;
 + (SVGCurve) readQuadraticCurvetoArgumentSequence:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;
 + (SVGCurve) readQuadraticCurvetoArgument:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin;
++ (SVGCurve) readSmoothQuadraticCurvetoCommand:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin withPrevCurve:(SVGCurve)prevCurve;
++ (SVGCurve) readSmoothQuadraticCurvetoArgumentSequence:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin withPrevCurve:(SVGCurve)prevCurve;
++ (SVGCurve) readSmoothQuadraticCurvetoArgument:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin withPrevCurve:(SVGCurve)prevCurve;
 
 + (SVGCurve) readCurvetoCommand:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;
 + (SVGCurve) readCurvetoArgumentSequence:(NSScanner*)scanner path:(CGMutablePathRef)path relativeTo:(CGPoint)origin isRelative:(BOOL) isRelative;

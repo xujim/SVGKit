@@ -1,5 +1,4 @@
 #import "SVGElement.h"
-
 #import "SVGKParseResult.h"
 
 @interface SVGElement ()

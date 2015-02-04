@@ -1,7 +1,5 @@
 #import "SVGGElement.h"
-
 #import "CALayerWithChildHitTest.h"
-
 #import "SVGHelperUtilities.h"
 
 @implementation SVGGElement 
@@ -11,7 +9,7 @@
 - (CALayer *) newLayer
 {
 	
-	CALayer* _layer = [[CALayerWithChildHitTest layer] retain];
+	CALayer* _layer = [CALayerWithChildHitTest layer];
 	
 	[SVGHelperUtilities configureCALayer:_layer usingElement:self];
 	
@@ -20,11 +18,8 @@
 
 - (void)layoutLayer:(CALayer *)layer {
 	
-	CGRect mainRect = CGRectZero;
-	
-	/** we don't want the rect to be union'd with 0,0, so we need to initialize it to one of the subrects */
-	if( layer.sublayers.count > 0 )
-		mainRect = ((CALayer*)[layer.sublayers objectAtIndex:0]).frame;
+    // null rect union any other rect will return the other rect
+	CGRect mainRect = CGRectNull;
 	
 	/** make mainrect the UNION of all sublayer's frames (i.e. their individual "bounds" inside THIS layer's space) */
 	for ( CALayer *currentLayer in [layer sublayers] )
@@ -48,12 +43,16 @@
 	 calls where it appears someone at Apple forgot how their API works, and tried to do the offsetting automatically. "Paved
 	 with good intentions...".
 	 	 */
-	for (CALayer *currentLayer in [layer sublayers]) {
-		CGRect frame = currentLayer.frame;
-		frame.origin.x -= mainRect.origin.x;
-		frame.origin.y -= mainRect.origin.y;
-		currentLayer.frame = frame;
-	}
+    if (CGRectIsNull(mainRect)) {
+        // TODO what to do when mainRect is null rect? i.e. no sublayer or all sublayers have null rect frame
+    } else {
+        for (CALayer *currentLayer in [layer sublayers]) {
+            CGRect frame = currentLayer.frame;
+            frame.origin.x -= mainRect.origin.x;
+            frame.origin.y -= mainRect.origin.y;
+            currentLayer.frame = frame;
+        }
+    }
 }
 
 @end

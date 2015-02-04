@@ -8,8 +8,8 @@
 
 #import "SVGKParserStyles.h"
 
-#import "CSSStyleSheet.h"
-#import "StyleSheetList+Mutable.h"
+#import "SVGKCSSStyleSheet.h"
+#import "SVGKStyleSheetList+Mutable.h"
 
 @implementation SVGKParserStyles
 
@@ -19,8 +19,8 @@ static NSSet *_svgParserStylesSupportedNamespaces = nil;
 {
     if( _svgParserStylesSupportedNamespaces == nil )
         _svgParserStylesSupportedNamespaces = [[NSSet alloc] initWithObjects:
-        @"http://www.w3.org/2000/svg",
-        nil];
+											   @"http://www.w3.org/2000/svg",
+											   nil];
 	return _svgParserStylesSupportedNamespaces;
 }
 
@@ -32,7 +32,7 @@ static NSSet *_svgParserStylesSupportedTags = nil;
     return _svgParserStylesSupportedTags;
 }
 
--(Node *)handleStartElement:(NSString *)name document:(SVGKSource *)document namePrefix:(NSString *)prefix namespaceURI:(NSString *)XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(Node *)parentNode
+-(SVGKNode *)handleStartElement:(NSString *)name document:(SVGKSource *)document namePrefix:(NSString *)prefix namespaceURI:(NSString *)XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode *)parentNode
 {
 	if( [[self supportedNamespaces] containsObject:XMLNSURI] )
 	{
@@ -49,7 +49,7 @@ static NSSet *_svgParserStylesSupportedTags = nil;
 		
 		/** NB: must supply a NON-qualified name if we have no specific prefix here ! */
 		// FIXME: we always return an empty Element here; for DOM spec, should we be detecting things like "comment" nodes? I dont know how libxml handles those and sends them to us. I've never seen one in action...
-		Element *blankElement = [[[Element alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes] autorelease];
+		SVGKElement *blankElement = [[SVGKElement alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes];
 		
 		return blankElement;
 	}
@@ -57,34 +57,23 @@ static NSSet *_svgParserStylesSupportedTags = nil;
 		return nil;
 }
 
--(void)handleEndElement:(Node *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
+-(void)handleEndElement:(SVGKNode *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
 {
 	/** This is where the magic happens ... */
-		NSString* c = [newNode.textContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	NSString* c = [newNode.textContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	
+	if( c.length > 0 )
+	{
+		SVGKCSSStyleSheet* parsedStylesheet = [[SVGKCSSStyleSheet alloc] initWithString:c];
 		
-		if( c.length > 0 )
-		{
-			CSSStyleSheet* parsedStylesheet = [[[CSSStyleSheet alloc] initWithString:c] autorelease];
-			
-			[parseResult.parsedDocument.rootElement.styleSheets.internalArray addObject:parsedStylesheet];
-		}
-
-}
-
--(void) dealloc
-{
-//    [_tags release];
-//    [_namespaces release];
-    
-    [super dealloc];
+		[parseResult.parsedDocument.rootElement.styleSheets.internalArray addObject:parsedStylesheet];
+	}
 }
 
 +(void)trim
 {
-    [_svgParserStylesSupportedTags release];
     _svgParserStylesSupportedTags = nil;
     
-    [_svgParserStylesSupportedNamespaces release];
     _svgParserStylesSupportedNamespaces = nil;
 }
 

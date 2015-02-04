@@ -12,7 +12,7 @@
 	
 	if( [[self getAttribute:@"points"] length] > 0 )
 	{
-		CGMutablePathRef path = createPathFromPointsInString([[self getAttribute:@"points"] UTF8String], NO);
+		CGMutablePathRef path = CreatePathFromPointsInString([[self getAttribute:@"points"] UTF8String], NO);
 		
 		self.pathForShapeInRelativeCoords = path;
 		CGPathRelease(path);

@@ -22,37 +22,30 @@
 #import "SVGRectElement.h"
 #import "SVGTitleElement.h"
 #import "SVGKPattern.h"
-#import "SVGPatternElement.h"
+//#import "SVGPatternElement.h"
 
 @implementation SVGKParserPatterns
 
-- (void)dealloc {
-	
-	[super dealloc];
-}
-
 -(NSArray*) supportedNamespaces
 {
-	return [NSArray arrayWithObjects:
-			@"http://www.w3.org/2000/svg",
-			nil];
+	return @[@"http://www.w3.org/2000/svg"];
 }
 
 /** "tags supported" is exactly the set of all SVGElement subclasses that already exist */
 -(NSArray*) supportedTags
 {
-	return [NSMutableArray arrayWithObjects:@"pattern", nil];
+	return [NSMutableArray arrayWithObject:@"pattern"];
 }
 
-- (Node*)handleStartElement:(NSString *)name document:(SVGKSource*) document namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult*) parseResult parentNode:(Node*) parentNode
+- (SVGKNode*)handleStartElement:(NSString *)name document:(SVGKSource*) document namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult*) parseResult parentNode:(SVGKNode*) parentNode
 {
-		
+	
 	NSAssert( FALSE, @"Patterns are not supported by SVGKit yet - no-one has implemented them" );
 	
 	return nil;
 }
 
--(void)handleEndElement:(Node *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
+-(void)handleEndElement:(SVGKNode *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
 {
 	
 }

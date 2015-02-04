@@ -8,6 +8,6 @@
 #import "BaseClassForAllSVGBasicShapes.h"
 #import "BaseClassForAllSVGBasicShapes_ForSubclasses.h"
 
-@interface SVGPolygonElement : BaseClassForAllSVGBasicShapes { }
+@interface SVGPolygonElement : BaseClassForAllSVGBasicShapes
 
 @end

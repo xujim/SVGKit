@@ -6,7 +6,7 @@
 
 #else
 
-#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
 
 #endif
 
@@ -19,7 +19,7 @@
 + (SVGKPattern*)patternWithCGImage:(CGImageRef)cgImage;
 + (SVGKPattern*)patternWithCGColor:(CGColorRef)cgColor;
 
-- (CGColorRef) CGColor;
+@property (nonatomic, readonly) CGColorRef CGColor CF_RETURNS_NOT_RETAINED;
 
 #if TARGET_OS_IPHONE
 

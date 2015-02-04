@@ -11,7 +11,7 @@
 #define NUM_COLORS 147
 
 
-SVGColor ColorValueWithName (const char *name);
+static SVGColor ColorValueWithName (const char *name);
 
 static const char *gColorNames[NUM_COLORS] = {
 	"aliceblue",
@@ -270,15 +270,18 @@ typedef enum {
 SVGColor SVGColorFromString (const char *string) {
 	NSCAssert(string != NULL, @"NullPointerException: you gave us a null pointer, very bad thing to do...");
 	SVGColor color;
-	bzero(&color, sizeof(color));
+	memset(&color, 0, sizeof(color));
 	
 	color.a = 0xFF;
-	
-	if (!strncmp(string, "rgb(", 4)) {
+	if (!strncmp(string, "url", 4)) {
+		DDLogWarn(@"%s: WARNING: Unable to get an SVG color from a url (most likely a pattern)", __FUNCTION__);
+		DDLogInfo(@"%s: INFO: returning a black SVG color", __FUNCTION__);
+		color = SVGColorMake(0, 0, 0, 255);
+	} else if (!strncmp(string, "rgb(", 4)) {
 		size_t len = strlen(string);
 		
 		char accum[MAX_ACCUM];
-		bzero(accum, MAX_ACCUM);
+		memset(accum, 0, MAX_ACCUM);
 		
 		int accumIdx = 0, currComponent = 0;
 		Phase phase = PhaseNone;
@@ -296,7 +299,7 @@ SVGColor SVGColorFromString (const char *string) {
 			
 			if (phase == PhaseRGB) {
 				if (c == '(') {
-					bzero(accum, MAX_ACCUM);
+					memset(accum, 0, MAX_ACCUM);
 					accumIdx = 0;
 					
 					continue;
@@ -311,7 +314,7 @@ SVGColor SVGColorFromString (const char *string) {
 						currComponent++;
 					}
 					
-					bzero(accum, MAX_ACCUM);
+					memset(accum, 0, MAX_ACCUM);
 					accumIdx = 0;
 					
 					continue;
@@ -343,8 +346,8 @@ SVGColor SVGColorFromString (const char *string) {
 		}
 		else if( strlen(hexString) == 3 )
 		{
-			char r[3], g[3], b[3];
-			r[2] = g[2] = b[2] = '\0';
+			char r[2], g[2], b[2];
+			r[1] = g[1] = b[1] = '\0';
 			
 			strncpy(r, hexString, 1);
 			strncpy(g, hexString + 1, 1);
@@ -376,20 +379,20 @@ CGFloat SVGPercentageFromString (const char *string) {
 	size_t len = strlen(string);
 	
 	if (string[len-1] != '%') {
-		DDLogCWarn(@"Invalid percentage: %s", string);
+		DDLogWarn(@"Invalid percentage: %s", string);
 		return -1;
 	}
 	
-	return atoi(string) / 100.0f;
+	return atoi(string) / 100.0;
 }
 
-CGMutablePathRef createPathFromPointsInString (const char *string, boolean_t close) {
+CGMutablePathRef CreatePathFromPointsInString (const char *string, bool close) {
 	CGMutablePathRef path = CGPathCreateMutable();
 	
 	size_t len = strlen(string);
 	
 	char accum[MAX_ACCUM];
-	bzero(accum, MAX_ACCUM);
+	memset(accum, 0, MAX_ACCUM);
 	
 	int accumIdx = 0, currComponent = 0;
 	
@@ -419,7 +422,7 @@ CGMutablePathRef createPathFromPointsInString (const char *string, boolean_t clo
 				currComponent = 0;
 			}
 			
-			bzero(accum, MAX_ACCUM);
+			memset(accum, 0, MAX_ACCUM);
 			accumIdx = 0;
 		}
 		else if (isdigit(c) || c == '-' || c == '.') { // is digit or decimal separator OR A MINUS SIGN!!! ?
@@ -443,7 +446,19 @@ CGColorRef CGColorWithSVGColor (SVGColor color) {
 								blue:RGB_N(color.b)
 							   alpha:RGB_N(color.a)].CGColor;
 #else
-	outColor = CGColorCreateGenericRGB(RGB_N(color.r), RGB_N(color.g), RGB_N(color.b), RGB_N(color.a));
+	if ([NSColor instancesRespondToSelector:@selector(CGColor)]) {
+		outColor = [NSColor colorWithCalibratedRed:RGB_N(color.r)
+											 green:RGB_N(color.g)
+											  blue:RGB_N(color.b)
+											 alpha:RGB_N(color.a)].CGColor;
+	}
+    
+    if (outColor == NULL) {
+		outColor = (CGColorRef)CFAutorelease(CGColorCreateGenericRGB(RGB_N(color.r),
+																	 RGB_N(color.g),
+																	 RGB_N(color.b),
+																	 RGB_N(color.a)));
+	}
 #endif
 	
 	return outColor;

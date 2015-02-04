@@ -1,6 +1,6 @@
 #import "SVGKParserDefsAndUse.h"
 
-#import "Node.h"
+#import "SVGKNode.h"
 #import "SVGKSource.h"
 #import "SVGKParseResult.h"
 
@@ -16,9 +16,7 @@
 
 -(NSArray*) supportedNamespaces
 {
-	return [NSArray arrayWithObjects:
-			@"http://www.w3.org/2000/svg",
-			nil];
+	return @[@"http://www.w3.org/2000/svg"];
 }
 
 /** "tags supported" is exactly the set of all SVGElement subclasses that already exist */
@@ -29,11 +27,11 @@
 
 -(SVGElementInstance*) convertSVGElementToElementInstanceTree:(SVGElement*) original outermostUseElement:(SVGUseElement*) outermostUseElement
 {
-	SVGElementInstance* instance = [[[SVGElementInstance alloc] init] autorelease];
+	SVGElementInstance* instance = [[SVGElementInstance alloc] init];
 	instance.correspondingElement = original;
 	instance.correspondingUseElement = outermostUseElement;
 	
-	for( Node* subNode in original.childNodes )
+	for( SVGKNode* subNode in original.childNodes )
 	{
 		if( [subNode isKindOfClass:[SVGElement class]])
 		{
@@ -48,41 +46,41 @@
 	return instance;
 }
 
-- (Node*) handleStartElement:(NSString *)name document:(SVGKSource*) SVGKSource namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(Node*) parentNode
+- (SVGKNode*) handleStartElement:(NSString *)name document:(SVGKSource*) SVGKSource namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult *)parseResult parentNode:(SVGKNode*) parentNode
 {
 	if( [[self supportedNamespaces] containsObject:XMLNSURI] )
-	{	
+	{
 		NSString* qualifiedName = (prefix == nil) ? name : [NSString stringWithFormat:@"%@:%@", prefix, name];
 		
 		if( [name isEqualToString:@"defs"])
-		{	
+		{
 			/** NB: must supply a NON-qualified name if we have no specific prefix here ! */
-			SVGDefsElement *element = [[[SVGDefsElement alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes] autorelease];
+			SVGDefsElement *element = [[SVGDefsElement alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes];
 			
 			return element;
 		}
 		else if( [name isEqualToString:@"use"])
-		{	
+		{
 			/** NB: must supply a NON-qualified name if we have no specific prefix here ! */
-			SVGUseElement *useElement = [[[SVGUseElement alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes] autorelease];
+			SVGUseElement *useElement = [[SVGUseElement alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes];
 			
 			[useElement postProcessAttributesAddingErrorsTo:parseResult]; // handles "transform" and "style"
 			
 			if( [attributes valueForKey:@"x"] != nil )
-				useElement.x = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"x"]) value]];
+				useElement.x = [SVGLength svgLengthFromNSString:[((SVGKAttr*)[attributes valueForKey:@"x"]) value]];
 			if( [attributes valueForKey:@"y"] != nil )
-				useElement.x = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"y"]) value]];
+				useElement.y = [SVGLength svgLengthFromNSString:[((SVGKAttr*)[attributes valueForKey:@"y"]) value]];
 			if( [attributes valueForKey:@"width"] != nil )
-				useElement.x = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"width"]) value]];
+				useElement.width = [SVGLength svgLengthFromNSString:[((SVGKAttr*)[attributes valueForKey:@"width"]) value]];
 			if( [attributes valueForKey:@"height"] != nil )
-				useElement.x = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"height"]) value]];
+				useElement.height = [SVGLength svgLengthFromNSString:[((SVGKAttr*)[attributes valueForKey:@"height"]) value]];
 			
 			NSString* hrefAttribute = [useElement getAttributeNS:@"http://www.w3.org/1999/xlink" localName:@"href"];
 			
 			NSAssert( [hrefAttribute length] > 0, @"Found an SVG <use> tag that has no 'xlink:href' attribute. File is invalid / don't know how to parse this" );
 			if( [hrefAttribute length] > 0 )
 			{
-				NSString* linkHref = [((Attr*)[attributes valueForKey:@"xlink:href"]) value];
+				NSString* linkHref = [((SVGKAttr*)[attributes valueForKey:@"xlink:href"]) value];
 				
 				NSAssert( [linkHref hasPrefix:@"#"], @"Not supported: <use> tags that declare an href to something that DOESN'T begin with #. Href supplied = %@", linkHref );
 				
@@ -91,7 +89,7 @@
 				/** have to find the node in the DOM tree with id = xlink:href's value */
 				SVGElement* linkedElement = (SVGElement*) [parseResult.parsedDocument getElementById:linkHref];
 				
-				NSAssert( linkedElement != nil, @"Found an SVG <use> tag that points to a non-existent element. Missing element: id = ", linkHref );
+				NSAssert( linkedElement != nil, @"Found an SVG <use> tag that points to a non-existent element. Missing element: id = %@", linkHref );
 				
 				
 				useElement.instanceRoot = [self convertSVGElementToElementInstanceTree:linkedElement outermostUseElement:useElement];
@@ -104,7 +102,7 @@
 	return nil;
 }
 
--(void)handleEndElement:(Node *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
+-(void)handleEndElement:(SVGKNode *)newNode document:(SVGKSource *)document parseResult:(SVGKParseResult *)parseResult
 {
 	
 }

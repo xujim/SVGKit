@@ -40,7 +40,6 @@
 #import "SVGKSource.h"
 #import "SVGKParserExtension.h"
 #import "SVGKParseResult.h"
-
 #import "SVGElement.h"
 
 
@@ -57,36 +56,62 @@
 	NSMutableString *_storedChars;
 	//NSMutableArray *_elementStack;
 	NSMutableArray * _stackOfParserExtensions;
-	Node * _parentOfCurrentNode;
+	SVGKNode * _parentOfCurrentNode;
 }
 
-@property(nonatomic,retain,readonly) SVGKSource* source;
-@property(nonatomic,retain,readonly) SVGKParseResult* currentParseRun;
+@property(nonatomic,strong,readonly) SVGKSource* source;
+@property(nonatomic,strong,readonly) NSMutableArray* externalStylesheets;
+@property(nonatomic,strong,readonly) SVGKParseResult* currentParseRun;
 
-
-@property(nonatomic,retain) NSMutableArray* parserExtensions;
-@property(nonatomic,retain) NSMutableDictionary* parserKnownNamespaces; /**< maps "uri" to "array of parser-extensions" */
+@property(nonatomic,strong) NSMutableArray* parserExtensions;
+@property(nonatomic,strong) NSMutableDictionary* parserKnownNamespaces; /**< maps "uri" to "array of parser-extensions" */
 
 #pragma mark - NEW
 
+/**
+ If you kept the SVGKParser instance when you started a parse, you can
+ hand that instance to another thread and the OTHER thread can trigger
+ a cancel.
+ 
+ It is not instantaneous, but kicks in as soon as more data is read from
+ the raw bytes-stream, so it's pretty quick
+ */
++(void) cancelParser:(SVGKParser*) parserToCancel;
+
+/**
+ Creates an SVGKParser, and adds the "standard" extensions for parsing
+ a standard SVG file; you can then add any of your own custom extensions
+ before triggering the parse with e.g. "parseSynchronously"
+ */
++(SVGKParser *) newParserWithDefaultSVGKParserExtensions:(SVGKSource *)source;
+
+/**
+ Delegates to [self newParserWithDefaultSVGKParserExtensions:], and then auto-starts
+ the parse SYNCHRONOUSLY (may take anything from 0.001 seconds up to 30+ seconds
+ for a huge SVG file).
+ 
+ Returns the fully-parsed result, including any errors
+ */
 + (SVGKParseResult*) parseSourceUsingDefaultSVGKParser:(SVGKSource*) source;
+
+/**
+ This MIGHT now be safe to call multiple times on different threads
+ (NB: the only reason it wasn't safe before was major bugs in libxml
+ that break libxml in horrible ways, see the source code to this class
+ for more info)
+ */
 - (SVGKParseResult*) parseSynchronously;
 
-
-+(NSDictionary *) NSDictionaryFromCSSAttributes: (Attr*) styleAttribute;
-
-
++(NSDictionary *) NSDictionaryFromCSSAttributes: (SVGKAttr*) styleAttribute;
 
 #pragma mark - OLD - POTENTIALLY DELETE THESE ONCE THEY'VE ALL BEEN CHECKED AND CONVERTED
 
-- (id)initWithSource:(SVGKSource *)doc;
+- (instancetype)initWithSource:(SVGKSource *)doc;
 
 /*! Adds the default SVG-tag parsers (everything in the SVG namespace); you should always use these, unless you
  are massively customizing SVGKit's parser! */
--(void) addDefaultSVGParserExtensions;
+- (void) addDefaultSVGParserExtensions;
 /*! NB: you ALMOST ALWAYS want to first call "addDefaultSVGParserExtensions" */
-- (void) addParserExtension:(NSObject<SVGKParserExtension>*) extension;
-
-
+- (void) addParserExtension:(id<SVGKParserExtension>) extension;
 
 @end

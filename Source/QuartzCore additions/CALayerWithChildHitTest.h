@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
-
-
 #import <QuartzCore/QuartzCore.h>
+#import "CALayerWithClipRender.H"
 
 /*!
  * Overrides Apple's CALayer purely to change one method, so that hit-testing
@@ -15,8 +14,6 @@
  * problems in other code (not that I'm aware of any - this override appears to be a common
  * implementation, c.f. http://stackoverflow.com/questions/2944064/hit-testing-with-calayer-using-the-alpha-properties-of-the-calayer-contents
  */
-@interface CALayerWithChildHitTest : CALayer {
-    
-}
+@interface CALayerWithChildHitTest : CALayerWithClipRender
 
 @end

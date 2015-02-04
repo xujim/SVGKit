@@ -2,13 +2,15 @@
 // Prefix header for all source files of the 'SVGKit-iOS' target in the 'SVGKit-iOS' project
 //
 
+#include <tgmath.h>
+
+#include <CoreGraphics/CoreGraphics.h>
+#include <CoreText/CoreText.h>
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
-    #import "DDLog.h"
+	#import <UIKit/UIKit.h>
+	#import <QuartzCore/QuartzCore.h>
+    #import <CocoaLumberjack/CocoaLumberjack.h>
 
-    #if DEBUG
-    static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-    #else
-    static const int ddLogLevel = LOG_LEVEL_WARN;
-    #endif
+	#import "SVGKit_logging.h"
 #endif

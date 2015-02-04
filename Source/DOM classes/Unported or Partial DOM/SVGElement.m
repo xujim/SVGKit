@@ -8,17 +8,19 @@
 #import "SVGElement.h"
 
 #import "SVGElement_ForParser.h" //.h" // to solve insane Xcode circular dependencies
-#import "StyleSheetList+Mutable.h"
+#import "SVGKStyleSheetList+Mutable.h"
 
-#import "CSSStyleSheet.h"
-#import "CSSStyleRule.h"
-#import "CSSRuleList+Mutable.h"
+#import "SVGKCSSStyleSheet.h"
+#import "SVGKCSSStyleRule.h"
+#import "SVGKCSSRuleList+Mutable.h"
 
 #import "SVGGElement.h"
 
 #import "SVGRect.h"
 
 #import "SVGTransformable.h"
+
+#import "SVGKCGFloatAdditions.h"
 
 @interface SVGElement ()
 
@@ -40,15 +42,15 @@
 
 @synthesize identifier = _identifier;
 @synthesize xmlbase;
-@synthesize rootOfCurrentDocumentFragment;
-@synthesize viewportElement;
+@synthesize rootOfCurrentDocumentFragment = _rootOfCurrentDocumentFragment;
+@synthesize viewportElement = _viewportElement;
 @synthesize stringValue = _stringValue;
 
 @synthesize className; /**< CSS class, from SVGStylable interface */
 @synthesize style; /**< CSS style, from SVGStylable interface */
 
 /** from SVGStylable interface */
--(CSSValue*) getPresentationAttribute:(NSString*) name
+-(SVGKCSSValue*) getPresentationAttribute:(NSString*) name
 {
 	NSAssert(FALSE, @"getPresentationAttribute: not implemented yet");
 	return nil;
@@ -69,7 +71,7 @@
 	BOOL isTagAllowedToBeAViewport = [self.tagName isEqualToString:@"svg"] || [self.tagName isEqualToString:@"foreignObject"]; // NB: Spec lists "image" tag too but only as an IMPLICIT CREATOR - we don't actually handle it (it creates an <SVG> tag ... that will be handled later)
 	
 	BOOL isTagDefiningAViewport = [self.attributes getNamedItem:@"width"] != nil || [self.attributes getNamedItem:@"height"] != nil;
-		
+	
 	if( isTagAllowedToBeAViewport && isTagDefiningAViewport )
 	{
 		DDLogVerbose(@"[%@] WARNING: setting self (tag = %@) to be a viewport", [self class], self.tagName );
@@ -96,13 +98,13 @@
 
 /*! Override so that we can automatically set / unset the ownerSVGElement and viewportElement properties,
  as required by SVG Spec */
--(void)setParentNode:(Node *)newParent
+-(void)setParentNode:(SVGKNode *)newParent
 {
 	[super setParentNode:newParent];
 	
 	/** SVG Spec: if "outermost SVG tag" then both element refs should be nil */
 	if( [self isKindOfClass:[SVGSVGElement class]]
-	&& (self.parentNode == nil || ! [self.parentNode isKindOfClass:[SVGElement class]]) )
+	   && (self.parentNode == nil || ! [self.parentNode isKindOfClass:[SVGElement class]]) )
 	{
 		self.rootOfCurrentDocumentFragment = nil;
 		self.viewportElement = nil;
@@ -115,7 +117,7 @@
 		 If the tree is purely SVGElement nodes / subclasses, that's easy.
 		 
 		 But if there are custom nodes in there (any other DOM node, for instance), it gets
-		more tricky. We have to recurse up the tree until we find an SVGElement we can latch
+		 more tricky. We have to recurse up the tree until we find an SVGElement we can latch
 		 onto
 		 */
 		
@@ -126,8 +128,8 @@
 		}
 		else
 		{
-			Node* currentAncestor = newParent;
-			SVGElement*	firstAncestorThatIsAnyKindOfSVGElement = nil;
+			SVGKNode* currentAncestor = newParent;
+			SVGElement*	firstAncestorThatIsAnyKindOfSVGElement;
 			while( firstAncestorThatIsAnyKindOfSVGElement == nil
 				  && currentAncestor != nil ) // if we run out of tree! This would be an error (see below)
 			{
@@ -137,30 +139,54 @@
 					currentAncestor = currentAncestor.parentNode;
 			}
 			
-			NSAssert( firstAncestorThatIsAnyKindOfSVGElement != nil, @"This node has no valid SVG tags as ancestor, but it's not an <svg> tag, so this is an impossible SVG file" );
-			
-			
-			if( [firstAncestorThatIsAnyKindOfSVGElement isKindOfClass:[SVGSVGElement class]] )
-				self.rootOfCurrentDocumentFragment = (SVGSVGElement*) firstAncestorThatIsAnyKindOfSVGElement;
+			if( newParent == nil )
+			{
+				/** We've set the parent to nil, thereby "orphaning" this Node and the tree underneath it.
+				 
+				 This usually happens when you remove a Node from its parent.
+				 
+				 I'm not sure what the spec expects at that point - you have a valid DOM tree, but *not* a valid SVG fragment;
+				 or maybe it is valid, for some special-case kind of SVG fragment definition?
+				 
+				 TODO: this may also relate to SVG <use> nodes and instancing: if you're fixing that code, check this comment to see if you can improve it.
+				 
+				 For now: we simply "do nothing but set everything to nil"
+				 */
+				DDLogWarn( @"SVGElement has had its parent set to nil; this makes the element and tree beneath it no-longer-valid SVG data; this may require fix-up if you try to re-add that SVGElement or any of its children back to an existing/new SVG tree");
+				self.rootOfCurrentDocumentFragment = nil;
+			}
 			else
-				self.rootOfCurrentDocumentFragment = firstAncestorThatIsAnyKindOfSVGElement.rootOfCurrentDocumentFragment;
-			
-			[self reCalculateAndSetViewportElementReferenceUsingFirstSVGAncestor:firstAncestorThatIsAnyKindOfSVGElement];
-			
+			{
+				NSAssert( firstAncestorThatIsAnyKindOfSVGElement != nil, @"This node has no valid SVG tags as ancestor, but it's not an <svg> tag, so this is an impossible SVG file" );
+				
+				
+				if( [firstAncestorThatIsAnyKindOfSVGElement isKindOfClass:[SVGSVGElement class]] )
+					self.rootOfCurrentDocumentFragment = (SVGSVGElement*) firstAncestorThatIsAnyKindOfSVGElement;
+				else
+					self.rootOfCurrentDocumentFragment = firstAncestorThatIsAnyKindOfSVGElement.rootOfCurrentDocumentFragment;
+				
+				[self reCalculateAndSetViewportElementReferenceUsingFirstSVGAncestor:firstAncestorThatIsAnyKindOfSVGElement];
+				
 #if DEBUG_SVG_ELEMENT_PARSING
-			DDLogVerbose(@"viewport Element = %@ ... for node/element = %@", self.viewportElement, self.tagName);
+				DDLogVerbose(@"viewport Element = %@ ... for node/element = %@", self.viewportElement, self.tagName);
 #endif
+			}
 		}
 	}
 }
 
-- (void)dealloc {
-	[_stringValue release];
-	[_identifier release];
-	[xmlbase release];
-	self.className = nil;
-    self.style = nil;
-	[super dealloc];
+- (void)setRootOfCurrentDocumentFragment:(SVGSVGElement *)root {
+    _rootOfCurrentDocumentFragment = root;
+    for (SVGKNode *child in self.childNodes)
+        if ([child isKindOfClass:SVGElement.class])
+            ((SVGElement *) child).rootOfCurrentDocumentFragment = root;
+}
+
+- (void)setViewportElement:(SVGElement *)viewport {
+    _viewportElement = viewport;
+    for (SVGKNode *child in self.childNodes)
+        if ([child isKindOfClass:SVGElement.class])
+            ((SVGElement *) child).viewportElement = viewport;
 }
 
 - (void)loadDefaults {
@@ -185,7 +211,7 @@
 	/** CSS styles and classes */
 	if ( [self getAttributeNode:@"style"] )
 	{
-		self.style = [[[CSSStyleDeclaration alloc] init] autorelease];
+		self.style = [[SVGKCSSStyleDeclaration alloc] init];
 		self.style.cssText = [self getAttribute:@"style"]; // causes all the LOCALLY EMBEDDED style info to be parsed
 	}
 	if( [self getAttributeNode:@"class"])
@@ -219,20 +245,17 @@
 		{
 			SVGElement<SVGTransformable>* selfTransformable = (SVGElement<SVGTransformable>*) self;
 			
-		/**
-		 http://www.w3.org/TR/SVG/coords.html#TransformAttribute
-		 
-		 The individual transform definitions are separated by whitespace and/or a comma. 
-		 */
-		NSString* value = [self getAttribute:@"transform"];
+			/**
+			 http://www.w3.org/TR/SVG/coords.html#TransformAttribute
+			 
+			 The individual transform definitions are separated by whitespace and/or a comma.
+			 */
+			NSString* value = [self getAttribute:@"transform"];
             if (!value.length) {
                 value = [self getAttribute:@"gradientTransform"];
             }
-		
-#if !(TARGET_OS_IPHONE) && ( !defined( __MAC_10_7 ) || __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6_7 )
-		DDLogVerbose(@"[%@] WARNING: the transform attribute requires OS X 10.7 or above (we need Regular Expressions! Apple was slow to add them :( ). Ignoring TRANSFORMs in SVG!", [self class] );
-#else
-		NSError* error = nil;
+						
+		NSError* error;
 		NSRegularExpression* regexpTransformListItem = [NSRegularExpression regularExpressionWithPattern:@"[^\\(\\),]*\\([^\\)]*" options:0 error:&error]; // anything except space and brackets ... followed by anything except open bracket ... plus anything until you hit a close bracket
 		
 		[regexpTransformListItem enumerateMatchesInString:value options:0 range:NSMakeRange(0, [value length]) usingBlock:
@@ -254,14 +277,14 @@
 			/** if you get ", " (comma AND space), Apple sends you an extra 0-length match - "" - between your args. We strip that here */
 			parameterStrings = [parameterStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
 			
-			//EXTREME DEBUG: DDLogVerbose(@"[%@] DEBUG: found parameters = %@", [self class], parameterStrings);
+			//EXTREME DEBUG: NSLog(@"[%@] DEBUG: found parameters = %@", [self class], parameterStrings);
 			
 			command = [command stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
 			
 			if( [command isEqualToString:@"translate"] )
 			{
-				CGFloat xtrans = [(NSString*)[parameterStrings objectAtIndex:0] floatValue];
-				CGFloat ytrans = [parameterStrings count] > 1 ? [(NSString*)[parameterStrings objectAtIndex:1] floatValue] : 0.0;
+				CGFloat xtrans = [(NSString*)parameterStrings[0] SVGKCGFloatValue];
+				CGFloat ytrans = [parameterStrings count] > 1 ? [(NSString*)parameterStrings[1] SVGKCGFloatValue] : 0.0;
 				
 				CGAffineTransform nt = CGAffineTransformMakeTranslation(xtrans, ytrans);
 				selfTransformable.transform = CGAffineTransformConcat( nt, selfTransformable.transform ); // Apple's method appears to be backwards, and not doing what Apple's docs state
@@ -269,20 +292,20 @@
 			}
 			else if( [command isEqualToString:@"scale"] )
 			{
-				CGFloat xScale = [(NSString*)[parameterStrings objectAtIndex:0] floatValue];
-				CGFloat yScale = [parameterStrings count] > 1 ? [(NSString*)[parameterStrings objectAtIndex:1] floatValue] : xScale;
+				CGFloat xScale = [(NSString*)parameterStrings[0] SVGKCGFloatValue];
+				CGFloat yScale = [parameterStrings count] > 1 ? [(NSString*)parameterStrings[1] SVGKCGFloatValue] : xScale;
 				
 				CGAffineTransform nt = CGAffineTransformMakeScale(xScale, yScale);
 				selfTransformable.transform = CGAffineTransformConcat( nt, selfTransformable.transform ); // Apple's method appears to be backwards, and not doing what Apple's docs state
 			}
 			else if( [command isEqualToString:@"matrix"] )
 			{
-				CGFloat a = [(NSString*)[parameterStrings objectAtIndex:0] floatValue];
-				CGFloat b = [(NSString*)[parameterStrings objectAtIndex:1] floatValue];
-				CGFloat c = [(NSString*)[parameterStrings objectAtIndex:2] floatValue];
-				CGFloat d = [(NSString*)[parameterStrings objectAtIndex:3] floatValue];
-				CGFloat tx = [(NSString*)[parameterStrings objectAtIndex:4] floatValue];
-				CGFloat ty = [(NSString*)[parameterStrings objectAtIndex:5] floatValue];
+				CGFloat a = [(NSString*)parameterStrings[0] SVGKCGFloatValue];
+				CGFloat b = [(NSString*)parameterStrings[1] SVGKCGFloatValue];
+				CGFloat c = [(NSString*)parameterStrings[2] SVGKCGFloatValue];
+				CGFloat d = [(NSString*)parameterStrings[3] SVGKCGFloatValue];
+				CGFloat tx = [(NSString*)parameterStrings[4] SVGKCGFloatValue];
+				CGFloat ty = [(NSString*)parameterStrings[5] SVGKCGFloatValue];
 				
 				CGAffineTransform nt = CGAffineTransformMake(a, b, c, d, tx, ty );
 				selfTransformable.transform = CGAffineTransformConcat( nt, selfTransformable.transform ); // Apple's method appears to be backwards, and not doing what Apple's docs state
@@ -298,23 +321,28 @@
 				 */
 				if( [parameterStrings count] == 1)
 				{
-					CGFloat degrees = [[parameterStrings objectAtIndex:0] floatValue];
+					CGFloat degrees = [parameterStrings[0] SVGKCGFloatValue];
 					CGFloat radians = degrees * M_PI / 180.0;
-					
-					CGAffineTransform nt = CGAffineTransformMakeRotation(radians);
-					selfTransformable.transform = CGAffineTransformConcat( nt, selfTransformable.transform ); // Apple's method appears to be backwards, and not doing what Apple's docs state
+                    
+					selfTransformable.transform = CGAffineTransformRotate(selfTransformable.transform, radians);
+//					CGAffineTransform nt = CGAffineTransformMakeRotation(radians);
+//					selfTransformable.transform = CGAffineTransformConcat( nt, selfTransformable.transform ); // Apple's method appears to be backwards, and not doing what Apple's docs state
 				}
 				else if( [parameterStrings count] == 3)
 				{
-					CGFloat degrees = [[parameterStrings objectAtIndex:0] floatValue];
+					CGFloat degrees = [parameterStrings[0] SVGKCGFloatValue];
 					CGFloat radians = degrees * M_PI / 180.0;
-					CGFloat centerX = [[parameterStrings objectAtIndex:1] floatValue];
-					CGFloat centerY = [[parameterStrings objectAtIndex:2] floatValue];
-					CGAffineTransform nt = CGAffineTransformIdentity;
-					nt = CGAffineTransformConcat( nt, CGAffineTransformMakeTranslation(centerX, centerY) );
-					nt = CGAffineTransformConcat( nt, CGAffineTransformMakeRotation(radians) );
-					nt = CGAffineTransformConcat( nt, CGAffineTransformMakeTranslation(-1.0 * centerX, -1.0 * centerY) );
-					selfTransformable.transform = CGAffineTransformConcat( nt, selfTransformable.transform ); // Apple's method appears to be backwards, and not doing what Apple's docs state
+					CGFloat centerX = [parameterStrings[1] SVGKCGFloatValue];
+					CGFloat centerY = [parameterStrings[2] SVGKCGFloatValue];
+                    
+                    selfTransformable.transform = CGAffineTransformTranslate(selfTransformable.transform, centerX, centerY);
+                    selfTransformable.transform = CGAffineTransformRotate(selfTransformable.transform, radians);
+                    selfTransformable.transform = CGAffineTransformTranslate(selfTransformable.transform, -1.0 * centerX, -1.0 * centerY);
+//					CGAffineTransform nt = CGAffineTransformIdentity;
+//					nt = CGAffineTransformConcat( nt, CGAffineTransformMakeTranslation(centerX, centerY) );
+//					nt = CGAffineTransformConcat( nt, CGAffineTransformMakeRotation(radians) );
+//					nt = CGAffineTransformConcat( nt, CGAffineTransformMakeTranslation(-1.0 * centerX, -1.0 * centerY) );
+//					selfTransformable.transform = CGAffineTransformConcat( nt, selfTransformable.transform ); // Apple's method appears to be backwards, and not doing what Apple's docs state
 					} else
 					{
 					DDLogError(@"[%@] ERROR: input file is illegal, has an SVG matrix transform attribute without the required 1 or 3 parameters. Item = %@, transform attribute value = %@", [self class], transformString, value );
@@ -325,17 +353,13 @@
 			{
 				DDLogWarn(@"[%@] ERROR: skew is unsupported: %@", [self class], command );
 				
-				[parseResult addParseErrorRecoverable: [NSError errorWithDomain:@"SVGKit" code:15184 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-																			   @"transform=skewX is unsupported", NSLocalizedDescriptionKey,
-																			   nil]
+				[parseResult addParseErrorRecoverable: [NSError errorWithDomain:@"SVGKit" code:15184 userInfo:@{NSLocalizedDescriptionKey: @"transform=skewX is unsupported"}
 						]];
 			}
 			else if( [command isEqualToString:@"skewY"] )
 			{
 				DDLogWarn(@"[%@] ERROR: skew is unsupported: %@", [self class], command );
-				[parseResult addParseErrorRecoverable: [NSError errorWithDomain:@"SVGKit" code:15184 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-																			   @"transform=skewY is unsupported", NSLocalizedDescriptionKey,
-																			   nil]
+				[parseResult addParseErrorRecoverable: [NSError errorWithDomain:@"SVGKit" code:15184 userInfo:@{NSLocalizedDescriptionKey: @"transform=skewY is unsupported"}
 						]];
 			}
 			else
@@ -345,20 +369,18 @@
 		}];
 		
 		//DEBUG: DDLogVerbose(@"[%@] Set local / relative transform = (%2.2f, %2.2f // %2.2f, %2.2f) + (%2.2f, %2.2f translate)", [self class], selfTransformable.transform.a, selfTransformable.transform.b, selfTransformable.transform.c, selfTransformable.transform.d, selfTransformable.transform.tx, selfTransformable.transform.ty );
-#endif
 		}
 	}
-
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<%@ %p | id=%@ | prefix:localName=%@:%@ | tagName=%@ | stringValue=%@ | children=%ld>", 
+	return [NSString stringWithFormat:@"<%@ %p | id=%@ | prefix:localName=%@:%@ | tagName=%@ | stringValue=%@ | children=%ld>",
 			[self class], self, _identifier, self.prefix, self.localName, self.tagName, _stringValue, self.childNodes.length];
 }
 
 #pragma mark - Objective-C init methods (not in SVG Spec - the official spec has no explicit way to create nodes, which is clearly a bug in the Spec. Until they fix the spec, we have to do something or else SVG would be unusable)
 
-- (id)initWithLocalName:(NSString*) n attributes:(NSMutableDictionary*) attributes
+- (instancetype)initWithLocalName:(NSString*) n attributes:(NSMutableDictionary*) attributes
 {
 	self = [super initWithLocalName:n attributes:attributes];
 	if( self )
@@ -368,12 +390,13 @@
 		if( [self conformsToProtocol:@protocol(SVGTransformable)] )
 		{
 			SVGElement<SVGTransformable>* selfTransformable = (SVGElement<SVGTransformable>*) self;
-		selfTransformable.transform = CGAffineTransformIdentity;
+			selfTransformable.transform = CGAffineTransformIdentity;
 		}
 	}
 	return self;
 }
-- (id)initWithQualifiedName:(NSString*) n inNameSpaceURI:(NSString*) nsURI attributes:(NSMutableDictionary*) attributes
+
+- (instancetype)initWithQualifiedName:(NSString*) n inNameSpaceURI:(NSString*) nsURI attributes:(NSMutableDictionary*) attributes
 {
 	self = [super initWithQualifiedName:n inNameSpaceURI:nsURI attributes:attributes];
 	if( self )
@@ -383,10 +406,68 @@
 		if( [self conformsToProtocol:@protocol(SVGTransformable)] )
 		{
 			SVGElement<SVGTransformable>* selfTransformable = (SVGElement<SVGTransformable>*) self;
-		selfTransformable.transform = CGAffineTransformIdentity;
+			selfTransformable.transform = CGAffineTransformIdentity;
 		}
 	}
 	return self;
+}
+
+- (NSRange) nextSelectorRangeFromText:(NSString *) selectorText startFrom:(NSRange) previous
+{
+    NSCharacterSet *alphaNum = [NSCharacterSet alphanumericCharacterSet];
+	NSCharacterSet *selectorStart = [NSCharacterSet characterSetWithCharactersInString:@"#."];
+    
+    NSInteger start = -1;
+    NSUInteger end = 0;
+    for( NSUInteger i = previous.location + previous.length; i < selectorText.length; i++ )
+    {
+        unichar c = [selectorText characterAtIndex:i];
+        if( [selectorStart characterIsMember:c] )
+        {
+            start = i;
+        }
+        else if( [alphaNum characterIsMember:c] )
+        {
+            if( start == -1 )
+                start = i;
+            end = i;
+        }
+        else if( start != -1 )
+        {
+            break;
+        }
+    }
+    
+    if( start != -1 )
+        return NSMakeRange(start, end + 1 - start);
+    else
+        return NSMakeRange(NSNotFound, -1);
+}
+
+- (BOOL) selector:(NSString *)selector appliesTo:(SVGElement *) element
+{
+    if( [selector characterAtIndex:0] == '.' )
+        return element.className != nil && [element.className isEqualToString:[selector substringFromIndex:1]];
+    else if( [selector characterAtIndex:0] == '#' )
+        return element.identifier != nil && [element.identifier isEqualToString:[selector substringFromIndex:1]];
+    else
+        return element.nodeName != nil && [element.nodeName isEqualToString:selector];
+}
+
+- (BOOL) styleRule:(SVGKCSSStyleRule *) styleRule appliesTo:(SVGElement *) element
+{
+    NSRange nextRule = [self nextSelectorRangeFromText:styleRule.selectorText startFrom:NSMakeRange(0, 0)];
+    if( nextRule.location == NSNotFound )
+        return NO;
+    
+    while( nextRule.location != NSNotFound )
+    {
+        if( ![self selector:[styleRule.selectorText substringWithRange:nextRule] appliesTo:element] )
+            return NO;
+        
+        nextRule = [self nextSelectorRangeFromText:styleRule.selectorText startFrom:nextRule];
+    }
+    return YES;
 }
 
 #pragma mark - CSS cascading special attributes
@@ -415,33 +496,30 @@
 			return localStyleValue;
 		else
 		{
-			if( self.className != nil )
-			{
-				/** we have a locally declared CSS class; let's go hunt for it in the document's stylesheets */
-				
-				@autoreleasepool /** DOM / CSS is insanely verbose, so this is likely to generate a lot of crud objects */
-				{
-					for( StyleSheet* genericSheet in self.rootOfCurrentDocumentFragment.styleSheets.internalArray ) // because it's far too much effort to use CSS's low-quality iteration here...
-					{
-						if( [genericSheet isKindOfClass:[CSSStyleSheet class]])
-						{
-							CSSStyleSheet* cssSheet = (CSSStyleSheet*) genericSheet;
-							
-							for( CSSRule* genericRule in cssSheet.cssRules.internalArray)
-							{
-								if( [genericRule isKindOfClass:[CSSStyleRule class]])
-								{
-									CSSStyleRule* styleRule = (CSSStyleRule*) genericRule;
-									
-									if( [styleRule.selectorText isEqualToString:self.className] )
-									{
-										return [styleRule.style getPropertyValue:stylableProperty];
-									}
-								}
-							}
-						}
-					}
-				}
+            /** we have a locally declared CSS class; let's go hunt for it in the document's stylesheets */
+            
+            @autoreleasepool /** DOM / CSS is insanely verbose, so this is likely to generate a lot of crud objects */
+            {
+                for( SVGKStyleSheet* genericSheet in self.rootOfCurrentDocumentFragment.styleSheets.internalArray ) // because it's far too much effort to use CSS's low-quality iteration here...
+                {
+                    if( [genericSheet isKindOfClass:[SVGKCSSStyleSheet class]])
+                    {
+                        SVGKCSSStyleSheet* cssSheet = (SVGKCSSStyleSheet*) genericSheet;
+                        
+                        for( SVGKCSSRule* genericRule in cssSheet.cssRules.internalArray)
+                        {
+                            if( [genericRule isKindOfClass:[SVGKCSSStyleRule class]])
+                            {
+                                SVGKCSSStyleRule* styleRule = (SVGKCSSStyleRule*) genericRule;
+                                
+                                if( [self styleRule:styleRule appliesTo:self] )
+                                {
+                                    return [styleRule.style getPropertyValue:stylableProperty];
+                                }
+                            }
+                        }
+                    }
+                }
 			}
 			
 			/** either there's no class *OR* it found no match for the class in the stylesheets */
@@ -450,7 +528,7 @@
 			 OR: if you find an <SVG> tag before you find a <G> tag, give up
 			 */
 			
-			Node* parentElement = self.parentNode;
+			SVGKNode* parentElement = self.parentNode;
 			while( parentElement != nil
 				  && ! [parentElement isKindOfClass:[SVGGElement class]]
 				  && ! [parentElement isKindOfClass:[SVGSVGElement class]])

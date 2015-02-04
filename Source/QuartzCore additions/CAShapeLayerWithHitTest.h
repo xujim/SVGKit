@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
-
 #import <QuartzCore/QuartzCore.h>
+#import "CAShapeLayerWithClipRender.h"
 
 /*!
  * Overrides Apple's CAShapeLayer purely to change one method, so that hit-testing
@@ -17,8 +17,6 @@
  *
  * TODO: should this layer be used in SVGEllipseElement, SVGPolygonElement, etc?
  */
-@interface CAShapeLayerWithHitTest : CAShapeLayer {
-    
-}
+@interface CAShapeLayerWithHitTest : CAShapeLayerWithClipRender
 
 @end

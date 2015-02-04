@@ -27,30 +27,28 @@
  */
 #import <Foundation/Foundation.h>
 
-typedef enum SVG_LENGTH_TYPE
-{
+typedef NS_ENUM(unsigned short, SVG_LENGTH_TYPE) {
 	SVG_LENGTHTYPE_UNKNOWN = 0,
 	SVG_LENGTHTYPE_NUMBER = 1,
-	 SVG_LENGTHTYPE_PERCENTAGE = 2,
-	 SVG_LENGTHTYPE_EMS = 3,
-	 SVG_LENGTHTYPE_EXS = 4,
-	 SVG_LENGTHTYPE_PX = 5,
-	 SVG_LENGTHTYPE_CM = 6,
-	 SVG_LENGTHTYPE_MM = 7,
-	 SVG_LENGTHTYPE_IN = 8,
-	 SVG_LENGTHTYPE_PT = 9,
-	 SVG_LENGTHTYPE_PC = 10
-} SVG_LENGTH_TYPE;
-
+	SVG_LENGTHTYPE_PERCENTAGE = 2,
+	SVG_LENGTHTYPE_EMS = 3,
+	SVG_LENGTHTYPE_EXS = 4,
+	SVG_LENGTHTYPE_PX = 5,
+	SVG_LENGTHTYPE_CM = 6,
+	SVG_LENGTHTYPE_MM = 7,
+	SVG_LENGTHTYPE_IN = 8,
+	SVG_LENGTHTYPE_PT = 9,
+	SVG_LENGTHTYPE_PC = 10
+};
 
 @interface SVGLength : NSObject
 
 @property(nonatomic,readonly) SVG_LENGTH_TYPE unitType;
-@property(nonatomic) float value;
-@property(nonatomic) float valueInSpecifiedUnits;
-@property(nonatomic,retain) NSString* valueAsString;
+@property(nonatomic) CGFloat value;
+@property(nonatomic) CGFloat valueInSpecifiedUnits;
+@property(nonatomic,copy) NSString* valueAsString;
 	
--(void) newValueSpecifiedUnits:(SVG_LENGTH_TYPE) unitType valueInSpecifiedUnits:(float) valueInSpecifiedUnits;
+-(void) newValueSpecifiedUnits:(SVG_LENGTH_TYPE) unitType valueInSpecifiedUnits:(CGFloat) valueInSpecifiedUnits;
 -(void) convertToSpecifiedUnits:(SVG_LENGTH_TYPE) unitType;
 
 #pragma mark - things outside the spec but needed to make it usable in Objective C
@@ -60,10 +58,10 @@ typedef enum SVG_LENGTH_TYPE
 
 /** returns this SVGLength as if it had been converted to pixels, using [self convertToSpecifiedUnits:SVG_LENGTHTYPE_PX]
  */
--(float) pixelsValue;
+@property (nonatomic, readonly) CGFloat pixelsValue;
 /** returns this SVGLength as if it had been converted to a raw number (USE pixelsValue instead, UNLESS you are dealing with something that you expect to be a percentage or
  similar non-pixel value), using [self convertToSpecifiedUnits:SVG_LENGTHTYPE_NUMBER]
  */
--(float) numberValue;
+@property (nonatomic, readonly) CGFloat numberValue;
 
 @end

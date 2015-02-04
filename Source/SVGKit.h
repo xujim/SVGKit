@@ -15,10 +15,11 @@
  
  */
 
-#include "TargetConditionals.h"
+#include <TargetConditionals.h>
 
-#import "DOMHelperUtilities.h"
+#import "SVGKDOMHelperUtilities.h"
 #import "SVGCircleElement.h"
+#import "SVGClipPathElement.h"
 #import "SVGDefsElement.h"
 #import "SVGDescriptionElement.h"
 #import "SVGKImage.h"
@@ -40,9 +41,30 @@
 #import "SVGKFastImageView.h"
 #import "SVGKLayeredImageView.h"
 #import "SVGKLayer.h"
+#import "TinySVGTextAreaElement.h"
+#if !TARGET_OS_IPHONE
+#import "SVGKImageRep.h"
+#else
+#import "SVGKExporterUIImage.h"
+#endif
+
+typedef NS_ENUM(int, SVGKLoggingLevel)
+{
+	SVGKLoggingMixed = -1,
+	SVGKLoggingOff = 0,
+	SVGKLoggingInfo,
+	SVGKLoggingWarning,
+	SVGKLoggingError,
+	SVGKLoggingVerbose
+};
 
 @interface SVGKit : NSObject
 
 + (void) enableLogging;
++ (void) setLogLevel:(SVGKLoggingLevel)newLevel;
++ (SVGKLoggingLevel) logLevel;
+
++ (void) setRawLogLevel:(NSUInteger)rawLevel;
++ (NSUInteger) rawLogLevel;
 
 @end

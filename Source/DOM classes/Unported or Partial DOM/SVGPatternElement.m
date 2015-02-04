@@ -43,10 +43,4 @@
 	return self.pattern.CGColor;
 }
 
-- (void)dealloc
-{
-    self.patternImage = nil;
-	
-    [super dealloc];
-}
 @end
