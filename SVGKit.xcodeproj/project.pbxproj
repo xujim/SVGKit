@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5505CF6419BA51C40028CF57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5540E816173881BF004029EF /* InfoPlist.strings */; };
+		550884761A82B2050071E5C0 /* SVGPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550884751A82B2050071E5C0 /* SVGPattern.swift */; };
+		550884771A82B2050071E5C0 /* SVGPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550884751A82B2050071E5C0 /* SVGPattern.swift */; };
 		550A1E621A81FBB200A96D9C /* SVGPatternElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 550A1E601A81FBB200A96D9C /* SVGPatternElement.h */; };
 		550A1E631A81FBB200A96D9C /* SVGPatternElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 550A1E601A81FBB200A96D9C /* SVGPatternElement.h */; };
 		550A1E641A81FBB200A96D9C /* SVGPatternElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 550A1E611A81FBB200A96D9C /* SVGPatternElement.m */; };
@@ -990,6 +992,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		550884751A82B2050071E5C0 /* SVGPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGPattern.swift; sourceTree = "<group>"; };
 		550A1E601A81FBB200A96D9C /* SVGPatternElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPatternElement.h; sourceTree = "<group>"; };
 		550A1E611A81FBB200A96D9C /* SVGPatternElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPatternElement.m; sourceTree = "<group>"; };
 		551164AB1970EE8B00C8A63D /* SVGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1598,8 +1601,6 @@
 		5540E6F117387F2B004029EF /* Unported or Partial DOM */ = {
 			isa = PBXGroup;
 			children = (
-				550A1E601A81FBB200A96D9C /* SVGPatternElement.h */,
-				550A1E611A81FBB200A96D9C /* SVGPatternElement.m */,
 				55F2685F19B66C8E00F6410E /* TinySVGTextAreaElement.h */,
 				55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */,
 				5540E6F217387F2B004029EF /* BaseClassForAllSVGBasicShapes.h */,
@@ -1627,6 +1628,9 @@
 				5540E70817387F2B004029EF /* SVGLineElement.m */,
 				5540E70917387F2B004029EF /* SVGPathElement.h */,
 				5540E70A17387F2B004029EF /* SVGPathElement.m */,
+				550A1E601A81FBB200A96D9C /* SVGPatternElement.h */,
+				550A1E611A81FBB200A96D9C /* SVGPatternElement.m */,
+				550884751A82B2050071E5C0 /* SVGPattern.swift */,
 				5540E70B17387F2B004029EF /* SVGPolygonElement.h */,
 				5540E70C17387F2B004029EF /* SVGPolygonElement.m */,
 				5540E70D17387F2B004029EF /* SVGPolylineElement.h */,
@@ -2430,6 +2434,7 @@
 				551164EE1970EFC100C8A63D /* SVGKCSSStyleDeclaration.m in Sources */,
 				551164E21970EFC100C8A63D /* SVGKCharacterData.m in Sources */,
 				5511651F1970EFCB00C8A63D /* SVGPreserveAspectRatio.m in Sources */,
+				550884771A82B2050071E5C0 /* SVGPattern.swift in Sources */,
 				551165791970EFE300C8A63D /* SVGKImage+CGContext.m in Sources */,
 				551165941970EFFB00C8A63D /* CGPathAdditions.m in Sources */,
 				5511657D1970EFEB00C8A63D /* SVGKParserDOM.m in Sources */,
@@ -2551,6 +2556,7 @@
 				5540E7CA17387F2B004029EF /* SVGGroupElement.m in Sources */,
 				5540E7CC17387F2B004029EF /* SVGImageElement.m in Sources */,
 				5540E7CF17387F2B004029EF /* SVGLineElement.m in Sources */,
+				550884761A82B2050071E5C0 /* SVGPattern.swift in Sources */,
 				5540E7D117387F2B004029EF /* SVGPathElement.m in Sources */,
 				5540E7D317387F2B004029EF /* SVGPolygonElement.m in Sources */,
 				550A1E641A81FBB200A96D9C /* SVGPatternElement.m in Sources */,

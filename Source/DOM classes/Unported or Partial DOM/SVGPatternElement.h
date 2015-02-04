@@ -19,6 +19,7 @@
 #define DWPImage NSImage
 #endif
 
+@class SVGPattern;
 
 @interface SVGPatternElement : SVGElement <SVGTransformable>
 

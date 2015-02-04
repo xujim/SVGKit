@@ -1,4 +1,5 @@
 #import "SVGKPattern.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 //Code taken from TBColor from https://github.com/zrxq/TBColor
 static void ImagePatternCallback (void *imagePtr, CGContextRef ctx) {

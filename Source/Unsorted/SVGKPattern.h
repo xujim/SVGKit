@@ -12,24 +12,22 @@
 
 /** lightweight wrapper for UIColor so that we can draw with fill patterns */
 @interface SVGKPattern : NSObject
-{
-}
 @property (readwrite, nonatomic) CGColorRef color;
 
-+ (SVGKPattern*)patternWithCGImage:(CGImageRef)cgImage;
-+ (SVGKPattern*)patternWithCGColor:(CGColorRef)cgColor;
++ (instancetype)patternWithCGImage:(CGImageRef)cgImage;
++ (instancetype)patternWithCGColor:(CGColorRef)cgColor;
 
 @property (nonatomic, readonly) CGColorRef CGColor CF_RETURNS_NOT_RETAINED;
 
 #if TARGET_OS_IPHONE
 
-+ (SVGKPattern*) patternWithUIColor:(UIColor*)color;
-+ (SVGKPattern*) patternWithImage:(UIImage*)image;
++ (instancetype)patternWithUIColor:(UIColor*)color;
++ (instancetype)patternWithImage:(UIImage*)image;
 
 #else
 
-+ (SVGKPattern*)patternWithNSColor:(NSColor*)color;
-+ (SVGKPattern*)patternWithImage:(NSImage*)image;
++ (instancetype)patternWithNSColor:(NSColor*)color;
++ (instancetype)patternWithImage:(NSImage*)image;
 
 #endif
 
