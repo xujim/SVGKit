@@ -23,12 +23,12 @@
 
 @interface SVGPatternElement : SVGElement <SVGTransformable>
 
-@property (readonly, retain, nonatomic) DWPImage *patternImage;
-@property (readonly, nonatomic) SVGKPattern *pattern;
-@property (nonatomic, retain, readonly) SVGLength* width;
-@property (nonatomic, retain, readonly) SVGLength* height;
-@property (nonatomic, retain, readonly) SVGLength* x;
-@property (nonatomic, retain, readonly) SVGLength* y;
+@property (readonly, strong, nonatomic) DWPImage *patternImage;
+@property (readonly, strong, nonatomic) SVGKPattern *pattern;
+@property (nonatomic, strong, readonly) SVGLength* width;
+@property (nonatomic, strong, readonly) SVGLength* height;
+@property (nonatomic, strong, readonly) SVGLength* x;
+@property (nonatomic, strong, readonly) SVGLength* y;
 
 - (CGColorRef)colorPattern;
 

@@ -68,9 +68,4 @@
 
 #endif
 
-- (CGColorRef)CGColor
-{
-    return self.color;
-}
-
 @end

@@ -456,6 +456,7 @@
 		/** Replace the return layer with a special layer using the URL fill */
 		/** fetch the fill layer by URL using the DOM */
 		NSAssert( svgElement.rootOfCurrentDocumentFragment != nil, @"This SVG shape has a URL fill type; it needs to search for that URL (%@) inside its nearest-ancestor <SVG> node, but the rootOfCurrentDocumentFragment reference was nil (suggests the parser failed, or the SVG file is corrupt)", _fillId );
+		
 		id unknownElement = [svgElement.rootOfCurrentDocumentFragment getElementById:_fillId];
 		if ([unknownElement isKindOfClass:[SVGGradientElement class]]) {
 			SVGGradientElement* svgGradient = unknownElement;
@@ -463,45 +464,21 @@
 			
 			//if( _shapeLayer != nil && svgGradient != nil ) //this nil check here is distrubing but blocking
 			{
-				CAGradientLayer *gradientLayer = [svgGradient newGradientLayerForObjectRect:_shapeLayer.frame viewportRect:svgElement.rootOfCurrentDocumentFragment.viewBox];
+				SVGGradientLayer *gradientLayer = [svgGradient newGradientLayerForObjectRect:_shapeLayer.frame viewportRect:svgElement.rootOfCurrentDocumentFragment.viewBox];
 				
 				DDLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(gradientLayer.frame), NSStringFromCGRect(_shapeLayer.frame));
 				gradientLayer.mask =_shapeLayer;
-				//[_shapeLayer release]; // because it was created with a +1 retain count
+				gradientLayer.maskPath = pathToPlaceInLayer;
+				CGPathRelease(pathToPlaceInLayer);
 				
 				return gradientLayer;
 			}
-
 		} else if ([unknownElement isKindOfClass:[SVGPatternElement class]]) {
 			SVGPatternElement *svgPattern = unknownElement;
 			CGColorRef tmpColor = [svgPattern colorPattern];
 			_shapeLayer.fillColor = tmpColor;
 		} else {
 			DDLogWarn(@"The URL %@ is an unknown class \"%@\"", _fillId, NSStringFromClass([unknownElement class]));
-		}
-	}
-	else if ( [actualFill hasPrefix:@"url"] )
-	{
-		NSRange idKeyRange = NSMakeRange(5, actualFill.length - 6);
-		NSString* _fillId = [actualFill substringWithRange:idKeyRange];
-		
-		/** Replace the return layer with a special layer using the URL fill */
-		/** fetch the fill layer by URL using the DOM */
-		NSAssert( svgElement.rootOfCurrentDocumentFragment != nil, @"This SVG shape has a URL fill type; it needs to search for that URL (%@) inside its nearest-ancestor <SVG> node, but the rootOfCurrentDocumentFragment reference was nil (suggests the parser failed, or the SVG file is corrupt)", _fillId );
-		
-		SVGGradientElement* svgGradient = (SVGGradientElement*) [svgElement.rootOfCurrentDocumentFragment getElementById:_fillId];
-		NSAssert( svgGradient != nil, @"This SVG shape has a URL fill (%@), but could not find an XML Node with that ID inside the DOM tree (suggests the parser failed, or the SVG file is corrupt)", _fillId );
-		
-		//if( _shapeLayer != nil && svgGradient != nil ) //this nil check here is distrubing but blocking
-		{
-			SVGGradientLayer *gradientLayer = [svgGradient newGradientLayerForObjectRect:_shapeLayer.frame viewportRect:svgElement.rootOfCurrentDocumentFragment.viewBox];
-			
-			DDLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(gradientLayer.frame), NSStringFromCGRect(_shapeLayer.frame));
-			gradientLayer.mask =_shapeLayer;
-            gradientLayer.maskPath = pathToPlaceInLayer;
-            CGPathRelease(pathToPlaceInLayer);
-			
-			return gradientLayer;
 		}
 	}
 	else if( actualFill.length > 0 || actualFillOpacity.length > 0 )

@@ -16,18 +16,18 @@
 
 
 @interface SVGPatternElement ()
-@property (readwrite, retain, nonatomic) DWPImage *patternImage;
-@property (nonatomic, retain, readwrite) SVGLength* width;
-@property (nonatomic, retain, readwrite) SVGLength* height;
-@property (nonatomic, retain, readwrite) SVGLength* x;
-@property (nonatomic, retain, readwrite) SVGLength* y;
+@property (readwrite, strong, nonatomic) DWPImage *patternImage;
+@property (nonatomic, strong, readwrite) SVGLength* width;
+@property (nonatomic, strong, readwrite) SVGLength* height;
+@property (nonatomic, strong, readwrite) SVGLength* x;
+@property (nonatomic, strong, readwrite) SVGLength* y;
 
 
 @end
 
 @implementation SVGPatternElement
 
-@synthesize transform;
+@synthesize transform = _transform;
 @synthesize width = _width;
 @synthesize height = _height;
 @synthesize x = _x;

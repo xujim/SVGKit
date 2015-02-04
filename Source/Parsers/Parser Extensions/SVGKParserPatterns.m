@@ -22,7 +22,8 @@
 #import "SVGRectElement.h"
 #import "SVGTitleElement.h"
 #import "SVGKPattern.h"
-//#import "SVGPatternElement.h"
+#import "SVGPatternElement.h"
+#import "SVGImageElement.h"
 
 @implementation SVGKParserPatterns
 
@@ -39,7 +40,11 @@
 
 - (SVGKNode*)handleStartElement:(NSString *)name document:(SVGKSource*) document namePrefix:(NSString*)prefix namespaceURI:(NSString*) XMLNSURI attributes:(NSMutableDictionary *)attributes parseResult:(SVGKParseResult*) parseResult parentNode:(SVGKNode*) parentNode
 {
-	
+	if( [[self supportedNamespaces] containsObject:XMLNSURI] ) {
+		NSString* qualifiedName = (prefix == nil) ? name : [NSString stringWithFormat:@"%@:%@", prefix, name];
+
+	}
+
 	NSAssert( FALSE, @"Patterns are not supported by SVGKit yet - no-one has implemented them" );
 	
 	return nil;

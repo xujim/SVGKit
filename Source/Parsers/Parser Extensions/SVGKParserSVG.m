@@ -1,5 +1,4 @@
 #import "SVGKParserSVG.h"
-
 #import "SVGSVGElement.h"
 #import "SVGCircleElement.h"
 #import "SVGClipPathElement.h"
@@ -19,6 +18,8 @@
 #import "TinySVGTextAreaElement.h"
 
 #import "SVGDocument_Mutable.h"
+
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 @implementation SVGKParserSVG
 
