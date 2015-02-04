@@ -1,3 +1,6 @@
 [submodule "Source/Vendor/CocoaLumberjack"]
 	path = Source/Vendor/CocoaLumberjack
 	url = https://github.com/CocoaLumberjack/CocoaLumberjack.git
+[submodule "Source/Vendor/TBColor"]
+	path = Source/Vendor/TBColor
+	url = https://github.com/th-in-gs/TBColor.git
