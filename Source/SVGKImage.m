@@ -939,17 +939,18 @@ return; \
         DDLogVerbose(@"[%@] DEBUG: Generating an NSImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
         
         NSImageRep *imRep = [[SVGKImageRep alloc] initWithSVGImage:self];
-        
-        if (!imRep) {
-            imRep = [self exportBitmapImageRepAntiAliased:shouldAntialias curveFlatnessFactor:multiplyFlatness interpolationQuality:interpolationQuality showInfo:NO];
-        } else {
+		NSImage *retval = [[NSImage alloc] init];
+		
+        if (imRep) {
             ((SVGKImageRep*)imRep).antiAlias = shouldAntialias;
             ((SVGKImageRep*)imRep).curveFlatness = multiplyFlatness;
             ((SVGKImageRep*)imRep).interpolationQuality = interpolationQuality;
             [imRep setSize:self.size];
+			[retval addRepresentation:imRep];
         }
-        
-        NSImage *retval = [[NSImage alloc] init];
+		
+		imRep = [self exportBitmapImageRepAntiAliased:shouldAntialias curveFlatnessFactor:multiplyFlatness interpolationQuality:interpolationQuality showInfo:NO];
+
         [retval addRepresentation:imRep];
         [retval setSize:self.size];
         
