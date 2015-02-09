@@ -740,7 +740,8 @@ static void	unparsedEntityDeclaration(void * ctx,
 									 const xmlChar * systemId,
 									 const xmlChar * notationName)
 {
-	DDLogWarn(@"Error: unparsed entity Decl");
+	DDLogWarn(@"Error: unparsed entity Decl, name: %@, public ID: %@, system ID: %@, notationName: %@", NSStringFromLibxmlString(name),
+			  NSStringFromLibxmlString(publicId), NSStringFromLibxmlString(systemId), NSStringFromLibxmlString(notationName));
 }
 
 static void structuredError		(void * userData, 
@@ -767,7 +768,6 @@ static void structuredError		(void * userData,
 	
 	NSError* objcError = [NSError errorWithDomain:[@(error->domain) stringValue] code:error->code userInfo:details];
 	
-	details = nil;
 	SVGKParser *NSctx = (__bridge SVGKParser*)(userData);
 	SVGKParseResult* parseResult = NSctx.currentParseRun;
 	switch( errorLevel )
