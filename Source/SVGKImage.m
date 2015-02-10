@@ -46,7 +46,7 @@
 @property (nonatomic, strong, readwrite) SVGDocument* DOMDocument;
 @property (nonatomic, strong, readwrite) SVGSVGElement* DOMTree; // needs renaming + (possibly) replacing by DOMDocument
 @property (nonatomic, strong, readwrite) CALayer* CALayerTree;
-@property (nonatomic, strong, readwrite) NSString* nameUsedToInstantiate;
+@property (nonatomic, copy, readwrite) NSString* nameUsedToInstantiate;
 @property (nonatomic, getter = hasRenderingIssue) BOOL renderingIssue;
 
 #pragma mark - UIImage methods cloned and re-implemented as SVG intelligent methods

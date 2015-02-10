@@ -331,7 +331,7 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
 @end
 
 @interface SVGKImage (CacheManagement)
-@property (nonatomic, retain, readonly) NSString* nameUsedToInstantiate;
+@property (nonatomic, copy, readonly) NSString* nameUsedToInstantiate;
 
 + (void)clearSVGImageCache;
 + (void)removeSVGImageCacheNamed:(NSString*)theName;
