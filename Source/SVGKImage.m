@@ -187,22 +187,15 @@
 }
 
 +(SVGKParser *) imageAsynchronouslyNamed:(NSString *)name onCompletion:(SVGKImageAsynchronousLoadingDelegate)blockCompleted
-{	
-#if ENABLE_GLOBAL_IMAGE_CACHE_FOR_SVGKIMAGE_IMAGE_NAMED
-    if( globalSVGKImageCache == nil )
-    {
-        globalSVGKImageCache = [NSMutableDictionary new];
-    }
-    
-    SVGKImageCacheLine* cacheLine = [globalSVGKImageCache valueForKey:name];
-    if( cacheLine != nil )
-    {
-        cacheLine.numberOfInstances ++;
-		
-		blockCompleted( cacheLine.mainInstance );
-        return nil;
-    }
-#endif
+{
+	if ([self isCacheEnabled]) {
+		//Assuming that the image named is in the main bundle
+		SVGKImage *image = [self cachedImageForName:name];
+		if (image) {
+			blockCompleted(image);
+			return nil;
+		}
+	}
 	
 	SVGKSource* source = [self internalSourceAnywhereInBundleUsingName:name];
 	
@@ -217,22 +210,13 @@
 					   
 					   SVGKImage* finalImage = [[SVGKImage alloc] initWithParsedSVG:parsedSVG fromSource:source];
 					   
-#if ENABLE_GLOBAL_IMAGE_CACHE_FOR_SVGKIMAGE_IMAGE_NAMED
-					   if( finalImage != nil )
-					   {
-						   finalImage->cameFromGlobalCache = TRUE;
-						   finalImage.nameUsedToInstantiate = name;
-						   
-						   SVGKImageCacheLine* newCacheLine = [[[SVGKImageCacheLine alloc] init] autorelease];
-						   newCacheLine.mainInstance = finalImage;
-						   
-						   [globalSVGKImageCache setValue:newCacheLine forKey:name];
+					   if ([self isCacheEnabled]) {
+						   if (finalImage != nil) {
+							   [self storeImageCache:finalImage forName:name];
+						   } else {
+							   DDLogWarn(@"[%@] WARNING: not caching the output for new SVG image with name = %@, because it failed to load correctly", [self class], name);
+						   }
 					   }
-					   else
-					   {
-						   NSLog(@"[%@] WARNING: not caching the output for new SVG image with name = %@, because it failed to load correctly", [self class], name );
-					   }
-#endif
 					   
 					   blockCompleted( finalImage );
 				   });
