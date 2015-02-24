@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import SVGKit.SVGKit
+import SVGKit
 
 class ViewController: NSViewController {
 

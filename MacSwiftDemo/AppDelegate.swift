@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import SVGKit.SVGKit
+import SVGKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

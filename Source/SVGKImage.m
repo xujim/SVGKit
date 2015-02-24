@@ -67,16 +67,16 @@
 #pragma mark - Respond to low-memory warnings by dumping the global static cache
 +(void) initialize
 {
-	if( self == [SVGKImage class]) // Have to protect against subclasses ADDITIONALLY calling this, as a "[super initialize] line
-	{
-        //iOS only
+	static dispatch_once_t onceToken;// Have to protect against subclasses ADDITIONALLY calling this, as a "[super initialize] line
+	dispatch_once(&onceToken, ^{
+		//iOS only
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarningNotification:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
-        [self enableCache];
+		[self enableCache];
 #else
-        [self disableCache];
+		[self disableCache];
 #endif
-	}
+	});
 }
 
 + (SVGKImage *)defaultImage {

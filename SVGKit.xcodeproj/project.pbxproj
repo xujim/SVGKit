@@ -641,7 +641,6 @@
 		555DC0F219DF697E002B424E /* SVGKSourceNSData.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5563201419B670DD0097D2EF /* SVGKSourceNSData.h */; };
 		555DC0F319DF697E002B424E /* SVGKImage.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5540E73B17387F2B004029EF /* SVGKImage.h */; };
 		555DC0F419DF697E002B424E /* SVGKImage+CacheManagement.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 558BE71B177B9D3F00DC9516 /* SVGKImage+CacheManagement.h */; };
-		555DC0F519DF697E002B424E /* SVGKit-all.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; };
 		555DC0F619DF697E002B424E /* SVGKit.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5540E73D17387F2B004029EF /* SVGKit.h */; };
 		555DC0F719DF697E002B424E /* SVGKSource.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5540E73E17387F2B004029EF /* SVGKSource.h */; };
 		555DC0F819DF697E002B424E /* BlankSVG.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 55801823176E4D7800F64989 /* BlankSVG.h */; };
@@ -652,8 +651,6 @@
 		5563201819B670DD0097D2EF /* SVGKSourceNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5563201519B670DD0097D2EF /* SVGKSourceNSData.m */; };
 		5564276D1A4B98A1006A7269 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5564275C1A4B988B006A7269 /* CocoaLumberjack.framework */; };
 		5564276E1A4B98BB006A7269 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5564275C1A4B988B006A7269 /* CocoaLumberjack.framework */; };
-		556CACC919D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		556CACCA19D5C37C00DAEFCA /* SVGKit-all.h in Headers */ = {isa = PBXBuildFile; fileRef = 556CACC819D5C37C00DAEFCA /* SVGKit-all.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACF719D644FA00DAEFCA /* SVGClipPathElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685819B66C6500F6410E /* SVGClipPathElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		556CACF819D6451700DAEFCA /* SVGUnitTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685A19B66C6500F6410E /* SVGUnitTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5574ADAA17889CA000EA4281 /* SVGKSource-private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5574ADA917889CA000EA4281 /* SVGKSource-private.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -962,7 +959,6 @@
 				555DC0F219DF697E002B424E /* SVGKSourceNSData.h in Copy Headers */,
 				555DC0F319DF697E002B424E /* SVGKImage.h in Copy Headers */,
 				555DC0F419DF697E002B424E /* SVGKImage+CacheManagement.h in Copy Headers */,
-				555DC0F519DF697E002B424E /* SVGKit-all.h in Copy Headers */,
 				555DC0F619DF697E002B424E /* SVGKit.h in Copy Headers */,
 				555DC0F719DF697E002B424E /* SVGKSource.h in Copy Headers */,
 				555DC0F819DF697E002B424E /* BlankSVG.h in Copy Headers */,
@@ -1203,7 +1199,6 @@
 		5563201519B670DD0097D2EF /* SVGKSourceNSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKSourceNSData.m; sourceTree = "<group>"; };
 		5563201919B675A80097D2EF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
 		556427481A4B97E3006A7269 /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = CocoaLumberjack/Framework/Mobile/Lumberjack.xcodeproj; sourceTree = "<group>"; };
-		556CACC819D5C37C00DAEFCA /* SVGKit-all.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVGKit-all.h"; path = "Source/SVGKit-all.h"; sourceTree = SOURCE_ROOT; };
 		5574ADA917889CA000EA4281 /* SVGKSource-private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVGKSource-private.h"; path = "Source/SVGKSource-private.h"; sourceTree = SOURCE_ROOT; };
 		55788778178892D30021D775 /* SVGKImage-private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVGKImage-private.h"; path = "Source/SVGKImage-private.h"; sourceTree = SOURCE_ROOT; };
 		557E69D1174014E4006B0029 /* SVGKCGFloatAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGKCGFloatAdditions.h; sourceTree = "<group>"; };
@@ -1437,7 +1432,6 @@
 				55788778178892D30021D775 /* SVGKImage-private.h */,
 				558BE71B177B9D3F00DC9516 /* SVGKImage+CacheManagement.h */,
 				558BE719177B98FE00DC9516 /* SVGKImage+CacheManagement.m */,
-				556CACC819D5C37C00DAEFCA /* SVGKit-all.h */,
 				5540E73D17387F2B004029EF /* SVGKit.h */,
 				55A5AD48175FEB94009F2FDD /* SVGKit.m */,
 				5540E73E17387F2B004029EF /* SVGKSource.h */,
@@ -1883,7 +1877,6 @@
 				551165721970EFE300C8A63D /* CALayerExporter.h in Headers */,
 				5511655D1970EFD200C8A63D /* ConverterSVGToCALayer.h in Headers */,
 				551164EA1970EFC100C8A63D /* SVGKCSSRuleList+Mutable.h in Headers */,
-				556CACCA19D5C37C00DAEFCA /* SVGKit-all.h in Headers */,
 				551165571970EFD200C8A63D /* SVGGradientStop.h in Headers */,
 				551165491970EFD200C8A63D /* BaseClassForAllSVGBasicShapes.h in Headers */,
 				551164D51970EF4F00C8A63D /* BlankSVG.h in Headers */,
@@ -1988,7 +1981,6 @@
 			files = (
 				5540E7E917387F2B004029EF /* SVGKParserPatternsAndGradients.h in Headers */,
 				5540E75217387F2B004029EF /* SVGKAttr.h in Headers */,
-				556CACC919D5C37C00DAEFCA /* SVGKit-all.h in Headers */,
 				5540E75417387F2B004029EF /* SVGKCDATASection.h in Headers */,
 				5540E75617387F2B004029EF /* SVGKCharacterData.h in Headers */,
 				5540E75817387F2B004029EF /* SVGKComment.h in Headers */,

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import SVGKit.SVGKStyleSheetList
 
 extension SVGKNodeList: SequenceType {
 	public func generate() -> IndexingGenerator<[SVGKNode]> {
