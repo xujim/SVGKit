@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVGKit.SVGKit
+import SVGKit
 
 @UIApplicationMain
 class SwiftAppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -17,8 +17,8 @@ class SwiftAppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControlle
 		SVGKit.enableLogging()
 		
 		// Override point for customization after application launch.
-		let splitViewController = self.window!.rootViewController as UISplitViewController
-		let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as UINavigationController
+		let splitViewController = self.window!.rootViewController as! UISplitViewController
+		let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
 		navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
 		splitViewController.delegate = self
 		

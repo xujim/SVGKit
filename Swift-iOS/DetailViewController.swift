@@ -8,7 +8,7 @@
 
 import UIKit
 import QuartzCore
-import SVGKit.SVGKit
+import SVGKit
 import SVGKit.CALayerExporter
 
 private struct ImageLoadingOptions {
@@ -93,9 +93,9 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
 				if SHOW_DEBUG_INFO_ON_EACH_TAPPED_LAYER {
 					/** mtrubnikov's code for adding a text overlay showing exactly what you tapped
 					*/
-					var textToDraw: String = NSString(format: "%@ (%@): {%.1f, %.1f} {%.1f, %.1f}", (hitLayer?.name ?? ""), NSStringFromClass(hitLayer!.dynamicType), lastTappedLayer!.frame.origin.x, lastTappedLayer!.frame.origin.y, lastTappedLayer!.frame.size.width, lastTappedLayer!.frame.size.height);
+					var textToDraw = String(format: "%@ (%@): {%.1f, %.1f} {%.1f, %.1f}", (hitLayer?.name ?? ""), NSStringFromClass(hitLayer!.dynamicType), lastTappedLayer!.frame.origin.x, lastTappedLayer!.frame.origin.y, lastTappedLayer!.frame.size.width, lastTappedLayer!.frame.size.height)
 					
-					var fontToDraw = UIFont(name: "Helvetica", size: 14)!
+					let fontToDraw = UIFont(name: "Helvetica", size: 14)!
 					let sizeOfTextRect = textToDraw.sizeWithAttributes([NSFontAttributeName: fontToDraw])
 					//let sizeOfTextRect = textToDraw.sizeWithFont(fontToDraw)
 					let tmpLayer = CATextLayer()
@@ -166,7 +166,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
 				popoverController?.dismissPopoverAnimated(true)
 			}
 			
-			loadResource(detailItem! as String)
+			loadResource(detailItem! as! String)
 		}
 	}
 	
@@ -348,10 +348,10 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
 					
 					println("[\(NSStringFromClass(self.dynamicType))] WARNING: workaround for Apple bugs: UIScrollView spams tiny changes to the transform to the content view; currently, we have NO WAY of efficiently measuring whether or not to re-draw the SVGKImageView. As a temporary solution, we are DISABLING the SVGKImageView's auto-redraw-at-higher-resolution code - in general, you do NOT want to do this");
 					
-					(newContentView as SVGKFastImageView).disableAutoRedrawAtHighestResolution = true
+					(newContentView as! SVGKFastImageView).disableAutoRedrawAtHighestResolution = true
 				}
 			} else {
-				UIAlertView(title: "SVG parse failed", message: "\(document.parseErrorsAndWarnings.errorsFatal.count) fatal errors, \(document.parseErrorsAndWarnings.errorsRecoverable.count + document.parseErrorsAndWarnings.warnings.count) warnings. First fatal = \((document.parseErrorsAndWarnings.errorsFatal[0] as NSError).localizedDescription)", delegate: nil, cancelButtonTitle: "OK")
+				UIAlertView(title: "SVG parse failed", message: "\(document.parseErrorsAndWarnings.errorsFatal.count) fatal errors, \(document.parseErrorsAndWarnings.errorsRecoverable.count + document.parseErrorsAndWarnings.warnings.count) warnings. First fatal = \((document.parseErrorsAndWarnings.errorsFatal[0] as! NSError).localizedDescription)", delegate: nil, cancelButtonTitle: "OK")
 				
 				newContentView = nil; // signals to the rest of this method: the load failed
 				
@@ -403,7 +403,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
 			scrollViewForSVG?.maximumZoomScale = max( 1, screenToDocumentSizeRatio );
 			
 			title = self.name;
-			labelParseTime!.text = NSString(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name, endParseTime.timeIntervalSinceDate(startParseTime), (contentView?.timeIntervalForLastReRenderOfSVGFromMemory ?? 0))
+			labelParseTime!.text = String(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name, endParseTime.timeIntervalSinceDate(startParseTime), (contentView?.timeIntervalForLastReRenderOfSVGFromMemory ?? 0))
 			
 			/** Fast image view renders asynchronously, so we have to wait for a callback that its finished a render... */
 			contentView?.addObserver(self, forKeyPath: "timeIntervalForLastReRenderOfSVGFromMemory", options: NSKeyValueObservingOptions(0), context: nil)
@@ -426,7 +426,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
 	
 	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		if keyPath == "timeIntervalForLastReRenderOfSVGFromMemory" {
-			labelParseTime!.text = NSString(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name as NSString, endParseTime.timeIntervalSinceDate(startParseTime), (contentView?.timeIntervalForLastReRenderOfSVGFromMemory ?? 0))
+			labelParseTime!.text = String(format:"%@ (parsed: %.2f secs, rendered: %.2f secs)", name as NSString, endParseTime.timeIntervalSinceDate(startParseTime), (contentView?.timeIntervalForLastReRenderOfSVGFromMemory ?? 0))
 		}
 	}
 	
@@ -499,7 +499,7 @@ class SwiftDetailViewController: UIViewController, UIPopoverControllerDelegate, 
 		textViewController.view = textView
 		var exportPopover = UIPopoverController(contentViewController: textViewController)
 		exportPopover.delegate = self
-		exportPopover.presentPopoverFromBarButtonItem(sender as UIBarButtonItem, permittedArrowDirections: .Any, animated: true)
+		exportPopover.presentPopoverFromBarButtonItem(sender as! UIBarButtonItem, permittedArrowDirections: .Any, animated: true)
 		
 		exportText = textView;
 		exportText?.text = "exporting..."

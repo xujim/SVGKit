@@ -12,7 +12,7 @@ import SVGKit.SVGKStyleSheetList
 
 extension SVGKNodeList: SequenceType {
 	public func generate() -> IndexingGenerator<[SVGKNode]> {
-		return (internalArray as NSArray as [SVGKNode]).generate()
+		return (internalArray as NSArray as! [SVGKNode]).generate()
 	}
 }
 
@@ -36,7 +36,7 @@ extension SVGKImage {
 
 extension SVGKCSSRuleList: SequenceType {
 	public func generate() -> IndexingGenerator<[SVGKCSSRule]> {
-		return (internalArray as NSArray as [SVGKCSSRule]).generate()
+		return (internalArray as NSArray as! [SVGKCSSRule]).generate()
 	}
 }
 
