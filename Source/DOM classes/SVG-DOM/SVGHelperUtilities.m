@@ -303,7 +303,7 @@
 		SVGElement<SVGStylable>* stylableElement = (SVGElement<SVGStylable>*) nonStylableElement;
 		
 		NSString* actualOpacity = [stylableElement cascadedValueForStylableProperty:@"opacity"];
-		layer.opacity = actualOpacity.length > 0 ? [actualOpacity SVGKCGFloatValue] : 1.0f; // svg's "opacity" defaults to 1!
+		layer.opacity = actualOpacity.length > 0 ? [actualOpacity SVGKCGFloatValue] : 1.0; // svg's "opacity" defaults to 1!
         
         // Apply fill-rule on layer (only CAShapeLayer)
         NSString *fillRule = [stylableElement cascadedValueForStylableProperty:@"fill-rule"];
@@ -316,7 +316,7 @@
 
 +(CALayer *) newCALayerForPathBasedSVGElement:(SVGElement<SVGTransformable>*) svgElement withPath:(CGPathRef) pathRelative
 {
-	CAShapeLayer* _shapeLayer = [[CAShapeLayerWithHitTest alloc] init];
+	CAShapeLayer* _shapeLayer = [CAShapeLayerWithHitTest layer];
 	
 	[self configureCALayer:_shapeLayer usingElement:svgElement];
 	
@@ -463,7 +463,8 @@
 			SVGGradientLayer *gradientLayer = [svgGradient newGradientLayerForObjectRect:_shapeLayer.frame viewportRect:svgElement.rootOfCurrentDocumentFragment.viewBox];
 			
 			DDLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(gradientLayer.frame), NSStringFromCGRect(_shapeLayer.frame));
-			gradientLayer.mask =_shapeLayer;
+			gradientLayer.opacity = _shapeLayer.opacity;
+            gradientLayer.mask =_shapeLayer;
             gradientLayer.maskPath = pathToPlaceInLayer;
             CGPathRelease(pathToPlaceInLayer);
 			
@@ -500,8 +501,6 @@
 		SVGColor fillColorAsSVGColor = ( actualFill.length > 0 ) ?
 		SVGColorFromString([actualFill UTF8String]) // have to use the intermediate of an SVGColor so that we can over-ride the ALPHA component in next line
 		: SVGColorMake(0, 0, 0, 0);
-		if( actualFillOpacity.length > 0 )
-			fillColorAsSVGColor.a = (uint8_t) ([actualFillOpacity floatValue] * 0xFF);
 		
         if( actualFillOpacity.length > 0 )
             fillColorAsSVGColor.a = (uint8_t) ([actualFillOpacity floatValue] * 0xFF);
