@@ -157,10 +157,28 @@ private let gColorDict = [
 	"white": SVGColor(red: 255, green: 255, blue: 255),
 	"whitesmoke": SVGColor(red: 245, green: 245, blue: 245),
 	"yellow": SVGColor(red: 255, green: 255, blue: 0),
-	"yellowgreen": SVGColor(red: 154, green: 205, blue: 50),
+	"yellowgreen": SVGColor(red: 154, green: 205, blue: 50)
 ]
 
-let gColorNames = [
+private var gColorValues: [SVGColor] = {
+	var toRet = [SVGColor]()
+	//var names = gColorDict.keys.array
+	let names = gColorNames
+	
+	#if false
+	names.sort( {
+		return $0 < $1
+	})
+	#endif
+	
+	for name in names {
+		toRet.append(gColorDict[name]!)
+	}
+	
+	return toRet
+}()
+
+private let gColorNames = [
 	"aliceblue",
 	"antiquewhite",
 	"aqua",
@@ -322,41 +340,49 @@ class SwiftColor_Tests: XCTestCase {
         super.tearDown()
     }
 	
-	lazy var SVGcolorDict: [String: SVGColor] = {
+	lazy var SVGcolorDict: [String: SVGColor] = self.colorDictionary()
+	
+	func colorDictionary() -> [String: SVGColor] {
 		var toRetArray = [String: SVGColor]()
 		
 		for colorName in gColorNames {
 			toRetArray[colorName] = SVGColor(string: colorName)
 		}
 		return toRetArray
-	}()
+	}
 
-    func testExample() {
-        // This is an example of a functional test case.
-		
-        XCTAssert(true, "Pass")
-    }
-
-    func testCPerformanceExample() {
-		let colorDict = SVGcolorDict
-		var cLookupArray = [SVGColor]()
+    func testCColorPerformance() {
 		
 		//measure the block for populating a color array with the C Function
 		self.measureBlock() {
+			var cLookupArray = [SVGColor]()
 			for strColor in gColorNames {
 				var aColor = SVGColorFromString(strColor)
 				cLookupArray.append(aColor)
 			}
         }
-		
-		//XCTAssertEqual(cLookupArray, gColorDict.values.array)
 	}
 	
-	func testSwiftPerformance() {
-		let colorDict = SVGcolorDict
-		var swiftLookupArray = [SVGColor]()
+	func testCColorEquality() {
+		var cLookupArray = [SVGColor]()
+
+		for strColor in gColorNames {
+			var aColor = SVGColorFromString(strColor)
+			cLookupArray.append(aColor)
+		}
+		
+		for i in 0 ..< cLookupArray.count {
+			XCTAssertEqual(cLookupArray[i], gColorValues[i])
+		}
+		XCTAssertEqual(cLookupArray, gColorValues)
+	}
+	
+	func testSwiftColorPerformance() {
 
 		self.measureBlock() {
+			let colorDict = self.colorDictionary()
+			var swiftLookupArray = [SVGColor]()
+
 			for strColor in gColorNames {
 				if let aColor = colorDict[strColor] {
 					swiftLookupArray.append(aColor)
@@ -366,5 +392,18 @@ class SwiftColor_Tests: XCTestCase {
 			}
 		}
 	}
+	
+	func testSwiftColorEquality() {
+		var swiftLookupArray = [SVGColor]()
 
+		for strColor in gColorNames {
+			if let aColor = SVGcolorDict[strColor] {
+				swiftLookupArray.append(aColor)
+			} else {
+				XCTAssert(false, "Got wrong value")
+			}
+		}
+		
+		XCTAssertEqual(swiftLookupArray, gColorValues)
+	}
 }

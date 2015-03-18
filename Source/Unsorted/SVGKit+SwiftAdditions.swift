@@ -87,7 +87,7 @@ extension SVGRect: Equatable {
 	}
 }
 
-extension SVGColor: Equatable, Printable, DebugPrintable {
+extension SVGColor: Hashable, Printable, DebugPrintable {
 	public init(string: String) {
 		self = SVGColorFromString(string)
 	}
@@ -110,6 +110,10 @@ extension SVGColor: Equatable, Printable, DebugPrintable {
 	
 	public var debugDescription: String {
 		return "Red: \(r), Green: \(g), Blue: \(b), alpha: \(a)"
+	}
+	
+	public var hashValue: Int {
+		return Int(r) | Int(g) << 8 | Int(b) << 16 | Int(a) << 24
 	}
 }
 
