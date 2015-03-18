@@ -302,9 +302,9 @@
 	{
 		SVGElement<SVGStylable>* stylableElement = (SVGElement<SVGStylable>*) nonStylableElement;
 		
-		NSString* actualOpacity = [stylableElement cascadedValueForStylableProperty:@"opacity"];
+		NSString* actualOpacity = [stylableElement cascadedValueForStylableProperty:@"opacity" inherit:NO];
 		layer.opacity = actualOpacity.length > 0 ? [actualOpacity SVGKCGFloatValue] : 1.0; // svg's "opacity" defaults to 1!
-        
+		
         // Apply fill-rule on layer (only CAShapeLayer)
         NSString *fillRule = [stylableElement cascadedValueForStylableProperty:@"fill-rule"];
         if([fillRule isEqualToString:@"evenodd"] && [layer isKindOfClass:[CAShapeLayer class]]){
@@ -476,7 +476,7 @@
 		_shapeLayer.fillColor = [self parseFillForElement:svgElement fromFill:actualFill andOpacity:actualFillOpacity];
 	}
     
-	NSString* actualOpacity = [svgElement cascadedValueForStylableProperty:@"opacity"];
+	NSString* actualOpacity = [svgElement cascadedValueForStylableProperty:@"opacity" inherit:NO];
 	_shapeLayer.opacity = actualOpacity.length > 0 ? [actualOpacity floatValue] : 1; // unusually, the "opacity" attribute defaults to 1, not 0
 	CGPathRelease(pathToPlaceInLayer);
 	return _shapeLayer;
