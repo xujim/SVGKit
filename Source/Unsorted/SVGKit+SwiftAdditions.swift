@@ -87,7 +87,7 @@ extension SVGRect: Equatable {
 	}
 }
 
-extension SVGColor: Equatable {
+extension SVGColor: Equatable, Printable, DebugPrintable {
 	public init(string: String) {
 		self = SVGColorFromString(string)
 	}
@@ -102,6 +102,14 @@ extension SVGColor: Equatable {
 	
 	public var cgColor: CGColor {
 		return CGColorWithSVGColor(self)
+	}
+	
+	public var description: String {
+		return "Red: \(r), Green: \(g), Blue: \(b), alpha: \(a)"
+	}
+	
+	public var debugDescription: String {
+		return "Red: \(r), Green: \(g), Blue: \(b), alpha: \(a)"
 	}
 }
 

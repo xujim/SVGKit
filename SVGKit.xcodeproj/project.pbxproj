@@ -417,6 +417,8 @@
 		5540E81017387F2B004029EF /* SVGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E74F17387F2B004029EF /* SVGUtils.m */; };
 		5540E814173881BF004029EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5540E816173881BF004029EF /* InfoPlist.strings */; };
 		5540E819173887D9004029EF /* SVGTextElement-OSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E71717387F2B004029EF /* SVGTextElement-OSX.m */; };
+		554143DA1AB9596C00997473 /* SwiftColor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554143D91AB9596C00997473 /* SwiftColor_Tests.swift */; };
+		554143DB1AB9596C00997473 /* SwiftColor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554143D91AB9596C00997473 /* SwiftColor_Tests.swift */; };
 		5542C84F193BBFC50046BB14 /* SVGKFastImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5542C84A193BBFC50046BB14 /* SVGKFastImageView.m */; };
 		5542C850193BBFC50046BB14 /* SVGKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5542C84C193BBFC50046BB14 /* SVGKImageView.m */; };
 		5542C851193BBFC50046BB14 /* SVGKLayeredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5542C84E193BBFC50046BB14 /* SVGKLayeredImageView.m */; };
@@ -1178,6 +1180,9 @@
 		5540E74E17387F2B004029EF /* SVGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SVGUtils.h; sourceTree = "<group>"; };
 		5540E74F17387F2B004029EF /* SVGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SVGUtils.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5540E815173881BF004029EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		554143D71AB9596B00997473 /* SVGKit-OS X Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SVGKit-OS X Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		554143D81AB9596B00997473 /* SVGKit-iOS Framework Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SVGKit-iOS Framework Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		554143D91AB9596C00997473 /* SwiftColor_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColor_Tests.swift; sourceTree = "<group>"; };
 		5542C821193BBEB90046BB14 /* libSVGKit-iOS.1.2.0pre.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSVGKit-iOS.1.2.0pre.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5542C822193BBEB90046BB14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5542C830193BBEB90046BB14 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -1769,7 +1774,10 @@
 			children = (
 				55825B5F19EC80EF00635497 /* SVGKit_iOS-RetainTests.m */,
 				55825B6019EC80EF00635497 /* SVGKit_iOS_Tests.m */,
+				554143D91AB9596C00997473 /* SwiftColor_Tests.swift */,
 				55825B7319EC829800635497 /* Auxiliary files */,
+				554143D71AB9596B00997473 /* SVGKit-OS X Tests-Bridging-Header.h */,
+				554143D81AB9596B00997473 /* SVGKit-iOS Framework Tests-Bridging-Header.h */,
 			);
 			path = "SVGKit-iOS Tests";
 			sourceTree = "<group>";
@@ -2691,6 +2699,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55825B6519EC80EF00635497 /* SVGKit_iOS_Tests.m in Sources */,
+				554143DB1AB9596C00997473 /* SwiftColor_Tests.swift in Sources */,
 				55825B6319EC80EF00635497 /* SVGKit_iOS-RetainTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2700,6 +2709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55825B6619EC80EF00635497 /* SVGKit_iOS_Tests.m in Sources */,
+				554143DA1AB9596C00997473 /* SwiftColor_Tests.swift in Sources */,
 				55825B6419EC80EF00635497 /* SVGKit_iOS-RetainTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3010,6 +3020,7 @@
 		55825B4B19EC80C400635497 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3024,12 +3035,15 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "SVGKit-iOS Tests/SVGKit-iOS Framework Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		55825B4C19EC80C400635497 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3040,6 +3054,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "SVGKit-iOS Tests/SVGKit-iOS Framework Tests-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -3047,6 +3062,7 @@
 		55825B5B19EC80D400635497 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -3060,12 +3076,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SVGKit-iOS Tests/SVGKit-OS X Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		55825B5C19EC80D400635497 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -3075,6 +3094,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SVGKit-iOS Tests/SVGKit-OS X Tests-Bridging-Header.h";
 			};
 			name = Release;
 		};
