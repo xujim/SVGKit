@@ -114,24 +114,10 @@
 		im = [SVGKImage defaultImage];
 	}
     
-    internalContextPointerBecauseApplesDemandsIt = @"Apple wrote the addObserver / KVO notification API wrong in the first place and now requires developers to pass around pointers to fake objects to make up for the API deficicineces. You have to have one of these pointers per object, and they have to be internal and private. They serve no real value.";
-    
-#if TEMPORARY_WARNING_FOR_APPLES_BROKEN_RENDERINCONTEXT_METHOD
-    BOOL imageIsGradientFree = [SVGKFastImageView svgImageHasNoGradients:im];
-    if( !imageIsGradientFree )
-        DDLogWarn(@"[%@] WARNING: Apple's rendering DOES NOT ALLOW US to render this image correctly using SVGKFastImageView, because Apple's renderInContext method - according to Apple's docs - ignores Apple's own masking layers. Until Apple fixes this bug, you should use SVGKLayeredImageView for this particular SVG file (or avoid using gradients)", [self class]);
-#endif
-    
     self.image = im;
     self.frame = CGRectMake( 0,0, im.size.width, im.size.height ); // NB: this uses the default SVG Viewport; an ImageView can theoretically calc a new viewport (but its hard to get right!)
     self.tileRatio = CGSizeZero;
     self.backgroundColor = [UIColor clearColor];
-    
-    /** redraw-observers */
-    if( self.disableAutoRedrawAtHighestResolution )
-        ;
-    else
-        [self addInternalRedrawOnResizeObservers];
 }
 
 - (void)setImage:(SVGKImage *)image {
@@ -144,16 +130,28 @@
 	if( image.scale != 0.0f )
 		DDLogWarn(@"[%@] WARNING: Apple's rendering DOES NOT ALLOW US to render this image correctly using SVGKFastImageView, because Apple's renderInContext method - according to Apple's docs - ignores Apple's own transforms. Until Apple fixes this bug, you should use SVGKLayeredImageView for this particular SVG file (or avoid using scale: you SHOULD INSTEAD be scaling by setting .size on the image, and ensuring that the incoming SVG has either a viewbox or an explicit svg width or svg height)", [self class]);
 #endif
+    
+    if( !internalContextPointerBecauseApplesDemandsIt ) {
+        internalContextPointerBecauseApplesDemandsIt = @"Apple wrote the addObserver / KVO notification API wrong in the first place and now requires developers to pass around pointers to fake objects to make up for the API deficicineces. You have to have one of these pointers per object, and they have to be internal and private. They serve no real value.";
+    }
 	
     if (_image) {
         [_image removeObserver:self forKeyPath:@"size" context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
     }
     _image = image;
     
+    /** redraw-observers */
     if( self.disableAutoRedrawAtHighestResolution )
         ;
-    else
-        [_image addObserver:self forKeyPath:@"size" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
+    else {
+        [self addInternalRedrawOnResizeObservers];
+        [_image addObserver:self forKeyPath:@"size" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
+    }
+    
+    /** other obeservers */
+    [self addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
+    [self addObserver:self forKeyPath:@"tileRatio" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
+    [self addObserver:self forKeyPath:@"showBorder" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
 }
 
 -(void) addInternalRedrawOnResizeObservers
@@ -197,8 +195,12 @@
 	[self removeObserver:self forKeyPath:@"image" context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
 	[self removeObserver:self forKeyPath:@"tileRatio" context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
 	[self removeObserver:self forKeyPath:@"showBorder" context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
-    
-	self.image = nil;
+	
+	if (_image) {
+		[_image removeObserver:self forKeyPath:@"size" context:internalContextPointerBecauseApplesDemandsIt];
+	}
+	
+	_image = nil;
 }
 
 /** Trigger a call to re-display (at higher or lower draw-resolution) (get Apple to call drawRect: again) */
@@ -221,12 +223,6 @@
 			[self setNeedsDisplay];
 		}
 	}
-}
-
-- (void)setFrame:(CGRect)frame
-{
-    [super setFrame:frame];
-    self.image.size = frame.size;
 }
 
 /**

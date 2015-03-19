@@ -94,9 +94,20 @@
     {
         self.backgroundColor = [UIColor clearColor];
         
-        ((SVGKLayer*) self.layer).SVGImage = im;
-    }
-    
+		DDLogInfo(@"About to make a blank image using the inlined SVG = %@", svgStringDefaultContents);
+		
+		SVGKImage* defaultBlankImage = [SVGKImage imageWithSource:[SVGKSourceString sourceFromContentsOfString:svgStringDefaultContents]];
+		
+		self.backgroundColor = [UIColor cyanColor];
+		
+		((SVGKLayer*) self.layer).SVGImage = defaultBlankImage;
+	}
+	else
+	{
+		self.backgroundColor = [UIColor clearColor];
+		
+		((SVGKLayer*) self.layer).SVGImage = im;
+	}
 }
 
 /** Delegate the call to the internal layer that's coded to handle this stuff automatically */
