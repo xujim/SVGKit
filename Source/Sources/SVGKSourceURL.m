@@ -15,7 +15,18 @@
 - (instancetype)initWithURL:(NSURL*)u
 {
 	NSInputStream* stream = [[NSInputStream alloc] initWithURL:u];
-	[stream open];
+	if( stream == nil )
+	{
+		/* Thanks, Apple, for not implementing your own method.
+		 c.f. http://stackoverflow.com/questions/20571069/i-cannot-initialize-a-nsinputstream
+		 
+		 NB: current Apple docs don't seem to mention this - certainly not in the inputStreamWithURL: method? */
+		NSData *tempData = [NSData dataWithContentsOfURL:u];
+		stream = [[NSInputStream alloc] initWithData:tempData];
+	}
+	
+	//DO NOT DO THIS: let the parser do it at last possible moment (Apple has threading problems otherwise!) [stream open];
+	
 	if (self = [super initWithInputSteam:stream]) {
 		self.URL = u;
 	}

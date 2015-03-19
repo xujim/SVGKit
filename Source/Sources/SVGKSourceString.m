@@ -11,9 +11,10 @@
 {
 	NSString *tmpStr = [[NSString alloc] initWithString:theStr];
 	NSInputStream* stream = [[NSInputStream alloc] initWithData:[tmpStr dataUsingEncoding:NSUTF8StringEncoding]];
-	[stream open];
+	//DO NOT DO THIS: let the parser do it at last possible moment (Apple has threading problems otherwise!) [stream open];
 	if (self = [super initWithInputSteam:stream]) {
 		self.rawString = tmpStr;
+		self.approximateLengthInBytesOr0 = [theStr lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
 	}
 	
 	return self;
