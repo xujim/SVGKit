@@ -153,6 +153,14 @@ static CGFloat cachedDevicePixelsPerInch;
 	return [self.internalCSSPrimitiveValue getFloatValue:CSS_PX];
 }
 
+-(float) pixelsValueWithDimension:(float)dimension
+{
+    if (self.internalCSSPrimitiveValue.primitiveType == CSS_PERCENTAGE)
+        return dimension * self.value / 100.0;
+    
+    return [self pixelsValue];
+}
+
 -(CGFloat) numberValue
 {
 	return [self.internalCSSPrimitiveValue getFloatValue:CSS_NUMBER];
