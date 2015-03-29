@@ -12,7 +12,7 @@ import SVGKit.SVGKStyleSheetList
 
 extension SVGKNodeList: SequenceType {
 	public func generate() -> IndexingGenerator<[SVGKNode]> {
-		return (internalArray as NSArray as [SVGKNode]).generate()
+		return (internalArray as NSArray as! [SVGKNode]).generate()
 	}
 }
 
@@ -36,7 +36,7 @@ extension SVGKImage {
 
 extension SVGKCSSRuleList: SequenceType {
 	public func generate() -> IndexingGenerator<[SVGKCSSRule]> {
-		return (internalArray as NSArray as [SVGKCSSRule]).generate()
+		return (internalArray as NSArray as! [SVGKCSSRule]).generate()
 	}
 }
 
@@ -53,12 +53,6 @@ extension SVGKStyleSheetList: SequenceType {
 }
 
 extension SVGCurve: Equatable {
-	public init() {
-		c1 = CGPoint.zeroPoint
-		c2 = CGPoint.zeroPoint
-		p = CGPoint.zeroPoint
-	}
-
 	public init(cx1: Int, cy1: Int, cx2: Int, cy2: Int, px: Int, py: Int) {
 		self = SVGCurveMake(CGFloat(cx1), CGFloat(cy1), CGFloat(cx2), CGFloat(cy2), CGFloat(px), CGFloat(py))
 	}
@@ -73,10 +67,12 @@ extension SVGCurve: Equatable {
 }
 
 extension SVGRect: Equatable {
+	#if false
 	/// Returns an uninitialized SVGRect
 	public init() {
 		self = SVGRectUninitialized()
 	}
+	#endif
 	
 	public var initialized: Bool {
 		return SVGRectIsInitialized(self)
@@ -101,10 +97,6 @@ extension SVGColor: Hashable, Printable, DebugPrintable {
     public init(red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8 = 255) {
         r = red; g = green; b = blue; a = alpha
     }
-	
-	public init() {
-		r = 0; g = 0; b = 0; a = 0;
-	}
 	
 	public var cgColor: CGColor {
 		return CGColorWithSVGColor(self)
