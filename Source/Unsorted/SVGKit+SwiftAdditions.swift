@@ -41,8 +41,14 @@ extension SVGKCSSRuleList: SequenceType {
 }
 
 extension SVGKStyleSheetList: SequenceType {
-	public func generate() -> NSFastGenerator {
-		return NSFastGenerator(self)
+	public func generate() -> GeneratorOf<SVGKStyleSheet> {
+		var index = 0
+		return GeneratorOf {
+			if index < Int(self.length) {
+				return self[index++]
+			}
+			return nil
+		}
 	}
 }
 
