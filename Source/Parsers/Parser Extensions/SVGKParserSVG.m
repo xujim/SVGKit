@@ -14,6 +14,7 @@
 #import "SVGPolygonElement.h"
 #import "SVGPolylineElement.h"
 #import "SVGRectElement.h"
+#import "SVGSwitchElement.h"
 #import "SVGTitleElement.h"
 #import "SVGTextElement.h"
 #import "TinySVGTextAreaElement.h"

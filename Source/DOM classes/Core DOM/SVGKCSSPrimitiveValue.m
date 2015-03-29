@@ -84,6 +84,10 @@
 				{
 					valueAsInches = self.internalValue * 12.0 / 72.0;
 				}break;
+				case CSS_IN:
+				{
+					valueAsInches = self.internalValue;
+				}break;
 					
 				default:
 				{
