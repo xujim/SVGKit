@@ -629,6 +629,7 @@
 		555DC0E419DF697E002B424E /* SVGKParseResult.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5540E72D17387F2B004029EF /* SVGKParseResult.h */; };
 		555DC0E519DF697E002B424E /* SVGKParserExtension.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5540E72F17387F2B004029EF /* SVGKParserExtension.h */; };
 		555DC0E619DF697E002B424E /* SVGKPointsAndPathsParser.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5540E73017387F2B004029EF /* SVGKPointsAndPathsParser.h */; };
+		555DC0E719DF697E002B424E /* CALayer+RecursiveClone.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 55A5AD881760037A009F2FDD /* CALayer+RecursiveClone.h */; };
 		555DC0E819DF697E002B424E /* CALayerWithClipRender.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 55F2684919B66B9C00F6410E /* CALayerWithClipRender.h */; };
 		555DC0E919DF697E002B424E /* CAShapeLayerWithClipRender.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 55F2684B19B66B9C00F6410E /* CAShapeLayerWithClipRender.h */; };
 		555DC0EA19DF697E002B424E /* CALayerWithChildHitTest.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5540E73317387F2B004029EF /* CALayerWithChildHitTest.h */; };
@@ -1192,7 +1193,7 @@
 		5542C830193BBEB90046BB14 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5542C84A193BBFC50046BB14 /* SVGKFastImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKFastImageView.m; sourceTree = "<group>"; };
 		5542C84C193BBFC50046BB14 /* SVGKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKImageView.m; sourceTree = "<group>"; };
-		5542C84E193BBFC50046BB14 /* SVGKLayeredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKLayeredImageView.m; sourceTree = "<group>"; usesTabs = 0; };
+		5542C84E193BBFC50046BB14 /* SVGKLayeredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKLayeredImageView.m; sourceTree = "<group>"; };
 		5542C852193BC0190046BB14 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		5542C874193BC60C0046BB14 /* SVGKit-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SVGKit-iOS-Prefix.pch"; path = "XCodeProjectData/SVGKit-iOS/SVGKit-iOS-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		5542C893193BCC0F0046BB14 /* SVGTextElement-iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVGTextElement-iOS.m"; sourceTree = "<group>"; };

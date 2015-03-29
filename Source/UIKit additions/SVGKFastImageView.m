@@ -145,13 +145,13 @@
         ;
     else {
         [self addInternalRedrawOnResizeObservers];
-        [_image addObserver:self forKeyPath:@"size" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
+        [_image addObserver:self forKeyPath:@"size" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
     }
     
     /** other obeservers */
-    [self addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
-    [self addObserver:self forKeyPath:@"tileRatio" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
-    [self addObserver:self forKeyPath:@"showBorder" options:NSKeyValueObservingOptionNew context:internalContextPointerBecauseApplesDemandsIt];
+    [self addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
+    [self addObserver:self forKeyPath:@"tileRatio" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
+    [self addObserver:self forKeyPath:@"showBorder" options:NSKeyValueObservingOptionNew context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
 }
 
 -(void) addInternalRedrawOnResizeObservers
@@ -197,7 +197,7 @@
 	[self removeObserver:self forKeyPath:@"showBorder" context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
 	
 	if (_image) {
-		[_image removeObserver:self forKeyPath:@"size" context:internalContextPointerBecauseApplesDemandsIt];
+		[_image removeObserver:self forKeyPath:@"size" context:(__bridge void *)(internalContextPointerBecauseApplesDemandsIt)];
 	}
 	
 	_image = nil;

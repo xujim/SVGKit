@@ -36,6 +36,9 @@
 #define SVGKCreateSystemDefaultSpace() CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB)
 #endif
 #import "CALayer+RecursiveClone.h"
+#if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
+#import "SVGKExporterUIImage.h" // needed for .UIImage property
+#endif
 
 @interface SVGKImage ()
 
@@ -240,7 +243,8 @@
     }
 }
 
-+ (SVGKImage*) imageWithSource:(SVGKSource *)newSource {
++ (SVGKImage*) imageWithSource:(SVGKSource *)newSource
+{
 	NSParameterAssert(newSource != nil);
 	@synchronized(self) {
 	return [(SVGKImage*)[[self class] alloc] initWithSource:newSource];
@@ -414,7 +418,7 @@
 	
 	if( ! SVGRectIsInitialized(self.DOMTree.viewBox) && !SVGRectIsInitialized( self.DOMTree.viewport ) )
 	{
-		DDLogWarn(@"[%@] WARNING: you have set an explicit image size, but your SVG file has no explicit width or height AND no viewBox. This means the image will NOT BE SCALED - either add a viewBox to your SVG source file, or add an explicit svg width and height -- or: use the .scale method on this class (SVGKImage) instead to scale by desired amount", [self class]);
+		DDLogWarn(@"WARNING: you have set an explicit image size, but your SVG file has no explicit width or height AND no viewBox. This means the image will NOT BE SCALED - either add a viewBox to your SVG source file, or add an explicit svg width and height -- or: use the .scale method on this class (SVGKImage) instead to scale by desired amount");
 	}
 	
 	/** "size" is part of SVGKImage, not the SVG spec; we need to update the SVG spec size too (aka the ViewPort)
@@ -795,11 +799,11 @@ static inline NSString *exceptionInfo(NSException *e)
 {
 	if( CALayerTree == nil && !self.renderingIssue )
 	{
-		DDLogInfo(@"[%@] WARNING: no CALayer tree found, creating a new one (will cache it once generated)", [self class] );
+		DDLogInfo(@"WARNING: no CALayer tree found, creating a new one (will cache it once generated)");
 
 		NSDate* startTime = [NSDate date];
 
-		DDLogInfo(@"[%@] WARNING: no CALayer tree found, creating a new one (will cache it once generated).", [self class] );
+		DDLogInfo(@"WARNING: no CALayer tree found, creating a new one (will cache it once generated).");
 		@try {
 			self.CALayerTree = [self newCALayerTree];
 		DDLogInfo(@"[%@] ...time taken to convert from DOM to fresh CALayers: %2.3f seconds)", [self class], -1.0f * [startTime timeIntervalSinceNow] );		
@@ -902,20 +906,11 @@ return; \
 	if( [self hasSize] )
 	{
 		if (theWarn) {
-			DDLogVerbose(@"[%@] DEBUG: Generating a UIImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
+			DDLogVerbose(@"DEBUG: Generating a UIImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", self.size.width, self.size.height);
 		}
 		
-		UIGraphicsBeginImageContextWithOptions( self.size, FALSE, [UIScreen mainScreen].scale );
-		CGContextRef context = UIGraphicsGetCurrentContext();
-		
-		[self renderToContext:context antiAliased:shouldAntialias curveFlatnessFactor:multiplyFlatness interpolationQuality:interpolationQuality flipYaxis:FALSE];
-		
-		UIImage* result = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
-		
-		
-		return result;
-	}
+		return [SVGKExporterUIImage exportAsUIImage:self antiAliased:shouldAntialias curveFlatnessFactor:multiplyFlatness interpolationQuality:interpolationQuality];
+		}
 	else
 	{
 		NSAssert(FALSE, @"You asked to export an SVG to bitmap, but the SVG file has infinite size. Either fix the SVG file, or set an explicit size you want it to be exported at (by calling .size = something on this SVGKImage instance");
@@ -1024,7 +1019,7 @@ return; \
 	
 	CGFloat smallestScaleUp = MIN( wScale, hScale );
 	
-	if( smallestScaleUp < 1.0f )
+	if( smallestScaleUp < 1.0 )
 		smallestScaleUp = MAX( wScale, hScale ); // instead of scaling-up the smallest, scale-down the largest
 	
 	self.size = CGSizeApplyAffineTransform( self.size, CGAffineTransformMakeScale( smallestScaleUp, smallestScaleUp));
