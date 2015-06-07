@@ -88,12 +88,12 @@ CGImageRef SVGImageCGImage(AppleNativeImageRef img)
 	NSData *imageData;
 	NSURL* imageURL = [NSURL URLWithString:_href];
 	SVGKSource* effectiveSource = nil;
-	if ([_href hasPrefix:@"http:"] )
+	if ([_href hasPrefix:@"http:"] || [_href hasPrefix:@"https:"] )
 		imageData = [NSData dataWithContentsOfURL:imageURL];
 	else
 	if( [_href hasPrefix:@"data:"])
 	{
-		_href = [_href stringByReplacingOccurrencesOfString:@"\\s+" 
+		self.href = [_href stringByReplacingOccurrencesOfString:@"\\s+"
 												 withString:@""
 													options:NSRegularExpressionSearch
 													  range:NSMakeRange(0, [_href length]) ];
@@ -178,10 +178,7 @@ CGImageRef SVGImageCGImage(AppleNativeImageRef img)
                 // crop the image
                 CGRect cropRect = CGRectMake(0, 0, AppleNativeImageSize(image).width, AppleNativeImageSize(image).height);
                 cropRect = [self clipFrame:cropRect fromRatio:1.0 / ratioOfRatios];
-                
-                CGImageRef croppedRef = CGImageCreateWithImageInRect(imageRef, cropRect);
-                CGImageRelease(imageRef);
-                imageRef = croppedRef;
+                imageRef = CGImageCreateWithImageInRect(imageRef, cropRect);
             }
         }
         

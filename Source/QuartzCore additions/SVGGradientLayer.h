@@ -21,6 +21,9 @@ static NSString * const kExt_CAGradientLayerRadial = @"radialGradient";
 
 @property (nonatomic, readwrite) CGPathRef maskPath;
 @property (nonatomic, readwrite, strong) NSArray *stopIdentifiers;
+@property (nonatomic) CGFloat radius; // radial gradients should have their own properties
+@property (nonatomic) CGPoint centerPoint;
+@property (nonatomic) CGAffineTransform radialTransform;
 
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 - (void)setStopColor:(UIColor *)color forIdentifier:(NSString *)identifier;

@@ -22,6 +22,8 @@ NSUInteger SVGCurrentLogLevel()
 }
 
 #undef DEFAULT_LOG_LEVEL
+#import <CocoaLumberjack/DDTTYLogger.h>
+#import <CocoaLumberjack/DDASLLogger.h>
 
 @implementation SVGKit : NSObject
 

@@ -7,7 +7,7 @@
 
 @implementation SVGKSourceString
 
-- (instancetype)initWithString:(NSString*)theStr
+- (instancetype)initWithContentsOfString:(NSString*)theStr
 {
 	NSString *tmpStr = [[NSString alloc] initWithString:theStr];
 	NSInputStream* stream = [[NSInputStream alloc] initWithData:[tmpStr dataUsingEncoding:NSUTF8StringEncoding]];
@@ -20,26 +20,31 @@
 	return self;
 }
 
-+ (SVGKSource*)sourceFromContentsOfString:(NSString*)rawString
+-(NSString *)keyForAppleDictionaries
 {
-	SVGKSourceString *s = [[self alloc] initWithString:rawString];
+	return self.rawString;
+}
+
++ (SVGKSource*)sourceFromContentsOfString:(NSString*)rawString {
+	SVGKSourceString *s = [[self alloc] initWithContentsOfString:rawString];
 	
 	return s;
 }
 
-- (id)copyWithZone:(NSZone *)zone
+-(id)copyWithZone:(NSZone *)zone
 {
-	return [[[self class] alloc] initWithString:self.rawString];
-}
-
-- (NSString*)description
-{
-	return [NSString stringWithFormat:@"%@, string length: %lu", [self baseDescription], (unsigned long)[self.rawString length]];
-}
-
-- (NSString*)debugDescription
-{
-	return [NSString stringWithFormat:@"%@, string: %@", [self baseDescription], self.rawString];
+	id copy = [super copyWithZone:zone];
+	
+	if( copy )
+	{	
+		/** clone bits */
+		[copy setRawString:[self.rawString copy]];
+		
+		/** Finally, manually intialize the input stream, as required by super class */
+		[copy setStream:[NSInputStream inputStreamWithData:[((SVGKSourceString*)copy).rawString dataUsingEncoding:NSUTF8StringEncoding]]];
+	}
+	
+	return copy;
 }
 
 @end

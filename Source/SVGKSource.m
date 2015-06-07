@@ -5,10 +5,6 @@
 #import "SVGKSourceString.h"
 #import "SVGKSource-private.h"
 
-@interface SVGKSource ()
-@property (readwrite, nonatomic, strong) NSInputStream* stream;
-@end
-
 @implementation SVGKSource
 
 @synthesize svgLanguageVersion;
@@ -23,51 +19,35 @@
 	return self;
 }
 
-+ (SVGKSource*)sourceWithFilename:(NSString*)p
+- (id) initForCopying
 {
-	return [SVGKSourceLocalFile sourceFromFilename:p];
+	self = [super init];
+	if( !self )
+		return nil;
+	
+	return self;
 }
 
-+ (SVGKSource*)sourceWithURL:(NSURL*)u
-{
-	return [SVGKSourceURL sourceFromURL:u];
-}
 - (SVGKSource *)sourceFromRelativePath:(NSString *)path {
     return nil;
 }
 
-+ (SVGKSource*)sourceWithData:(NSData*)data {
-	return [SVGKSourceNSData sourceWithData:data];
-}
-
-+ (SVGKSource*)sourceWithContentsOfString:(NSString*)rawString {
-	return [SVGKSourceString sourceFromContentsOfString:rawString];
-}
-
-- (id)copyWithZone:(NSZone *)zone
+-(id)copyWithZone:(NSZone *)zone
 {
-	if ([self isMemberOfClass:[SVGKSource class]]) {
-		DDLogError(@"[%@] ERROR: %@ does not implement %@. You will need to get the data to make a new SVGKSource object some other way.", [self class], [self class], NSStringFromSelector(_cmd));
-		[self doesNotRecognizeSelector:_cmd];
-	} else {
-		DDLogError(@"[%@] ERROR: %@ from class %@ should be in a subclass!", [self class], NSStringFromSelector(_cmd), [SVGKSource class]);
+	id copy = [[[self class] allocWithZone:zone] initForCopying];
+	
+	if( copy )
+	{	
+		[copy setApproximateLengthInBytesOr0:self.approximateLengthInBytesOr0];
 	}
 	
+	return copy;
+}
+
+-(NSString *)keyForAppleDictionaries
+{
+	NSAssert(false, @"Subclasses MUST implement this property/method in their own way and stick to Apple's rules for Keys in NSDictionary");
 	return nil;
-}
-
-- (NSString*)baseDescription
-{
-	return [NSString stringWithFormat:@"%@: Stream: %@, SVG Version: %@", [self class], [self.stream description], [self.svgLanguageVersion description]];
-}
-
-- (NSString*)description
-{
-	BOOL isBaseClass = NO;
-	if ([self isMemberOfClass:[SVGKSource class]]) {
-		isBaseClass = YES;
-	}
-	return [NSString stringWithFormat:@"%@: %@Stream: %@, SVG Version: %@", [self class], isBaseClass ? @"" : @"(Not base class) ", [self.stream description], [self.svgLanguageVersion description]];
 }
 
 @end

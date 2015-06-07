@@ -41,13 +41,17 @@ static CGPoint *fixPointsInfinity(const CGPathElement *element) {
             total=0;
             break;
     }
+	
+	if( total == 0 )
+		return NULL; // Avoid malloc(0); keep C compilers happy
+	
+	CGPoint* returnArray = malloc(sizeof(CGPoint) * total);
     for (i = 0; i < total; i++)
     {
-        element->points[i].x=fixInfinity(element->points[i].x);
-        element->points[i].y=fixInfinity(element->points[i].y);
-
+        returnArray[i].x=fixInfinity(element->points[i].x);
+        returnArray[i].y=fixInfinity(element->points[i].y);
     }
-    return element->points;
+    return returnArray;
 }
 
 static void applier (void *info, const CGPathElement *element) {
@@ -57,7 +61,7 @@ static void applier (void *info, const CGPathElement *element) {
 	CGFloat x = fixInfinity(pathInfo->offX);
 	CGFloat y = fixInfinity(pathInfo->offY);
     
-	const CGPoint *points = fixPointsInfinity(element);
+	CGPoint *points = fixPointsInfinity(element);
 	
 	switch (element->type) {
 		case kCGPathElementMoveToPoint:
@@ -79,6 +83,8 @@ static void applier (void *info, const CGPathElement *element) {
 			CGPathCloseSubpath(path);
 			break;
 	}
+	
+	free(points);
 }
 
 CGPathRef CGPathCreateByOffsettingPath (CGPathRef aPath, CGFloat x, CGFloat y) {
@@ -102,7 +108,7 @@ static void applyPathTranslation (void *info, const CGPathElement *element) {
 	CGFloat x = fixInfinity(pathInfo->offX);
 	CGFloat y = fixInfinity(pathInfo->offY);
 	
-	const CGPoint *points = fixPointsInfinity(element);
+	CGPoint *points = fixPointsInfinity(element);
 	
 	switch (element->type) {
 		case kCGPathElementMoveToPoint:
@@ -124,6 +130,8 @@ static void applyPathTranslation (void *info, const CGPathElement *element) {
 			CGPathCloseSubpath(path);
 			break;
 	}
+	
+	free(points);
 }
 
 CGPathRef CGPathCreateByTranslatingPath (CGPathRef aPath, CGFloat x, CGFloat y) {

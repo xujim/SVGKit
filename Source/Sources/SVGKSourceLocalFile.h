@@ -11,4 +11,6 @@
 - (instancetype)initWithFilename:(NSString*)p;
 + (SVGKSourceLocalFile*)sourceFromFilename:(NSString*)p;
 
++ (SVGKSourceLocalFile*) internalSourceAnywhereInBundleUsingName:(NSString*) name;
+
 @end

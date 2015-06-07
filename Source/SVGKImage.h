@@ -55,7 +55,7 @@
 @class SVGDefsElement;
 
 @class SVGKImage; // needed for typedef below
-typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
+typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage, SVGKParseResult* parseResult );
 
 @interface SVGKImage : NSObject <NSCopying> // doesn't extend UIImage because Apple made UIImage immutable
 {
@@ -105,14 +105,16 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  UNLESS the image was already loaded, and a cached version can be returned - in which case,
  returns nil and immmediately calls the completion block
  */
-+ (SVGKParser *) imageAsynchronouslyNamed:(NSString *)name onCompletion:(SVGKImageAsynchronousLoadingDelegate) blockCompleted;
++(SVGKParser *) imageAsynchronouslyNamed:(NSString *)name onCompletion:(SVGKImageAsynchronousLoadingDelegate) blockCompleted;
 + (instancetype)imageWithContentsOfFile:(NSString *)path;
 + (instancetype)imageWithData:(NSData *)data;
 
 /**
- PREFERABLY: this is our only method, apart from the convenience "imageNamed"
+ PREFERABLY: these are our only method, apart from the convenience "imageNamed"
  
- If you need to create an SVG e.g. diretly from raw bytes, then you MUST use
+ The first one is synchronous, the second is asynchronous.
+ 
+ If you need to create an SVG e.g. directly from raw bytes, then you MUST use
  this method and ADDITIONALLY wrap your data into an SVGKSource.
  
  This is because SVG's cannot parse correctly without the metadata about where
@@ -120,6 +122,11 @@ typedef void (^SVGKImageAsynchronousLoadingDelegate)(SVGKImage* loadedImage);
  */
 + (instancetype) imageWithSource:(SVGKSource *)newSource; // if you have custom source's you want to use
 + (instancetype) defaultImage; //For a simple default image
+
+/**
+ This is the asynchronous version of imageWithSource:
+ */
++(SVGKParser *) imageWithSource:(SVGKSource *)source onCompletion:(SVGKImageAsynchronousLoadingDelegate)blockCompleted;
 
 - (instancetype)initWithContentsOfURL:(NSURL *)url;
 - (instancetype)initWithContentsOfFile:(NSString *)path;

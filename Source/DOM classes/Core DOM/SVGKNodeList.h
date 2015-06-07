@@ -20,7 +20,7 @@
 
 @interface SVGKNodeList : NSObject
 
-@property(readonly) long length;
+@property(readonly) NSUInteger length;
 
 -(SVGKNode*) item:(NSInteger) index;
 

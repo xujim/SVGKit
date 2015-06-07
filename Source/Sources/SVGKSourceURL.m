@@ -7,25 +7,45 @@
 
 @implementation SVGKSourceURL
 
-- (instancetype)copyWithZone:(NSZone *)zone
+-(NSString *)keyForAppleDictionaries
 {
-	return [[SVGKSourceURL alloc] initWithURL:self.URL];
+	return [self.URL absoluteString];
 }
 
-- (instancetype)initWithURL:(NSURL*)u
++ (instancetype)sourceFromURL:(NSURL*)u {
+	SVGKSourceURL* s = [[SVGKSourceURL alloc] initWithURL:u];
+	return s;
+}
+
++(NSInputStream*) internalCreateInputStreamFromURL:(NSURL*) u
 {
-	NSInputStream* stream = [[NSInputStream alloc] initWithURL:u];
+	NSInputStream* stream = [NSInputStream inputStreamWithURL:u];
+	
 	if( stream == nil )
 	{
 		/* Thanks, Apple, for not implementing your own method.
 		 c.f. http://stackoverflow.com/questions/20571069/i-cannot-initialize-a-nsinputstream
 		 
 		 NB: current Apple docs don't seem to mention this - certainly not in the inputStreamWithURL: method? */
-		NSData *tempData = [NSData dataWithContentsOfURL:u];
-		stream = [[NSInputStream alloc] initWithData:tempData];
+		NSError* errorWithNSData;
+		NSData *tempData = [NSData dataWithContentsOfURL:u options:0 error:&errorWithNSData];
+		
+		if( tempData == nil )
+		{
+			@throw [NSException exceptionWithName:@"NSDataCrashed" reason:[NSString stringWithFormat:@"Error internally in Apple's NSData trying to read from URL '%@'. Error = %@", u, errorWithNSData] userInfo:@{NSLocalizedDescriptionKey:errorWithNSData}];
+		}
+		else
+			stream = [[NSInputStream alloc] initWithData:tempData];
 	}
-	
 	//DO NOT DO THIS: let the parser do it at last possible moment (Apple has threading problems otherwise!) [stream open];
+	
+	return stream;
+}
+
+
+- (instancetype)initWithURL:(NSURL*)u
+{
+	NSInputStream* stream = [[self class] internalCreateInputStreamFromURL:u];
 	
 	if (self = [super initWithInputSteam:stream]) {
 		self.URL = u;
@@ -33,10 +53,20 @@
 	return self;
 }
 
-+ (instancetype)sourceFromURL:(NSURL*)u {
-	SVGKSourceURL* s = [[SVGKSourceURL alloc] initWithURL:u];
+-(id)copyWithZone:(NSZone *)zone
+{
+	id copy = [super copyWithZone:zone];
 	
-	return s;
+	if( copy )
+	{	
+		/** clone bits */
+		[copy setURL:[self.URL copy]];
+		
+		/** Finally, manually intialize the input stream, as required by super class */
+		[copy setStream:[[self class] internalCreateInputStreamFromURL:((SVGKSourceURL*)copy).URL]];
+	}
+	
+	return copy;
 }
 
 - (SVGKSource *)sourceFromRelativePath:(NSString *)path {

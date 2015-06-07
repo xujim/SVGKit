@@ -15,6 +15,15 @@
 @synthesize stopIdentifiers;
 @synthesize transform;
 
+- (id)init
+{
+	if ((self = [super init]))
+	{
+		_radialTransform = CGAffineTransformIdentity;
+	}
+	return self;
+}
+
 - (void)dealloc {
     CGPathRelease(maskPath);
 }
@@ -27,45 +36,41 @@
 }
 
 - (void)renderInContext:(CGContextRef)ctx {
+	
     CGContextSaveGState(ctx);
-    CGContextAddPath(ctx, maskPath);
-    CGContextClip(ctx);
+
+	if (self.maskPath)
+	{
+		CGContextAddPath(ctx, self.maskPath);
+		CGContextClip(ctx);
+	}
     if ([self.type isEqualToString:kExt_CAGradientLayerRadial]) {
         
         size_t num_locations = self.locations.count;
         
-        size_t numbOfComponents = 0;
+        //NOT USED: size_t numbOfComponents = 0;
         CGColorSpaceRef colorSpace = NULL;
-        CGContextConcatCTM(ctx, CGAffineTransformMake(1, 0, 0, 1, self.startPoint.x, self.startPoint.y));
-        CGContextConcatCTM(ctx, self.transform);
-        CGContextConcatCTM(ctx, CGAffineTransformMake(1, 0, 0, 1, -self.startPoint.x, -self.startPoint.y));
-        
+		
         if (self.colors.count) {
             CGColorRef colorRef = (__bridge CGColorRef)(self.colors)[0];
-            numbOfComponents = CGColorGetNumberOfComponents(colorRef);
+            //NOT USED: numbOfComponents = CGColorGetNumberOfComponents(colorRef);
             colorSpace = CGColorGetColorSpace(colorRef);
             
             CGFloat *locations = calloc(num_locations, sizeof(CGFloat));
-            CGFloat *components = calloc(num_locations, numbOfComponents * sizeof(CGFloat));
             
             for (NSInteger x = 0; x < num_locations; x++) {
-                locations[x] = [(self.locations)[x] floatValue];
-                const CGFloat *comps = CGColorGetComponents((__bridge CGColorRef)(self.colors)[x]);
-                for (NSInteger y = 0; y < numbOfComponents; y++) {
-                    size_t shift = numbOfComponents * x;
-                    components[shift + y] = comps[y];
-                }
-            }
-            
-            CGPoint position = self.startPoint;
-            CGFloat radius = floor(self.endPoint.x * self.bounds.size.width);
-            CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, num_locations);
-            
-            CGContextSetAlpha(ctx, self.opacity);
-            CGContextDrawRadialGradient(ctx, gradient, position, 0, position, radius, kCGGradientDrawsAfterEndLocation);
+                locations[x] = [[self.locations objectAtIndex:x] floatValue];
+			}
+			
+			CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) self.colors, locations);
+            CGPoint position = self.centerPoint;
+			
+			CGContextConcatCTM(ctx, self.radialTransform);
+			
+			CGContextSetAlpha(ctx, self.opacity);
+			CGContextDrawRadialGradient(ctx, gradient, position, 0, position, self.radius, kCGGradientDrawsAfterEndLocation);
             
             free(locations);
-            free(components);
             CGGradientRelease(gradient);
         }
     } else {

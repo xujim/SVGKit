@@ -1228,7 +1228,7 @@
 		5586007D17851F8A00CB3D85 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		5586007E17851F8A00CB3D85 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = SOURCE_ROOT; };
 		55886F5C17DD79FA00021A82 /* SVGGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGGradientLayer.h; sourceTree = "<group>"; };
-		55886F5D17DD79FA00021A82 /* SVGGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGGradientLayer.m; sourceTree = "<group>"; };
+		55886F5D17DD79FA00021A82 /* SVGGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGGradientLayer.m; sourceTree = "<group>"; usesTabs = 0; };
 		558BE719177B98FE00DC9516 /* SVGKImage+CacheManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SVGKImage+CacheManagement.m"; path = "Source/SVGKImage+CacheManagement.m"; sourceTree = SOURCE_ROOT; };
 		558BE71B177B9D3F00DC9516 /* SVGKImage+CacheManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVGKImage+CacheManagement.h"; path = "Source/SVGKImage+CacheManagement.h"; sourceTree = SOURCE_ROOT; };
 		5595395D1AC78A5100BC4B39 /* SVGSwitchElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGSwitchElement.h; sourceTree = "<group>"; };

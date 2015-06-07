@@ -21,7 +21,7 @@
 {
     
     [SVGKit enableLogging];
-
+#if DSFDSF
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -52,7 +52,8 @@
 	    
 		self.window.rootViewController = self.splitViewController;
 	}
-    [self.window makeKeyAndVisible];
+#endif
+  //  [self.window makeKeyAndVisible];
     return YES;
 }
 

@@ -258,7 +258,16 @@ clazz *parser = [[clazz alloc] init]; \
 					currentParseRun.parseProgressFractionApproximate = 0;
 			}
 			
-			NSInteger libXmlParserParseError = xmlParseChunk(ctx, buff, (int)bytesRead, 0);
+			NSInteger libXmlParserParseError;
+			@try
+			{
+			libXmlParserParseError = xmlParseChunk(ctx, buff, (int)bytesRead, 0);
+			}
+			@catch( NSException* e )
+			{
+				DDLogError( @"Exception while trying to parse SVG file, will store in parse results. Exception = %@", e);
+				[currentParseRun addParseErrorFatal:[NSError errorWithDomain:@"SVGK Parsing" code:32523432 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Exception = %@", e]}]];
+			}
 			
 			if( [currentParseRun.errorsFatal count] > 0 )
 			{
@@ -286,7 +295,8 @@ clazz *parser = [[clazz alloc] init]; \
 	
 	[stream close]; // close the handle NO MATTER WHAT
     
-	if (!currentParseRun.libXMLFailed)
+	if (!currentParseRun.libXMLFailed
+	&& currentParseRun.errorsFatal.count < 1 )
 		xmlParseChunk(ctx, NULL, 0, 1); // EOF
 	
 	xmlFreeParserCtxt(ctx);

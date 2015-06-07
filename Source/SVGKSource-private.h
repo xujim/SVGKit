@@ -13,7 +13,7 @@
 
 @interface SVGKSource ()
 
-- (NSString*)baseDescription;
+@property (readwrite, nonatomic, strong) NSInputStream* stream;
 
 @end
 

@@ -19,7 +19,7 @@
 	return (self.internalArray)[index];
 }
 
--(long)length
+-(NSUInteger)length
 {
 	return [self.internalArray count];
 }

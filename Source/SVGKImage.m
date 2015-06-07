@@ -10,13 +10,16 @@
 #import "SVGUseElement.h"
 #import "SVGClipPathElement.h"
 #import "SVGSwitchElement.h"
+#import "SVGKNodeList+Mutable.h"
 
 #import "SVGSVGElement_Mutable.h" // so that changing .size can change the SVG's .viewport
 
 #import "SVGKParserSVG.h"
 
-#import "SVGKSourceLocalFile.h"
-#import "SVGKSourceURL.h"
+#import "SVGKSourceLocalFile.h" // for convenience constructors that load from filename
+#import "SVGKSourceURL.h" // for convenience constructors that load from URL as string
+#import "SVGKSourceNSData.h" // for convenience constructors that load from raw incoming NSData
+#import "SVGKSourceString.h"
 
 #import "SVGKSourceNSData.h"
 #if !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
@@ -85,7 +88,7 @@
 }
 
 + (SVGKImage *)defaultImage {
-    return [self imageWithSource:[SVGKSourceNSData sourceWithContentsOfString:SVGKGetDefaultImageStringContents()]];
+    return [self imageWithSource:[SVGKSourceString sourceFromContentsOfString:SVGKGetDefaultImageStringContents()]];
 }
 
 #pragma mark - Convenience initializers
@@ -166,7 +169,15 @@
 		return nil;
 	}
 	
-	SVGKImage* result = [[self alloc] initWithContentsOfURL:url];
+	SVGKSource* source;
+	if (bundle == nil || [bundle isEqual:[NSBundle mainBundle]]) {
+		source = [SVGKSourceLocalFile internalSourceAnywhereInBundleUsingName:name];
+	} else {
+		source = [[SVGKSourceLocalFile alloc] initWithFilename:[url path]];
+	}
+	
+	SVGKImage* result = [self imageWithSource:source];
+
 	
 	if ([[NSBundle mainBundle] isEqual:bundle] && [SVGKImage isCacheEnabled]) {
 		if( result != nil )
@@ -193,16 +204,26 @@
 
 +(SVGKParser *) imageAsynchronouslyNamed:(NSString *)name onCompletion:(SVGKImageAsynchronousLoadingDelegate)blockCompleted
 {
-	if ([self isCacheEnabled]) {
-		//Assuming that the image named is in the main bundle
-		SVGKImage *image = [self cachedImageForName:name];
-		if (image) {
-			blockCompleted(image);
-			return nil;
-		}
-	}
-	
-	SVGKSource* source = [self internalSourceAnywhereInBundleUsingName:name];
+	return [self imageWithSource:[SVGKSourceLocalFile internalSourceAnywhereInBundleUsingName:name] onCompletion:blockCompleted];
+}
+
++(SVGKParser *) imageWithSource:(SVGKSource *)source onCompletion:(SVGKImageAsynchronousLoadingDelegate)blockCompleted
+{	
+#if ENABLE_GLOBAL_IMAGE_CACHE_FOR_SVGKIMAGE_IMAGE_NAMED
+    if( globalSVGKImageCache == nil )
+    {
+        globalSVGKImageCache = [NSMutableDictionary new];
+    }
+    
+    SVGKImageCacheLine* cacheLine = [globalSVGKImageCache valueForKey:source.keyForAppleDictionaries];
+    if( cacheLine != nil )
+    {
+        cacheLine.numberOfInstances ++;
+		
+		blockCompleted( cacheLine.mainInstance, /** (TODO: add a way for parse-results to chain each other, and say "I'm the cached version of this OTHER parseresult") original parse result: */ cacheLine.mainInstance.parseErrorsAndWarnings );
+        return nil;
+    }
+#endif
 	
 	/**
 	 Key moment: init and parse the SVGKImage
@@ -217,13 +238,15 @@
 					   
 					   if ([self isCacheEnabled]) {
 						   if (finalImage != nil) {
-							   [self storeImageCache:finalImage forName:name];
+							   finalImage->cameFromGlobalCache = YES;
+							   finalImage.nameUsedToInstantiate = source.keyForAppleDictionaries;
+							   [SVGKImage storeImageCache:finalImage forName:source.keyForAppleDictionaries];
 						   } else {
-							   DDLogWarn(@"[%@] WARNING: not caching the output for new SVG image with name = %@, because it failed to load correctly", [self class], name);
+							   DDLogWarn(@"[%@] WARNING: not caching the output for new SVG image with source = %@, because it failed to load correctly", [self class], source);
 						   }
 					   }
 					   
-					   blockCompleted( finalImage );
+					   blockCompleted( finalImage, parsedSVG );
 				   });
 	
     return parser;
@@ -320,6 +343,15 @@
 	return [self initWithSource:[[SVGKSourceURL alloc] initWithURL:url]];
 }
 
+- (id)initWithData:(NSData *)data
+{
+	NSParameterAssert(data != nil);
+	
+	DDLogWarn(@"Creating an SVG from raw data; this is not recommended: SVG requires knowledge of at least the URL where it came from (as it can contain relative file-links internally). You should use the method [SVGKImage initWithSource:] instead and specify an SVGKSource with more detail" );
+	
+	return [self initWithSource:[SVGKSourceNSData sourceFromData:data URLForRelativeLinks:nil]];
+}
+
 - (void)dealloc
 {
 	[self removeObserver:self forKeyPath:@"DOMTree.viewport"];
@@ -334,13 +366,6 @@
 	@synchronized(self){
 		return [(SVGKImage*)[[self class] alloc] initWithData:data];
 	}
-}
-
-- (instancetype)initWithData:(NSData *)data
-{
-	NSParameterAssert(data != nil);
-	
-	return [self initWithSource:[[SVGKSourceNSData alloc] initWithData:data]];
 }
 
 #pragma mark - UIImage methods we reproduce to make it act like a UIImage
@@ -647,14 +672,21 @@
 	//DEBUG: DDLogVerbose(@"[%@] DEBUG: converted SVG element (class:%@) to CALayer (class:%@ frame:%@ pointer:%@) for id = %@", [self class], NSStringFromClass([element class]), NSStringFromClass([layer class]), NSStringFromCGRect( layer.frame ), layer, element.identifier);
 	
 	SVGKNodeList* childNodes = element.childNodes;
-	
+	SVGKNode* saveParentNode = nil;
 	/**
 	 Special handling for <use> tags - they have to masquerade invisibly as the node they are referring to
 	 */
 	if( [element isKindOfClass:[SVGUseElement class]] )
 	{
 		SVGUseElement* useElement = (SVGUseElement*) element;
-		childNodes = useElement.instanceRoot.correspondingElement.childNodes;
+		element = (SVGElement <ConverterSVGToCALayer> *)useElement.instanceRoot.correspondingElement;
+		
+		saveParentNode = element.parentNode;
+		element.parentNode = useElement;
+
+		SVGKNodeList* nodeList = [[SVGKNodeList alloc] init];
+		[nodeList.internalArray addObject:element];
+		childNodes = nodeList;
     }
     else
     if ( [element isKindOfClass:[SVGSwitchElement class]] )
@@ -719,6 +751,8 @@
 		}
 	}
 	
+	if (saveParentNode)
+		element.parentNode = saveParentNode;
 	/**
 	 If none of the child nodes return a CALayer, we're safe to early-out here (and in fact we need to because
 	 calling setNeedsDisplay on an image layer hides the image). We can't just check childNodes.count because
