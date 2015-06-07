@@ -4,87 +4,82 @@ framework module SVGKit {
     module * { export * }
 }
 
-module SVGKit.CALayerExporter {
+explicit module SVGKit.CALayerExporter {
 	header "CALayerExporter.h"
 	export *
 }
 
-module SVGKit.CALayerRecursiveClone {
+explicit module SVGKit.CALayerRecursiveClone {
 	header "CALayer+RecursiveClone.h"
 	export *
 }
 
-module SVGKit.CALayerWithChildHitTest {
+explicit module SVGKit.CALayerWithChildHitTest {
 	header "CALayerWithChildHitTest.h"
 	export *
 }
 
-module SVGKit.CALayerWithClipRender {
+explicit module SVGKit.CALayerWithClipRender {
 	header "CALayerWithClipRender.h"
 	export *
 }
 
-module SVGKit.CAShapeLayerWithClipRender {
+explicit module SVGKit.CAShapeLayerWithClipRender {
 	header "CAShapeLayerWithClipRender.h"
 	export *
 }
 
-module SVGKit.CAShapeLayerWithHitTest {
+explicit module SVGKit.CAShapeLayerWithHitTest {
 	header "CAShapeLayerWithHitTest.h"
 	export *
 }
 
-module SVGKit.SVGKCSSPrimitiveValue {
+explicit module SVGKit.SVGKCSSPrimitiveValue {
 	header "SVGKCSSPrimitiveValue.h"
 	export *
 }
 
-module SVGKit.SVGKCSSPrimitiveValue_ConfigurablePixelsPerInch {
+explicit module SVGKit.SVGKCSSPrimitiveValue_ConfigurablePixelsPerInch {
 	header "SVGKCSSPrimitiveValue_ConfigurablePixelsPerInch.h"
 	export *
 }
 
-module SVGKit.SVGKCSSRuleList {
-	header "SVGKCSSRuleList.h"
-	export *
-}
-
-module SVGKit.SVGKCSSStyleRule {
+explicit module SVGKit.SVGKCSSStyleRule {
 	header "SVGKCSSStyleRule.h"
 	export *
 }
 
-module SVGKit.SVGKCSSStyleSheet {
+explicit module SVGKit.SVGKCSSStyleSheet {
 	header "SVGKCSSStyleSheet.h"
 	export *
 }
 
-module SVGKit.SVGKCSSValue_ForSubclasses {
+explicit module SVGKit.SVGKCSSValue_ForSubclasses {
 	header "SVGKCSSValue_ForSubclasses.h"
 	export *
 }
 
-module SVGKit.SVGKCSSValueList {
+explicit module SVGKit.SVGKCSSValueList {
 	header "SVGKCSSValueList.h"
 	export *
 }
 
-module SVGKit.SVGKDOMGlobalSettings {
+explicit module SVGKit.SVGKDOMGlobalSettings {
 	header "SVGKDOMGlobalSettings.h"
 	export *
 }
 
-module SVGKit.SVGKMediaList {
+explicit module SVGKit.SVGKMediaList {
 	header "SVGKMediaList.h"
 	export *
 }
 
-module SVGKit.SVGKNamedNodeMap_Iterable {
+explicit module SVGKit.SVGKNamedNodeMap_Iterable {
 	header "SVGKNamedNodeMap_Iterable.h"
 	export *
 }
 
-module SVGKit.SVGKStyleSheet {
+explicit module SVGKit.SVGKStyleSheet {
 	header "SVGKStyleSheet.h"
 	export *
 }
@@ -94,57 +89,57 @@ module SVGKit.SVGKStyleSheetList {
 	export *
 }
 
-module SVGKit.SVGElementInstance {
+explicit module SVGKit.SVGElementInstance {
 	header "SVGElementInstance.h"
 	export *
 }
 
-module SVGKit.SVGElementInstanceList {
+explicit module SVGKit.SVGElementInstanceList {
 	header "SVGElementInstanceList.h"
 	export *
 }
 
-module SVGKit.SVGGradientElement {
+explicit module SVGKit.SVGGradientElement {
 	header "SVGGradientElement.h"
 	export *
 }
 
-module SVGKit.SVGGradientLayer {
+explicit module SVGKit.SVGGradientLayer {
 	header "SVGGradientLayer.h"
 	export *
 }
 
-module SVGKit.SVGGradientStop {
+explicit module SVGKit.SVGGradientStop {
 	header "SVGGradientStop.h"
 	export *
 }
 
-module SVGKit.SVGGroupElement {
+explicit module SVGKit.SVGGroupElement {
 	header "SVGGroupElement.h"
 	export *
 }
 
-module SVGKit.SVGKExporterNSData {
+explicit module SVGKit.SVGKExporterNSData {
 	header "SVGKExporterNSData.h"
 	export *
 }
 
-module SVGKit.SVGHelperUtilities {
+explicit module SVGKit.SVGHelperUtilities {
 	header "SVGHelperUtilities.h"
 	export *
 }
 
-module SVGKit.SVGStyleCatcher {
+explicit module SVGKit.SVGStyleCatcher {
 	header "SVGStyleCatcher.h"
 	export *
 }
 
-module SVGKit.SVGStyleElement {
+explicit module SVGKit.SVGStyleElement {
 	header "SVGStyleElement.h"
 	export *
 }
 
-module SVGKit.SVGKImage_CGContext {
+explicit module SVGKit.SVGKImage_CGContext {
 	header "SVGKImage+CGContext.h"
 	export *
 }
@@ -154,82 +149,82 @@ module SVGKit.SVGKPointsAndPathsParser {
 	export *
 }
 
-module SVGKit.SVGKParserDefsAndUse {
+explicit module SVGKit.SVGKParserDefsAndUse {
 	header "SVGKParserDefsAndUse.h"
 	export *
 }
 
-module SVGKit.SVGKParserDOM {
+explicit module SVGKit.SVGKParserDOM {
 	header "SVGKParserDOM.h"
 	export *
 }
 
-module SVGKit.SVGKParserGradient {
+explicit module SVGKit.SVGKParserGradient {
 	header "SVGKParserGradient.h"
 	export *
 }
 
-module SVGKit.SVGKParserPatternsAndGradients {
+explicit module SVGKit.SVGKParserPatternsAndGradients {
 	header "SVGKParserPatternsAndGradients.h"
 	export *
 }
 
-module SVGKit.SVGKParserStyles {
+explicit module SVGKit.SVGKParserStyles {
 	header "SVGKParserStyles.h"
 	export *
 }
 
-module SVGKit.SVGKDocument_Mutable {
+explicit module SVGKit.SVGKDocument_Mutable {
 	header "SVGKDocument+Mutable.h"
 	export *
 }
 
-module SVGKit.SVGKCSSRuleList_Mutable {
+explicit module SVGKit.SVGKCSSRuleList_Mutable {
 	header "SVGKCSSRuleList+Mutable.h"
 	export *
 }
 
-module SVGKit.SVGSVGElement_Mutable {
+explicit module SVGKit.SVGSVGElement_Mutable {
 	header "SVGSVGElement_Mutable.h"
 	export *
 }
 
-module SVGKit.SVGUseElement_Mutable {
+explicit module SVGKit.SVGUseElement_Mutable {
 	header "SVGUseElement_Mutable.h"
 	export *
 }
 
-module SVGKit.SVGElementInstance_Mutable {
+explicit module SVGKit.SVGElementInstance_Mutable {
 	header "SVGElementInstance_Mutable.h"
 	export *
 }
 
-module SVGKit.SVGDocument_Mutable {
+explicit module SVGKit.SVGDocument_Mutable {
 	header "SVGDocument_Mutable.h"
 	export *
 }
 
-module SVGKit.SVGKNodeList_Mutable {
+explicit module SVGKit.SVGKNodeList_Mutable {
 	header "SVGKNodeList+Mutable.h"
 	export *
 }
 
-module SVGKit.SVGKSourceLocalFile {
+explicit module SVGKit.SVGKSourceLocalFile {
 	header "SVGKSourceLocalFile.h"
 	export *
 }
 
-module SVGKit.SVGKSourceNSData {
+explicit module SVGKit.SVGKSourceNSData {
 	header "SVGKSourceNSData.h"
 	export *
 }
 
-module SVGKit.SVGKSourceString {
+explicit module SVGKit.SVGKSourceString {
 	header "SVGKSourceString.h"
 	export *
 }
 
-module SVGKit.SVGKSourceURL {
+explicit module SVGKit.SVGKSourceURL {
 	header "SVGKSourceURL.h"
 	export *
 }

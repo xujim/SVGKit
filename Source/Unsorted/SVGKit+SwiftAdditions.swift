@@ -53,6 +53,7 @@ extension SVGKStyleSheetList: SequenceType {
 }
 
 extension SVGCurve: Equatable {
+	public static let zeroCurve = SVGCurveMake(0,0,0,0,0,0)
 	public init(cx1: Int, cy1: Int, cx2: Int, cy2: Int, px: Int, py: Int) {
 		self = SVGCurveMake(CGFloat(cx1), CGFloat(cy1), CGFloat(cx2), CGFloat(cy2), CGFloat(px), CGFloat(py))
 	}
@@ -67,12 +68,10 @@ extension SVGCurve: Equatable {
 }
 
 extension SVGRect: Equatable {
-	#if false
-	/// Returns an uninitialized SVGRect
-	public init() {
-		self = SVGRectUninitialized()
+	/// Returns a new uninitialized SVGRect
+	public static func new() -> SVGRect {
+		return SVGRectUninitialized()
 	}
-	#endif
 	
 	public var initialized: Bool {
 		return SVGRectIsInitialized(self)
