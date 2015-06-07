@@ -10,6 +10,7 @@
 #import "SVGKSourceNSData.h"
 #import "SVGKSourceLocalFile.h"
 #import "SVGKSourceURL.h"
+#import "SVGKSourceString.h"
 
 #import "SVGKImageRep.h"
 #import "SVGKImageRep-private.h"
@@ -136,7 +137,7 @@
 
 - (instancetype)initWithSVGString:(NSString *)theString
 {
-	return [self initWithSVGSource:[SVGKSourceNSData sourceWithContentsOfString:theString]];
+	return [self initWithSVGSource:[[SVGKSourceString alloc] initWithContentsOfString:theString]];
 }
 
 - (instancetype)initWithSVGSource:(SVGKSource*)theSource
