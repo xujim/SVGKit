@@ -11,6 +11,8 @@
 		4FD822401AD057F000E419D3 /* arcs02.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4FD8223E1AD057F000E419D3 /* arcs02.svg */; };
 		4FD822441AD058AB00E419D3 /* arcs01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD822421AD058AB00E419D3 /* arcs01.png */; };
 		4FD822451AD058AB00E419D3 /* arcs02.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD822431AD058AB00E419D3 /* arcs02.png */; };
+		55018B5F1B24F47800936DF7 /* SB~iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 661EEA401ACC02AF007176B0 /* SB~iphone.storyboard */; };
+		55018B8E1B24F5A500936DF7 /* VCGridOfImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661EEA471ACC0667007176B0 /* VCGridOfImagesViewController.m */; };
 		551165B21970F14100C8A63D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E862581688BA0B0059C9C4 /* AppDelegate.m */; };
 		551165B31970F14100C8A63D /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E8625D1688BA0B0059C9C4 /* DetailViewController.m */; };
 		551165B41970F14100C8A63D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E862681688BA0B0059C9C4 /* main.m */; };
@@ -988,9 +990,9 @@
 				66E862571688BA0B0059C9C4 /* AppDelegate.h */,
 				66E862581688BA0B0059C9C4 /* AppDelegate.m */,
 				661EEA461ACC0667007176B0 /* VCGridOfImagesViewController.h */,
+				661EEA471ACC0667007176B0 /* VCGridOfImagesViewController.m */,
 				661EEA491ACC140F007176B0 /* SampleFileInfo.h */,
 				661EEA4A1ACC140F007176B0 /* SampleFileInfo.m */,
-				661EEA471ACC0667007176B0 /* VCGridOfImagesViewController.m */,
 				662701A21AD978A800B3AD03 /* VCAllSpecImages.h */,
 				662701A31AD978A800B3AD03 /* VCAllSpecImages.m */,
 				66E8625B1688BA0B0059C9C4 /* Demo-iOS-Prefix.pch */,
@@ -1359,6 +1361,7 @@
 				551165D71970F14100C8A63D /* Reinel_compass_rose.svg in Resources */,
 				551165D91970F14100C8A63D /* test-wave-1.svg in Resources */,
 				551165DA1970F14100C8A63D /* Text.svg in Resources */,
+				55018B5F1B24F47800936DF7 /* SB~iphone.storyboard in Resources */,
 				551165DB1970F14100C8A63D /* uk-only.svg in Resources */,
 				557003651B23FFF400C623AB /* StyleAttribute.svg in Resources */,
 				551165DC1970F14100C8A63D /* voies.svg in Resources */,
@@ -1618,6 +1621,7 @@
 			files = (
 				551165B21970F14100C8A63D /* AppDelegate.m in Sources */,
 				557003A01B2412DF00C623AB /* VCMainMenuViewController.m in Sources */,
+				55018B8E1B24F5A500936DF7 /* VCGridOfImagesViewController.m in Sources */,
 				5570039F1B2412DF00C623AB /* VCAllSpecImages.m in Sources */,
 				551165B31970F14100C8A63D /* DetailViewController.m in Sources */,
 				551165B41970F14100C8A63D /* main.m in Sources */,

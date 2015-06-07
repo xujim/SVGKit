@@ -53,7 +53,7 @@
     }
     
     free(buf);
-    return result;
+    return [result copy];
 }
 
 

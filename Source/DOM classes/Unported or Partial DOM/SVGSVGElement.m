@@ -241,7 +241,7 @@
 - (CALayer *) newLayer
 {
 	
-	CALayer* _layer = [[CALayerWithChildHitTest alloc] init];
+	CALayer* _layer = [CALayerWithChildHitTest layer];
 	
 	[SVGHelperUtilities configureCALayer:_layer usingElement:self];
 	

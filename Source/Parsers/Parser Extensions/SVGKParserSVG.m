@@ -35,15 +35,17 @@ static NSDictionary *elementMap = nil;
                           @"description": [SVGDescriptionElement class],
                           @"ellipse": [SVGEllipseElement class],
                           @"g": [SVGGElement class],
+						  @"clipPath": [SVGClipPathElement class],
                           @"image": [SVGImageElement class],
                           @"line": [SVGLineElement class],
                           @"path": [SVGPathElement class],
                           @"polygon": [SVGPolygonElement class],
                           @"polyline": [SVGPolylineElement class],
                           @"rect": [SVGRectElement class],
+						  @"switch": [SVGSwitchElement class],
                           @"title": [SVGTitleElement class],
-						   @"text": [SVGTextElement class],
-						   @"textArea": [TinySVGTextAreaElement class],
+						  @"text": [SVGTextElement class],
+						  @"textArea": [TinySVGTextAreaElement class],
 };
 		}
 	}

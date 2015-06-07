@@ -46,7 +46,7 @@ class SwiftMasterViewController: UITableViewController, UIAlertViewDelegate {
 		if segue.identifier == "showDetail" {
 			if let indexPath = self.tableView.indexPathForSelectedRow() {
 				let object = sampleNames[indexPath.row]
-				let controller = (segue.destinationViewController as UINavigationController).topViewController as SwiftDetailViewController
+				let controller = (segue.destinationViewController as! UINavigationController).topViewController as! SwiftDetailViewController
 				controller.detailItem = object
 				controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
 				controller.navigationItem.leftItemsSupplementBackButton = true
@@ -66,7 +66,7 @@ class SwiftMasterViewController: UITableViewController, UIAlertViewDelegate {
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cellIdentifier = "Cell"
-		var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell?
+		var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
 		
 		if cell == nil {
 			cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
@@ -74,7 +74,7 @@ class SwiftMasterViewController: UITableViewController, UIAlertViewDelegate {
 		
 		if let ourCell = cell {
 			let object = sampleNames[indexPath.row]
-			ourCell.textLabel.text = object
+			ourCell.textLabel!.text = object
 			return ourCell
 		}
 		return UITableViewCell()

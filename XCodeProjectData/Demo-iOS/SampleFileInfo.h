@@ -13,8 +13,8 @@
 
 -(NSString*) savedBitmapFilename;
 
-+(SampleFileInfo*) sampleFileInfoWithFilename:(NSString*) f;
-+(SampleFileInfo*) sampleFileInfoWithURL:(NSURL*) s;
-+(SampleFileInfo*) sampleFileInfoWithFilename:(NSString*) f URL:(NSURL*) s;
++(instancetype) sampleFileInfoWithFilename:(NSString*) f;
++(instancetype) sampleFileInfoWithURL:(NSURL*) s;
++(instancetype) sampleFileInfoWithFilename:(NSString*) f URL:(NSURL*) s;
 
 @end

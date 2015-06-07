@@ -183,9 +183,9 @@
 		if( result != nil )
 		{
 			result->cameFromGlobalCache = YES;
-			result.nameUsedToInstantiate = name;
+			result.nameUsedToInstantiate = source.keyForAppleDictionaries;
 			
-			[SVGKImage storeImageCache:result forName:name];
+			[SVGKImage storeImageCache:result forName:source.keyForAppleDictionaries];
 		}
 		else
 		{
@@ -683,52 +683,52 @@
 		
 		saveParentNode = element.parentNode;
 		element.parentNode = useElement;
-
+		
 		SVGKNodeList* nodeList = [[SVGKNodeList alloc] init];
 		[nodeList.internalArray addObject:element];
 		childNodes = nodeList;
-    }
-    else
-    if ( [element isKindOfClass:[SVGSwitchElement class]] )
-    {
-        childNodes = [(SVGSwitchElement*) element visibleChildNodes];
-    }
-    /**
-     Special handling for clip-path; need to create their children
-     */
-    NSString* clipPath = [element cascadedValueForStylableProperty:@"clip-path" inherit:NO];
-    if ( [clipPath hasPrefix:@"url"] )
-    {
-        NSRange idKeyRange = NSMakeRange(5, clipPath.length - 6);
-        NSString* _pathId = [clipPath substringWithRange:idKeyRange];
-        
-        /** Replace the return layer with a special layer using the URL fill */
-        /** fetch the fill layer by URL using the DOM */
-        NSAssert( element.rootOfCurrentDocumentFragment != nil, @"This SVG shape has a URL clip-path type; it needs to search for that URL (%@) inside its nearest-ancestor <SVG> node, but the rootOfCurrentDocumentFragment reference was nil (suggests the parser failed, or the SVG file is corrupt)", _pathId );
-        
-        SVGClipPathElement* clipPathElement = (SVGClipPathElement*) [element.rootOfCurrentDocumentFragment getElementById:_pathId];
-        NSAssert( clipPathElement != nil, @"This SVG shape has a URL clip-path (%@), but could not find an XML Node with that ID inside the DOM tree (suggests the parser failed, or the SVG file is corrupt)", _pathId );
-        
-        CALayer *clipLayer = [clipPathElement newLayer];
-        for (SVGElement *child in clipPathElement.childNodes )
-        {
-            if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
-                
-                CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
-                
-                if (!sublayer) {
-                    continue;
-                }
-                
-                [clipLayer addSublayer:sublayer];
-            }
-        }
-        
-        [clipPathElement layoutLayer:clipLayer toMaskLayer:layer];
-        
-        DDLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(layer.frame), NSStringFromCGRect(clipLayer.frame));
-        layer.mask = clipLayer;
-    }
+	}
+	else
+		if ( [element isKindOfClass:[SVGSwitchElement class]] )
+		{
+			childNodes = [(SVGSwitchElement*) element visibleChildNodes];
+		}
+	/**
+	 Special handling for clip-path; need to create their children
+	 */
+	NSString* clipPath = [element cascadedValueForStylableProperty:@"clip-path" inherit:NO];
+	if ( [clipPath hasPrefix:@"url"] )
+	{
+		NSRange idKeyRange = NSMakeRange(5, clipPath.length - 6);
+		NSString* _pathId = [clipPath substringWithRange:idKeyRange];
+		
+		/** Replace the return layer with a special layer using the URL fill */
+		/** fetch the fill layer by URL using the DOM */
+		NSAssert( element.rootOfCurrentDocumentFragment != nil, @"This SVG shape has a URL clip-path type; it needs to search for that URL (%@) inside its nearest-ancestor <SVG> node, but the rootOfCurrentDocumentFragment reference was nil (suggests the parser failed, or the SVG file is corrupt)", _pathId );
+		
+		SVGClipPathElement* clipPathElement = (SVGClipPathElement*) [element.rootOfCurrentDocumentFragment getElementById:_pathId];
+		NSAssert( clipPathElement != nil, @"This SVG shape has a URL clip-path (%@), but could not find an XML Node with that ID inside the DOM tree (suggests the parser failed, or the SVG file is corrupt)", _pathId );
+		
+		CALayer *clipLayer = [clipPathElement newLayer];
+		for (SVGElement *child in clipPathElement.childNodes )
+		{
+			if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
+				
+				CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
+				
+				if (!sublayer) {
+					continue;
+				}
+				
+				[clipLayer addSublayer:sublayer];
+			}
+		}
+		
+		[clipPathElement layoutLayer:clipLayer toMaskLayer:layer];
+		
+		DDLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(layer.frame), NSStringFromCGRect(clipLayer.frame));
+		layer.mask = clipLayer;
+	}
 	
 	/**
 	 Generate child nodes and then re-layout
