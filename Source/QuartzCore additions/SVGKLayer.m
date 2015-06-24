@@ -67,7 +67,13 @@
 
 - (void)dealloc
 {
-	[self removeObserver:self forKeyPath:@"showBorder"];
+	//FIXME: Apple crashes on this line, even though BY DEFINITION Apple should not be crashing: [self removeObserver:self forKeyPath:@"showBorder"];
+	@try {
+		[self removeObserver:self forKeyPath:@"showBorder"];
+	}
+	@catch (NSException *exception) {
+		DDLogError(@"Exception removing showBorder observer");
+	}
 	
 	self.SVGImage = nil;
 }
