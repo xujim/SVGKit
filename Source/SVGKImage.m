@@ -669,6 +669,8 @@
 {
 	CALayer *layer = [element newLayer];
 	
+	layer.hidden = ![self isElementVisible:element];
+	
 	//DEBUG: DDLogVerbose(@"[%@] DEBUG: converted SVG element (class:%@) to CALayer (class:%@ frame:%@ pointer:%@) for id = %@", [self class], NSStringFromClass([element class]), NSStringFromClass([layer class]), NSStringFromCGRect( layer.frame ), layer, element.identifier);
 	
 	SVGKNodeList* childNodes = element.childNodes;
@@ -1057,6 +1059,17 @@ return; \
 		smallestScaleUp = MAX( wScale, hScale ); // instead of scaling-up the smallest, scale-down the largest
 	
 	self.size = CGSizeApplyAffineTransform( self.size, CGAffineTransformMakeScale( smallestScaleUp, smallestScaleUp));
+}
+
+-(BOOL) isElementVisible:(SVGElement *) element
+{
+    NSString *display = [element cascadedValueForStylableProperty:@"display" inherit:NO];
+    if( [display isEqualToString:@"none"] )
+        return NO;
+    NSString *visibility = [element cascadedValueForStylableProperty:@"visibility" inherit:NO];
+    if( [visibility isEqualToString:@"hidden"] )
+        return NO;
+    return YES;
 }
 
 @end

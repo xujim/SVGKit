@@ -729,6 +729,7 @@
 		55CCBF2519BA73B000957A39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107919B682A6009A2E63 /* UIKit.framework */; };
 		55CCBF2619BA73C200957A39 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5563201919B675A80097D2EF /* libxml2.dylib */; };
 		55CCBF2919BA748E00957A39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107B19B682AD009A2E63 /* Foundation.framework */; };
+		55D62B7A1B4A318100C64CD0 /* SVGClipPathElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2685919B66C6500F6410E /* SVGClipPathElement.m */; };
 		55E4107619B6826B009A2E63 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5542C852193BC0190046BB14 /* CoreGraphics.framework */; };
 		55E4107819B68298009A2E63 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107719B68298009A2E63 /* CoreText.framework */; };
 		55E4107A19B682A6009A2E63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E4107919B682A6009A2E63 /* UIKit.framework */; };
@@ -2447,6 +2448,7 @@
 				5511657B1970EFEB00C8A63D /* SVGKParserDefsAndUse.m in Sources */,
 				55B00FEB19B67D1F0058B2FD /* CALayerWithClipRender.m in Sources */,
 				551165711970EFD200C8A63D /* SVGTitleElement.m in Sources */,
+				55D62B7A1B4A318100C64CD0 /* SVGClipPathElement.m in Sources */,
 				551164DC1970EFC100C8A63D /* SVGKAppleSucksDOMImplementation.m in Sources */,
 				5511652F1970EFCB00C8A63D /* SVGGElement.m in Sources */,
 				551165331970EFCB00C8A63D /* SVGLength.m in Sources */,
