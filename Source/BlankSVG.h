@@ -10,4 +10,4 @@
 
 #define __private_extern __attribute__((visibility("hidden")))
 
-__private_extern NSString* const SVGKGetDefaultImageStringContents();
+__private_extern NSString*__nonnull const SVGKGetDefaultImageStringContents();

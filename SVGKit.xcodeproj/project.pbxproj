@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55018BA11B25108E00936DF7 /* CocoaLumberjack.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 557003B21B24137E00C623AB /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55018BA41B2510AC00936DF7 /* SVGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 551164AB1970EE8B00C8A63D /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55018BA91B25115900936DF7 /* CocoaLumberjack.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 557003AE1B24137E00C623AB /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55018BAB1B25115900936DF7 /* SVGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5540E66C17387C9F004029EF /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5505CF6419BA51C40028CF57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5540E816173881BF004029EF /* InfoPlist.strings */; };
 		551164C41970EF3B00C8A63D /* SVGKFastImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5542C84A193BBFC50046BB14 /* SVGKFastImageView.m */; };
 		551164C51970EF3B00C8A63D /* SVGKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5542C84C193BBFC50046BB14 /* SVGKImageView.m */; };
@@ -751,6 +755,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		55018BA21B25109800936DF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 18F3BF881A81DF5600692297;
+			remoteInfo = "CocoaLumberjack-iOS";
+		};
+		55018BA61B25112400936DF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5540E66317387C9E004029EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5540E66B17387C9F004029EF;
+			remoteInfo = "SVGKit-OS X";
+		};
 		557003AD1B24137E00C623AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
@@ -835,16 +853,33 @@
 			remoteGlobalIDString = 551164AA1970EE8B00C8A63D;
 			remoteInfo = "SVGKit-iOS Framework";
 		};
-		55825B5819EC80D400635497 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5540E66317387C9E004029EF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5540E66B17387C9F004029EF;
-			remoteInfo = "SVGKit-OS X";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		55018B901B250FF900936DF7 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				55018BA41B2510AC00936DF7 /* SVGKit.framework in Copy Frameworks */,
+				55018BA11B25108E00936DF7 /* CocoaLumberjack.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55018BA81B25112A00936DF7 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				55018BA91B25115900936DF7 /* CocoaLumberjack.framework in Copy Frameworks */,
+				55018BAB1B25115900936DF7 /* SVGKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5542C81F193BBEB90046BB14 /* Copy Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -980,16 +1015,6 @@
 				555DC0FA19DF697E002B424E /* SVGUtils.h in Copy Headers */,
 			);
 			name = "Copy Headers";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5568CD4F177B6B2A00047B7A /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -2164,7 +2189,6 @@
 				5540E66717387C9F004029EF /* Sources */,
 				5540E66817387C9F004029EF /* Frameworks */,
 				5540E66A17387C9F004029EF /* Resources */,
-				5568CD4F177B6B2A00047B7A /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2200,10 +2224,12 @@
 				55825B3D19EC80C400635497 /* Sources */,
 				55825B3E19EC80C400635497 /* Frameworks */,
 				55825B3F19EC80C400635497 /* Resources */,
+				55018B901B250FF900936DF7 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				55018BA31B25109800936DF7 /* PBXTargetDependency */,
 				55825B4919EC80C400635497 /* PBXTargetDependency */,
 			);
 			name = "SVGKit-iOS Framework Tests";
@@ -2218,11 +2244,12 @@
 				55825B4D19EC80D400635497 /* Sources */,
 				55825B4E19EC80D400635497 /* Frameworks */,
 				55825B4F19EC80D400635497 /* Resources */,
+				55018BA81B25112A00936DF7 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				55825B5919EC80D400635497 /* PBXTargetDependency */,
+				55018BA71B25112400936DF7 /* PBXTargetDependency */,
 			);
 			name = "SVGKit-OS X Tests";
 			productName = "SVGKit-OS X Tests";
@@ -2740,6 +2767,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		55018BA31B25109800936DF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CocoaLumberjack-iOS";
+			targetProxy = 55018BA21B25109800936DF7 /* PBXContainerItemProxy */;
+		};
+		55018BA71B25112400936DF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5540E66B17387C9F004029EF /* SVGKit-OS X */;
+			targetProxy = 55018BA61B25112400936DF7 /* PBXContainerItemProxy */;
+		};
 		557003EE1B24140000C623AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaLumberjack;
@@ -2754,11 +2791,6 @@
 			isa = PBXTargetDependency;
 			target = 551164AA1970EE8B00C8A63D /* SVGKit-iOS Framework */;
 			targetProxy = 55825B4819EC80C400635497 /* PBXContainerItemProxy */;
-		};
-		55825B5919EC80D400635497 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5540E66B17387C9F004029EF /* SVGKit-OS X */;
-			targetProxy = 55825B5819EC80D400635497 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

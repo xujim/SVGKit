@@ -20,6 +20,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SVGKSource : NSObject <NSCopying>
 
 @property (nonatomic, strong) NSString* svgLanguageVersion; /*< <svg version=""> */
@@ -32,7 +34,7 @@
 /** Apple's NSDictionary has major design bugs, it does NOT support OOP programming;
  it is implemented on top of a C/C++ basic Strings table, and if you want to put objects
  in as keys, you have to generate a unique-but-stable string from each instead */
-@property(nonatomic,retain) NSString* keyForAppleDictionaries;
+@property(nonatomic, strong, nullable) NSString* keyForAppleDictionaries;
 
 /** This should ONLY be used by subclasses that are implementing NSCopying methods. All other
  uses are discouraged / dangerous. If you use this, you MUST manually set self.stream correctly */
@@ -43,6 +45,8 @@
  base class to handle everything else
  */
 - (instancetype)initWithInputSteam:(NSInputStream*)stream;
-- (SVGKSource *)sourceFromRelativePath:(NSString *)path;
+- (nullable SVGKSource*)sourceFromRelativePath:(NSString *)path;
 
 @end
+
+NS_ASSUME_NONNULL_END

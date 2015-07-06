@@ -19,6 +19,8 @@
 extern "C" {
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef struct {
 	uint8_t r;
 	uint8_t g;
@@ -38,6 +40,8 @@ CGMutablePathRef CreatePathFromPointsInString (const char *string, bool close);
 CGColorRef CGColorWithSVGColor (SVGColor color);
 
 CF_IMPLICIT_BRIDGING_DISABLED
+
+NS_ASSUME_NONNULL_END
 
 #ifdef __cplusplus
 }
