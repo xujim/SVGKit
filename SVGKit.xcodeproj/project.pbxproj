@@ -2263,7 +2263,9 @@
 		5540E66317387C9E004029EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "C.W. Betts";
 				TargetAttributes = {
 					551164AA1970EE8B00C8A63D = {
@@ -2832,6 +2834,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.github.maddthesane.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SVGKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2865,6 +2868,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.github.maddthesane.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SVGKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2895,6 +2899,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2970,6 +2975,7 @@
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.github.maddthesane.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SVGKit;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -2994,6 +3000,7 @@
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
 				MODULEMAP_FILE = "XCodeProjectData/SVGKit-OSX/SVGKit.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.github.maddthesane.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SVGKit;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -3085,6 +3092,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "SVGKit-iOS Tests/SVGKit-iOS Framework Tests-Bridging-Header.h";
@@ -3104,6 +3112,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "SVGKit-iOS Tests/SVGKit-iOS Framework Tests-Bridging-Header.h";
@@ -3127,6 +3136,7 @@
 				INFOPLIST_FILE = "SVGKit-iOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SVGKit-iOS Tests/SVGKit-OS X Tests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3145,6 +3155,7 @@
 				INFOPLIST_FILE = "SVGKit-iOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SVGKit-iOS Tests/SVGKit-OS X Tests-Bridging-Header.h";
 			};

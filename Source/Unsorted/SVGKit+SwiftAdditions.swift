@@ -41,9 +41,9 @@ extension SVGKCSSRuleList: SequenceType {
 }
 
 extension SVGKStyleSheetList: SequenceType {
-	public func generate() -> GeneratorOf<SVGKStyleSheet> {
+	public func generate() -> AnyGenerator<SVGKStyleSheet> {
 		var index = 0
-		return GeneratorOf {
+		return anyGenerator {
 			if index < Int(self.length) {
 				return self[index++]
 			}
@@ -88,7 +88,7 @@ extension SVGRect: Equatable {
 	}
 }
 
-extension SVGColor: Hashable, Printable, DebugPrintable {
+extension SVGColor: Hashable, CustomStringConvertible, CustomDebugStringConvertible {
 	public init(string: String) {
 		self = SVGColorFromString(string)
 	}

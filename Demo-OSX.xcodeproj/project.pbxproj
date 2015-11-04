@@ -741,7 +741,8 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SK;
-				LastUpgradeCheck = 0500;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "C.W. Betts";
 				TargetAttributes = {
 					55C8981719F335B30035BD69 = {
@@ -1135,6 +1136,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1160,6 +1162,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1172,6 +1175,7 @@
 				GCC_PREFIX_HEADER = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.svgkit.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1185,6 +1189,7 @@
 				GCC_PREFIX_HEADER = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/ImageRep-Demo/SVGKitImageRepTest-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.svgkit.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1218,6 +1223,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1271,6 +1277,7 @@
 				GCC_PREFIX_HEADER = "XCodeProjectData/Demo-OSX/Demo-OSX-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/Demo-OSX/Demo-OSX-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.github.maddthesane.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1284,6 +1291,7 @@
 				GCC_PREFIX_HEADER = "XCodeProjectData/Demo-OSX/Demo-OSX-Prefix.pch";
 				INFOPLIST_FILE = "XCodeProjectData/Demo-OSX/Demo-OSX-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.github.maddthesane.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
