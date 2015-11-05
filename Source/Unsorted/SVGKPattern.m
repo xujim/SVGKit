@@ -87,10 +87,10 @@ static CGColorRef CGColorMakeFromImage(CGImageRef image) {
 		if ([[color colorSpace] colorSpaceModel] == NSPatternColorSpaceModel) {
 			return [self patternWithImage:[color patternImage]];
 		} else {
-			DDLogWarn(@"The color %@ is not a pattern color. Attempting to convert to CGColor", [color description]);
+			SVGKitLogWarn(@"The color %@ is not a pattern color. Attempting to convert to CGColor", [color description]);
 			CGColorSpaceRef spaceRef = [[color colorSpace] CGColorSpace];
 			if (!spaceRef) {
-				DDLogError(@"Could not get CGColorSpace from the color %@", [color description]);
+				SVGKitLogError(@"Could not get CGColorSpace from the color %@", [color description]);
 				return nil;
 			}
 			NSInteger colorComponents = 0;
@@ -98,7 +98,7 @@ static CGColorRef CGColorMakeFromImage(CGImageRef image) {
 				colorComponents = [color numberOfComponents];
 			}
 			@catch (NSException *exception) {
-				DDLogError(@"Color %@ does not have components", [color description]);
+				SVGKitLogError(@"Color %@ does not have components", [color description]);
 				return nil;
 			}
 			CGFloat * components = malloc(sizeof(CGFloat) * colorComponents);

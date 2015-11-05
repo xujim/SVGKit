@@ -131,7 +131,7 @@
 	if( pathToFileInBundle == nil
 	   && pathToFileInDocumentsFolder == nil )
 	{
-		DDLogWarn(@"[%@] MISSING FILE (not found in App-bundle, not found in Documents folder), COULD NOT CREATE DOCUMENT: filename = %@, extension = %@", [self class], newName, extension);
+		SVGKitLogWarn(@"[%@] MISSING FILE (not found in App-bundle, not found in Documents folder), COULD NOT CREATE DOCUMENT: filename = %@, extension = %@", [self class], newName, extension);
 		return nil;
 	}
 	
@@ -141,7 +141,8 @@
 	return source;
 }
 
-+ (SVGKImage *)imageNamed:(NSString *)name fromBundle:(NSBundle*)bundle {
++ (SVGKImage *)imageNamed:(NSString *)name inBundle:(NSBundle *)bundle
+{	
 	NSParameterAssert(name != nil);
     if (!bundle) {
         bundle = [NSBundle mainBundle];
@@ -165,7 +166,7 @@
 	
 	if (!url)
 	{
-		DDLogError(@"[%@] MISSING FILE, COULD NOT CREATE DOCUMENT: filename = %@, extension = %@", [self class], newName, extension);
+		SVGKitLogError(@"[%@] MISSING FILE, COULD NOT CREATE DOCUMENT: filename = %@, extension = %@", [self class], newName, extension);
 		return nil;
 	}
 	
@@ -189,7 +190,7 @@
 		}
 		else
 		{
-			DDLogError(@"[%@] WARNING: not caching the output for new SVG image with name = %@, because it failed to load correctly", [self class], name );
+			SVGKitLogError(@"[%@] WARNING: not caching the output for new SVG image with name = %@, because it failed to load correctly", [self class], name );
 		}
 	}
     
@@ -199,7 +200,7 @@
 + (SVGKImage *)imageNamed:(NSString *)name
 {
     NSParameterAssert(name != nil);
-    return [self imageNamed:name fromBundle:[NSBundle mainBundle]];
+    return [self imageNamed:name inBundle:[NSBundle mainBundle]];
 }
 
 +(SVGKParser *) imageAsynchronouslyNamed:(NSString *)name onCompletion:(SVGKImageAsynchronousLoadingDelegate)blockCompleted
@@ -242,7 +243,7 @@
 							   finalImage.nameUsedToInstantiate = source.keyForAppleDictionaries;
 							   [SVGKImage storeImageCache:finalImage forName:source.keyForAppleDictionaries];
 						   } else {
-							   DDLogWarn(@"[%@] WARNING: not caching the output for new SVG image with source = %@, because it failed to load correctly", [self class], source);
+							   SVGKitLogWarn(@"[%@] WARNING: not caching the output for new SVG image with source = %@, because it failed to load correctly", [self class], source);
 						   }
 					   }
 					   
@@ -270,14 +271,14 @@
 {
 	NSParameterAssert(newSource != nil);
 	@synchronized(self) {
-	return [(SVGKImage*)[[self class] alloc] initWithSource:newSource];
-	}
+        return [(SVGKImage*)[[self class] alloc] initWithSource:newSource];
+    }
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	/** Remove and release (if appropriate) all cached render-output */
-	DDLogVerbose(@"[%@] source data changed; de-caching cached data", [self class] );
+	SVGKitLogVerbose(@"[%@] source data changed; de-caching cached data", [self class] );
 	self.CALayerTree = nil;
 }
 
@@ -313,7 +314,7 @@
 		
 		if ( self.DOMDocument == nil )
 		{
-			DDLogError(@"[%@] ERROR: failed to init SVGKImage with source = %@, returning nil from init methods. Parser warnings and errors = %@", [self class], parseSource, parseErrorsAndWarnings );
+			SVGKitLogError(@"[%@] ERROR: failed to init SVGKImage with source = %@, returning nil from init methods. Parser warnings and errors = %@", [self class], parseSource, parseErrorsAndWarnings );
 			return nil;
 		}
 		
@@ -347,15 +348,41 @@
 {
 	NSParameterAssert(data != nil);
 	
-	DDLogWarn(@"Creating an SVG from raw data; this is not recommended: SVG requires knowledge of at least the URL where it came from (as it can contain relative file-links internally). You should use the method [SVGKImage initWithSource:] instead and specify an SVGKSource with more detail" );
+	SVGKitLogWarn(@"Creating an SVG from raw data; this is not recommended: SVG requires knowledge of at least the URL where it came from (as it can contain relative file-links internally). You should use the method [SVGKImage initWithSource:] instead and specify an SVGKSource with more detail" );
 	
 	return [self initWithSource:[SVGKSourceNSData sourceFromData:data URLForRelativeLinks:nil]];
 }
 
 - (void)dealloc
 {
-	[self removeObserver:self forKeyPath:@"DOMTree.viewport"];
-	[self removeObserver:self forKeyPath:@"scale"];
+#if ENABLE_GLOBAL_IMAGE_CACHE_FOR_SVGKIMAGE_IMAGE_NAMED
+    if( self->cameFromGlobalCache )
+    {
+        SVGKImageCacheLine* cacheLine = [globalSVGKImageCache valueForKey:self.nameUsedToInstantiate];
+        cacheLine.numberOfInstances --;
+        
+        if( cacheLine.numberOfInstances < 1 )
+        {
+            [globalSVGKImageCache removeObjectForKey:self.nameUsedToInstantiate];
+        }
+    }
+#endif
+	
+//SOMETIMES CRASHES IN APPLE CODE, CAN'T WORK OUT WHY:	[self removeObserver:self forKeyPath:@"DOMTree.viewport"];
+	@try {
+		[self removeObserver:self forKeyPath:@"DOMTree.viewport"];
+		[self removeObserver:self forKeyPath:@"scale"];
+	}
+	@catch (NSException *exception) {
+		SVGKitLogError(@"Exception removing DOMTree.viewport observer");
+	}
+	
+    self.source = nil;
+    self.parseErrorsAndWarnings = nil;
+    
+    self.DOMDocument = nil;
+	self.DOMTree = nil;
+	self.CALayerTree = nil;
 }
 
 //TODO mac alternatives to UIKit functions
@@ -443,7 +470,7 @@
 	
 	if( ! SVGRectIsInitialized(self.DOMTree.viewBox) && !SVGRectIsInitialized( self.DOMTree.viewport ) )
 	{
-		DDLogWarn(@"WARNING: you have set an explicit image size, but your SVG file has no explicit width or height AND no viewBox. This means the image will NOT BE SCALED - either add a viewBox to your SVG source file, or add an explicit svg width and height -- or: use the .scale method on this class (SVGKImage) instead to scale by desired amount");
+		SVGKitLogWarn(@"WARNING: you have set an explicit image size, but your SVG file has no explicit width or height AND no viewBox. This means the image will NOT BE SCALED - either add a viewBox to your SVG source file, or add an explicit svg width and height -- or: use the .scale method on this class (SVGKImage) instead to scale by desired amount");
 	}
 	
 	/** "size" is part of SVGKImage, not the SVG spec; we need to update the SVG spec size too (aka the ViewPort)
@@ -500,7 +527,7 @@
     SVGKSource *copySource;
     if (!(copySource = [self.source copyWithZone:zone]))
     {
-        DDLogError(@"[%@] ERROR: Unable to copy %@, unable to copy %@ from %@", [self class], self, [self.source class], self.source);
+        SVGKitLogError(@"[%@] ERROR: Unable to copy %@, unable to copy %@ from %@", [self class], self, [self.source class], self.source);
         return nil;
     }
     SVGKImage *copyImage = [[SVGKImage allocWithZone:zone] initWithSource:copySource];
@@ -598,7 +625,7 @@
 	
 	if( originalLayer == nil )
 	{
-		DDLogError(@"[%@] ERROR: requested a clone of CALayer with id = %@, but there is no layer with that identifier in the parsed SVG layer stack", [self class], identifier );
+		SVGKitLogError(@"[%@] ERROR: requested a clone of CALayer with id = %@, but there is no layer with that identifier in the parsed SVG layer stack", [self class], identifier );
 		return nil;
 	}
 	else
@@ -644,15 +671,15 @@
 		
 		if( currentLayer.superlayer == nil )
 		{
-			DDLogWarn(@"AWOOGA: layer %@ has no superlayer!", originalLayer );
+			SVGKitLogWarn(@"AWOOGA: layer %@ has no superlayer!", originalLayer );
 		}
 		
 		while( currentLayer.superlayer != nil )
 		{
-			//DEBUG: DDLogVerbose(@"shifting (%2.2f, %2.2f) to accomodate offset of layer = %@ inside superlayer = %@", currentLayer.superlayer.frame.origin.x, currentLayer.superlayer.frame.origin.y, currentLayer, currentLayer.superlayer );
+			//DEBUG: SVGKitLogVerbose(@"shifting (%2.2f, %2.2f) to accomodate offset of layer = %@ inside superlayer = %@", currentLayer.superlayer.frame.origin.x, currentLayer.superlayer.frame.origin.y, currentLayer, currentLayer.superlayer );
 			
 			currentLayer = currentLayer.superlayer;
-			//DEBUG: DDLogVerbose(@"...next superlayer in positioning absolute = %@, %@", currentLayer, NSStringFromCGRect(currentLayer.frame));
+			//DEBUG: SVGKitLogVerbose(@"...next superlayer in positioning absolute = %@, %@", currentLayer, NSStringFromCGRect(currentLayer.frame));
 			xOffset += currentLayer.frame.origin.x;
 			yOffset += currentLayer.frame.origin.y;
 		}
@@ -671,7 +698,7 @@
 	
 	layer.hidden = ![self isElementVisible:element];
 	
-	//DEBUG: DDLogVerbose(@"[%@] DEBUG: converted SVG element (class:%@) to CALayer (class:%@ frame:%@ pointer:%@) for id = %@", [self class], NSStringFromClass([element class]), NSStringFromClass([layer class]), NSStringFromCGRect( layer.frame ), layer, element.identifier);
+	//DEBUG: SVGKitLogVerbose(@"[%@] DEBUG: converted SVG element (class:%@) to CALayer (class:%@ frame:%@ pointer:%@) for id = %@", [self class], NSStringFromClass([element class]), NSStringFromClass([layer class]), NSStringFromCGRect( layer.frame ), layer, element.identifier);
 	
 	SVGKNodeList* childNodes = element.childNodes;
 	SVGKNode* saveParentNode = nil;
@@ -689,48 +716,48 @@
 		SVGKNodeList* nodeList = [[SVGKNodeList alloc] init];
 		[nodeList.internalArray addObject:element];
 		childNodes = nodeList;
-	}
-	else
-		if ( [element isKindOfClass:[SVGSwitchElement class]] )
-		{
-			childNodes = [(SVGSwitchElement*) element visibleChildNodes];
-		}
-	/**
-	 Special handling for clip-path; need to create their children
-	 */
-	NSString* clipPath = [element cascadedValueForStylableProperty:@"clip-path" inherit:NO];
-	if ( [clipPath hasPrefix:@"url"] )
-	{
-		NSRange idKeyRange = NSMakeRange(5, clipPath.length - 6);
-		NSString* _pathId = [clipPath substringWithRange:idKeyRange];
-		
-		/** Replace the return layer with a special layer using the URL fill */
-		/** fetch the fill layer by URL using the DOM */
-		NSAssert( element.rootOfCurrentDocumentFragment != nil, @"This SVG shape has a URL clip-path type; it needs to search for that URL (%@) inside its nearest-ancestor <SVG> node, but the rootOfCurrentDocumentFragment reference was nil (suggests the parser failed, or the SVG file is corrupt)", _pathId );
-		
-		SVGClipPathElement* clipPathElement = (SVGClipPathElement*) [element.rootOfCurrentDocumentFragment getElementById:_pathId];
-		NSAssert( clipPathElement != nil, @"This SVG shape has a URL clip-path (%@), but could not find an XML Node with that ID inside the DOM tree (suggests the parser failed, or the SVG file is corrupt)", _pathId );
-		
-		CALayer *clipLayer = [clipPathElement newLayer];
-		for (SVGElement *child in clipPathElement.childNodes )
-		{
-			if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
-				
-				CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
-				
-				if (!sublayer) {
-					continue;
-				}
-				
-				[clipLayer addSublayer:sublayer];
-			}
-		}
-		
-		[clipPathElement layoutLayer:clipLayer toMaskLayer:layer];
-		
-		DDLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(layer.frame), NSStringFromCGRect(clipLayer.frame));
-		layer.mask = clipLayer;
-	}
+    }
+    else
+    if ( [element isKindOfClass:[SVGSwitchElement class]] )
+    {
+        childNodes = [(SVGSwitchElement*) element visibleChildNodes];
+    }
+    /**
+     Special handling for clip-path; need to create their children
+     */
+    NSString* clipPath = [element cascadedValueForStylableProperty:@"clip-path" inherit:NO];
+    if ( [clipPath hasPrefix:@"url"] )
+    {
+        NSRange idKeyRange = NSMakeRange(5, clipPath.length - 6);
+        NSString* _pathId = [clipPath substringWithRange:idKeyRange];
+        
+        /** Replace the return layer with a special layer using the URL fill */
+        /** fetch the fill layer by URL using the DOM */
+        NSAssert( element.rootOfCurrentDocumentFragment != nil, @"This SVG shape has a URL clip-path type; it needs to search for that URL (%@) inside its nearest-ancestor <SVG> node, but the rootOfCurrentDocumentFragment reference was nil (suggests the parser failed, or the SVG file is corrupt)", _pathId );
+        
+        SVGClipPathElement* clipPathElement = (SVGClipPathElement*) [element.rootOfCurrentDocumentFragment getElementById:_pathId];
+        NSAssert( clipPathElement != nil, @"This SVG shape has a URL clip-path (%@), but could not find an XML Node with that ID inside the DOM tree (suggests the parser failed, or the SVG file is corrupt)", _pathId );
+        
+        CALayer *clipLayer = [clipPathElement newLayer];
+        for (SVGElement *child in clipPathElement.childNodes )
+        {
+            if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
+                
+                CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
+                
+                if (!sublayer) {
+                    continue;
+                }
+                
+                [clipLayer addSublayer:sublayer];
+            }
+        }
+        
+        [clipPathElement layoutLayer:clipLayer toMaskLayer:layer];
+        
+        SVGKitLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(layer.frame), NSStringFromCGRect(clipLayer.frame));
+        layer.mask = clipLayer;
+    }
 	
 	/**
 	 Generate child nodes and then re-layout
@@ -804,7 +831,7 @@
 		
 		if( 0.0f != self.scale )
 		{
-			DDLogWarn(@"[%@] WARNING: because you specified an image.scale (you SHOULD be using SVG viewbox or <svg width> instead!), we are changing the .anchorPoint and the .affineTransform of the returned CALayerTree. Apple's own libraries are EXTREMELY BUGGY if you hand them layers that have these variables changed (some of Apple's libraries completely ignore them, this is a major Known Bug that Apple hasn't fixed in many years). Proceed at your own risk, and warned!", [self class] );
+			SVGKitLogWarn(@"[%@] WARNING: because you specified an image.scale (you SHOULD be using SVG viewbox or <svg width> instead!), we are changing the .anchorPoint and the .affineTransform of the returned CALayerTree. Apple's own libraries are EXTREMELY BUGGY if you hand them layers that have these variables changed (some of Apple's libraries completely ignore them, this is a major Known Bug that Apple hasn't fixed in many years). Proceed at your own risk, and warned!", [self class] );
 			
 			/** Apple's bugs in CALayer are legion, and some have been around for almost 10 years...
 			 
@@ -835,17 +862,17 @@ static inline NSString *exceptionInfo(NSException *e)
 {
 	if( CALayerTree == nil && !self.renderingIssue )
 	{
-		DDLogInfo(@"WARNING: no CALayer tree found, creating a new one (will cache it once generated)");
+		SVGKitLogInfo(@"WARNING: no CALayer tree found, creating a new one (will cache it once generated)");
 
 		NSDate* startTime = [NSDate date];
 
-		DDLogInfo(@"WARNING: no CALayer tree found, creating a new one (will cache it once generated).");
+		SVGKitLogInfo(@"WARNING: no CALayer tree found, creating a new one (will cache it once generated).");
 		@try {
 			self.CALayerTree = [self newCALayerTree];
-		DDLogInfo(@"[%@] ...time taken to convert from DOM to fresh CALayers: %2.3f seconds)", [self class], -1.0f * [startTime timeIntervalSinceNow] );		
+		SVGKitLogInfo(@"[%@] ...time taken to convert from DOM to fresh CALayers: %2.3f seconds)", [self class], -1.0f * [startTime timeIntervalSinceNow] );
 		}
 		@catch (NSException *exception) {
-			DDLogError(@"[%@] Error generating CALayerTree: %@", [self class], exceptionInfo(exception));
+			SVGKitLogError(@"[%@] Error generating CALayerTree: %@", [self class], exceptionInfo(exception));
 			self.CALayerTree = nil;
 			self.renderingIssue = YES;
 		}
@@ -854,7 +881,7 @@ static inline NSString *exceptionInfo(NSException *e)
 		}
 	}
 	else
-		DDLogVerbose(@"[%@] fetching CALayerTree: re-using cached CALayers (FREE))", [self class] );
+		SVGKitLogVerbose(@"[%@] fetching CALayerTree: re-using cached CALayers (FREE))", [self class] );
 	
 	return CALayerTree;
 }
@@ -880,7 +907,7 @@ static inline NSString *exceptionInfo(NSException *e)
 		
 		if( subLayerID != nil )
 		{
-			DDLogVerbose(@"[%@] element id: %@ => layer: %@", [self class], subLayerID, subLayer);
+			SVGKitLogVerbose(@"[%@] element id: %@ => layer: %@", [self class], subLayerID, subLayer);
 			
 			[self addSVGLayerTree:subLayer withIdentifier:subLayerID toDictionary:layersByID];
 		}
@@ -896,14 +923,14 @@ static inline NSString *exceptionInfo(NSException *e)
 	
 	[self addSVGLayerTree:rootLayer withIdentifier:self.DOMTree.identifier toDictionary:layersByElementId];
 	
-	DDLogVerbose(@"[%@] ROOT element id: %@ => layer: %@", [self class], self.DOMTree.identifier, rootLayer);
+	SVGKitLogVerbose(@"[%@] ROOT element id: %@ => layer: %@", [self class], self.DOMTree.identifier, rootLayer);
 	
     return layersByElementId;
 }
 
 #define StopOnRendIssue() \
 if (self.renderingIssue) { \
-DDLogWarn(@"[%@] WARN: Rendering issue detected when making CALayerTree, stopping render.", [self class]); \
+SVGKitLogWarn(@"[%@] WARN: Rendering issue detected when making CALayerTree, stopping render.", [self class]); \
 return; \
 }
 
@@ -911,7 +938,7 @@ return; \
 {
 	NSAssert( [self hasSize], @"Cannot export this image because the SVG file has infinite size. Either fix the SVG file, or set an explicit size you want it to be exported at (by calling .size = something on this SVGKImage instance");
 	
-	DDLogVerbose(@"[%@] DEBUG: Generating an NSData* raw bytes image using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
+	SVGKitLogVerbose(@"[%@] DEBUG: Generating an NSData* raw bytes image using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
 	
 	CGColorSpaceRef colorSpace = SVGKCreateSystemDefaultSpace();
 	CGFloat ceilWidth = ceil(self.size.width);
@@ -942,7 +969,7 @@ return; \
 	if( [self hasSize] )
 	{
 		if (theWarn) {
-			DDLogVerbose(@"DEBUG: Generating a UIImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", self.size.width, self.size.height);
+			SVGKitLogVerbose(@"DEBUG: Generating a UIImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", self.size.width, self.size.height);
 		}
 		
 		return [SVGKExporterUIImage exportAsUIImage:self antiAliased:shouldAntialias curveFlatnessFactor:multiplyFlatness interpolationQuality:interpolationQuality];
@@ -962,14 +989,14 @@ return; \
         return nil;
     }
     
-    DDLogVerbose(@"[%@] DEBUG: Generating a CIImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
+    SVGKitLogVerbose(@"[%@] DEBUG: Generating a CIImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
     
     CIImage *result;
     CGImageRef theRef = [imRep CGImage];
     if (theRef) {
         result = [CIImage imageWithCGImage:theRef];
     } else {
-        DDLogVerbose(@"[%@] It seems that the image %@ does not have a CGImage backing. Attempting to use its CIImage backing.", [self class], imRep);
+        SVGKitLogVerbose(@"[%@] It seems that the image %@ does not have a CGImage backing. Attempting to use its CIImage backing.", [self class], imRep);
         result = [imRep CIImage];
     }
     
@@ -983,7 +1010,7 @@ return; \
         return nil;
     }
     
-    DDLogVerbose(@"[%@] DEBUG: Generating a CIImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
+    SVGKitLogVerbose(@"[%@] DEBUG: Generating a CIImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
     
     CIImage *result = [[CIImage alloc] initWithBitmapImageRep:imRep];
     return result;
@@ -992,7 +1019,7 @@ return; \
 - (NSImage*)exportNSImageAntiAliased:(BOOL) shouldAntialias curveFlatnessFactor:(CGFloat) multiplyFlatness interpolationQuality:(CGInterpolationQuality) interpolationQuality
 {
     if ([self hasSize]) {
-        DDLogVerbose(@"[%@] DEBUG: Generating an NSImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
+        SVGKitLogVerbose(@"[%@] DEBUG: Generating an NSImage using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
         
         NSImageRep *imRep = [[SVGKImageRep alloc] initWithSVGImage:self];
 		NSImage *retval = [[NSImage alloc] init];
@@ -1012,7 +1039,7 @@ return; \
         
         return retval;
     } else {
-        DDLogError(@"[%@] ERROR: You asked to export an SVG to bitmap, but the SVG file has infinite size. Either fix the SVG file, or set an explicit size you want it to be exported at (by calling .size = something on this SVGKImage instance", [self class]);
+        SVGKitLogError(@"[%@] ERROR: You asked to export an SVG to bitmap, but the SVG file has infinite size. Either fix the SVG file, or set an explicit size you want it to be exported at (by calling .size = something on this SVGKImage instance", [self class]);
         
         return nil;
     }
@@ -1027,7 +1054,7 @@ return; \
 {
 	if ([self hasSize]) {
 		if (warn) {
-			DDLogVerbose(@"[%@] DEBUG: Generating an NSBitmapImageRep using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
+			SVGKitLogVerbose(@"[%@] DEBUG: Generating an NSBitmapImageRep using the current root-object's viewport (may have been overridden by user code): {0,0,%2.3f,%2.3f}", [self class], self.size.width, self.size.height);
 		}
 		
 		NSSize curSize = self.size;
@@ -1037,7 +1064,7 @@ return; \
 		[self renderToContext:ctx antiAliased:shouldAntialias curveFlatnessFactor:multiplyFlatness interpolationQuality:interpolationQuality flipYaxis:YES];
 		return imageRep;
 	} else {
-		DDLogError(@"[%@] ERROR: You asked to export an SVG to bitmap, but the SVG file has infinite size. Either fix the SVG file, or set an explicit size you want it to be exported at (by calling .size = something on this SVGKImage instance", [self class]);
+		SVGKitLogError(@"[%@] ERROR: You asked to export an SVG to bitmap, but the SVG file has infinite size. Either fix the SVG file, or set an explicit size you want it to be exported at (by calling .size = something on this SVGKImage instance", [self class]);
 		
 		return nil;
 	}

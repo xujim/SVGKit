@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
   s.osx.exclude_files = 'Source/DOM classes/**/*{iOS}.{h,m}', 'Source/Exporters/SVGKExporterUIImage.{h,m}'
 
 
+  s.tvos.deployment_target = '9.0'
   s.libraries = 'xml2'
   s.framework = 'QuartzCore', 'CoreText'
   s.dependency 'CocoaLumberjack', '~> 2.x'

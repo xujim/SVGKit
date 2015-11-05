@@ -93,7 +93,7 @@
 		551165131970EFC100C8A63D /* SVGKProcessingInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6BF17387F2B004029EF /* SVGKProcessingInstruction.m */; };
 		551165141970EFC100C8A63D /* SVGKStyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C017387F2B004029EF /* SVGKStyleSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165151970EFC100C8A63D /* SVGKStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6C117387F2B004029EF /* SVGKStyleSheet.m */; };
-		551165161970EFC100C8A63D /* SVGKStyleSheetList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C217387F2B004029EF /* SVGKStyleSheetList+Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		551165161970EFC100C8A63D /* SVGKStyleSheetList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C217387F2B004029EF /* SVGKStyleSheetList+Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165171970EFC100C8A63D /* SVGKStyleSheetList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C317387F2B004029EF /* SVGKStyleSheetList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165181970EFC100C8A63D /* SVGKStyleSheetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6C417387F2B004029EF /* SVGKStyleSheetList.m */; };
 		551165191970EFC100C8A63D /* SVGKText.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C517387F2B004029EF /* SVGKText.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -115,7 +115,7 @@
 		551165291970EFCB00C8A63D /* SVGElementInstance_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D117387F2B004029EF /* SVGElementInstance_Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5511652A1970EFCB00C8A63D /* SVGElementInstanceList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D217387F2B004029EF /* SVGElementInstanceList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5511652B1970EFCB00C8A63D /* SVGElementInstanceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6D317387F2B004029EF /* SVGElementInstanceList.m */; };
-		5511652C1970EFCB00C8A63D /* SVGElementInstanceList_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D417387F2B004029EF /* SVGElementInstanceList_Internal.h */; };
+		5511652C1970EFCB00C8A63D /* SVGElementInstanceList_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D417387F2B004029EF /* SVGElementInstanceList_Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5511652D1970EFCB00C8A63D /* SVGFitToViewBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D517387F2B004029EF /* SVGFitToViewBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5511652E1970EFCB00C8A63D /* SVGGElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D617387F2B004029EF /* SVGGElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5511652F1970EFCB00C8A63D /* SVGGElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6D717387F2B004029EF /* SVGGElement.m */; };
@@ -136,7 +136,7 @@
 		5511653E1970EFCB00C8A63D /* SVGTextContentElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6E617387F2B004029EF /* SVGTextContentElement.m */; };
 		5511653F1970EFCB00C8A63D /* SVGTextPositioningElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E717387F2B004029EF /* SVGTextPositioningElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165401970EFCB00C8A63D /* SVGTextPositioningElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6E817387F2B004029EF /* SVGTextPositioningElement.m */; };
-		551165411970EFCB00C8A63D /* SVGTextPositioningElement_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E917387F2B004029EF /* SVGTextPositioningElement_Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		551165411970EFCB00C8A63D /* SVGTextPositioningElement_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E917387F2B004029EF /* SVGTextPositioningElement_Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165421970EFCB00C8A63D /* SVGTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6EA17387F2B004029EF /* SVGTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165431970EFCB00C8A63D /* SVGTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6EB17387F2B004029EF /* SVGTransform.m */; };
 		551165441970EFCB00C8A63D /* SVGTransformable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6EC17387F2B004029EF /* SVGTransformable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -217,13 +217,13 @@
 		551165901970EFFB00C8A63D /* CALayerWithChildHitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73417387F2B004029EF /* CALayerWithChildHitTest.m */; };
 		551165911970EFFB00C8A63D /* CAShapeLayerWithHitTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73517387F2B004029EF /* CAShapeLayerWithHitTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165921970EFFB00C8A63D /* CAShapeLayerWithHitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73617387F2B004029EF /* CAShapeLayerWithHitTest.m */; };
-		551165931970EFFB00C8A63D /* CGPathAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73717387F2B004029EF /* CGPathAdditions.h */; };
+		551165931970EFFB00C8A63D /* CGPathAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73717387F2B004029EF /* CGPathAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165941970EFFB00C8A63D /* CGPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73817387F2B004029EF /* CGPathAdditions.m */; };
 		551165951970EFFB00C8A63D /* SVGGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 55886F5C17DD79FA00021A82 /* SVGGradientLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165961970EFFB00C8A63D /* SVGGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 55886F5D17DD79FA00021A82 /* SVGGradientLayer.m */; };
 		551165971970EFFB00C8A63D /* SVGKLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73917387F2B004029EF /* SVGKLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551165981970EFFB00C8A63D /* SVGKLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73A17387F2B004029EF /* SVGKLayer.m */; };
-		551165991970F00400C8A63D /* NSCharacterSet+SVGKExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B4D794173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.h */; };
+		551165991970F00400C8A63D /* NSCharacterSet+SVGKExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B4D794173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5511659A1970F00400C8A63D /* NSCharacterSet+SVGKExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4D795173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.m */; };
 		5511659B1970F00400C8A63D /* SVGKCGFloatAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 557E69D1174014E4006B0029 /* SVGKCGFloatAdditions.h */; };
 		5511659C1970F00400C8A63D /* SVGKCGFloatAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 557E69D2174014E4006B0029 /* SVGKCGFloatAdditions.m */; };
@@ -239,7 +239,7 @@
 		55247B26173DB63C00531BBC /* SVGKSourceURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 55247B20173DB63B00531BBC /* SVGKSourceURL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55247B27173DB63C00531BBC /* SVGKSourceURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 55247B21173DB63B00531BBC /* SVGKSourceURL.m */; };
 		5531283419EA4C47001CA2ED /* NSData+NSInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2685419B66BCD00F6410E /* NSData+NSInputStream.m */; };
-		5531283519EA4C55001CA2ED /* NSData+NSInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685319B66BCD00F6410E /* NSData+NSInputStream.h */; };
+		5531283519EA4C55001CA2ED /* NSData+NSInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685319B66BCD00F6410E /* NSData+NSInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553F327517F2A8ED00221391 /* SVGKSourceString.h in Headers */ = {isa = PBXBuildFile; fileRef = 553F327317F2A8ED00221391 /* SVGKSourceString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553F327717F2A8ED00221391 /* SVGKSourceString.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F327417F2A8ED00221391 /* SVGKSourceString.m */; };
 		5540E75017387F2B004029EF /* SVGKAppleSucksDOMImplementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E68717387F2A004029EF /* SVGKAppleSucksDOMImplementation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -301,7 +301,7 @@
 		5540E78817387F2B004029EF /* SVGKProcessingInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6BF17387F2B004029EF /* SVGKProcessingInstruction.m */; };
 		5540E78917387F2B004029EF /* SVGKStyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C017387F2B004029EF /* SVGKStyleSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E78A17387F2B004029EF /* SVGKStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6C117387F2B004029EF /* SVGKStyleSheet.m */; };
-		5540E78B17387F2B004029EF /* SVGKStyleSheetList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C217387F2B004029EF /* SVGKStyleSheetList+Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5540E78B17387F2B004029EF /* SVGKStyleSheetList+Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C217387F2B004029EF /* SVGKStyleSheetList+Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E78C17387F2B004029EF /* SVGKStyleSheetList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C317387F2B004029EF /* SVGKStyleSheetList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E78D17387F2B004029EF /* SVGKStyleSheetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6C417387F2B004029EF /* SVGKStyleSheetList.m */; };
 		5540E78E17387F2B004029EF /* SVGKText.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6C517387F2B004029EF /* SVGKText.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -318,7 +318,7 @@
 		5540E79917387F2B004029EF /* SVGElementInstance_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D117387F2B004029EF /* SVGElementInstance_Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79A17387F2B004029EF /* SVGElementInstanceList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D217387F2B004029EF /* SVGElementInstanceList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79B17387F2B004029EF /* SVGElementInstanceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6D317387F2B004029EF /* SVGElementInstanceList.m */; };
-		5540E79C17387F2B004029EF /* SVGElementInstanceList_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D417387F2B004029EF /* SVGElementInstanceList_Internal.h */; };
+		5540E79C17387F2B004029EF /* SVGElementInstanceList_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D417387F2B004029EF /* SVGElementInstanceList_Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79D17387F2B004029EF /* SVGFitToViewBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D517387F2B004029EF /* SVGFitToViewBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79E17387F2B004029EF /* SVGGElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6D617387F2B004029EF /* SVGGElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E79F17387F2B004029EF /* SVGGElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6D717387F2B004029EF /* SVGGElement.m */; };
@@ -339,7 +339,7 @@
 		5540E7AE17387F2B004029EF /* SVGTextContentElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6E617387F2B004029EF /* SVGTextContentElement.m */; };
 		5540E7AF17387F2B004029EF /* SVGTextPositioningElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E717387F2B004029EF /* SVGTextPositioningElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7B017387F2B004029EF /* SVGTextPositioningElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6E817387F2B004029EF /* SVGTextPositioningElement.m */; };
-		5540E7B117387F2B004029EF /* SVGTextPositioningElement_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E917387F2B004029EF /* SVGTextPositioningElement_Mutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5540E7B117387F2B004029EF /* SVGTextPositioningElement_Mutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6E917387F2B004029EF /* SVGTextPositioningElement_Mutable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7B217387F2B004029EF /* SVGTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6EA17387F2B004029EF /* SVGTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7B317387F2B004029EF /* SVGTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E6EB17387F2B004029EF /* SVGTransform.m */; };
 		5540E7B417387F2B004029EF /* SVGTransformable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E6EC17387F2B004029EF /* SVGTransformable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -408,7 +408,7 @@
 		5540E7F717387F2B004029EF /* CALayerWithChildHitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73417387F2B004029EF /* CALayerWithChildHitTest.m */; };
 		5540E7F817387F2B004029EF /* CAShapeLayerWithHitTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73517387F2B004029EF /* CAShapeLayerWithHitTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7F917387F2B004029EF /* CAShapeLayerWithHitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73617387F2B004029EF /* CAShapeLayerWithHitTest.m */; };
-		5540E7FA17387F2B004029EF /* CGPathAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73717387F2B004029EF /* CGPathAdditions.h */; };
+		5540E7FA17387F2B004029EF /* CGPathAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73717387F2B004029EF /* CGPathAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7FB17387F2B004029EF /* CGPathAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5540E73817387F2B004029EF /* CGPathAdditions.m */; };
 		5540E7FC17387F2B004029EF /* SVGKLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73917387F2B004029EF /* SVGKLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5540E7FE17387F2B004029EF /* SVGKImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E73B17387F2B004029EF /* SVGKImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -686,8 +686,8 @@
 		55886F6017DD79FA00021A82 /* SVGGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 55886F5D17DD79FA00021A82 /* SVGGradientLayer.m */; };
 		558BE71A177B98FE00DC9516 /* SVGKImage+CacheManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BE719177B98FE00DC9516 /* SVGKImage+CacheManagement.m */; };
 		558BE71C177B9D3F00DC9516 /* SVGKImage+CacheManagement.h in Headers */ = {isa = PBXBuildFile; fileRef = 558BE71B177B9D3F00DC9516 /* SVGKImage+CacheManagement.h */; };
-		5595395F1AC78A5100BC4B39 /* SVGSwitchElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595395D1AC78A5100BC4B39 /* SVGSwitchElement.h */; };
-		559539601AC78A5100BC4B39 /* SVGSwitchElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595395D1AC78A5100BC4B39 /* SVGSwitchElement.h */; };
+		5595395F1AC78A5100BC4B39 /* SVGSwitchElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595395D1AC78A5100BC4B39 /* SVGSwitchElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		559539601AC78A5100BC4B39 /* SVGSwitchElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595395D1AC78A5100BC4B39 /* SVGSwitchElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		559539611AC78A5100BC4B39 /* SVGSwitchElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5595395E1AC78A5100BC4B39 /* SVGSwitchElement.m */; };
 		559539621AC78A5100BC4B39 /* SVGSwitchElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5595395E1AC78A5100BC4B39 /* SVGSwitchElement.m */; };
 		559539631AC78A5100BC4B39 /* SVGSwitchElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5595395E1AC78A5100BC4B39 /* SVGSwitchElement.m */; };
@@ -703,7 +703,7 @@
 		55B00FED19B67D4B0058B2FD /* CAShapeLayerWithClipRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2684C19B66B9C00F6410E /* CAShapeLayerWithClipRender.m */; };
 		55B00FEE19B67D690058B2FD /* SVGKSourceNSData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5563201419B670DD0097D2EF /* SVGKSourceNSData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55B00FEF19B67D690058B2FD /* SVGKSourceNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5563201519B670DD0097D2EF /* SVGKSourceNSData.m */; };
-		55B4D796173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B4D794173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.h */; };
+		55B4D796173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B4D794173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55B4D797173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4D795173EC3D900D2C676 /* NSCharacterSet+SVGKExtensions.m */; };
 		55B4D7A4173EC58700D2C676 /* SVGKFastImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4D79E173EC58700D2C676 /* SVGKFastImageView.m */; };
 		55B4D7A5173EC58700D2C676 /* SVGKImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B4D79F173EC58700D2C676 /* SVGKImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -742,7 +742,7 @@
 		55F2685019B66B9C00F6410E /* CAShapeLayerWithClipRender.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2684B19B66B9C00F6410E /* CAShapeLayerWithClipRender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55F2685119B66B9C00F6410E /* CAShapeLayerWithClipRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2684C19B66B9C00F6410E /* CAShapeLayerWithClipRender.m */; };
 		55F2685219B66B9C00F6410E /* CAShapeLayerWithClipRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2684C19B66B9C00F6410E /* CAShapeLayerWithClipRender.m */; };
-		55F2685519B66BCD00F6410E /* NSData+NSInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685319B66BCD00F6410E /* NSData+NSInputStream.h */; };
+		55F2685519B66BCD00F6410E /* NSData+NSInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685319B66BCD00F6410E /* NSData+NSInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55F2685619B66BCD00F6410E /* NSData+NSInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2685419B66BCD00F6410E /* NSData+NSInputStream.m */; };
 		55F2685719B66BCD00F6410E /* NSData+NSInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2685419B66BCD00F6410E /* NSData+NSInputStream.m */; };
 		55F2685B19B66C6500F6410E /* SVGClipPathElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F2685819B66C6500F6410E /* SVGClipPathElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -760,7 +760,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 18F3BF881A81DF5600692297;
+			remoteGlobalIDString = 19FF46011B8B4CF400B43179;
 			remoteInfo = "CocoaLumberjack-iOS";
 		};
 		55018BA61B25112400936DF7 /* PBXContainerItemProxy */ = {
@@ -844,7 +844,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 18F3BF881A81DF5600692297;
+			remoteGlobalIDString = 19FF46011B8B4CF400B43179;
 			remoteInfo = "CocoaLumberjack-iOS";
 		};
 		55825B4819EC80C400635497 /* PBXContainerItemProxy */ = {
@@ -853,6 +853,55 @@
 			proxyType = 1;
 			remoteGlobalIDString = 551164AA1970EE8B00C8A63D;
 			remoteInfo = "SVGKit-iOS Framework";
+		};
+		559658F11BEC0BE000D8BB39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19190EDE1B84D812008D059E;
+			remoteInfo = "CocoaLumberjack-watchOS";
+		};
+		559658F31BEC0BE000D8BB39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19190EEB1B84D826008D059E;
+			remoteInfo = "CocoaLumberjackSwift-watchOS";
+		};
+		559658F51BEC0BE000D8BB39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19D90B261BBFA9DB00947169;
+			remoteInfo = "CocoaLumberjack-tvOS";
+		};
+		559658F71BEC0BE000D8BB39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19D90B351BBFAA7500947169;
+			remoteInfo = "CocoaLumberjackSwift-tvOS";
+		};
+		559658F91BEC0BE000D8BB39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19EC14671B84D134000EC2E7;
+			remoteInfo = watchOSSwiftTest;
+		};
+		559658FB1BEC0BE000D8BB39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19EC14731B84D134000EC2E7;
+			remoteInfo = "watchOSSwiftTest Extension";
+		};
+		559658FD1BEC0BE000D8BB39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19406BE11BDBABFF001194DC;
+			remoteInfo = tvOSSwiftTest;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1796,9 +1845,16 @@
 				557003B21B24137E00C623AB /* CocoaLumberjack.framework */,
 				557003B41B24137E00C623AB /* CocoaLumberjackSwift.framework */,
 				557003B61B24137E00C623AB /* libCocoaLumberjack-iOS-Static.a */,
+				559658F21BEC0BE000D8BB39 /* CocoaLumberjack.framework */,
+				559658F41BEC0BE000D8BB39 /* CocoaLumberjackSwift.framework */,
+				559658F61BEC0BE000D8BB39 /* CocoaLumberjack.framework */,
+				559658F81BEC0BE000D8BB39 /* CocoaLumberjackSwift.framework */,
 				557003B81B24137E00C623AB /* FmwkTest.app */,
 				557003BA1B24137E00C623AB /* SwiftTest.app */,
 				557003BC1B24137E00C623AB /* iOSSwiftTest.app */,
+				559658FA1BEC0BE000D8BB39 /* watchOSSwiftTest.app */,
+				559658FC1BEC0BE000D8BB39 /* watchOSSwiftTest Extension.appex */,
+				559658FE1BEC0BE000D8BB39 /* tvOSSwiftTest.app */,
 				557003BE1B24137E00C623AB /* iOSLibStaticTest.app */,
 			);
 			name = Products;
@@ -2368,6 +2424,55 @@
 			fileType = wrapper.application;
 			path = iOSLibStaticTest.app;
 			remoteRef = 557003BD1B24137E00C623AB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		559658F21BEC0BE000D8BB39 /* CocoaLumberjack.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjack.framework;
+			remoteRef = 559658F11BEC0BE000D8BB39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		559658F41BEC0BE000D8BB39 /* CocoaLumberjackSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjackSwift.framework;
+			remoteRef = 559658F31BEC0BE000D8BB39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		559658F61BEC0BE000D8BB39 /* CocoaLumberjack.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjack.framework;
+			remoteRef = 559658F51BEC0BE000D8BB39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		559658F81BEC0BE000D8BB39 /* CocoaLumberjackSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjackSwift.framework;
+			remoteRef = 559658F71BEC0BE000D8BB39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		559658FA1BEC0BE000D8BB39 /* watchOSSwiftTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = watchOSSwiftTest.app;
+			remoteRef = 559658F91BEC0BE000D8BB39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		559658FC1BEC0BE000D8BB39 /* watchOSSwiftTest Extension.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = "watchOSSwiftTest Extension.appex";
+			remoteRef = 559658FB1BEC0BE000D8BB39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		559658FE1BEC0BE000D8BB39 /* tvOSSwiftTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = tvOSSwiftTest.app;
+			remoteRef = 559658FD1BEC0BE000D8BB39 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

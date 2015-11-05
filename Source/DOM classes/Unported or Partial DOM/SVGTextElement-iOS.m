@@ -66,11 +66,11 @@
 	} else if (NSOrderedSame == [fontStyle caseInsensitiveCompare:@"italic"] || NSOrderedSame == [fontStyle caseInsensitiveCompare:@"oblique"]) {
 		(*traits) |= kCTFontItalicTrait;
 	} else {
-		DDLogError(@"[%@] ERROR: unknown SVG font style %@!", [self class], fontStyle);
-		DDLogInfo(@"[%@] INFO: Will set italics anyways.", [self class]);
+		SVGKitLogError(@"[%@] ERROR: unknown SVG font style %@!", [self class], fontStyle);
+		SVGKitLogInfo(@"[%@] INFO: Will set italics anyways.", [self class]);
 		(*traits) |= kCTFontItalicTrait;
 	}
-	DDLogVerbose(@"[%@] INFO: Italic trait: %@, bold trait: %@, SVG weight: %li, Cocoa Weight: %li.", [self class], ((*traits) & kCTFontItalicTrait) == kCTFontItalicTrait ? @"Yes" : @"No", ((*traits) & kCTFontBoldTrait) == kCTFontBoldTrait ? @"Yes" : @"No", (long)SVGWeight, (long)(*weight));
+	SVGKitLogVerbose(@"[%@] INFO: Italic trait: %@, bold trait: %@, SVG weight: %li, Cocoa Weight: %li.", [self class], ((*traits) & kCTFontItalicTrait) == kCTFontItalicTrait ? @"Yes" : @"No", ((*traits) & kCTFontBoldTrait) == kCTFontBoldTrait ? @"Yes" : @"No", (long)SVGWeight, (long)(*weight));
 }
 
 - (CALayer *) newLayer
@@ -180,7 +180,7 @@
 		} else if (NSOrderedSame == [alignment caseInsensitiveCompare:@"end"]) {
 			alignmentMode = kCAAlignmentRight;
 		} else {
-			DDLogWarn(@"[%@] WARNING: Unknown alignment %@, using default (start(left))", [self class], alignment);
+			SVGKitLogWarn(@"[%@] WARNING: Unknown alignment %@, using default (start(left))", [self class], alignment);
 			//Do nothing, the default is already set
 		}
 	}
@@ -244,7 +244,7 @@
 	/** VERY USEFUL when trying to debug text issues:
 	label.backgroundColor = [UIColor colorWithRed:0.5 green:0 blue:0 alpha:0.5].CGColor;
 	label.borderColor = [UIColor redColor].CGColor;
-	//DEBUG: DDLogVerbose(@"font size %2.1f at %@ ... final frame of layer = %@", effectiveFontSize, NSStringFromCGPoint(transformedOrigin), NSStringFromCGRect(label.frame));
+	//DEBUG: SVGKitLogVerbose(@"font size %2.1f at %@ ... final frame of layer = %@", effectiveFontSize, NSStringFromCGPoint(transformedOrigin), NSStringFromCGRect(label.frame));
 	*/
 	
     return label;

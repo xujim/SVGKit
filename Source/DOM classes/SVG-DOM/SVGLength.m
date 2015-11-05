@@ -190,11 +190,13 @@ static CGFloat cachedDevicePixelsPerInch;
     if( [platform hasPrefix:@"iPhone4"]
        || [platform hasPrefix:@"iPhone5"]
        || [platform hasPrefix:@"iPhone6"]
-       || [platform hasPrefix:@"iPhone7,2"]) {
+       || [platform hasPrefix:@"iPhone7,2"]
+       || [platform hasPrefix:@"iPhone8,1"]) {
         return 326.0f;
     }
     
-    if ( [platform hasPrefix:@"iPhone7,1"]) {
+    if ( [platform hasPrefix:@"iPhone7,1"]
+       || [platform hasPrefix:@"iPhone8,2"]) {
         return 401.0f;
     }
 	
@@ -210,7 +212,8 @@ static CGFloat cachedDevicePixelsPerInch;
 		return 163.0f;
 	
 	if( [platform hasPrefix:@"iPod4"]
-	   || [platform hasPrefix:@"iPod5"])
+	   || [platform hasPrefix:@"iPod5"]
+	   || [platform hasPrefix:@"iPod7"])
 		return 326.0f;
 	
 	if( [platform hasPrefix:@"iPod"]) // catch-all for higher-end devices not yet existing
@@ -234,7 +237,7 @@ static CGFloat cachedDevicePixelsPerInch;
 	
 	if( [platform hasPrefix:@"x86_64"])
 	{
-		DDLogWarn(@"[%@] WARNING: you are running on the simulator; it's impossible for us to calculate centimeter/millimeter/inches units correctly", [self class]);
+		SVGKitLogWarn(@"[%@] WARNING: you are running on the simulator; it's impossible for us to calculate centimeter/millimeter/inches units correctly", [self class]);
 		return 132.0f; // Simulator, running on desktop machine
 	}
 	

@@ -73,7 +73,9 @@
             free(locations);
             CGGradientRelease(gradient);
         }
-    } else {
+    } 
+    else if (!CGRectIsEmpty(self.bounds)) {
+    
         [super renderInContext:ctx];
     }
     CGContextRestoreGState(ctx);

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sourceFromFilename:(NSString*)p;
 
 + (nullable instancetype) internalSourceAnywhereInBundleUsingName:(NSString*) name;
++ (nullable instancetype)internalSourceAnywhereInBundle:(NSBundle *)bundle usingName:(NSString *)name;
 
 @end
 

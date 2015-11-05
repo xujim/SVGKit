@@ -71,7 +71,7 @@ static NSDictionary *elementMap = nil;
 		
 		if (!elementClass) {
 			elementClass = [SVGElement class];
-			DDLogWarn(@"Support for '%@' element has not been implemented", name);
+			SVGKitLogWarn(@"Support for '%@' element has not been implemented", name);
 		}
 		
 		/**

@@ -225,8 +225,13 @@
 	else
 		self.width = [SVGLength svgLengthFromNSString:[self getAttribute:@"width"]];
 	    //osx logging
-        DDLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromCGRect( CGRectFromSVGRect(self.viewBox)));
-}
+#if TARGET_OS_IPHONE
+        SVGKitLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromCGRect( CGRectFromSVGRect(self.viewBox)));
+#else
+        //mac logging
+     SVGKitLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromRect(CGRectFromSVGRect(self.viewBox)));
+#endif   
+	}
 
 - (SVGElement *)findFirstElementOfClass:(Class)classParameter {
 	for (SVGElement *element in self.childNodes)

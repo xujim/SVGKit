@@ -143,7 +143,7 @@ clazz *parser = [[clazz alloc] init]; \
 	
 	if( [self.parserExtensions containsObject:extension])
 	{
-		DDLogVerbose(@"[%@] WARNING: attempted to add a ParserExtension that was already added = %@", [self class], extension);
+		SVGKitLogVerbose(@"[%@] WARNING: attempted to add a ParserExtension that was already added = %@", [self class], extension);
 		return;
 	}
 	
@@ -179,7 +179,7 @@ clazz *parser = [[clazz alloc] init]; \
 {
 	if( self.currentParseRun != nil )
 	{
-		DDLogError(@"FATAL: attempting to run the parser twice in one thread; limxml is single-threaded only, so we are too (until someone wraps libxml to be multi-threaded)");
+		SVGKitLogError(@"FATAL: attempting to run the parser twice in one thread; limxml is single-threaded only, so we are too (until someone wraps libxml to be multi-threaded)");
 	}
 	
 	self.currentParseRun = [SVGKParseResult new];
@@ -223,7 +223,7 @@ clazz *parser = [[clazz alloc] init]; \
 	ctx = xmlCreatePushParserCtxt(&SAXHandler, (__bridge void *)(self), NULL, 0, NULL);
 	
 	/*
-	 DDLogVerbose(@"[%@] WARNING: Substituting entities directly into document, c.f. http://www.xmlsoft.org/entities.html for why!", [self class]);
+	 SVGKitLogVerbose(@"[%@] WARNING: Substituting entities directly into document, c.f. http://www.xmlsoft.org/entities.html for why!", [self class]);
 	 xmlSubstituteEntitiesDefault(1);
 	xmlCtxtUseOptions( ctx,
 					  XML_PARSE_DTDATTR  // default DTD attributes
@@ -245,7 +245,7 @@ clazz *parser = [[clazz alloc] init]; \
 			
 			if( self.hasCancelBeenRequested )
 			{
-				DDLogInfo( @"SVGKParser: 'cancel parse' discovered; bailing on this XML parse" );
+				SVGKitLogInfo( @"SVGKParser: 'cancel parse' discovered; bailing on this XML parse" );
 				break;
 			}
 			else
@@ -265,7 +265,7 @@ clazz *parser = [[clazz alloc] init]; \
 			}
 			@catch( NSException* e )
 			{
-				DDLogError( @"Exception while trying to parse SVG file, will store in parse results. Exception = %@", e);
+				SVGKitLogError( @"Exception while trying to parse SVG file, will store in parse results. Exception = %@", e);
 				[currentParseRun addParseErrorFatal:[NSError errorWithDomain:@"SVGK Parsing" code:32523432 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Exception = %@", e]}]];
 			}
 			
@@ -274,15 +274,15 @@ clazz *parser = [[clazz alloc] init]; \
 				// 3.   if libxml failed chunk, break
 				if( libXmlParserParseError > 0 )
 				{
-				DDLogVerbose(@"[%@] libXml reported internal parser error with magic libxml code = %li (look this up on http://xmlsoft.org/html/libxml-xmlerror.html#xmlParserErrors)", [self class], (long)libXmlParserParseError );
+				SVGKitLogVerbose(@"[%@] libXml reported internal parser error with magic libxml code = %li (look this up on http://xmlsoft.org/html/libxml-xmlerror.html#xmlParserErrors)", [self class], (long)libXmlParserParseError );
 				currentParseRun.libXMLFailed = YES;
 				}
 				else
 				{
-					DDLogWarn(@"[%@] SVG parser generated one or more FATAL errors (not the XML parser), errors follow:", [self class] );
+					SVGKitLogWarn(@"[%@] SVG parser generated one or more FATAL errors (not the XML parser), errors follow:", [self class] );
 					for( NSError* error in currentParseRun.errorsFatal )
 					{
-						DDLogWarn(@"[%@] ... FATAL ERRROR in SVG parse: %@", [self class], error );
+						SVGKitLogWarn(@"[%@] ... FATAL ERRROR in SVG parse: %@", [self class], error );
 					}
 				}
 				
@@ -342,7 +342,7 @@ clazz *parser = [[clazz alloc] init]; \
         
         if( cssText == nil )
         {
-            DDLogWarn(@"[%@] Unable to find external CSS file '%@'", [self class], href );
+            SVGKitLogWarn(@"[%@] Unable to find external CSS file '%@'", [self class], href );
         }
         else
         {
@@ -480,7 +480,7 @@ static void processingInstructionSAX (void * ctx,
 			SVGKNode* subParserResult = [subParser handleStartElement:name document:source namePrefix:prefix namespaceURI:XMLNSURI attributes:attributeObjects parseResult:self.currentParseRun parentNode:_parentOfCurrentNode];
 			
 #if DEBUG_XML_PARSER
-			DDLogVerbose(@"[%@] tag: <%@:%@> id=%@ -- handled by subParser: %@", [self class], prefix, name, ([((Attr*)[attributeObjects objectForKey:@"id"]) value] != nil?[((Attr*)[attributeObjects objectForKey:@"id"]) value]:@"(none)"), subParser );
+			SVGKitLogVerbose(@"[%@] tag: <%@:%@> id=%@ -- handled by subParser: %@", [self class], prefix, name, ([((Attr*)[attributeObjects objectForKey:@"id"]) value] != nil?[((Attr*)[attributeObjects objectForKey:@"id"]) value]:@"(none)"), subParser );
 #endif
 			
 			/** Add the new (partially parsed) node to the parent node in tree
@@ -509,7 +509,7 @@ static void processingInstructionSAX (void * ctx,
 	NSObject<SVGKParserExtension>* eventualParser = defaultParserForThisNamespace != nil ? defaultParserForThisNamespace : defaultParserForEverything;
 	NSAssert( eventualParser != nil, @"Found a tag (prefix:%@ name:%@) that was rejected by all the parsers available. Perhaps you forgot to include a default parser (usually: SVGKParserDOM, which will handle any / all XML tags)", prefix, name );
 	
-	DDLogVerbose(@"[%@] WARN: found a tag with no namespace parser: (</%@>), using default parser(%@)", [self class], name, eventualParser );
+	SVGKitLogVerbose(@"[%@] WARN: found a tag with no namespace parser: (</%@>), using default parser(%@)", [self class], name, eventualParser );
 	
 	
 	[_stackOfParserExtensions addObject:eventualParser];
@@ -518,7 +518,7 @@ static void processingInstructionSAX (void * ctx,
 	SVGKNode* subParserResult = [eventualParser handleStartElement:name document:source namePrefix:prefix namespaceURI:XMLNSURI attributes:attributeObjects parseResult:self.currentParseRun parentNode:_parentOfCurrentNode];
 	
 #if DEBUG_XML_PARSER
-	DDLogVerbose(@"[%@] tag: <%@:%@> id=%@ -- handled by subParser: %@", [self class], prefix, name, ([((Attr*)[attributeObjects objectForKey:@"id"]) value] != nil?[((Attr*)[attributeObjects objectForKey:@"id"]) value]:@"(none)"), eventualParser );
+	SVGKitLogVerbose(@"[%@] tag: <%@:%@> id=%@ -- handled by subParser: %@", [self class], prefix, name, ([((Attr*)[attributeObjects objectForKey:@"id"]) value] != nil?[((Attr*)[attributeObjects objectForKey:@"id"]) value]:@"(none)"), eventualParser );
 #endif
 	
 	/** Add the new (partially parsed) node to the parent node in tree
@@ -629,7 +629,7 @@ static void startElementSAX (void *ctx, const xmlChar *localname, const xmlChar 
 	
 #if DEBUG_XML_PARSER
 #if DEBUG_VERBOSE_LOG_EVERY_TAG
-	DDLogWarn(@"[%@] DEBUG_VERBOSE: <%@%@> (namespace URL:%@), attributes: %i", [NSctx class], [NSString stringWithFormat:@"%@:",stringPrefix], name, stringURI, nb_attributes );
+	SVGKitLogWarn(@"[%@] DEBUG_VERBOSE: <%@%@> (namespace URL:%@), attributes: %i", [NSctx class], [NSString stringWithFormat:@"%@:",stringPrefix], name, stringURI, nb_attributes );
 #endif
 #endif
 	
@@ -650,25 +650,25 @@ static void startElementSAX (void *ctx, const xmlChar *localname, const xmlChar 
 		{
 			for( int i=0; i<nb_namespaces; i++ )
 			{
-				DDLogWarn(@"[%@] DEBUG: found namespace [%i] : %@", [self class], i, namespaces[i] );
+				SVGKitLogWarn(@"[%@] DEBUG: found namespace [%i] : %@", [self class], i, namespaces[i] );
 			}
 		}
 		else
-			DDLogWarn(@"[%@] DEBUG: there are ZERO namespaces!", [self class] );
+			SVGKitLogWarn(@"[%@] DEBUG: there are ZERO namespaces!", [self class] );
 		 */
 	}
 #endif
 	
 	if( stringURI == nil && stringPrefix == nil )
 	{
-		DDLogWarn(@"[%@] WARNING: Your input SVG contains tags that have no namespace, and your document doesn't define a default namespace. This is always incorrect - it means some of your SVG data will be ignored, and usually means you have a typo in there somewhere. Tag with no namespace: <%@>", [NSctx class], stringLocalName );
+		SVGKitLogWarn(@"[%@] WARNING: Your input SVG contains tags that have no namespace, and your document doesn't define a default namespace. This is always incorrect - it means some of your SVG data will be ignored, and usually means you have a typo in there somewhere. Tag with no namespace: <%@>", [NSctx class], stringLocalName );
 	}
 
 	[NSctx handleStartElement:stringLocalName namePrefix:stringPrefix namespaceURI:stringURI attributeObjects:attributeObjects];
 }
 
 - (void)handleEndElement:(NSString *)name {
-	//DELETE DEBUG DDLogVerbose(@"ending element, name = %@", name);
+	//DELETE DEBUG SVGKitLogVerbose(@"ending element, name = %@", name);
 	
 	NSObject* lastobject = [_stackOfParserExtensions lastObject];
 	
@@ -679,7 +679,7 @@ static void startElementSAX (void *ctx, const xmlChar *localname, const xmlChar 
 	
 #if DEBUG_XML_PARSER
 #if DEBUG_VERBOSE_LOG_EVERY_TAG
-	DDLogVerbose(@"[%@] DEBUG-PARSER: ended tag (</%@>), handled by parser (%@) with parent parsed by %@", [self class], name, parser, parentParser );
+	SVGKitLogVerbose(@"[%@] DEBUG-PARSER: ended tag (</%@>), handled by parser (%@) with parent parsed by %@", [self class], name, parser, parentParser );
 #endif
 #endif
 	
@@ -738,7 +738,7 @@ static void errorEncounteredSAX (void *ctx, const char *msg, ...) {
     errStr = [[NSString alloc] initWithFormat:@(msg) arguments:va];
     va_end(va);
 
-	DDLogWarn(@"Error encountered during parse: %@", errStr);
+	SVGKitLogWarn(@"Error encountered during parse: %@", errStr);
 	SVGKParseResult* parseResult = self.currentParseRun;
     
 	[parseResult addSAXError:[NSError errorWithDomain:@"SVG-SAX" code:1 userInfo:@{NSLocalizedDescriptionKey: errStr}]];
@@ -750,7 +750,7 @@ static void	unparsedEntityDeclaration(void * ctx,
 									 const xmlChar * systemId,
 									 const xmlChar * notationName)
 {
-	DDLogWarn(@"Error: unparsed entity Decl, name: %@, public ID: %@, system ID: %@, notationName: %@", NSStringFromLibxmlString(name),
+	SVGKitLogWarn(@"Error: unparsed entity Decl, name: %@, public ID: %@, system ID: %@, notationName: %@", NSStringFromLibxmlString(name),
 			  NSStringFromLibxmlString(publicId), NSStringFromLibxmlString(systemId), NSStringFromLibxmlString(notationName));
 }
 
@@ -894,7 +894,7 @@ static NSMutableDictionary *NSDictionaryFromLibxmlAttributes (const xmlChar **at
 	
 	if( styleAttribute == nil )
 	{
-		DDLogWarn(@"[%@] WARNING: asked to convert an empty CSS string into a CSS dictionary; returning empty dictionary", [self class] );
+		SVGKitLogWarn(@"[%@] WARNING: asked to convert an empty CSS string into a CSS dictionary; returning empty dictionary", [self class] );
 		return @{};
 	}
 	
