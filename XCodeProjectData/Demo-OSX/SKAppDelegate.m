@@ -102,7 +102,7 @@
 		
 		if ([tmpObj isKindOfClass:[SKSVGBundleObject class]]) {
 			//This should also take care of the default use case, which uses the main bundle
-			theImage = [SVGKImage imageNamed:tmpObj.fullFileName fromBundle:((SKSVGBundleObject*)tmpObj).theBundle];
+			theImage = [SVGKImage imageNamed:tmpObj.fullFileName inBundle:((SKSVGBundleObject*)tmpObj).theBundle];
 		} else {
 			theImage = [[SVGKImage alloc] initWithContentsOfURL:[tmpObj svgURL]];
 		}
