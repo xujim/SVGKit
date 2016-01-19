@@ -1,9 +1,10 @@
+# coding: utf-8
 Pod::Spec.new do |s|
   s.name        = 'SVGKit'
   s.version     = '2.x'
   s.license     = 'MIT'
   s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.9"
+  s.osx.deployment_target = "10.10"
 
   s.summary     = "Display and interact with SVG Images on iOS, using native rendering (CoreAnimation)."
   s.homepage = 'https://github.com/SVGKit/SVGKit'
@@ -26,10 +27,11 @@ Pod::Spec.new do |s|
   s.osx.exclude_files = 'Source/DOM classes/**/*{iOS}.{h,m}', 'Source/Exporters/SVGKExporterUIImage.{h,m}'
 
 
-  s.tvos.deployment_target = '9.0'
+#  s.tvos.deployment_target = '9.0'
   s.libraries = 'xml2'
   s.framework = 'QuartzCore', 'CoreText'
   s.dependency 'CocoaLumberjack', '~> 2.x'
+ # s.dependency 'CocoaLumberjack', :git=>'https://github.com/CocoaLumberjack/CocoaLumberjack.git'， :branch=>'master'
   s.ios.prefix_header_file = 'XCodeProjectData/SVGKit-iOS/SVGKit-iOS-Prefix.pch'
   s.osx.prefix_header_file = 'XCodeProjectData/SVGKit-OSX/SVGKit-OSX-Prefix.pch'
 

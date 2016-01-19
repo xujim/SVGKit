@@ -18,6 +18,7 @@
 #import "SVGTitleElement.h"
 #import "SVGTextElement.h"
 #import "TinySVGTextAreaElement.h"
+#import "SVGTextSpanElement.h"
 
 #import "SVGDocument_Mutable.h"
 
@@ -45,6 +46,7 @@ static NSDictionary *elementMap = nil;
 						  @"switch": [SVGSwitchElement class],
                           @"title": [SVGTitleElement class],
 						  @"text": [SVGTextElement class],
+						  @"tspan": [SVGTextSpanElement class],
 						  @"textArea": [TinySVGTextAreaElement class],
 };
 		}

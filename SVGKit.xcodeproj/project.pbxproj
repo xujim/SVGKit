@@ -753,6 +753,8 @@
 		55F2686219B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */; };
 		55F2686319B66C8E00F6410E /* TinySVGTextAreaElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */; };
 		55F3267A178156770064271D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F32679178156770064271D /* QuartzCore.framework */; };
+		FAB4BD8E1C4E163F009368E2 /* SVGTextSpanElement.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB4BD8C1C4E163F009368E2 /* SVGTextSpanElement.m */; };
+		FAB4BD8F1C4E163F009368E2 /* SVGTextSpanElement.h in Headers */ = {isa = PBXBuildFile; fileRef = FAB4BD8D1C4E163F009368E2 /* SVGTextSpanElement.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1354,6 +1356,8 @@
 		55F32679178156770064271D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		55F3267B178156EF0064271D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		D3E1A8F41A3E224600813D88 /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = CocoaLumberjack/Lumberjack.xcodeproj; sourceTree = "<group>"; };
+		FAB4BD8C1C4E163F009368E2 /* SVGTextSpanElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGTextSpanElement.m; sourceTree = "<group>"; };
+		FAB4BD8D1C4E163F009368E2 /* SVGTextSpanElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGTextSpanElement.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1678,6 +1682,8 @@
 		5540E6F117387F2B004029EF /* Unported or Partial DOM */ = {
 			isa = PBXGroup;
 			children = (
+				FAB4BD8C1C4E163F009368E2 /* SVGTextSpanElement.m */,
+				FAB4BD8D1C4E163F009368E2 /* SVGTextSpanElement.h */,
 				55F2685F19B66C8E00F6410E /* TinySVGTextAreaElement.h */,
 				55F2686019B66C8E00F6410E /* TinySVGTextAreaElement.m */,
 				5540E6F217387F2B004029EF /* BaseClassForAllSVGBasicShapes.h */,
@@ -2166,6 +2172,7 @@
 				5540E7E317387F2B004029EF /* SVGKParserDefsAndUse.h in Headers */,
 				5540E7E517387F2B004029EF /* SVGKParserDOM.h in Headers */,
 				5540E7E717387F2B004029EF /* SVGKParserGradient.h in Headers */,
+				FAB4BD8F1C4E163F009368E2 /* SVGTextSpanElement.h in Headers */,
 				5540E7EB17387F2B004029EF /* SVGKParserStyles.h in Headers */,
 				5540E7ED17387F2B004029EF /* SVGKParserSVG.h in Headers */,
 				5540E7F617387F2B004029EF /* CALayerWithChildHitTest.h in Headers */,
@@ -2643,6 +2650,7 @@
 				5540E75917387F2B004029EF /* SVGKComment.m in Sources */,
 				5540E75B17387F2B004029EF /* SVGKCSSPrimitiveValue.m in Sources */,
 				5540E75E17387F2B004029EF /* SVGKCSSRule.m in Sources */,
+				FAB4BD8E1C4E163F009368E2 /* SVGTextSpanElement.m in Sources */,
 				5540E76117387F2B004029EF /* SVGKCSSRuleList.m in Sources */,
 				5540E76317387F2B004029EF /* SVGKCSSStyleDeclaration.m in Sources */,
 				5540E76517387F2B004029EF /* SVGKCSSStyleRule.m in Sources */,
