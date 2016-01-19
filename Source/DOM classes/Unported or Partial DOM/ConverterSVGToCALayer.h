@@ -13,3 +13,10 @@
 - (void)layoutLayer:(CALayer *)layer;
 
 @end
+
+
+@protocol StyleInheriterConverterSVGToCALayer < NSObject >
+
+- (CALayer *) newLayerWithBaseLayer:(CALayer*)baseLayer;
+
+@end

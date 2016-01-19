@@ -8,6 +8,5 @@
 
 #import <SVGKit/SVGKit.h>
 
-@interface SVGTextSpanElement : SVGTextPositioningElement<SVGTransformable, ConverterSVGToCALayer>
-
+@interface SVGTextSpanElement : SVGTextPositioningElement<SVGTransformable, StyleInheriterConverterSVGToCALayer>
 @end

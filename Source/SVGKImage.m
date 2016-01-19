@@ -32,6 +32,7 @@
 
 #import "SVGKImage-private.h"
 #import "BlankSVG.h"
+#import "SVGTextSpanElement.h"
 
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 #define SVGKCreateSystemDefaultSpace() CGColorSpaceCreateDeviceRGB()
@@ -692,9 +693,15 @@
 	}
 }
 
-- (CALayer *)newLayerWithElement:(SVGElement <ConverterSVGToCALayer> *)element
+- (CALayer *)newLayerWithElement:(SVGElement <ConverterSVGToCALayer> *)element baseLayer:(CALayer*)baseLayer
 {
-	CALayer *layer = [element newLayer];
+    CALayer *layer = nil;
+    if ([element conformsToProtocol:@protocol(StyleInheriterConverterSVGToCALayer)]) {
+        id<StyleInheriterConverterSVGToCALayer> myelement = (id<StyleInheriterConverterSVGToCALayer>)element;
+        layer = [myelement newLayerWithBaseLayer:baseLayer];
+    }else{
+        layer = [element newLayer];
+    }
 	
 	layer.hidden = ![self isElementVisible:element];
 	
@@ -741,9 +748,9 @@
         CALayer *clipLayer = [clipPathElement newLayer];
         for (SVGElement *child in clipPathElement.childNodes )
         {
-            if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
+            if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)] || [child conformsToProtocol:@protocol(StyleInheriterConverterSVGToCALayer)]) {
                 
-                CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
+                CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child baseLayer:layer];
                 
                 if (!sublayer) {
                     continue;
@@ -751,6 +758,15 @@
                 
                 [clipLayer addSublayer:sublayer];
             }
+//            else if ([child conformsToProtocol:@protocol(StyleInheriterConverterSVGToCALayer)]){
+//                CALayer *sublayer = [self newLayerWithBase];
+//                
+//                if (!sublayer) {
+//                    continue;
+//                }
+//                
+//                [clipLayer addSublayer:sublayer];
+//            }
         }
         
         [clipPathElement layoutLayer:clipLayer toMaskLayer:layer];
@@ -767,9 +783,9 @@
 	NSUInteger sublayerCount = 0;
 	for (SVGElement *child in childNodes )
 	{
-		if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
+		if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)] || [child conformsToProtocol:@protocol(StyleInheriterConverterSVGToCALayer)]) {
 			
-			CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child];
+			CALayer *sublayer = [self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child baseLayer:layer];
 			
 			if (!sublayer) {
 				continue;
@@ -827,7 +843,7 @@
 		return nil;
 	else
 	{
-		CALayer* newLayerTree = [self newLayerWithElement:self.DOMTree];
+		CALayer* newLayerTree = [self newLayerWithElement:self.DOMTree baseLayer:nil];
 		
 		if( 0.0f != self.scale )
 		{

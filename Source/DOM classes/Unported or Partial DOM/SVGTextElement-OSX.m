@@ -246,6 +246,31 @@
 	return label;
 }
 
+-(NSString *)textContent
+{
+    NSMutableString* stringAccumulator = [[NSMutableString alloc] init];
+    for( SVGKNode* subNode in self.childNodes )
+    {
+        switch( subNode.nodeType )
+        {
+            case DOMNodeType_TEXT_NODE:
+            case DOMNodeType_CDATA_SECTION_NODE:
+            case DOMNodeType_COMMENT_NODE:
+            case DOMNodeType_PROCESSING_INSTRUCTION_NODE:
+            {
+                NSString* subText = subNode.nodeValue; // should never be nil; anything with a valid value will be at least an empty string i.e. ""
+                [subText stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+                if( subText != nil ){ // Yes, really: Apple docs require that you never append a nil substring. Sigh
+                    [stringAccumulator appendString:subText];
+                }
+            }
+                break;
+        }
+    }
+    
+    return [NSString stringWithString:stringAccumulator];
+}
+
 - (void)layoutLayer:(CALayer *)layer
 {
 	

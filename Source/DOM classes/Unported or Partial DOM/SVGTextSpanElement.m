@@ -118,8 +118,13 @@
 	}
 }
 
-- (CALayer *) newLayer
+//- (CALayer *) newLayer{
+//    return [self newLayerWithBaseLayer:nil];
+//}
+
+- (CALayer *) newLayerWithBaseLayer:(CALayer*)baseLayer
 {
+    CATextLayer *baseTextLayer = (CATextLayer*)baseLayer;
 	/**
 	 BY DESIGN: we work out the positions of all text in ABSOLUTE space, and then construct the Apple CALayers and CATextLayers around
 	 them, as required.
@@ -161,14 +166,14 @@
 		col = SVGColorMake(0, 0, 0, 255);
 	}
 #if 1
-	CGFloat effectiveFontSize = 12; // I chose 12. I couldn't find an official "default" value in the SVG spec.
+    CGFloat effectiveFontSize = baseTextLayer?baseTextLayer.fontSize:12; // I chose 12. I couldn't find an official "default" value in the SVG spec.
 	if (actualSize.length > 0) {
 		SVGLength *sizeLen = [SVGLength svgLengthFromNSString:actualSize];
 		//[sizeLen convertToSpecifiedUnits:SVG_LENGTHTYPE_PX];
 		effectiveFontSize = [sizeLen pixelsValue];
 	}
 #else
-	CGFloat effectiveFontSize = (actualSize.length > 0) ? [actualSize SVGKCGFloatValue] : 12; // I chose 12. I couldn't find an official "default" value in the SVG spec.
+	CGFloat effectiveFontSize = (actualSize.length > 0) ? [actualSize SVGKCGFloatValue] : baseTextLayer.fontSize; // I chose 12. I couldn't find an official "default" value in the SVG spec.
 #endif
 	/** Convert the size down using the SVG transform at this point, before we calc the frame size etc */
 	//	effectiveFontSize = CGSizeApplyAffineTransform( CGSizeMake(0,effectiveFontSize), textTransformAbsolute ).height; // NB important that we apply a transform to a "CGSize" here, so that Apple's library handles worrying about whether to ignore skew transforms etc
@@ -180,6 +185,7 @@
 	
 	[self getFontTrait:&traitMask weight:&fontWeightCG];
 	
+    BOOL fontDefined = YES;
 	//Parts of this code were taken from the SVGImageRep project
 	if (NSOrderedSame == [actualFamily caseInsensitiveCompare:@"serif"])
 		actualFamily = @"Times";
@@ -188,17 +194,23 @@
 		actualFamily = @"Helvetica";
 	else if (NSOrderedSame == [actualFamily caseInsensitiveCompare:@"monospace"])
 		actualFamily = @"Courier";
+    else
+        fontDefined = NO;
 	
 	NSFont *font = [fm fontWithFamily:actualFamily traits:traitMask weight:fontWeightCG size:effectiveFontSize];
-	if (!font) {
-		//Maybe the "Font family" passed was a full font name. Check for that.
-		font = [NSFont fontWithName:actualFamily size:effectiveFontSize];
-	}
-	if (!font) {
-		//Match the iOS side and use Verdana for when we can't find fonts.
-		font = [fm fontWithFamily:@"Verdana" traits:traitMask weight:fontWeightCG size:effectiveFontSize];
-	}
-	
+    
+    if (!baseTextLayer || fontDefined) {
+        if (!font) {
+            //Maybe the "Font family" passed was a full font name. Check for that.
+            font = [NSFont fontWithName:actualFamily size:effectiveFontSize];
+        }
+        if (!font) {
+            //Match the iOS side and use Verdana for when we can't find fonts.
+            font = [fm fontWithFamily:@"Verdana" traits:traitMask weight:fontWeightCG size:effectiveFontSize];
+        }
+    }else{
+        font = baseTextLayer.font;
+    }
 	/** Convert all whitespace to spaces, and trim leading/trailing (SVG doesn't support leading/trailing whitespace, and doesnt support CR LF etc) */
 	
 	NSString* effectiveText = self.textContent; // FIXME: this is a TEMPORARY HACK, UNTIL PROPER PARSING OF <TSPAN> ELEMENTS IS ADDED
@@ -228,7 +240,7 @@
 	
 	label.font = (__bridge CFTypeRef)font;
 	
-	NSString *alignmentMode = kCAAlignmentLeft;
+    NSString *alignmentMode = baseTextLayer?baseTextLayer.alignmentMode:kCAAlignmentLeft;
 	NSString *alignment = [self cascadedValueForStylableProperty:@"text-align"];
 	if (alignment.length > 0) {
 		if (NSOrderedSame == [alignment caseInsensitiveCompare:@"middle"]) {
@@ -281,13 +293,14 @@
 	label.fontSize = effectiveFontSize;
 	label.string = effectiveText;
 	label.alignmentMode = alignmentMode;
-	label.foregroundColor = [SVGHelperUtilities parseFillForElement:self];
+    CGColorRef bkColor = baseTextLayer?baseTextLayer.foregroundColor:CGColorGetConstantColor(kCGColorBlack);
+    label.foregroundColor = [SVGHelperUtilities parseFillForElement:self]?:bkColor;
 	
-	/** VERY USEFUL when trying to debug text issues:*/
+	/** VERY USEFUL when trying to debug text issues:
 	 label.backgroundColor = [NSColor colorWithRed:0.5 green:0 blue:0 alpha:0.5].CGColor;
 	 label.borderColor = [NSColor redColor].CGColor;
 	 //DEBUG: DDLogVerbose(@"font size %2.1f at %@ ... final frame of layer = %@", effectiveFontSize, NSStringFromPoint(transformedOrigin), NSStringFromRect(label.frame));
-	 
+	 */
 	
 	return label;
 }

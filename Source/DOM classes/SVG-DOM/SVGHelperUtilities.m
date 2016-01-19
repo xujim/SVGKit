@@ -588,7 +588,7 @@
 #if TARGET_OS_IPHONE
 		fillColor = [UIColor blackColor].CGColor;
 #else
-		fillColor = CGColorGetConstantColor(kCGColorBlack);
+        fillColor = nil;//CGColorGetConstantColor(kCGColorBlack);
 #endif
 	}
 
