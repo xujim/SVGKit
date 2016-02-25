@@ -81,14 +81,14 @@
 	 Because: Apple's classes REQUIRE us to provide a lot of this info up-front. Sigh
 	 And: SVGKit works by pre-baking everything into position (its faster, and avoids Apple's broken CALayer.transform property)
 	 */
-	CGAffineTransform textTransformAbsolute = [SVGHelperUtilities transformAbsoluteIncludingViewportForTransformableOrViewportEstablishingElement:self];
+    CGAffineTransform textTransformAbsolute = [SVGHelperUtilities transformAbsoluteIncludingViewportForTransformableOrViewportEstablishingElement:self];
 	/** add on the local x,y that will NOT BE iNCLUDED IN THE TRANSFORM
 	 AUTOMATICALLY BECAUSE THEY ARE NOT TRANSFORM COMMANDS IN SVG SPEC!!
 	 -- but they ARE part of the "implicit transform" of text elements!! (bad SVG Spec design :( )
 	 
 	 NB: the local bits (x/y offset) have to be pre-transformed by
 	 */
-	CGAffineTransform textTransformAbsoluteWithLocalPositionOffset = CGAffineTransformConcat( CGAffineTransformMakeTranslation( [self.x pixelsValue], [self.y pixelsValue]), textTransformAbsolute);
+	CGAffineTransform textTransformAbsoluteWithLocalPositionOffset = CGAffineTransformConcat( CGAffineTransformMakeTranslation( [self.x pixelsValue], [self.y pixelsValue]), CGAffineTransformIdentity);
 	
 	/**
 	 Apple's CATextLayer is poor - one of those classes Apple hasn't finished writing?
