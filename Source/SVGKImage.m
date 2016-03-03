@@ -164,7 +164,9 @@
     }
 	
 	NSURL *url = [bundle URLForResource:newName withExtension:extension];
-	
+    if(!url){//NOTES:为什么有时候返回nil，但明明是有文件的。不可read？但何时不可read?
+        url = [NSURL fileURLWithPath:[bundle.resourcePath stringByAppendingPathComponent:name]];
+    }
 	if (!url)
 	{
 		SVGKitLogError(@"[%@] MISSING FILE, COULD NOT CREATE DOCUMENT: filename = %@, extension = %@", [self class], newName, extension);
